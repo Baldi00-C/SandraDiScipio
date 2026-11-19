@@ -1,0 +1,30 @@
+# Dipendenze
+node_modules/
+vendor/
+private/vendor/
+
+# Build Astro
+dist/
+.astro/
+
+# Segreti e configurazioni sensibili (MAI su GitHub: la repo può essere pubblica)
+.env
+.env.*
+!.env.example
+private/config.php
+private/storage/
+**/config.local.php
+
+# Log e cache
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+.cache/
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
