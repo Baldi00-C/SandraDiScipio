@@ -1,0 +1,152 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CurtainImage from '@/components/CurtainImage.astro';
+import EditorialLink from '@/components/EditorialLink.astro';
+import BeforeAfter from '@/components/BeforeAfter.astro';
+import ContactBanner from '@/components/ContactBanner.astro';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+    (a, b) => a.data.order - b.data.order,
+  );
+  return projects.map((project, i) => ({
+    params: { slug: project.id },
+    props: { project, next: projects[(i + 1) % projects.length] },
+  }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  next: CollectionEntry<'projects'>;
+}
+const { project, next } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+const meta = [d.category, d.area, `${d.location}, ${d.year}`].filter(Boolean).join('   ·   ');
+const isPlan = (k: string) => k === 'pianta';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: d.title,
+  about: d.category,
+  dateCreated: String(d.year),
+  locationCreated: d.location,
+  creator: { '@type': 'Person', name: 'Sandra Di Scipio' },
+};
+---
+
+<BaseLayout title={d.title} description={d.seoDescription ?? d.excerpt} image={d.cover} schema={schema}>
+  <section class="pb-12 pt-12" aria-labelledby="project-title">
+    <div class="wrap" data-reveal-group>
+      <div data-reveal><EditorialLink href="/progetti/" back>Tutti i progetti</EditorialLink></div>
+      <h1 id="project-title" class="mt-9 text-display" data-reveal>{d.title}</h1>
+      <p class="eyebrow mt-8 text-label" data-reveal>{meta}</p>
+      <p class="mt-12 max-w-[1000px] text-body-lg" data-reveal>{d.excerpt}</p>
+    </div>
+  </section>
+
+  <section class="pb-20" aria-label="Immagini e descrizione del progetto">
+    <div class="wrap">
+      <CurtainImage
+        src={d.cover}
+        alt={d.coverAlt}
+        class="aspect-[1180/690] bg-blush"
+        sizes="(max-width: 1228px) 100vw, 1180px"
+        widths={[800, 1200, 1600, 2000]}
+        loading="eager"
+        fetchpriority="high"
+        parallax={0.07}
+      />
+
+      <div class="mt-[72px] grid gap-12 md:grid-cols-[700px_1fr] md:gap-20">
+        <div data-reveal-group>
+          <div class="prose-sd space-y-6 text-body" data-reveal>
+            <Content />
+          </div>
+          <h2 class="mt-14 text-h2" data-reveal>Principali soluzioni adottate</h2>
+          <ul class="mt-7 space-y-1 text-body" data-reveal>
+            {
+              d.solutions.map((s) => (
+                <li class="flex gap-3">
+                  <span aria-hidden="true" class="text-rose-deep">•</span>
+                  {s}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <aside class="md:pt-[6px]" data-reveal>
+          <EditorialLink href="/contatti/">Parliamo del tuo progetto</EditorialLink>
+          <div class="mt-4">
+            <EditorialLink href="/preventivatore/">Calcola una stima</EditorialLink>
+          </div>
+        </aside>
+      </div>
+
+      {
+        d.beforeAfter.length > 0 && (
+          <div class="mt-[100px] space-y-16">
+            <h2 class="text-h2" data-reveal>Prima e dopo</h2>
+            {d.beforeAfter.map((ba) => (
+              <BeforeAfter {...ba} />
+            ))}
+          </div>
+        )
+      }
+
+      {
+        d.gallery.length > 0 && (
+          <div class="mt-[100px]">
+            <h2 class="text-h2" data-reveal>Galleria</h2>
+            <ul class="mt-10 grid gap-7 md:grid-cols-2" role="list">
+              {d.gallery.map((g, i) => (
+                <li class:list={[i === 0 && d.gallery.length % 2 === 1 && 'md:col-span-2']}>
+                  <figure class="m-0">
+                    <CurtainImage
+                      src={g.src}
+                      alt={g.alt}
+                      class:list={[
+                        i === 0 && d.gallery.length % 2 === 1 ? 'aspect-[1180/640]' : 'aspect-[576/420]',
+                        isPlan(g.kind) ? 'bg-white' : 'bg-blush',
+                      ]}
+                      fit={isPlan(g.kind) || g.kind === 'concept' ? 'contain' : 'cover'}
+                      sizes="(max-width: 860px) 100vw, 576px"
+                      widths={[600, 900, 1200]}
+                      zoom={!isPlan(g.kind)}
+                    />
+                    {g.caption && <figcaption class="eyebrow mt-4 text-label">{g.caption}</figcaption>}
+                  </figure>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      {
+        next.id !== project.id && (
+          <nav class="mt-[100px] border-t border-default pt-10" aria-label="Progetto successivo">
+            <p class="eyebrow text-label">Progetto successivo</p>
+            <a href={`/progetti/${next.id}/`} class="group mt-4 inline-flex items-baseline gap-4 text-h1 no-underline hover:text-action-hover">
+              {next.data.title} <span class="arrow text-h2" aria-hidden="true">→</span>
+            </a>
+          </nav>
+        )
+      }
+    </div>
+  </section>
+
+  <ContactBanner />
+</BaseLayout>
+
+<style>
+  .prose-sd :global(strong) {
+    font-weight: 600;
+  }
+  .prose-sd :global(em) {
+    font-family: var(--font-display);
+    font-size: 1.15em;
+  }
+</style>

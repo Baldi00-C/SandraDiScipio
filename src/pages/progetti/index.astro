@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import ContactBanner from '@/components/ContactBanner.astro';
+import { projectCategories } from '@/data/site';
+
+const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort((a, b) => a.data.order - b.data.order);
+const filters = ['Tutti', ...projectCategories];
+---
+
+<BaseLayout
+  title="Progetti"
+  description="Una selezione di progetti di architettura, interior design, ristrutturazione e arredamento chiavi in mano di Sandra Di Scipio."
+>
+  <PageIntro
+    eyebrow="Progetti"
+    title="I nostri progetti, le nostre storie."
+    lead="Una selezione di lavori che raccontano il nostro approccio alla progettazione e al design."
+  >
+    <p class="mt-6 max-w-[1180px] text-small text-secondary md:text-body" data-reveal>
+      Ogni progetto nasce da esigenze diverse e prende forma attraverso un percorso di ricerca, creatività e attenzione
+      ai dettagli. Dalle ristrutturazioni complete agli interventi di interior design, ogni realizzazione rappresenta un
+      equilibrio tra estetica, funzionalità e identità.
+    </p>
+
+    <div class="mt-10" role="group" aria-label="Filtra i progetti per categoria" data-filters>
+      <ul class="flex flex-wrap gap-[22px]" role="list">
+        {
+          filters.map((f, i) => (
+            <li>
+              <button type="button" class="chip" aria-pressed={i === 0 ? 'true' : 'false'} data-filter={f}>
+                <span class="chip-check" aria-hidden="true">
+                  ✓
+                </span>
+                {f}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </PageIntro>
+
+  <section class="pb-[100px] pt-6" aria-label="Elenco dei progetti">
+    <div class="wrap">
+      <p class="sr-only" aria-live="polite" data-filter-status></p>
+      <ul class="grid gap-x-7 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" role="list" data-project-grid>
+        {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
+      </ul>
+      <p class="mt-16 text-small text-secondary" data-empty hidden>Nessun progetto in questa categoria, per ora.</p>
+    </div>
+  </section>
+
+  <ContactBanner />
+</BaseLayout>
+
+<style>
+  /* Filter chip (Figma 3:222): Default / Selected / Focus / Disabled.
+     Lo stato selezionato usa anche la spunta, non solo il colore. */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 230px;
+    min-height: 48px;
+    padding: 0 22px;
+    border: 1px solid var(--sd-border-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--sd-text-primary);
+    font-size: var(--text-small);
+    cursor: pointer;
+    transition:
+      background-color 250ms var(--ease-editorial),
+      color 250ms var(--ease-editorial);
+  }
+  .chip:hover {
+    background: var(--sd-background-subtle);
+  }
+  .chip[aria-pressed='true'] {
+    background: var(--sd-action-default);
+    color: var(--color-white);
+  }
+  .chip-check {
+    display: none;
+  }
+  .chip[aria-pressed='true'] .chip-check {
+    display: inline;
+  }
+  .chip:disabled {
+    border-color: var(--sd-state-disabled);
+    color: var(--sd-text-secondary);
+    cursor: not-allowed;
+  }
+  @media (max-width: 860px) {
+    .chip {
+      min-width: 0;
+    }
+  }
+</style>
+
+<script>
+  function initFilters() {
+    const group = document.querySelector<HTMLElement>('[data-filters]');
+    const grid = document.querySelector<HTMLElement>('[data-project-grid]');
+    if (!group || !grid || group.dataset.bound) return;
+    group.dataset.bound = 'true';
+    const buttons = Array.from(group.querySelectorAll<HTMLButtonElement>('[data-filter]'));
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-category]'));
+    const status = document.querySelector<HTMLElement>('[data-filter-status]');
+    const empty = document.querySelector<HTMLElement>('[data-empty]');
+
+    buttons.forEach((btn) =>
+      btn.addEventListener('click', () => {
+        const value = btn.dataset.filter ?? 'Tutti';
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = value === 'Tutti' || card.dataset.category === value;
+          card.hidden = !show;
+          if (show) {
+            visible++;
+            card.classList.add('is-revealed');
+            card.querySelectorAll('[data-curtain]').forEach((c) => c.classList.add('is-revealed'));
+          }
+        });
+        if (empty) empty.hidden = visible > 0;
+        if (status) status.textContent = `${visible} ${visible === 1 ? 'progetto' : 'progetti'}: ${value}`;
+      }),
+    );
+  }
+  document.addEventListener('astro:page-load', initFilters);
+</script>

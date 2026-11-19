@@ -1,0 +1,46 @@
+---
+/**
+ * Confronto prima / dopo (Figma 05 · Progetto): due immagini affiancate,
+ * etichetta sotto ciascuna. Su mobile si impilano.
+ */
+import type { ImageMetadata } from 'astro';
+import CurtainImage from './CurtainImage.astro';
+
+interface Props {
+  label: string;
+  before: ImageMetadata;
+  beforeAlt: string;
+  after: ImageMetadata;
+  afterAlt: string;
+}
+const { label, before, beforeAlt, after, afterAlt } = Astro.props;
+const isPlan = /pianta|distribuzione/i.test(label);
+---
+
+<figure class="m-0" data-reveal>
+  <figcaption class="sr-only">Confronto prima e dopo: {label}</figcaption>
+  <div class="grid gap-7 md:grid-cols-2">
+    <div>
+      <CurtainImage
+        src={before}
+        alt={beforeAlt}
+        class:list={['aspect-[576/350]', isPlan ? 'bg-white' : 'bg-blush']}
+        fit={isPlan ? 'contain' : 'cover'}
+        sizes="(max-width: 860px) 100vw, 576px"
+        widths={[600, 900, 1200]}
+      />
+      <p class="eyebrow mt-4 text-label">Prima · {label}</p>
+    </div>
+    <div>
+      <CurtainImage
+        src={after}
+        alt={afterAlt}
+        class:list={['aspect-[576/350]', isPlan ? 'bg-white' : 'bg-blush']}
+        fit={isPlan ? 'contain' : 'cover'}
+        sizes="(max-width: 860px) 100vw, 576px"
+        widths={[600, 900, 1200]}
+      />
+      <p class="eyebrow mt-4 text-label">Dopo · {label}</p>
+    </div>
+  </div>
+</figure>

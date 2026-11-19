@@ -1,0 +1,50 @@
+---
+/**
+ * Notice (Figma 3:280) — Tone: Information | Success | Error.
+ * Il messaggio unisce un indizio testuale a un colore semantico.
+ */
+interface Props {
+  tone?: 'info' | 'success' | 'error';
+  title: string;
+  class?: string;
+  id?: string;
+  hidden?: boolean;
+}
+const { tone = 'info', title, class: className, id, hidden } = Astro.props;
+const prefix = { info: 'Informazione', success: 'Conferma', error: 'Errore' }[tone];
+---
+
+<div
+  id={id}
+  class:list={['notice', `notice-${tone}`, className]}
+  role={tone === 'error' ? 'alert' : 'status'}
+  hidden={hidden}
+  tabindex="-1"
+>
+  <p class="font-medium text-control"><span class="sr-only">{prefix}: </span><span data-notice-title>{title}</span></p>
+  <p class="mt-1 text-small" data-notice-text><slot /></p>
+</div>
+
+<style>
+  .notice {
+    border: 1px solid var(--sd-border-default);
+    border-left-width: 4px;
+    padding: 18px 22px;
+    background: var(--sd-surface-default);
+  }
+  .notice-info {
+    border-left-color: var(--sd-action-hover);
+  }
+  .notice-success {
+    border-left-color: var(--sd-feedback-success);
+  }
+  .notice-success [data-notice-title] {
+    color: var(--sd-feedback-success);
+  }
+  .notice-error {
+    border-left-color: var(--sd-feedback-error);
+  }
+  .notice-error [data-notice-title] {
+    color: var(--sd-feedback-error);
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CurtainImage from '@/components/CurtainImage.astro';
+import EditorialLink from '@/components/EditorialLink.astro';
+import ContactBanner from '@/components/ContactBanner.astro';
+import portrait from '@/assets/about/sandra-di-scipio-architetto.jpg';
+
+const timeline = [
+  { year: '2016', title: 'Architettura', place: 'Caracas, Venezuela' },
+  { year: '2018', title: 'Interior Design', place: 'Politecnico di Milano' },
+];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sandra Di Scipio',
+  jobTitle: 'Architetto e Interior Designer',
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Politecnico di Milano' }],
+};
+---
+
+<BaseLayout
+  title="Chi sono"
+  description="Sandra Di Scipio, architetto laureata a Caracas e specializzata in Interior Design al Politecnico di Milano: progettazione, ristrutturazioni e consulenza d’arredo."
+  image={portrait}
+  schema={personSchema}
+>
+  <section class="pb-[100px] pt-20" aria-labelledby="about-title">
+    <div class="wrap">
+      <div data-reveal-group>
+        <p class="eyebrow text-label" data-reveal>Chi sono</p>
+        <h1 id="about-title" class="mt-7 text-display" data-reveal>Sandra Di Scipio</h1>
+        <p class="mt-7 font-display text-h3 font-medium" data-reveal>Architetto | Interior Designer</p>
+      </div>
+
+      <div class="mt-16 grid gap-14 md:grid-cols-[500px_1fr] md:gap-[76px]">
+        <div>
+          <CurtainImage
+            src={portrait}
+            alt="Ritratto di Sandra Di Scipio nel suo studio"
+            class="aspect-[500/660] bg-blush"
+            sizes="(max-width: 860px) 100vw, 500px"
+            widths={[500, 832]}
+            position="center 30%"
+            loading="eager"
+          />
+          <dl class="mt-14 grid grid-cols-2 gap-8" data-reveal-group>
+            {
+              timeline.map((t) => (
+                <div data-reveal>
+                  <dt class="font-display text-h2">{t.year}</dt>
+                  <dd class="mt-3 text-small">
+                    {t.title}
+                    <br />
+                    {t.place}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <div class="max-w-[604px] space-y-8 text-body" data-reveal-group>
+          <p class="text-body-lg" data-reveal>
+            La passione per l’architettura e il design d’interni nasce dal desiderio di trasformare gli spazi in luoghi
+            capaci di esprimere identità, emozioni e personalità.
+          </p>
+          <p data-reveal>
+            Mi sono laureata in Architettura a Caracas, in Venezuela, nel 2016, e ho successivamente conseguito una
+            specializzazione in Interior Design presso il Politecnico di Milano nel 2018.
+          </p>
+          <p data-reveal>
+            Il mio percorso professionale mi ha permesso di sviluppare competenze nella progettazione, nella
+            ristrutturazione degli ambienti e nella consulenza per la selezione di arredi e complementi, collaborando
+            anche con importanti brand del settore dell’arredamento di alta gamma.
+          </p>
+          <p data-reveal>
+            Credo che ogni progetto debba nascere dall’ascolto delle esigenze del cliente e svilupparsi attraverso
+            soluzioni personalizzate, capaci di coniugare bellezza, comfort e funzionalità.
+          </p>
+          <p data-reveal>
+            Il mio obiettivo è accompagnare ogni cliente in un percorso creativo e progettuale, trasformando le sue idee in
+            spazi concreti, armoniosi e senza tempo.
+          </p>
+          <div class="pt-4" data-reveal>
+            <EditorialLink href="/progetti/">Guarda i progetti</EditorialLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactBanner />
+</BaseLayout>

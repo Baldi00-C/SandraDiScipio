@@ -1,0 +1,30 @@
+---
+/** Card progetto della griglia (pagina Progetti) con zoom all'hover (motion 05). */
+import type { CollectionEntry } from 'astro:content';
+import CurtainImage from './CurtainImage.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  index?: number;
+}
+const { project, index = 0 } = Astro.props;
+const { title, category, location, year, cover, coverAlt } = project.data;
+---
+
+<li class="project-card" data-category={category} data-reveal>
+  <a href={`/progetti/${project.id}/`} class="group block no-underline">
+    <CurtainImage
+      src={cover}
+      alt={coverAlt}
+      class="aspect-[374/498] bg-blush"
+      sizes="(max-width: 860px) 100vw, (max-width: 1280px) 33vw, 374px"
+      widths={[400, 600, 800]}
+      zoom
+      loading={index < 3 ? 'eager' : 'lazy'}
+    />
+    <h2 class="mt-5 text-h3 font-medium text-primary transition-colors duration-400 group-hover:text-action-hover">
+      {title}
+    </h2>
+    <p class="mt-3 text-small text-secondary">{category} · {location}, {year}</p>
+  </a>
+</li>

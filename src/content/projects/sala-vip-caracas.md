@@ -7,10 +7,10 @@ year: 2019
 area: circa 172 mq
 order: 3
 featured: true
-cover: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
-coverAlt: Pianta arredata della sala VIP con sedute, tavoli del piano bar e sala riunioni su pavimento effetto legno
-detail: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-schema-distribuzione.jpg
-detailAlt: Schema della distribuzione degli arredi della sala VIP con le nuove pareti
+cover: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-concept-board.jpg
+coverAlt: Tavola di concept con la pianta della sala VIP e le immagini di riferimento di sedute, tavoli e complementi
+detail: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
+detailAlt: Pianta arredata della sala VIP su pavimento effetto legno
 solutions:
   - Distribuzione per zone: attesa, relax, piano bar e riunioni
   - Nuove pareti per bagni con doccia e servizi
@@ -19,10 +19,10 @@ solutions:
   - Controsoffitto in cartongesso con luce LED calda
   - Palette di colori chiari con accenti blu profondo
 gallery:
-  - src: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-concept-board.jpg
-    alt: Tavola di concept con la pianta della sala VIP e le immagini di riferimento degli arredi
-    caption: Concept board con gli arredi di riferimento
-    kind: concept
+  - src: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
+    alt: Pianta arredata della sala VIP con sedute, tavoli del piano bar e sala riunioni su pavimento effetto legno
+    caption: Pianta arredi
+    kind: pianta
   - src: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-schema-distribuzione.jpg
     alt: Schema planimetrico con arredi e nuove pareti della sala VIP
     caption: Schema arredi e nuove pareti

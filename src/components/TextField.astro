@@ -1,0 +1,112 @@
+---
+/**
+ * Text field (Figma 3:267) — State: Empty / Filled / Focus / Error / Disabled /
+ * Multiline. Etichetta visibile, help persistente, errore accanto al campo.
+ */
+interface Props {
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'tel';
+  placeholder?: string;
+  help?: string;
+  multiline?: boolean;
+  required?: boolean;
+  autocomplete?: string;
+  maxlength?: number;
+  rows?: number;
+  inputmode?: 'text' | 'email' | 'tel';
+}
+const {
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  help,
+  multiline = false,
+  required = false,
+  autocomplete,
+  maxlength,
+  rows = 4,
+  inputmode,
+} = Astro.props;
+const id = `f-${name}-${Math.random().toString(36).slice(2, 7)}`;
+const helpId = `${id}-help`;
+const errId = `${id}-error`;
+---
+
+<div class="field" data-field>
+  <label for={id} class="block text-small text-primary">
+    {label}
+    {required ? <span class="text-secondary" aria-hidden="true"> *</span> : <span class="text-secondary"> (facoltativo)</span>}
+  </label>
+  {
+    multiline ? (
+      <textarea
+        id={id}
+        name={name}
+        rows={rows}
+        placeholder={placeholder}
+        required={required}
+        maxlength={maxlength}
+        aria-describedby={`${helpId} ${errId}`}
+        class="field-control mt-[6px] min-h-[96px] resize-y"
+      />
+    ) : (
+      <input
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        autocomplete={autocomplete}
+        maxlength={maxlength}
+        inputmode={inputmode}
+        aria-describedby={`${helpId} ${errId}`}
+        class="field-control mt-[6px] h-[54px]"
+      />
+    )
+  }
+  <p id={errId} class="field-error mt-2 text-small" role="alert" hidden data-error></p>
+  {help && <p id={helpId} class="mt-2 text-small text-secondary">{help}</p>}
+</div>
+
+<style>
+  .field-control {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    font: inherit;
+    font-size: var(--text-small);
+    line-height: var(--text-small--line-height);
+    color: var(--sd-text-primary);
+    background: var(--sd-surface-default);
+    border: 1px solid var(--sd-border-default);
+    border-radius: 0;
+    transition:
+      border-color 250ms var(--ease-editorial),
+      box-shadow 250ms var(--ease-editorial);
+  }
+  .field-control::placeholder {
+    color: var(--sd-text-secondary);
+    opacity: 1;
+  }
+  .field-control:hover {
+    border-color: var(--sd-text-secondary);
+  }
+  .field-control:focus-visible {
+    outline: none;
+    border-color: var(--sd-border-strong);
+    box-shadow: 0 0 0 2px var(--sd-focus-ring);
+  }
+  .field-control[aria-invalid='true'] {
+    border-color: var(--sd-feedback-error);
+  }
+  .field-control:disabled {
+    background: var(--sd-state-disabled);
+    color: var(--sd-text-secondary);
+    cursor: not-allowed;
+  }
+  .field-error {
+    color: var(--sd-feedback-error);
+  }
+</style>

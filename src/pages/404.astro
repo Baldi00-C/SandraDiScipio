@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import EditorialLink from '@/components/EditorialLink.astro';
+---
+
+<BaseLayout title="Pagina non trovata" noindex>
+  <section class="section-y">
+    <div class="wrap">
+      <p class="eyebrow text-label">Errore 404</p>
+      <h1 class="mt-7 text-display">Questa stanza non esiste.</h1>
+      <p class="mt-8 max-w-[560px] text-body">La pagina che cerchi è stata spostata o non è mai esistita.</p>
+      <div class="mt-12 space-y-4">
+        <EditorialLink href="/">Torna alla home</EditorialLink>
+        <EditorialLink href="/progetti/">Guarda i progetti</EditorialLink>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,88 @@
+---
+/**
+ * Button (Figma 3:203) — Kind: Primary | Secondary · State: Default / Hover /
+ * Focus / Disabled / Loading. Pillola h-58, label Gothic A1 Medium 15.2.
+ * Con `href` è un link, altrimenti un <button>.
+ */
+interface Props {
+  kind?: 'primary' | 'secondary';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  inverse?: boolean;
+  loadingLabel?: string;
+  class?: string;
+  id?: string;
+  disabled?: boolean;
+  [key: string]: unknown;
+}
+
+const {
+  kind = 'primary',
+  href,
+  type = 'button',
+  inverse = false,
+  loadingLabel = 'Invio in corso…',
+  class: className,
+  disabled,
+  ...rest
+} = Astro.props;
+
+const base =
+  'btn relative inline-flex min-h-[58px] min-w-[240px] max-w-full items-center justify-center gap-3 rounded-pill px-[30px] text-control font-medium no-underline transition-[background-color,color,border-color] duration-250 select-none';
+const kinds = {
+  primary: inverse
+    ? 'bg-white text-ink hover:bg-blush'
+    : 'bg-action text-white hover:bg-action-hover',
+  secondary: inverse
+    ? 'border border-white text-white hover:bg-white hover:text-ink'
+    : 'border border-strong bg-transparent text-primary hover:border-action-hover hover:text-action-hover',
+};
+const cls = [base, kinds[kind], className].filter(Boolean).join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={cls} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={cls} disabled={disabled} data-loading-label={loadingLabel} {...rest}>
+      <span class="btn-spinner" aria-hidden="true" />
+      <span class="btn-label">
+        <slot />
+      </span>
+    </button>
+  )
+}
+
+<style>
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    background: var(--sd-state-disabled);
+    border-color: var(--sd-state-disabled);
+    color: var(--sd-text-secondary);
+    cursor: not-allowed;
+  }
+  .btn-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 999px;
+    animation: btn-spin 800ms linear infinite;
+  }
+  .btn[data-loading='true'] {
+    background: var(--sd-action-hover);
+    color: var(--sd-action-label);
+    cursor: progress;
+  }
+  .btn[data-loading='true'] .btn-spinner {
+    display: inline-block;
+  }
+  @keyframes btn-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>

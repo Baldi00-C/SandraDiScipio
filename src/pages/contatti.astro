@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import ContactForm from '@/components/ContactForm.astro';
+import Button from '@/components/Button.astro';
+import { site } from '@/data/site';
+
+const rows = [
+  { label: 'Telefono', value: site.phone, href: site.phoneHref },
+  { label: 'WhatsApp', value: 'Scrivici su WhatsApp', href: site.whatsappHref, external: true },
+  { label: 'Email', value: site.email, href: `mailto:${site.email}` },
+];
+---
+
+<BaseLayout
+  title="Contatti"
+  description="Contatta Sandra Di Scipio per una consulenza di architettura, interior design o ristrutturazione: telefono, WhatsApp, email o modulo online."
+>
+  <PageIntro
+    eyebrow="Contatti"
+    title={'Hai un progetto da realizzare?\nParliamone!'}
+    lead="Ogni grande progetto nasce da una prima idea e da una conversazione."
+  />
+
+  <section class="pb-[100px] pt-6" aria-label="Recapiti e modulo di contatto">
+    <div class="wrap grid gap-14 md:grid-cols-[570px_1fr] md:gap-[104px]">
+      <div data-reveal-group>
+        <p class="text-body-lg" data-reveal>
+          Che tu stia pensando a una ristrutturazione completa, a un nuovo progetto d’interni o semplicemente a rinnovare
+          i tuoi spazi, sarò felice di ascoltare le tue esigenze e accompagnarti nella realizzazione del tuo progetto.
+        </p>
+        <dl class="mt-20" data-reveal>
+          {
+            rows.map((r) => (
+              <div class="border-t border-default py-6">
+                <dt class="eyebrow text-label">{r.label}</dt>
+                <dd class="mt-3">
+                  <a
+                    href={r.href}
+                    class="font-display text-h3 font-medium text-primary no-underline hover:text-action-hover"
+                    {...(r.external ? { target: '_blank', rel: 'noopener' } : {})}
+                  >
+                    {r.value}
+                  </a>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        <div class="mt-10" data-reveal>
+          <Button href={site.whatsappHref} target="_blank" rel="noopener" kind="secondary" class="halo">
+            Contatto WhatsApp
+          </Button>
+        </div>
+      </div>
+
+      <div class="border border-default bg-surface p-8 md:p-10" data-reveal>
+        <h2 class="text-h2">Richiedi una consulenza</h2>
+        <p class="mt-[42px] text-small">Lascia i tuoi dati: ti rispondiamo il prima possibile.</p>
+        <div class="mt-10">
+          <ContactForm phone source="contatti" id="contatti-form" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

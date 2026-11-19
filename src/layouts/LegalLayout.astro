@@ -1,0 +1,48 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  note: string;
+}
+const { title, description, note } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="pb-[100px] pt-20">
+    <div class="wrap max-w-[1008px]">
+      <p class="eyebrow text-label">Informazioni legali · Bozza</p>
+      <h1 class="mt-7 text-display">{title}</h1>
+      <p class="mt-10 text-body-lg text-secondary">{note}</p>
+      <div class="legal mt-16">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal :global(h2) {
+    margin-top: 56px;
+    font-size: var(--text-h2);
+    line-height: var(--text-h2--line-height);
+  }
+  .legal :global(p),
+  .legal :global(ul) {
+    margin-top: 20px;
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+  .legal :global(ul) {
+    padding-left: 1.2em;
+    list-style: disc;
+  }
+  .legal :global(a) {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .legal :global(a:hover) {
+    color: var(--sd-action-hover);
+  }
+</style>

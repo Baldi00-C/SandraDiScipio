@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import Estimator from '@/components/Estimator.astro';
+---
+
+<BaseLayout
+  title="Preventivatore online"
+  description="Ottieni una prima stima indicativa dei costi del tuo progetto di architettura, ristrutturazione o arredamento rispondendo a poche domande."
+>
+  <PageIntro eyebrow="Preventivatore online" title={'Il tuo progetto\ninizia da qui.'}>
+    <p class="mt-12 max-w-[960px] font-display text-h3 font-medium" data-reveal>
+      Hai un’idea di ristrutturazione o desideri rinnovare i tuoi ambienti?
+    </p>
+    <p class="mt-10 max-w-[960px] text-body" data-reveal>
+      Attraverso il nostro preventivatore online potrai ottenere una prima stima dei costi del tuo progetto, rispondendo a
+      poche semplici domande relative all’immobile, agli interventi desiderati e al livello di personalizzazione richiesto.
+    </p>
+    <p class="mt-16 text-small text-secondary" data-reveal>Un primo passo per trasformare le tue idee in un progetto concreto.</p>
+  </PageIntro>
+
+  <section class="pb-[120px] pt-10" aria-label="Preventivatore">
+    <div class="wrap">
+      <div class="mx-auto max-w-[820px]">
+        <Estimator />
+        <p class="mt-10 text-small">
+          Stima indicativa, IVA esclusa e non vincolante: il preventivo definitivo richiede un confronto sui tuoi spazi.
+        </p>
+        <p class="eyebrow mt-8 text-label">Valori dimostrativi · da sostituire con i criteri di Sandra</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import LegalLayout from '@/layouts/LegalLayout.astro';
+import { site } from '@/data/site';
+---
+
+<LegalLayout
+  title="Privacy Policy"
+  description="Informativa sul trattamento dei dati personali raccolti tramite il sito di Sandra Di Scipio."
+  note="Bozza da far verificare e completare con i dati reali. Non è consulenza legale."
+>
+  <h2>Titolare del trattamento</h2>
+  <p>
+    {site.name} — [ragione sociale, P. IVA, indirizzo]. Email: <a href={`mailto:${site.email}`}>{site.email}</a>.
+  </p>
+
+  <h2>Dati raccolti e finalità</h2>
+  <p>
+    Nome, email, telefono e contenuto del messaggio o del preventivatore (tipo di immobile, superficie, interventi,
+    tempi e stima), usati solo per rispondere alla tua richiesta (art. 6.1.b GDPR, misure precontrattuali, e consenso,
+    art. 6.1.a). Conservazione: [es. 24 mesi] dall’ultimo contatto.
+  </p>
+  <p>
+    Per proteggere il modulo dagli abusi il server registra temporaneamente l’indirizzo IP in forma cifrata (hash) e il
+    numero di invii, per un massimo di 24 ore.
+  </p>
+
+  <h2>Destinatari</h2>
+  <p>[Fornitore di hosting e posta elettronica, es. Hostinger]. Non cediamo i dati a terzi per finalità di marketing.</p>
+
+  <h2>I tuoi diritti</h2>
+  <p>
+    Puoi chiedere accesso, rettifica, cancellazione, limitazione, portabilità e opporti al trattamento scrivendo a
+    <a href={`mailto:${site.email}`}>{site.email}</a>. Hai diritto di reclamo al Garante per la protezione dei dati
+    personali (<a href="https://www.garanteprivacy.it" rel="noopener" target="_blank">garanteprivacy.it</a>).
+  </p>
+</LegalLayout>

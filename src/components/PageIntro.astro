@@ -1,0 +1,22 @@
+---
+/** Introduzione di pagina: eyebrow + titolo Display/Large + testo. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead?: string;
+  narrow?: boolean;
+}
+const { eyebrow, title, lead, narrow = false } = Astro.props;
+const lines = title.split('\n');
+---
+
+<section class="pb-12 pt-20 md:pt-20" data-reveal-group>
+  <div class:list={['wrap', narrow && 'max-w-[1008px]']}>
+    <p class="eyebrow text-label" data-reveal>{eyebrow}</p>
+    <h1 class="mt-7 text-display" data-reveal>
+      {lines.map((l, i) => (i < lines.length - 1 ? <>{l}<br /></> : l))}
+    </h1>
+    {lead && <p class="mt-10 max-w-[960px] text-body-lg text-primary" data-reveal>{lead}</p>}
+    <slot />
+  </div>
+</section>

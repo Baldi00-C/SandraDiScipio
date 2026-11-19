@@ -389,3 +389,27 @@ a:hover .arrow, a:focus-visible .arrow, button:hover .arrow { transform: transla
   .confirm-anim .confirm-circle, .confirm-anim .confirm-tick { stroke-dashoffset: 0 !important; }
   ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
 }
+
+/* 09 · Pointer-following light (solo puntatori con hover) */
+.light-photo,
+.light-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-editorial);
+}
+.light-photo {
+  filter: brightness(1.35) saturate(1.05);
+  -webkit-mask-image: radial-gradient(circle 150px at var(--lx, 50%) var(--ly, 50%), #000 0%, rgba(0, 0, 0, 0.6) 45%, transparent 100%);
+  mask-image: radial-gradient(circle 150px at var(--lx, 50%) var(--ly, 50%), #000 0%, rgba(0, 0, 0, 0.6) 45%, transparent 100%);
+}
+.light-glow {
+  background: radial-gradient(circle 190px at var(--lx, 50%) var(--ly, 50%), rgba(255, 222, 190, 0.22), rgba(186, 132, 132, 0.08) 55%, transparent 100%);
+  mix-blend-mode: screen;
+}
+.light-on .light-photo,
+.light-on .light-glow { opacity: 1; }
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .light-photo, .light-glow { display: none; }
+}

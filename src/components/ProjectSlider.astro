@@ -1,0 +1,167 @@
+---
+/**
+ * Selected projects / portfolio slider della home (motion 08):
+ * le informazioni escono verso il basso di 14 px (500 ms), dopo 420 ms si
+ * sostituiscono immagini e testi, poi rientrano e le tende si riaprono.
+ * Le cornici mantengono le dimensioni per evitare salti di pagina.
+ */
+import type { CollectionEntry } from 'astro:content';
+import CurtainImage from './CurtainImage.astro';
+import EditorialLink from './EditorialLink.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+const { projects } = Astro.props;
+const total = String(projects.length).padStart(2, '0');
+---
+
+<div class="project-slider" data-slider aria-roledescription="carosello" aria-label="Progetti in evidenza">
+  {
+    projects.map((p, i) => (
+      <article
+        class="slide grid gap-10 md:grid-cols-[700fr_40fr_235fr_15fr_190fr] md:gap-0"
+        data-slide
+        hidden={i !== 0}
+        aria-roledescription="slide"
+        aria-label={`${i + 1} di ${projects.length}: ${p.data.title}`}
+      >
+        <a href={`/progetti/${p.id}/`} class="group block md:col-start-1" tabindex="-1" aria-hidden="true">
+          <CurtainImage
+            src={p.data.cover}
+            alt=""
+            class="aspect-[700/510] bg-blush"
+            sizes="(max-width: 860px) 100vw, 700px"
+            widths={[600, 900, 1400]}
+            zoom
+            parallax={0.07}
+          />
+        </a>
+        <div class="slide-info md:col-start-3" data-slide-info>
+          <p class="eyebrow text-label">
+            {String(i + 1).padStart(2, '0')} / {total}
+          </p>
+          <h3 class="mt-12 text-h2">{p.data.title}</h3>
+          <p class="mt-10 text-small text-secondary">{p.data.category}</p>
+          <p class="mt-6 text-body">{p.data.excerpt}</p>
+          <div class="mt-12">
+            <EditorialLink href={`/progetti/${p.id}/`}>Scopri il progetto</EditorialLink>
+          </div>
+        </div>
+        {
+          p.data.detail && (
+            <div class="hidden md:col-start-5 md:block md:pt-[130px]">
+              <CurtainImage
+                src={p.data.detail}
+                alt={p.data.detailAlt ?? ''}
+                class="aspect-[190/300] bg-blush"
+                sizes="190px"
+                widths={[200, 400]}
+              />
+            </div>
+          )
+        }
+      </article>
+    ))
+  }
+
+  <div class="mt-10 flex items-center justify-between gap-6">
+    <EditorialLink href="/progetti/">Guarda tutti i progetti</EditorialLink>
+    {
+      projects.length > 1 && (
+        <div class="flex gap-3">
+          <button type="button" class="slider-btn" data-prev aria-label="Progetto precedente">
+            <span aria-hidden="true">←</span>
+          </button>
+          <button type="button" class="slider-btn" data-next aria-label="Progetto successivo">
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      )
+    }
+  </div>
+  <p class="sr-only" aria-live="polite" data-slider-status></p>
+</div>
+
+<style>
+  .slider-btn {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--sd-border-strong);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--sd-text-primary);
+    cursor: pointer;
+    transition:
+      background-color 250ms var(--ease-editorial),
+      color 250ms var(--ease-editorial);
+  }
+  .slider-btn:hover {
+    background: var(--sd-action-default);
+    color: var(--color-white);
+  }
+  .slide-info {
+    transition:
+      opacity 500ms var(--ease-editorial),
+      transform 500ms var(--ease-editorial);
+  }
+  .slide-info.is-leaving {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+</style>
+
+<script>
+  function initSlider() {
+    document.querySelectorAll<HTMLElement>('[data-slider]').forEach((slider) => {
+      if (slider.dataset.bound) return;
+      slider.dataset.bound = 'true';
+      const slides = Array.from(slider.querySelectorAll<HTMLElement>('[data-slide]'));
+      const status = slider.querySelector<HTMLElement>('[data-slider-status]');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let current = 0;
+      let busy = false;
+
+      const go = (dir: number) => {
+        if (busy || slides.length < 2) return;
+        busy = true;
+        const from = slides[current]!;
+        const nextIndex = (current + dir + slides.length) % slides.length;
+        const to = slides[nextIndex]!;
+        const info = from.querySelector<HTMLElement>('[data-slide-info]');
+        info?.classList.add('is-leaving');
+
+        window.setTimeout(
+          () => {
+            from.hidden = true;
+            info?.classList.remove('is-leaving');
+            const toInfo = to.querySelector<HTMLElement>('[data-slide-info]');
+            toInfo?.classList.add('is-leaving');
+            // Richiude le tende per farle riaprire
+            to.querySelectorAll<HTMLElement>('[data-curtain]').forEach((c) => c.classList.remove('is-revealed'));
+            to.hidden = false;
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                toInfo?.classList.remove('is-leaving');
+                to.querySelectorAll<HTMLElement>('[data-curtain]').forEach((c) => c.classList.add('is-revealed'));
+              });
+            });
+            current = nextIndex;
+            if (status) status.textContent = `Progetto ${current + 1} di ${slides.length}: ${to.getAttribute('aria-label')?.split(': ')[1] ?? ''}`;
+            busy = false;
+          },
+          reduce ? 0 : 420,
+        );
+      };
+      slider.querySelector('[data-prev]')?.addEventListener('click', () => go(-1));
+      slider.querySelector('[data-next]')?.addEventListener('click', () => go(1));
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') go(-1);
+        if (e.key === 'ArrowRight') go(1);
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', initSlider);
+</script>

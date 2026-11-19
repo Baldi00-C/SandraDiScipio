@@ -1,0 +1,75 @@
+---
+/**
+ * Checkbox (Figma 3:233) — Unchecked / Checked / Focus.
+ * L'intera etichetta è cliccabile (target ≥ 44 px); lo stato selezionato
+ * non si affida solo al colore (spunta visibile).
+ */
+interface Props {
+  name: string;
+  required?: boolean;
+  value?: string;
+}
+const { name, required = false, value = '1' } = Astro.props;
+const id = `c-${name}-${Math.random().toString(36).slice(2, 7)}`;
+---
+
+<div class="field" data-field>
+  <label for={id} class="checkbox">
+    <input id={id} type="checkbox" name={name} value={value} required={required} aria-describedby={`${id}-error`} />
+    <span class="box" aria-hidden="true">
+      <svg viewBox="0 0 12 10" width="12" height="10"><path d="M1 5.2 4.3 8.5 11 1.5" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg>
+    </span>
+    <span class="text-small"><slot /></span>
+  </label>
+  <p id={`${id}-error`} class="mt-1 pl-8 text-small text-error" role="alert" hidden data-error></p>
+</div>
+
+<style>
+  .checkbox {
+    position: relative;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 12px;
+    align-items: start;
+    min-height: 44px;
+    padding-block: 12px 6px;
+    cursor: pointer;
+  }
+  .checkbox input {
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    top: 14px;
+  }
+  .box {
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border: 1px solid var(--sd-border-strong);
+    background: var(--sd-surface-default);
+    color: transparent;
+    transition:
+      background-color 200ms var(--ease-editorial),
+      color 200ms var(--ease-editorial);
+  }
+  .checkbox input:checked + .box {
+    background: var(--sd-action-default);
+    color: var(--color-white);
+  }
+  .checkbox input:focus-visible + .box {
+    outline: 2px solid var(--sd-focus-ring);
+    outline-offset: 3px;
+  }
+  .checkbox input[aria-invalid='true'] + .box {
+    border-color: var(--sd-feedback-error);
+  }
+  .checkbox :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageIntro from '@/components/PageIntro.astro';
+import CurtainImage from '@/components/CurtainImage.astro';
+import ContactBanner from '@/components/ContactBanner.astro';
+import { services } from '@/data/services';
+---
+
+<BaseLayout
+  title="Servizi"
+  description="Architettura e progettazione, interior design, ristrutturazioni e arredamento chiavi in mano: i servizi di Sandra Di Scipio, dalla consulenza alla realizzazione."
+>
+  <PageIntro
+    eyebrow="I nostri servizi"
+    title={'Diamo forma alle tue idee,\nseguendoti in ogni fase.'}
+    lead="Ogni progetto è diverso e merita un approccio personalizzato. Per questo offriamo diverse soluzioni, dalla singola consulenza alla gestione completa dell’intervento."
+  />
+
+  <section class="pb-[100px] pt-4" aria-label="Elenco dei servizi">
+    <div class="wrap">
+      {
+        services.map((s, i) => (
+          <article id={s.id} class="scroll-mt-28 border-t border-default py-8 md:py-[32px]" aria-labelledby={`${s.id}-title`}>
+            <div class="grid gap-10 md:grid-cols-[360px_1fr] md:gap-16">
+              <div>
+                <CurtainImage
+                  src={s.image}
+                  alt={s.imageAlt}
+                  class:list={['aspect-[360/410]', s.id === 'architettura' ? 'bg-white' : 'bg-blush']}
+                  fit={s.id === 'architettura' ? 'contain' : 'cover'}
+                  sizes="(max-width: 860px) 100vw, 360px"
+                  widths={[360, 720]}
+                  zoom
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+              <div data-reveal-group>
+                <p class="eyebrow text-label" data-reveal>
+                  Servizio / {s.number}
+                </p>
+                <h2 id={`${s.id}-title`} class="mt-5 text-h2" data-reveal>
+                  {s.title}
+                </h2>
+                <p class="mt-14 max-w-[756px] text-body" data-reveal>
+                  {s.description}
+                </p>
+                <ul class="mt-10 space-y-1 text-body" data-reveal>
+                  {s.items.map((item) => (
+                    <li class="flex gap-3">
+                      <span aria-hidden="true" class="text-rose-deep">
+                        •
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <ContactBanner />
+</BaseLayout>

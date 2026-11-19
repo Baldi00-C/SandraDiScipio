@@ -1,0 +1,71 @@
+---
+/** Site footer (Figma 3:331) — card blush con filetto, 3 colonne. */
+import { site } from '@/data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-subtle pb-10 pt-10" style="--curtain-color: var(--sd-background-subtle)">
+  <div class="wrap-wide">
+    <div class="grid gap-10 border border-default px-[31px] py-[27px] md:grid-cols-[1fr_280px_280px] md:gap-14">
+      <div>
+        <p class="font-display text-h3 font-medium uppercase">{site.name}</p>
+        <p class="mt-6 text-small">{site.tagline}</p>
+      </div>
+
+      <div>
+        <h2 class="eyebrow font-body text-label">Contatti</h2>
+        <ul class="mt-5 space-y-0 text-small">
+          <li><a class="footer-link" href={site.phoneHref}>Telefono <span class="sr-only">{site.phone}</span></a></li>
+          <li><a class="footer-link" href={`mailto:${site.email}`}>Email <span class="sr-only">{site.email}</span></a></li>
+          <li><a class="footer-link" href={site.whatsappHref} rel="noopener" target="_blank">WhatsApp</a></li>
+          {
+            site.instagram && (
+              <li>
+                <a class="footer-link" href={site.instagram} rel="noopener" target="_blank">
+                  Instagram
+                </a>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="eyebrow font-body text-label">Legale</h2>
+        <ul class="mt-5 text-small">
+          <li><a class="footer-link" href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a class="footer-link" href="/cookie-policy/">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-5 px-[31px] text-small text-secondary">
+      © {year} {site.name} · {site.role}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    color: var(--sd-text-primary);
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0 1px;
+    background-position: 0 85%;
+    background-repeat: no-repeat;
+    transition:
+      background-size 400ms var(--ease-editorial),
+      color 250ms var(--ease-editorial);
+  }
+  .footer-link:hover {
+    color: var(--sd-action-hover);
+    background-size: 100% 1px;
+  }
+  @media (pointer: coarse) {
+    .footer-link {
+      min-height: 44px;
+    }
+  }
+</style>

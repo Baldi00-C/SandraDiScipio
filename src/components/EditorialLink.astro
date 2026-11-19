@@ -1,0 +1,37 @@
+---
+/**
+ * Editorial link (Figma 3:210) — label maiuscola spaziata, filetto inferiore
+ * di 1 px, freccia che scorre di 8 px all'hover.
+ */
+interface Props {
+  href: string;
+  inverse?: boolean;
+  back?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+const { href, inverse = false, back = false, class: className, ...rest } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    'editorial-link group inline-flex min-h-[44px] w-full max-w-[400px] items-center gap-2 border-b pb-[10px] pt-[10px] text-link font-medium uppercase no-underline transition-colors duration-400',
+    inverse
+      ? 'border-white text-white hover:text-blush'
+      : 'border-strong text-primary hover:border-action-hover hover:text-action-hover',
+    className,
+  ]}
+  {...rest}
+>
+  {back && <span class="arrow arrow-back" aria-hidden="true">←</span>}
+  <span><slot /></span>
+  {!back && <span class="arrow" aria-hidden="true">→</span>}
+</a>
+
+<style>
+  a:hover .arrow-back,
+  a:focus-visible .arrow-back {
+    transform: translateX(-8px);
+  }
+</style>

@@ -1,0 +1,301 @@
+---
+/**
+ * Estimator (Figma 3:311) — domande a scelta singola che avanzano dopo la
+ * selezione; quelle a scelta multipla mostrano "Avanti". Il nuovo step viene
+ * annunciato e il focus va al suo titolo; le risposte precedenti restano.
+ * Barra di avanzamento 350 ms, feedback opzione 200 ms (motion 11).
+ * ⚠️ Le stime sono indicative e i valori in src/data/estimator.ts sono demo.
+ */
+import { estimatorQuestions, estimatorRange } from '@/data/estimator';
+import ContactForm from './ContactForm.astro';
+
+const total = estimatorQuestions.length;
+---
+
+<div class="estimator" data-estimator data-config={JSON.stringify({ questions: estimatorQuestions, range: estimatorRange })}>
+  <noscript>
+    <p class="border border-default bg-surface p-8 text-body">
+      Il preventivatore richiede JavaScript. Puoi comunque <a href="/contatti/" class="underline">scriverci dalla pagina Contatti</a>.
+    </p>
+  </noscript>
+
+  <div class="estimator-card" data-estimator-card hidden>
+    <div class="progress" aria-hidden="true"><span data-progress></span></div>
+    <p class="mt-[18px] text-small text-secondary" aria-live="polite" data-step-label>Domanda 1 di {total}</p>
+
+    {
+      estimatorQuestions.map((q, qi) => (
+        <fieldset class="step" data-step={q.id} data-multiple={q.multiple ? 'true' : 'false'} hidden={qi !== 0}>
+          <legend class="contents">
+            <span class="step-title mt-[10px] block font-display text-h2 outline-none" tabindex="-1" data-step-title>
+              {q.title}
+            </span>
+          </legend>
+          {q.help && <p class="mt-2 text-small text-secondary">{q.help}</p>}
+          <div class="mt-6 space-y-4">
+            {q.options.map((o) => (
+              <label class="option">
+                <input type={q.multiple ? 'checkbox' : 'radio'} name={q.id} value={o.id} />
+                <span class="option-box">
+                  <span class="option-label">
+                    <span class="option-check" aria-hidden="true">
+                      ✓{' '}
+                    </span>
+                    {o.label}
+                  </span>
+                  {o.hint && <span class="option-hint">{o.hint}</span>}
+                </span>
+              </label>
+            ))}
+          </div>
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
+            {qi > 0 ? (
+              <button type="button" class="link-btn" data-back>
+                <span class="arrow" aria-hidden="true">←</span> Indietro
+              </button>
+            ) : (
+              <span />
+            )}
+            {q.multiple && (
+              <button type="button" class="next-btn" data-next disabled>
+                Avanti <span class="arrow" aria-hidden="true">→</span>
+              </button>
+            )}
+          </div>
+        </fieldset>
+      ))
+    }
+
+    <div class="result" data-result hidden>
+      <p class="eyebrow text-label">La tua stima indicativa</p>
+      <p class="mt-4 font-display text-display" data-result-value tabindex="-1">—</p>
+      <p class="mt-3 text-small text-secondary">IVA esclusa · non vincolante · valori dimostrativi</p>
+      <ul class="mt-6 space-y-1 text-small" data-result-summary></ul>
+      <button type="button" class="link-btn mt-6" data-restart>
+        <span class="arrow" aria-hidden="true">←</span> Ricomincia
+      </button>
+
+      <div class="mt-10 border-t border-default pt-10">
+        <h3 class="text-h2">Ricevi il preventivo definitivo</h3>
+        <p class="mt-3 text-small">Lasciaci i tuoi contatti: le risposte al preventivatore vengono allegate alla richiesta.</p>
+        <div class="mt-8">
+          <ContactForm phone source="preventivatore" id="estimate-form" submitLabel="Invia la richiesta" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .estimator-card {
+    background: var(--sd-surface-default);
+    border: 1px solid var(--sd-border-default);
+    padding: 31px;
+  }
+  @media (max-width: 480px) {
+    .estimator-card {
+      padding: 22px;
+    }
+  }
+  .progress {
+    height: 2px;
+    background: var(--sd-border-default);
+  }
+  .progress span {
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--sd-action-hover);
+    transition: width 350ms var(--ease-editorial);
+  }
+  .step {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+  }
+  .option {
+    position: relative;
+    display: block;
+    cursor: pointer;
+  }
+  .option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .option-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 66px;
+    padding: 7px 17px;
+    border: 1px solid var(--sd-border-default);
+    transition:
+      background-color 200ms var(--ease-editorial),
+      color 200ms var(--ease-editorial),
+      border-color 200ms var(--ease-editorial);
+  }
+  .option:hover .option-box {
+    border-color: var(--sd-border-strong);
+  }
+  .option-label {
+    font-size: var(--text-control);
+    line-height: var(--text-control--line-height);
+    font-weight: 500;
+  }
+  .option-hint {
+    font-size: var(--text-small);
+    color: var(--sd-text-secondary);
+  }
+  .option-check {
+    display: none;
+  }
+  .option input:checked + .option-box {
+    background: var(--sd-action-default);
+    border-color: var(--sd-border-strong);
+    color: var(--color-white);
+  }
+  .option input:checked + .option-box .option-hint {
+    color: var(--color-white);
+  }
+  .option input:checked + .option-box .option-check {
+    display: inline;
+  }
+  .option input:focus-visible + .option-box {
+    outline: 2px solid var(--sd-focus-ring);
+    outline-offset: 3px;
+  }
+  .link-btn,
+  .next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-size: var(--text-link);
+    letter-spacing: var(--text-link--letter-spacing);
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--sd-text-primary);
+    cursor: pointer;
+  }
+  .next-btn {
+    min-width: 160px;
+    justify-content: center;
+    padding: 0 24px;
+    min-height: 52px;
+    border-radius: 999px;
+    background: var(--sd-action-default);
+    color: var(--color-white);
+    transition: background-color 250ms var(--ease-editorial);
+  }
+  .next-btn:hover {
+    background: var(--sd-action-hover);
+  }
+  .next-btn:disabled {
+    background: var(--sd-state-disabled);
+    color: var(--sd-text-secondary);
+    cursor: not-allowed;
+  }
+  .link-btn:hover .arrow {
+    transform: translateX(-8px);
+  }
+</style>
+
+<script>
+  type Option = { id: string; label: string; factor?: number; baseRate?: number; sqm?: number; share?: number };
+  type Question = { id: string; title: string; multiple?: boolean; options: Option[] };
+  type Config = { questions: Question[]; range: { low: number; high: number } };
+
+  const eur = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+  const round = (n: number) => Math.round(n / 500) * 500;
+
+  function compute(cfg: Config, answers: Record<string, string[]>) {
+    const opt = (qid: string, oid?: string) =>
+      cfg.questions.find((q) => q.id === qid)?.options.find((o) => o.id === oid);
+    const service = opt('servizio', answers.servizio?.[0]);
+    const surface = opt('superficie', answers.superficie?.[0]);
+    const rooms = answers.ambienti ?? [];
+    const shareOpts = rooms.map((r) => opt('ambienti', r)).filter(Boolean) as Option[];
+    const share = Math.min(1, shareOpts.reduce((t, o) => t + (o.share ?? 0), 0)) || 1;
+    let value = (service?.baseRate ?? 0) * (surface?.sqm ?? 0) * share;
+    ['immobile', 'stato', 'finiture'].forEach((qid) => {
+      value *= opt(qid, answers[qid]?.[0])?.factor ?? 1;
+    });
+    return { low: round(value * cfg.range.low), high: round(value * cfg.range.high) };
+  }
+
+  function initEstimator() {
+    const root = document.querySelector<HTMLElement>('[data-estimator]');
+    if (!root || root.dataset.bound) return;
+    root.dataset.bound = 'true';
+    const cfg = JSON.parse(root.dataset.config ?? '{}') as Config;
+    const card = root.querySelector<HTMLElement>('[data-estimator-card]')!;
+    card.hidden = false;
+
+    const steps = Array.from(root.querySelectorAll<HTMLFieldSetElement>('[data-step]'));
+    const progress = root.querySelector<HTMLElement>('[data-progress]')!;
+    const label = root.querySelector<HTMLElement>('[data-step-label]')!;
+    const result = root.querySelector<HTMLElement>('[data-result]')!;
+    const total = steps.length;
+    const answers: Record<string, string[]> = {};
+    let current = 0;
+
+    const show = (i: number, focus = true) => {
+      current = i;
+      steps.forEach((s, si) => (s.hidden = si !== i));
+      result.hidden = i < total;
+      progress.style.width = `${(Math.min(i, total) / total) * 100}%`;
+      label.textContent = i < total ? `Domanda ${i + 1} di ${total}` : 'Stima completata';
+      if (i < total && focus) steps[i]!.querySelector<HTMLElement>('[data-step-title]')?.focus();
+    };
+
+    const finish = () => {
+      const { low, high } = compute(cfg, answers);
+      const valueEl = result.querySelector<HTMLElement>('[data-result-value]')!;
+      valueEl.textContent = low > 0 ? `${eur.format(low)} – ${eur.format(high)}` : 'Da definire insieme';
+      const summary = result.querySelector<HTMLElement>('[data-result-summary]')!;
+      summary.innerHTML = '';
+      const lines: string[] = [];
+      cfg.questions.forEach((q) => {
+        const labels = (answers[q.id] ?? []).map((id) => q.options.find((o) => o.id === id)?.label ?? id);
+        const line = `${q.title} ${labels.join(', ') || '—'}`;
+        lines.push(line);
+        const li = document.createElement('li');
+        const strong = document.createElement('span');
+        strong.className = 'text-secondary';
+        strong.textContent = `${q.title} `;
+        li.append(strong, document.createTextNode(labels.join(', ') || '—'));
+        summary.append(li);
+      });
+      lines.push(`Stima indicativa (demo): ${valueEl.textContent}`);
+      const payload = result.querySelector<HTMLInputElement>('[data-estimate-payload]');
+      if (payload) payload.value = lines.join('\n').slice(0, 1800);
+      show(total);
+      valueEl.focus();
+    };
+
+    steps.forEach((step, si) => {
+      const multiple = step.dataset.multiple === 'true';
+      const next = step.querySelector<HTMLButtonElement>('[data-next]');
+      step.addEventListener('change', () => {
+        const checked = Array.from(step.querySelectorAll<HTMLInputElement>('input:checked')).map((i) => i.value);
+        answers[step.dataset.step!] = checked;
+        if (multiple) {
+          if (next) next.disabled = checked.length === 0;
+        } else {
+          // Scelta singola: avanza dopo il feedback dell'opzione (200 ms)
+          window.setTimeout(() => (si + 1 < total ? show(si + 1) : finish()), 260);
+        }
+      });
+      next?.addEventListener('click', () => (si + 1 < total ? show(si + 1) : finish()));
+      step.querySelector('[data-back]')?.addEventListener('click', () => show(si - 1));
+    });
+    root.querySelector('[data-restart]')?.addEventListener('click', () => show(0));
+    show(0, false);
+  }
+  document.addEventListener('astro:page-load', initEstimator);
+</script>
