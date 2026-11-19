@@ -21,15 +21,15 @@ const {
 const words = Array.from({ length: 8 }, () => 'Parliamone');
 ---
 
-<section class="pb-[72px] pt-[72px]" style="--curtain-color: var(--sd-background-subtle)">
+<section class="py-14" style="--curtain-color: var(--sd-background-subtle)">
   {
     marquee && (
-      <div class="marquee mb-10 overflow-hidden border-y border-default py-4" aria-hidden="true">
-        <div class="marquee-track flex w-max gap-12 whitespace-nowrap font-display text-display italic text-rose">
+      <div class="marquee mb-8 overflow-hidden border-y border-default py-3" aria-hidden="true">
+        <div class="marquee-track marquee-text flex w-max gap-10 whitespace-nowrap font-display italic text-rose">
           {[...words, ...words].map((w) => (
-            <span class="flex items-center gap-12">
+            <span class="flex items-center gap-10">
               {w}
-              <span class="text-h2 not-italic text-line">✦</span>
+              <span class="text-h3 not-italic text-ochre">✦</span>
             </span>
           ))}
         </div>
@@ -42,8 +42,8 @@ const words = Array.from({ length: 8 }, () => 'Parliamone');
       data-reveal
     >
       <div>
-        <h2 class="text-h1">{title}</h2>
-        <p class="mt-4 text-small">{text}</p>
+        <h2 class="text-h2">{title}</h2>
+        <p class="mt-2 text-small">{text}</p>
       </div>
       <Button href={href}>{cta}</Button>
     </div>

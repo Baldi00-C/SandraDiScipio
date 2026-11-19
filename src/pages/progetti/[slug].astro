@@ -41,7 +41,7 @@ const schema = {
   <section class="pb-12 pt-12" aria-labelledby="project-title">
     <div class="wrap" data-reveal-group>
       <div data-reveal><EditorialLink href="/progetti/" back>Tutti i progetti</EditorialLink></div>
-      <h1 id="project-title" class="mt-9 text-display" data-reveal>{d.title}</h1>
+      <h1 id="project-title" class="mt-5 text-display" data-reveal>{d.title}</h1>
       <p class="eyebrow mt-8 text-label" data-reveal>{meta}</p>
       <p class="mt-12 max-w-[1000px] text-body-lg" data-reveal>{d.excerpt}</p>
     </div>
@@ -52,7 +52,7 @@ const schema = {
       <CurtainImage
         src={d.cover}
         alt={d.coverAlt}
-        class="aspect-[1180/690] bg-blush"
+        class="aspect-[1180/690] max-h-[70svh] w-full bg-blush"
         sizes="(max-width: 1228px) 100vw, 1180px"
         widths={[800, 1200, 1600, 2000]}
         loading="eager"
@@ -60,7 +60,7 @@ const schema = {
         parallax={0.07}
       />
 
-      <div class="mt-[72px] grid gap-12 md:grid-cols-[700px_1fr] md:gap-20">
+      <div class="mt-12 grid gap-12 md:grid-cols-[700px_1fr] md:gap-20">
         <div data-reveal-group>
           <div class="prose-sd space-y-6 text-body" data-reveal>
             <Content />
@@ -87,7 +87,7 @@ const schema = {
 
       {
         d.beforeAfter.length > 0 && (
-          <div class="mt-[100px] space-y-16">
+          <div class="mt-16 space-y-16">
             <h2 class="text-h2" data-reveal>Prima e dopo</h2>
             {d.beforeAfter.map((ba) => (
               <BeforeAfter {...ba} />
@@ -98,7 +98,7 @@ const schema = {
 
       {
         d.gallery.length > 0 && (
-          <div class="mt-[100px]">
+          <div class="mt-16">
             <h2 class="text-h2" data-reveal>Galleria</h2>
             <ul class="mt-10 grid gap-7 md:grid-cols-2" role="list">
               {d.gallery.map((g, i) => (
@@ -127,7 +127,7 @@ const schema = {
 
       {
         next.id !== project.id && (
-          <nav class="mt-[100px] border-t border-default pt-10" aria-label="Progetto successivo">
+          <nav class="mt-16 border-t border-default pt-10" aria-label="Progetto successivo">
             <p class="eyebrow text-label">Progetto successivo</p>
             <a href={`/progetti/${next.id}/`} class="group mt-4 inline-flex items-baseline gap-4 text-h1 no-underline hover:text-action-hover">
               {next.data.title} <span class="arrow text-h2" aria-hidden="true">→</span>

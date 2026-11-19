@@ -17,59 +17,11 @@ const total = String(projects.length).padStart(2, '0');
 ---
 
 <div class="project-slider" data-slider aria-roledescription="carosello" aria-label="Progetti in evidenza">
-  {
-    projects.map((p, i) => (
-      <article
-        class="slide grid gap-10 md:grid-cols-[700fr_40fr_235fr_15fr_190fr] md:gap-0"
-        data-slide
-        hidden={i !== 0}
-        aria-roledescription="slide"
-        aria-label={`${i + 1} di ${projects.length}: ${p.data.title}`}
-      >
-        <a href={`/progetti/${p.id}/`} class="group block md:col-start-1" tabindex="-1" aria-hidden="true">
-          <CurtainImage
-            src={p.data.cover}
-            alt=""
-            class="aspect-[700/510] bg-blush"
-            sizes="(max-width: 860px) 100vw, 700px"
-            widths={[600, 900, 1400]}
-            zoom
-            parallax={0.07}
-          />
-        </a>
-        <div class="slide-info md:col-start-3" data-slide-info>
-          <p class="eyebrow text-label">
-            {String(i + 1).padStart(2, '0')} / {total}
-          </p>
-          <h3 class="mt-12 text-h2">{p.data.title}</h3>
-          <p class="mt-10 text-small text-secondary">{p.data.category}</p>
-          <p class="mt-6 text-body">{p.data.excerpt}</p>
-          <div class="mt-12">
-            <EditorialLink href={`/progetti/${p.id}/`}>Scopri il progetto</EditorialLink>
-          </div>
-        </div>
-        {
-          p.data.detail && (
-            <div class="hidden md:col-start-5 md:block md:pt-[130px]">
-              <CurtainImage
-                src={p.data.detail}
-                alt={p.data.detailAlt ?? ''}
-                class="aspect-[190/300] bg-blush"
-                sizes="190px"
-                widths={[200, 400]}
-              />
-            </div>
-          )
-        }
-      </article>
-    ))
-  }
-
-  <div class="mt-10 flex items-center justify-between gap-6">
-    <EditorialLink href="/progetti/">Guarda tutti i progetti</EditorialLink>
+  <div class="mb-6 flex items-end justify-between gap-6">
+    <div><slot name="heading" /></div>
     {
       projects.length > 1 && (
-        <div class="flex gap-3">
+        <div class="flex shrink-0 gap-3">
           <button type="button" class="slider-btn" data-prev aria-label="Progetto precedente">
             <span aria-hidden="true">←</span>
           </button>
@@ -80,6 +32,57 @@ const total = String(projects.length).padStart(2, '0');
       )
     }
   </div>
+  {
+    projects.map((p, i) => (
+      <article
+        class="slide grid gap-8 md:grid-cols-[600fr_40fr_300fr_24fr_150fr] md:gap-0"
+        data-slide
+        hidden={i !== 0}
+        aria-roledescription="slide"
+        aria-label={`${i + 1} di ${projects.length}: ${p.data.title}`}
+      >
+        <a href={`/progetti/${p.id}/`} class="group block md:col-start-1" tabindex="-1" aria-hidden="true">
+          <CurtainImage
+            src={p.data.cover}
+            alt=""
+            class="aspect-[700/510] max-h-[min(46svh,440px)] w-full bg-blush"
+            sizes="(max-width: 860px) 100vw, 700px"
+            widths={[600, 900, 1400]}
+            zoom
+            parallax={0.07}
+          />
+        </a>
+        <div class="slide-info md:col-start-3" data-slide-info>
+          <p class="eyebrow text-label">
+            {String(i + 1).padStart(2, '0')} / {total}
+          </p>
+          <h3 class="mt-3 text-h2">{p.data.title}</h3>
+          <p class="mt-3 text-small text-terracotta">{p.data.category}</p>
+          <p class="mt-3 line-clamp-4 text-body">{p.data.excerpt}</p>
+          <div class="mt-4">
+            <EditorialLink href={`/progetti/${p.id}/`}>Scopri il progetto</EditorialLink>
+          </div>
+        </div>
+        {
+          p.data.detail && (
+            <div class="hidden md:col-start-5 md:block md:pt-10">
+              <CurtainImage
+                src={p.data.detail}
+                alt={p.data.detailAlt ?? ''}
+                class="aspect-[190/300] max-h-[min(36svh,300px)] w-full bg-blush"
+                sizes="190px"
+                widths={[200, 400]}
+              />
+            </div>
+          )
+        }
+      </article>
+    ))
+  }
+
+  <div class="mt-4">
+    <EditorialLink href="/progetti/">Guarda tutti i progetti</EditorialLink>
+  </div>
   <p class="sr-only" aria-live="polite" data-slider-status></p>
 </div>
 
@@ -87,8 +90,8 @@ const total = String(projects.length).padStart(2, '0');
   .slider-btn {
     display: grid;
     place-items: center;
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--sd-border-strong);
     border-radius: 999px;
     background: transparent;

@@ -36,6 +36,12 @@
   --color-success: #3d6650;
   --color-disabled: #e5dcd8;
 
+  /* Toni autunnali che accompagnano il rosa */
+  --color-terracotta: #a9664f;
+  --color-ochre: #c39a6b;
+  --color-sand: #eadbcd;
+  --color-cocoa: #3a2925;
+
   /* font/* */
   --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
   --font-body: "Gothic A1", "Helvetica Neue", Arial, system-ui, sans-serif;
@@ -43,33 +49,33 @@
   --font-serif: var(--font-display);
 
   /* Text styles Figma (Sandra/*) — fluidi sotto i 1440 px, esatti a 1440 px */
-  --text-hero: clamp(2.875rem, 7.333vw, 6.6rem);              /* Display/Hero 105.6 */
-  --text-hero--line-height: 0.98;                              /* 103.5 */
+  --text-hero: clamp(2.5rem, 5.2vw, 4.75rem);                  /* Display/Hero (ridotto) */
+  --text-hero--line-height: 1;
   --text-hero--letter-spacing: 0.02em;
   --text-hero--font-weight: 700;
 
-  --text-display: clamp(2.625rem, 5.222vw, 4.7rem);            /* Display/Large 75.2 */
+  --text-display: clamp(2rem, 3.4vw, 3.25rem);                  /* Display/Large (ridotto) */
   --text-display--line-height: 1.02;                           /* 76.7 */
   --text-display--letter-spacing: 0.02em;
 
-  --text-h1: clamp(2.125rem, 3.556vw, 3.2rem);                 /* Heading/H1 51.2 */
+  --text-h1: clamp(1.75rem, 2.6vw, 2.375rem);                   /* Heading/H1 (ridotto) */
   --text-h1--line-height: 1.1;                                 /* 56.3 */
   --text-h1--letter-spacing: 0.01em;
 
-  --text-h2: clamp(1.875rem, 2.778vw, 2.5rem);                 /* Heading/H2 40 */
+  --text-h2: clamp(1.5rem, 2vw, 1.875rem);                      /* Heading/H2 (ridotto) */
   --text-h2--line-height: 1.1;                                 /* 44 */
   --text-h2--letter-spacing: 0.01em;
 
-  --text-h3: 1.5rem;                                           /* Heading/H3 24 */
+  --text-h3: 1.25rem;                                          /* Heading/H3 (ridotto) */
   --text-h3--line-height: 1.1;                                 /* 26.4 */
   --text-h3--letter-spacing: 0.01em;
   --text-h3--font-weight: 500;
 
-  --text-body-lg: 1.15rem;                                     /* Body/Large 18.4 */
+  --text-body-lg: 1.0625rem;                                   /* Body/Large 17 */
   --text-body-lg--line-height: 1.7;                            /* 31.3 */
 
-  --text-body: 1.09375rem;                                     /* Body/Default 17.5 */
-  --text-body--line-height: 1.7;                               /* 29.75 */
+  --text-body: 1rem;                                           /* Body/Default 16 */
+  --text-body--line-height: 1.65;
 
   --text-small: 0.875rem;                                      /* Body/Small 14 */
   --text-small--line-height: 1.7;                              /* 23.8 */
@@ -94,8 +100,8 @@
   --spacing-gutter: 24px;           /* layout/gutter */
   --spacing-gutter-mobile: 20px;    /* layout/gutter-mobile */
   --spacing-grid: 28px;             /* grid gap desktop */
-  --spacing-section: 120px;         /* desktop section spacing */
-  --spacing-section-tablet: 72px;   /* tablet editorial spacing */
+  --spacing-section: 88px;          /* desktop section spacing (ridotto) */
+  --spacing-section-tablet: 56px;   /* tablet editorial spacing */
   --spacing-header: 76px;           /* header height (fissa) */
   --spacing-target: 44px;           /* size/target: area minima interattiva */
 
@@ -341,6 +347,7 @@ a:hover .arrow, a:focus-visible .arrow, button:hover .arrow { transform: transla
 /* 10 · Marquee "Parliamone" (50 s) e alone WhatsApp (2,8 s) */
 @keyframes sd-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { animation: sd-marquee 50s linear infinite; }
+.marquee-text { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.15; }
 .marquee:not(.is-visible) .marquee-track { animation-play-state: paused; }
 @keyframes sd-halo {
   0% { transform: scale(1); opacity: 0.55; }
@@ -412,4 +419,12 @@ a:hover .arrow, a:focus-visible .arrow, button:hover .arrow { transform: transla
 .light-on .light-glow { opacity: 1; }
 @media (prefers-reduced-motion: reduce), (hover: none) {
   .light-photo, .light-glow { display: none; }
+}
+
+/* Hero home: foto virata verso i toni caldi + velo cacao/terracotta per la leggibilità */
+.hero-photo { filter: sepia(0.18) saturate(0.95) contrast(0.98); }
+.hero-veil {
+  background:
+    linear-gradient(180deg, rgb(58 41 37 / 0.35) 0%, rgb(58 41 37 / 0.05) 35%, rgb(58 41 37 / 0.78) 100%),
+    linear-gradient(90deg, rgb(169 102 79 / 0.35) 0%, transparent 60%);
 }

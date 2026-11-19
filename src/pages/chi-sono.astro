@@ -25,20 +25,20 @@ const personSchema = {
   image={portrait}
   schema={personSchema}
 >
-  <section class="pb-[100px] pt-20" aria-labelledby="about-title">
+  <section class="pb-20 pt-20" aria-labelledby="about-title">
     <div class="wrap">
       <div data-reveal-group>
         <p class="eyebrow text-label" data-reveal>Chi sono</p>
-        <h1 id="about-title" class="mt-7 text-display" data-reveal>Sandra Di Scipio</h1>
+        <h1 id="about-title" class="mt-4 text-display" data-reveal>Sandra Di Scipio</h1>
         <p class="mt-7 font-display text-h3 font-medium" data-reveal>Architetto | Interior Designer</p>
       </div>
 
-      <div class="mt-16 grid gap-14 md:grid-cols-[500px_1fr] md:gap-[76px]">
+      <div class="mt-16 grid gap-14 md:grid-cols-[minmax(0,400px)_1fr] md:gap-14">
         <div>
           <CurtainImage
             src={portrait}
             alt="Ritratto di Sandra Di Scipio nel suo studio"
-            class="aspect-[500/660] bg-blush"
+            class="aspect-[500/660] max-h-[75svh] w-full bg-blush"
             sizes="(max-width: 860px) 100vw, 500px"
             widths={[500, 832]}
             position="center 30%"
