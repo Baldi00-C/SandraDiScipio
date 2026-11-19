@@ -422,9 +422,9 @@ a:hover .arrow, a:focus-visible .arrow, button:hover .arrow { transform: transla
 }
 
 /* Hero home: foto virata verso i toni caldi + velo cacao/terracotta per la leggibilità */
-.hero-photo { filter: sepia(0.18) saturate(0.95) contrast(0.98); }
+.hero-photo { filter: sepia(0.22) saturate(0.9) hue-rotate(-12deg) contrast(0.98); }
 .hero-veil {
   background:
-    linear-gradient(180deg, rgb(58 41 37 / 0.35) 0%, rgb(58 41 37 / 0.05) 35%, rgb(58 41 37 / 0.78) 100%),
-    linear-gradient(90deg, rgb(169 102 79 / 0.35) 0%, transparent 60%);
+    linear-gradient(180deg, rgb(74 44 44 / 0.3) 0%, rgb(140 90 90 / 0.08) 35%, rgb(74 44 44 / 0.72) 100%),
+    linear-gradient(90deg, rgb(186 132 132 / 0.35) 0%, transparent 60%);
 }

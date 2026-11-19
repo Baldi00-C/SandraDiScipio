@@ -44,7 +44,8 @@ const heroLight = await getImage({ src: heroImg, width: 1600, format: 'webp' });
         <img src={heroLight.src} alt="" class="light-photo h-full w-full object-cover" decoding="async" />
       </div>
       <!-- Viraggio rosa e autunnale: velo rosa in multiply + gradiente cacao/terracotta -->
-      <div class="absolute inset-0 bg-rose opacity-45 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-rose opacity-60 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-rose opacity-20 mix-blend-soft-light"></div>
       <div class="hero-veil absolute inset-0"></div>
       <div class="light-glow"></div>
     </div>
