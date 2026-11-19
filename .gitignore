@@ -1,7 +1,5 @@
 # Dipendenze
 node_modules/
-vendor/
-private/vendor/
 
 # Build Astro
 dist/
@@ -11,9 +9,6 @@ dist/
 .env
 .env.*
 !.env.example
-private/config.php
-private/storage/
-**/config.local.php
 
 # Log e cache
 npm-debug.log*

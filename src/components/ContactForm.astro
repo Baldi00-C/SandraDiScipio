@@ -1,7 +1,6 @@
 ---
 /**
- * Modulo di contatto — invio via Fetch API a /api/send-mail.php senza ricaricare.
- * Il token CSRF viene richiesto a /api/csrf-token.php al primo focus sul form.
+ * Modulo di contatto — invio via Fetch API a /api/contatti (Resend) senza ricaricare.
  * Protezioni lato client (lato server sono ripetute e obbligatorie):
  * honeypot nascosto, tempo minimo di compilazione, validazione dei campi.
  */
@@ -23,7 +22,7 @@ const { phone = false, source = 'contatti', submitLabel = 'Richiedi una consulen
   <form
     id={id}
     class="space-y-5"
-    action="/api/send-mail.php"
+    action="/api/contatti"
     method="post"
     novalidate
     data-contact-form
@@ -78,7 +77,6 @@ const { phone = false, source = 'contatti', submitLabel = 'Richiedi una consulen
     <div class="hp" aria-hidden="true">
       <label>Lascia vuoto questo campo <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
     </div>
-    <input type="hidden" name="csrf_token" value="" data-csrf />
     <input type="hidden" name="form_ts" value="" data-ts />
     <input type="hidden" name="source" value={source} />
     <input type="hidden" name="estimate" value="" data-estimate-payload />

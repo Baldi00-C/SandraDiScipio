@@ -1,13 +1,11 @@
 /**
  * Gestione dei moduli [data-contact-form]:
- * - token CSRF caricato al primo focus (GET /api/csrf-token.php)
  * - validazione accessibile (aria-invalid + messaggio accanto al campo)
- * - invio con Fetch API (POST /api/send-mail.php), stato di caricamento
+ * - invio con Fetch API (POST /api/contatti, email con Resend), stato di caricamento
  *   che impedisce invii doppi, conferma animata (motion 11)
  */
 
-const ENDPOINT_TOKEN = '/api/csrf-token.php';
-const ENDPOINT_SEND = '/api/send-mail.php';
+const ENDPOINT_SEND = '/api/contatti';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 type ServerResponse = {
@@ -15,28 +13,6 @@ type ServerResponse = {
   message?: string;
   errors?: Record<string, string>;
 };
-
-async function fetchToken(form: HTMLFormElement): Promise<boolean> {
-  const input = form.querySelector<HTMLInputElement>('[data-csrf]');
-  if (!input) return false;
-  try {
-    const res = await fetch(ENDPOINT_TOKEN, {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: { Accept: 'application/json' },
-      cache: 'no-store',
-    });
-    if (!res.ok) return false;
-    const data = (await res.json()) as { token?: string };
-    if (data.token) {
-      input.value = data.token;
-      return true;
-    }
-  } catch {
-    /* rete assente: si riprova all'invio */
-  }
-  return false;
-}
 
 function setFieldError(control: HTMLInputElement | HTMLTextAreaElement, message: string) {
   const field = control.closest<HTMLElement>('[data-field]');
@@ -105,17 +81,6 @@ function bind(form: HTMLFormElement) {
   const ts = form.querySelector<HTMLInputElement>('[data-ts]');
   if (ts) ts.value = String(Math.floor(Date.now() / 1000));
 
-  let tokenRequested = false;
-  form.addEventListener(
-    'focusin',
-    () => {
-      if (tokenRequested) return;
-      tokenRequested = true;
-      void fetchToken(form);
-    },
-    { once: false },
-  );
-
   // Rimuove l'errore mentre si corregge
   form.addEventListener('input', (e) => {
     const t = e.target as HTMLInputElement;
@@ -139,8 +104,6 @@ function bind(form: HTMLFormElement) {
     }
 
     setLoading(button, true);
-    const csrf = form.querySelector<HTMLInputElement>('[data-csrf]');
-    if (csrf && !csrf.value) await fetchToken(form);
 
     try {
       const res = await fetch(ENDPOINT_SEND, {
@@ -174,11 +137,6 @@ function bind(form: HTMLFormElement) {
           const c = form.elements.namedItem(n) as HTMLInputElement | null;
           if (c) setFieldError(c, msg);
         });
-      }
-      // Token scaduto: se ne chiede uno nuovo per il prossimo tentativo
-      if (res.status === 419 || res.status === 403) {
-        if (csrf) csrf.value = '';
-        await fetchToken(form);
       }
       showFormError(form, data.message);
     } catch {

@@ -1,7 +1,7 @@
 # Sandra Di Scipio — Apache / LiteSpeed (Hostinger)
 
 Options -Indexes
-DirectoryIndex index.html index.php
+DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
 # HTTPS obbligatorio (decommenta quando il certificato è attivo)

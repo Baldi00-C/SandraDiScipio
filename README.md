@@ -1,33 +1,26 @@
 # Sandra Di Scipio — sito portfolio
 
-Sito statico in **Astro (SSG)** e **Tailwind CSS v4**, costruito sul Design System Figma di Sandra Di Scipio. Il modulo contatti usa un backend **PHP + PHPMailer (SMTP)**.
+Sito in **Astro** e **Tailwind CSS v4**, costruito sul Design System Figma di Sandra Di Scipio. Le pagine sono statiche; il modulo contatti invia le email con **[Resend](https://resend.com)** tramite un endpoint JavaScript (`src/pages/api/contatti.ts`).
 
 ## Requisiti
 
 - Node.js ≥ 20.3 (consigliato 22 LTS)
-- PHP ≥ 8.1 e [Composer](https://getcomposer.org) (servono solo per il modulo contatti)
+- Un account [Resend](https://resend.com) con una chiave API (serve solo per il modulo contatti)
 
 ## Avvio in locale
 
 ```bash
-npm install                 # dipendenze del sito
-composer install            # PHPMailer → private/vendor/
-cp private/config.example.php private/config.php   # poi inserisci i dati SMTP
+npm install
+cp .env.example .env   # poi inserisci RESEND_API_KEY
+npm run dev            # http://localhost:4321
 ```
 
-Servono due terminali:
-
-```bash
-npm run dev:php   # server PHP su http://localhost:8000 (cartella public/)
-npm run dev       # Astro su http://localhost:4321, /api/* va al server PHP
-```
-
-Il sito è su http://localhost:4321. Il form invia davvero le email se `private/config.php` contiene credenziali SMTP valide.
+Senza `RESEND_API_KEY` il sito funziona, ma il modulo risponde con un errore e non invia nulla.
 
 ## Build
 
 ```bash
-npm run build     # astro check + build in dist/
+npm run build     # astro check + build in dist/ (dist/client statico, dist/server per /api)
 npm run preview
 ```
 
@@ -46,10 +39,9 @@ src/
   pages/             le 9 pagine + 404
   scripts/           motion e gestione form (TypeScript)
   styles/global.css  token Figma in @theme + variabili semantiche --sd-*
+  pages/api/         endpoint del modulo contatti (Resend)
 public/
-  api/               endpoint PHP (copiati intatti in dist/api/)
-  .htaccess          header di sicurezza e cache per Apache/LiteSpeed
-private/             FUORI dalla document root: bootstrap PHP, config, vendor
+  .htaccess          header di sicurezza e cache (solo hosting Apache/LiteSpeed)
 ```
 
 ## Aggiungere un progetto
@@ -62,32 +54,27 @@ private/             FUORI dalla document root: bootstrap PHP, config, vendor
 
 Le domande e i valori di calcolo sono in `src/data/estimator.ts`. **I valori attuali sono dimostrativi** e vanno sostituiti con i criteri di Sandra.
 
-## Deploy (es. Hostinger)
+## Deploy
 
-1. Esegui `npm run build` e `composer install --no-dev` in locale.
-2. Carica il **contenuto** di `dist/` in `public_html/`.
-3. Carica la cartella `private/` **accanto** a `public_html/`, non al suo interno:
+L'hosting non è ancora deciso. Serve un servizio che esegua Node.js per l'endpoint `/api/contatti`; le pagine restano statiche.
 
-   ```
-   domains/tuodominio.it/
-     public_html/   ← contenuto di dist/ (con api/)
-     private/       ← bootstrap.php, config.php, vendor/, .htaccess
-   ```
+- **Vercel o Netlify:** sostituisci in `astro.config.mjs` l'adapter `@astrojs/node` con `@astrojs/vercel` o `@astrojs/netlify` (`npx astro add vercel`).
+- **Hostinger con Node.js** (piani Business/Cloud): resta `@astrojs/node`; il comando di avvio è `npm start`.
 
-   Gli endpoint cercano `../../private/` rispetto a `public_html/api/`. Se il tuo hosting usa un percorso diverso, imposta la variabile d'ambiente `SDS_PRIVATE_DIR`.
-4. In `private/config.php` lascia in `allowed_origins` **solo** il dominio di produzione, poi imposta `debug => false`.
-5. Attiva HTTPS e decommenta il redirect e l'HSTS in `public/.htaccess`.
-6. Aggiorna `SITE_URL` in `astro.config.mjs` con il dominio reale.
+In ogni caso:
+
+1. Imposta nel pannello dell'hosting `RESEND_API_KEY`, `MAIL_FROM`, `MAIL_TO` e `SITE_URL`.
+2. Su Resend verifica il dominio del sito (record DNS) e usa un mittente di quel dominio in `MAIL_FROM`.
+3. Aggiorna `SITE_URL` con il dominio reale.
 
 ## Sicurezza del modulo
 
-- Token CSRF di sessione, verificato con `hash_equals`
-- Honeypot nascosto e tempo minimo di compilazione
-- Rate limit per sessione (3 invii ogni 10 minuti) e per IP (5 all'ora, 20 al giorno; l'IP viene salvato solo come hash HMAC)
-- CORS limitato alle origini configurate; sono accettati solo POST
-- Validazione con `filter_var`, rimozione dei caratteri CR/LF dai campi su una riga e `htmlspecialchars` nell'email HTML
-- PHPMailer via SMTP autenticato, mai `mail()`. Il visitatore compare solo nel campo Reply-To
-- `config.php`, `.env` e `vendor/` sono esclusi da Git
+- Accettate solo richieste POST dalla stessa origine del sito, massimo 16 KB
+- Honeypot nascosto e tempo minimo di compilazione (ai bot una finta conferma)
+- Rate limit per IP (5 all'ora, 20 al giorno), solo in memoria: su hosting serverless vale per singola istanza
+- Validazione di ogni campo, rimozione dei caratteri di controllo e escape HTML nell'email
+- Mittente fisso del dominio verificato; il visitatore compare solo nel Reply-To
+- La chiave Resend resta sul server (`astro:env`, `access: 'secret'`) e `.env` è escluso da Git
 
 ## Prima della pubblicazione
 
@@ -95,4 +82,5 @@ Le domande e i valori di calcolo sono in `src/data/estimator.ts`. **I valori att
 - [ ] Sostituire i prezzi demo del preventivatore
 - [ ] Revisione dei testi dei progetti da parte di Sandra
 - [ ] Aggiungere il link Instagram in `src/data/site.ts` (se esiste)
-- [ ] Inserire dominio e credenziali SMTP
+- [ ] Scegliere l'hosting e impostare l'adapter
+- [ ] Verificare il dominio su Resend e inserire `RESEND_API_KEY`
