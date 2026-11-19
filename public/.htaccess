@@ -1,0 +1,48 @@
+# Sandra Di Scipio — Apache / LiteSpeed (Hostinger)
+
+Options -Indexes
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+# HTTPS obbligatorio (decommenta quando il certificato è attivo)
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# Blocca file sensibili che non devono mai essere serviti
+<FilesMatch "(^\.|\.(env|ini|log|sh|sql|lock|md|json)$|composer\.(json|lock)$)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+<FilesMatch "^(manifest\.webmanifest)$">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"  (dopo l'attivazione di HTTPS)
+
+    # Cache lunga per gli asset con hash generati da Astro
+    <FilesMatch "\.(css|js|avif|webp|jpg|jpeg|png|svg|woff2?)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.html$">
+        Header set Cache-Control "public, max-age=0, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
