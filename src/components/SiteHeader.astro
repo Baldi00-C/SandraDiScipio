@@ -6,6 +6,8 @@
  * 60 px di scroll passa alla superficie paper (motion 07, 400 ms).
  */
 import { nav, site } from '@/data/site';
+import logoDark from '@/assets/brand/logo-scuro-ombra-rosa.svg';
+import logoLight from '@/assets/brand/logo-chiaro-ombra-rosa.svg';
 
 interface Props {
   overlay?: boolean;
@@ -24,8 +26,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <div class="wrap-wide">
     <div class="header-box">
       <a href="/" class="brand" aria-label={`${site.name}, torna alla home`}>
-        <span class="brand-name">{site.name}</span>
-        <span class="brand-descriptor eyebrow">{site.descriptor}</span>
+        <img class="brand-logo brand-logo--dark" src={logoDark.src} width="343" height="186" alt={`${site.name} · ${site.descriptor}`} />
+        {overlay && <img class="brand-logo brand-logo--light" src={logoLight.src} width="343" height="186" alt="" aria-hidden="true" />}
       </a>
 
       <nav class="nav-desktop" aria-label="Navigazione principale">
@@ -108,36 +110,35 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     justify-content: space-between;
     gap: 24px;
     height: var(--spacing-header);
-    padding-inline: 23px;
-    background: var(--hdr-bg);
-    border: 1px solid var(--hdr-border);
+    padding-inline: 0;
     color: var(--hdr-fg);
-    transition:
-      background-color 400ms var(--ease-editorial),
-      color 400ms var(--ease-editorial),
-      border-color 400ms var(--ease-editorial);
+    transition: color 400ms var(--ease-editorial);
   }
 
+  /* Logo originale (impilato 343×186): versione scura, e chiara sopra l'hero */
   .brand {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+    position: relative;
+    display: block;
+    flex-shrink: 0;
     color: inherit;
     text-decoration: none;
-    min-height: 44px;
-    justify-content: center;
   }
-  .brand-name {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 26.4px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
+  .brand-logo {
+    display: block;
+    height: 80px;
+    width: auto;
+    transition: opacity 400ms var(--ease-editorial);
   }
-  .brand-descriptor {
-    color: var(--hdr-muted);
-    transition: color 400ms var(--ease-editorial);
+  .brand-logo--light {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+  .site-header[data-overlay='true'][data-solid='false'] .brand-logo--dark {
+    opacity: 0;
+  }
+  .site-header[data-overlay='true'][data-solid='false'] .brand-logo--light {
+    opacity: 1;
   }
 
   .nav-desktop ul {
@@ -234,10 +235,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   }
   @media (max-width: 480px) {
     .header-box {
-      padding-inline: 16px;
+      padding-inline: 0;
     }
-    .brand-name {
-      font-size: 21px;
+    .brand-logo {
+      height: 64px;
     }
   }
   @media (min-width: 861px) {

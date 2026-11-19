@@ -102,7 +102,7 @@
   --spacing-grid: 28px;             /* grid gap desktop */
   --spacing-section: 88px;          /* desktop section spacing (ridotto) */
   --spacing-section-tablet: 56px;   /* tablet editorial spacing */
-  --spacing-header: 76px;           /* header height (fissa) */
+  --spacing-header: 100px;          /* header height (fissa, logo impilato) */
   --spacing-target: 44px;           /* size/target: area minima interattiva */
 
   /* layout/* */
@@ -187,7 +187,7 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    scroll-padding-top: 96px;
+    scroll-padding-top: 112px;
   }
 
   @media (prefers-reduced-motion: no-preference) {

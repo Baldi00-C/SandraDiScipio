@@ -1,6 +1,7 @@
 ---
 /** Site footer (Figma 3:331) — card blush con filetto, 3 colonne. */
 import { site } from '@/data/site';
+import logo from '@/assets/brand/logo-scuro-ombra-rosa.svg';
 const year = new Date().getFullYear();
 ---
 
@@ -8,8 +9,8 @@ const year = new Date().getFullYear();
   <div class="wrap-wide">
     <div class="grid gap-10 border border-default px-[31px] py-[27px] md:grid-cols-[1fr_280px_280px] md:gap-14">
       <div>
-        <p class="font-display text-h3 font-medium uppercase">{site.name}</p>
-        <p class="mt-6 text-small">{site.tagline}</p>
+        <img src={logo.src} width="343" height="186" alt={`${site.name} · ${site.descriptor}`} class="block h-[120px] w-auto" />
+        <p class="mt-5 text-small">{site.tagline}</p>
       </div>
 
       <div>
