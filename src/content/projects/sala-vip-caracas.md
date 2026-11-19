@@ -12,7 +12,7 @@ coverAlt: Tavola di concept con la pianta della sala VIP e le immagini di riferi
 detail: ../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
 detailAlt: Pianta arredata della sala VIP su pavimento effetto legno
 solutions:
-  - Distribuzione per zone: attesa, relax, piano bar e riunioni
+  - "Distribuzione per zone: attesa, relax, piano bar e riunioni"
   - Nuove pareti per bagni con doccia e servizi
   - Area bambini dedicata vicino all’ingresso
   - Proposte di pavimenti effetto legno resistenti al traffico
