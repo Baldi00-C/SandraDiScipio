@@ -36,6 +36,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@storybook/addon-docs": "^10.6.8",
     "@storybook/html-vite": "^10.6.8",
+    "@types/node": "^24.19.2",
     "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^3.2.1",
