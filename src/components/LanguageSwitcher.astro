@@ -1,0 +1,29 @@
+---
+import { localeNames, locales, pathFor, useTranslations, type Locale, type RouteKey } from '../i18n';
+
+interface Props {
+  route: RouteKey;
+  locale: Locale;
+}
+
+const { route, locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<nav aria-label={t('nav.language')}>
+  <ul class="flex gap-4 text-sm">
+    {locales.map((l) => (
+      <li>
+        <a
+          href={pathFor(route, l)}
+          hreflang={l}
+          lang={l}
+          aria-current={l === locale ? 'page' : undefined}
+          class:list={['underline-offset-4 hover:underline', l === locale && 'font-semibold underline']}
+        >
+          {localeNames[l]}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

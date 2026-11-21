@@ -2,8 +2,23 @@
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
-// V.0 project (T-03.1). i18n: T-03.2. Cloudflare adapter: T-03.4.
+// Public URL, used for absolute canonical and hreflang links. Until M2 the site
+// lives on the Cloudflare address (T-03.4), which sets it through SITE_URL.
+const SITE_URL = process.env.SITE_URL ?? 'https://sandradiscipio.com';
+
 export default defineConfig({
+  site: SITE_URL,
+  trailingSlash: 'always',
+  // i18n (D-025, D-046): every locale has its own prefix, English included.
+  // Translated slugs live in src/i18n/routes.ts. The root `/` is handled by T-03.3.
+  i18n: {
+    locales: ['it', 'en', 'es'],
+    defaultLocale: 'en',
+    routing: {
+      prefixDefaultLocale: true,
+      redirectToDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

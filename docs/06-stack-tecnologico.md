@@ -64,6 +64,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 - La scelta fatta col selettore si ricorda con una memoria tecnica nel browser (cookie tecnico o localStorage): non richiede banner (D-032).
 - Il selettore della lingua (REQ-GLOB-1) porta alla stessa pagina nell'altra lingua.
 - Gli slug definitivi si fissano in sviluppo, insieme alle traduzioni (D-007).
+- Nel codice (→ D-051): lingue in `src/i18n/config.ts`, testi dell'interfaccia in `src/i18n/ui/<lingua>.ts`, slug tradotti in `src/i18n/routes.ts`.
 
 ### Hosting (D-026)
 
