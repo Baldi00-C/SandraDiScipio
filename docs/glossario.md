@@ -8,7 +8,7 @@ ultimo_aggiornamento: 2026-11-21
 | Termine | Significato in questo progetto |
 | --- | --- |
 | V.0 | Prima versione del sito da pubblicare. Ambito definito in [02-requisiti-business.md](02-requisiti-business.md) |
-| POC | Il sito Astro già presente nel repository (`src/`). Prototipo esplorativo, **non** base vincolante (D-001) |
+| POC | Il primo sito Astro, archiviato in `poc/` e nel tag Git `poc` (D-050). Prototipo esplorativo, **non** base vincolante (D-001) |
 | PO | Product Owner: Sandra Di Scipio, che valida contenuti e scelte |
 | Chiavi in mano | Servizio completo: dal progetto alla realizzazione dei lavori, con eventuale fornitura degli arredi |
 | Solo progetto | Servizio solo digitale: render, piante, scelta di arredi e materiali. I lavori li fa realizzare il cliente per conto suo |

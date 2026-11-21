@@ -24,11 +24,10 @@ Istruzioni operative per agenti AI che lavorano su questo progetto.
 4. **Rispetta i rinvii**: se in [04-decisioni.md](04-decisioni.md) un tema è `RIMANDATO` a una fase, non riproporlo prima di quella fase.
 5. **Fasi in ordine**: requisiti business → mockup Figma → scelte tecniche → sviluppo, sezione per sezione. Il 2026-11-21 l'utente ha anticipato le scelte tecniche prima dei mockup (→ D-020).
 6. **Non inventare contenuti personali di Sandra** (studi, esperienze, clienti, recensioni, numeri): usa segnaposto evidenti e chiedili all'utente in fase di sviluppo.
-7. **Codice in inglese**: nel codice (file, nomi, commenti, storie) si scrive in inglese; la documentazione resta in italiano (→ D-051).
-8. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
+7. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
 
 ## Prossimo passo previsto
 
-Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1 e T-02.1 sono fatti: ora in parallelo T-02.2 (stile in Figma) e T-03.1 (nuovo progetto). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
+Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1, T-02.1 e T-03.1 sono fatti: ora in parallelo T-02.2 (stile in Figma) e il setup tecnico (T-03.2 → T-03.6). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
 
 Le revisioni di Sandra come PO non si pianificano: le gestisce l'utente (D-041).

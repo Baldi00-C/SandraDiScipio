@@ -1,104 +1,25 @@
 ---
-import '@/styles/global.css';
-import { ClientRouter } from 'astro:transitions';
-import { getImage } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-import SiteHeader from '@/components/SiteHeader.astro';
-import SiteFooter from '@/components/SiteFooter.astro';
-import WhatsAppFloat from '@/components/WhatsAppFloat.astro';
-import { site } from '@/data/site';
-import defaultOg from '@/assets/projects/villa-castana-pavia/villa-castana-pavia-render-soggiorno.jpg';
+import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
-  image?: ImageMetadata;
-  overlayHeader?: boolean;
-  noindex?: boolean;
-  /** JSON-LD aggiuntivo per la pagina */
-  schema?: Record<string, unknown>;
+  lang?: string;
 }
 
-const {
-  title,
-  description = site.description,
-  image = defaultOg,
-  overlayHeader = false,
-  noindex = false,
-  schema,
-} = Astro.props;
-
-const fullTitle = title === site.name ? `${site.name} · ${site.role}` : `${title} · ${site.name}`;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const og = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
-const ogUrl = new URL(og.src, Astro.site);
-
-const orgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: `${site.name} — ${site.role}`,
-  url: Astro.site?.toString(),
-  email: site.email,
-  telephone: site.phone,
-  areaServed: 'Italia',
-  founder: { '@type': 'Person', name: site.name, jobTitle: 'Architetto e Interior Designer' },
-};
+const { title, description, lang = 'it' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{fullTitle}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
-    <meta name="theme-color" content="#fbf8f6" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content={site.locale} />
-    <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <script type="application/ld+json" set:html={JSON.stringify(schema ?? orgSchema)} />
-
-    <!-- Classe .js: le animazioni partono solo se JavaScript è attivo -->
-    <script is:inline>
-      document.documentElement.classList.add('js');
-      document.addEventListener('astro:after-swap', function () {
-        document.documentElement.classList.add('js');
-      });
-    </script>
-
-    <ClientRouter fallback="animate" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
   </head>
-  <body class="min-h-dvh bg-canvas text-primary antialiased">
-    <a
-      href="#contenuto"
-      class="sr-only z-[100] bg-ink px-5 py-3 text-small text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-    >
-      Vai al contenuto
-    </a>
-
-    <SiteHeader overlay={overlayHeader} />
-
-    <main id="contenuto" tabindex="-1" class="outline-none">
-      <slot />
-    </main>
-
-    <SiteFooter />
-    <WhatsAppFloat />
-
-    <script>
-      import '@/scripts/motion';
-    </script>
+  <body class="min-h-screen">
+    <slot />
   </body>
 </html>

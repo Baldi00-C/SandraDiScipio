@@ -30,8 +30,8 @@
   --color-disabled: #e5dcd8;
 
   /* font/* (Sandra · Typography) — self-hosted fonts (D-032) */
-  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Gothic A1", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Gothic A1', 'Helvetica Neue', Arial, system-ui, sans-serif;
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
 
@@ -120,7 +120,7 @@
    Dark mode is enabled by data-theme="dark" on any ancestor.
    -------------------------------------------------------------------------- */
 :root,
-[data-theme="light"] {
+[data-theme='light'] {
   --sem-background-canvas: var(--color-paper);
   --sem-background-subtle: var(--color-blush);
   --sem-surface-default: var(--color-white);
@@ -139,7 +139,7 @@
   --sem-state-disabled: var(--color-disabled);
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --sem-background-canvas: var(--color-ink);
   --sem-background-subtle: var(--color-label);
   --sem-surface-default: var(--color-ink);

@@ -2,7 +2,7 @@
 
 /** Creates an element from an HTML string. */
 export function html(markup: string): HTMLElement {
-  const template = document.createElement("template");
+  const template = document.createElement('template');
   template.innerHTML = markup.trim();
   return template.content.firstElementChild as HTMLElement;
 }
@@ -12,11 +12,11 @@ export function rgbToHex(rgb: string): string {
   const parts = rgb.match(/[\d.]+/g);
   if (!parts || parts.length < 3) return rgb;
   return (
-    "#" +
+    '#' +
     parts
       .slice(0, 3)
-      .map((n) => Math.round(Number(n)).toString(16).padStart(2, "0"))
-      .join("")
+      .map((n) => Math.round(Number(n)).toString(16).padStart(2, '0'))
+      .join('')
       .toUpperCase()
   );
 }
@@ -28,13 +28,13 @@ export function rgbToHex(rgb: string): string {
  */
 export function fillComputedValues(root: HTMLElement): void {
   requestAnimationFrame(() => {
-    root.querySelectorAll<HTMLElement>("[data-read]").forEach((node) => {
-      const target = node.closest<HTMLElement>("[data-sample]")?.querySelector<HTMLElement>("[data-probe]");
+    root.querySelectorAll<HTMLElement>('[data-read]').forEach((node) => {
+      const target = node.closest<HTMLElement>('[data-sample]')?.querySelector<HTMLElement>('[data-probe]');
       if (!target) return;
       const style = getComputedStyle(target);
       const kind = node.dataset.read;
-      if (kind === "bg") node.textContent = rgbToHex(style.backgroundColor);
-      if (kind === "type") {
+      if (kind === 'bg') node.textContent = rgbToHex(style.backgroundColor);
+      if (kind === 'type') {
         const size = parseFloat(style.fontSize);
         const lineHeight = parseFloat(style.lineHeight);
         const tracking = parseFloat(style.letterSpacing) || 0;
@@ -43,9 +43,9 @@ export function fillComputedValues(root: HTMLElement): void {
           `line height ${round(lineHeight)} px`,
           `tracking ${round((tracking / size) * 100)}%`,
           `weight ${style.fontWeight}`,
-        ].join(" · ");
+        ].join(' · ');
       }
-      if (kind === "width") node.textContent = `${round(parseFloat(style.width))} px`;
+      if (kind === 'width') node.textContent = `${round(parseFloat(style.width))} px`;
     });
   });
 }
