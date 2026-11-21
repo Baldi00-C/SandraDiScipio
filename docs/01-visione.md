@@ -28,12 +28,14 @@ ultimo_aggiornamento: 2026-11-21
 
 | Lingua | Ruolo | Chi scrive i testi | Chi rivede |
 | --- | --- | --- | --- |
-| Italiano | Lingua principale | Contenuti forniti dall'utente | — |
+| Italiano | Lingua di lavoro: i testi nascono in italiano | Contenuti forniti dall'utente | — |
 | Inglese | Clienti internazionali | Traduzione fatta dall'AI | Persone di conoscenza dell'utente (→ D-018) |
 | Spagnolo | Clienti di lingua spagnola | Traduzione fatta dall'AI | Persone di conoscenza dell'utente (→ D-018) |
 
 - Va tradotto **tutto**: pagine, schede dei progetti, questionari, messaggi di conferma, email all'utente.
 - La scelta della lingua è disponibile su ogni pagina.
+- **La lingua con cui il visitatore vede il sito è quella del suo browser**, se è una delle tre. Altrimenti si usa l'**inglese** (→ D-046).
+- Se il visitatore cambia lingua dal selettore, la sua scelta vale più del browser e viene ricordata alle visite successive (→ D-046).
 
 ## Brief originale dell'utente (testo di riferimento, parafrasato fedelmente)
 

@@ -37,6 +37,7 @@ Menu principale, in quest'ordine: Home, Chi sono, Servizi, Progetti, Preventivat
 | REQ-GLOB-1 | Selettore della lingua (IT, EN, ES) visibile su ogni pagina |
 | REQ-GLOB-2 | Pulsante WhatsApp fisso su ogni pagina |
 | REQ-GLOB-3 | Footer con link a privacy policy e cookie policy |
+| REQ-GLOB-4 | Lingua iniziale = lingua del browser (se IT, EN o ES), altrimenti inglese; la scelta fatta col selettore viene ricordata (→ D-046) |
 
 ## Home
 
