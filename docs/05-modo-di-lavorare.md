@@ -28,6 +28,6 @@ Istruzioni operative per agenti AI che lavorano su questo progetto.
 
 ## Prossimo passo previsto
 
-Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). Primo step: chiudere T-01.1 portando questa documentazione su `main`, poi in parallelo T-02.1 (Figma) e T-03.1 (nuovo progetto). Il collegamento a Figma richiede un'autorizzazione dell'utente.
+Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1 e T-02.1 sono fatti: ora in parallelo T-02.2 (stile in Figma) e T-03.1 (nuovo progetto). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
 
 Le revisioni di Sandra come PO non si pianificano: le gestisce l'utente (D-041).

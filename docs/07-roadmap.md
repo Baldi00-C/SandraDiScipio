@@ -25,7 +25,7 @@ Regole:
 | ID | Fase | Finestra indicativa | Dipende da | Stato |
 | --- | --- | --- | --- | --- |
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
-| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | DA FARE |
+| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | IN CORSO |
 | F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | DA FARE |
 | F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
@@ -41,6 +41,24 @@ Regole:
 | Versioni mobile e desktop | |
 
 Fatto quando: l'utente approva la base comune in Figma.
+
+**File Figma del sito**: [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) (D-048). Punto di partenza adottato (D-049): la guida di stile già presente nel file.
+
+| Pagina Figma | Contenuto |
+| --- | --- |
+| Page 1 | 01 Foundations, 02 Components, 03 Patterns, 04 Claude Code handoff, 05 Motion principles |
+| Website · Static design | 9 pagine statiche: Home, Chi sono, Servizi, Progetti, Progetto, Preventivatore, Contatti, Privacy Policy, Cookie Policy |
+
+| Elemento | Valori nel file |
+| --- | --- |
+| Variabili | 67 in 4 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography`, `Sandra · Motion` |
+| Colori base | ink `#1D1D1B`, rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
+| Font | Titoli Cormorant Garamond, testo Gothic A1. Nessuno stile di testo salvato |
+| Layout | Larghezza massima 1180 px, 12 colonne, margine 24 px (20 su mobile), cambi di layout a 480 e 860 px |
+| Componenti | Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Site header, Service card, Estimator step, Contact banner, Site footer |
+| Motion | Durate 0,25 s, 0,4 s, 1,1 s; curva `cubic-bezier(0.2, 0.7, 0.1, 1)` |
+
+Da fare nei task: T-02.2 verifica font ospitabili (D-032) e crea gli stili di testo; T-02.3 aggiunge, se mancano, selettore lingua e pulsante WhatsApp; T-02.4 verifica la card progetto.
 
 ### F2 — Setup tecnico (D-038)
 
@@ -106,7 +124,7 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 | Email e numero definitivi | Utente | 2027-01-10 | F5 |
 | Acquisto del dominio | Utente | 2027-01-10 | F5 |
 | Attivazione di Iubenda | Utente | 2027-01-10 | F5 |
-| Accesso a Figma per l'agente | Utente | prima di F1 | F1 |
+| Accesso a Figma per l'agente | Utente | prima di F1 | F1 (fornito il 2026-11-21) |
 
 ## Temi rimandati e loro collocazione
 
@@ -155,8 +173,8 @@ Regole:
 | --- | --- | --- | --- | --- | --- | --- |
 | **S-01** | **Organizzazione del lavoro su GitHub** | F0 | docs | — | [#1](https://github.com/Baldi00-C/SandraDiScipio/issues/1) | FATTO |
 | T-01.1 | Label, milestone, storie e task su GitHub; numeri delle issue in questo file | F0 | docs | — | [#2](https://github.com/Baldi00-C/SandraDiScipio/issues/2) | FATTO |
-| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | DA FARE |
-| T-02.1 | Collegare Figma all'agente e creare il file del sito | F1 | design | — | [#4](https://github.com/Baldi00-C/SandraDiScipio/issues/4) | DA FARE |
+| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | IN CORSO |
+| T-02.1 | Collegare Figma all'agente e creare il file del sito | F1 | design | — | [#4](https://github.com/Baldi00-C/SandraDiScipio/issues/4) | FATTO |
 | T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | DA FARE |
 | T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | DA FARE |
 | T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
