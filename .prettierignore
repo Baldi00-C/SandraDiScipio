@@ -7,5 +7,5 @@ coverage/
 playwright-report/
 test-results/
 
-# Markdown: Prettier allinea le tabelle con spazi e ogni riga nuova riscrive la tabella intera
+# Markdown: Prettier pads tables with spaces and every new row rewrites the whole table
 *.md

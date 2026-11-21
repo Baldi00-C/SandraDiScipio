@@ -60,7 +60,7 @@ Il sito è su http://localhost:4321.
 | `npm run build` | Genera il sito in `dist/` |
 | `npm run verify` | Tutti i controlli della CI, in sequenza |
 
-Prima di ogni commit Husky esegue ESLint e Prettier sui file modificati. Su GitHub `main` accetta solo PR con il controllo `Controlli` verde (D-053).
+Prima di ogni commit Husky esegue ESLint e Prettier sui file modificati. Su GitHub `main` accetta solo PR con il controllo `Checks` verde (D-053).
 
 ## POC archiviato
 

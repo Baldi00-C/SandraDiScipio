@@ -1,8 +1,8 @@
 /// <reference types="vitest/config" />
 import { getViteConfig } from 'astro/config';
 
-// Test unitari (D-035): logica dei questionari, validazione degli allegati,
-// costruzione delle email. I file di test stanno accanto al codice: *.test.ts.
+// Unit tests (D-035): questionnaire logic, attachment validation, email
+// building. Test files live next to the code: *.test.ts.
 export default getViteConfig({
   test: {
     include: ['src/**/*.test.ts'],

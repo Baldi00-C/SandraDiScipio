@@ -1,10 +1,10 @@
 @import 'tailwindcss';
 
 /*
- * Token PROVVISORI (T-03.1).
- * Servono solo a far partire il progetto: T-03.7 li sostituisce con quelli
- * della base comune in Figma (D-024, D-049). I nomi sono già quelli dei ruoli.
- * Font di sistema: niente font da CDN esterni (D-032).
+ * TEMPORARY tokens (T-03.1).
+ * They only bootstrap the project: T-03.7 replaces them with the tokens from
+ * the shared Figma foundations (D-024, D-049). Names already match the roles.
+ * System fonts: no fonts from external CDNs (D-032).
  */
 @theme {
   --color-ink: #222222;

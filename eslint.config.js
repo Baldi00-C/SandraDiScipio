@@ -26,6 +26,6 @@ export default defineConfig(
       globals: { ...globals.browser, ...globals.node },
     },
   },
-  // Lasciare per ultimo: disattiva le regole di stile gestite da Prettier.
+  // Keep last: turns off style rules handled by Prettier.
   prettier,
 );
