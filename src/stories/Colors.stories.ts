@@ -1,23 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
-import { fillComputedValues, html, pageHeader } from "./helpers";
+import { page, pageHeader } from "./helpers";
 
-// Figma: collezione "Sandra · Primitives", gruppo color/*
+// Figma: "Sandra · Primitives" collection, color/* group.
+// Class names are written in full so Tailwind can detect them.
 const primitives = [
-  { figma: "color/ink", name: "Ink", token: "ink", cls: "bg-ink" },
-  { figma: "color/rose", name: "Rose", token: "rose", cls: "bg-rose" },
-  { figma: "color/rose-deep", name: "Deep rose", token: "rose-deep", cls: "bg-rose-deep" },
-  { figma: "color/blush", name: "Blush", token: "blush", cls: "bg-blush" },
-  { figma: "color/paper", name: "Paper", token: "paper", cls: "bg-paper" },
-  { figma: "color/line", name: "Line", token: "line", cls: "bg-line" },
-  { figma: "color/white", name: "White", token: "white", cls: "bg-white" },
-  { figma: "color/muted", name: "Muted", token: "muted", cls: "bg-muted" },
-  { figma: "color/label", name: "Label", token: "label", cls: "bg-label" },
-  { figma: "color/error", name: "Error", token: "error", cls: "bg-error" },
-  { figma: "color/success", name: "Success", token: "success", cls: "bg-success" },
-  { figma: "color/disabled", name: "Disabled", token: "disabled", cls: "bg-disabled" },
+  { figma: "color/ink", name: "Ink", cls: "bg-ink" },
+  { figma: "color/rose", name: "Rose", cls: "bg-rose" },
+  { figma: "color/rose-deep", name: "Deep rose", cls: "bg-rose-deep" },
+  { figma: "color/blush", name: "Blush", cls: "bg-blush" },
+  { figma: "color/paper", name: "Paper", cls: "bg-paper" },
+  { figma: "color/line", name: "Line", cls: "bg-line" },
+  { figma: "color/white", name: "White", cls: "bg-white" },
+  { figma: "color/muted", name: "Muted", cls: "bg-muted" },
+  { figma: "color/label", name: "Label", cls: "bg-label" },
+  { figma: "color/error", name: "Error", cls: "bg-error" },
+  { figma: "color/success", name: "Success", cls: "bg-success" },
+  { figma: "color/disabled", name: "Disabled", cls: "bg-disabled" },
 ];
 
-// Figma: collezione "Sandra · Semantic", modi Light e Dark
+// Figma: "Sandra · Semantic" collection, Light and Dark modes
 const semantic = [
   { figma: "background/canvas", cls: "bg-background-canvas", light: "paper", dark: "ink" },
   { figma: "background/subtle", cls: "bg-background-subtle", light: "blush", dark: "label" },
@@ -37,24 +38,13 @@ const semantic = [
   { figma: "state/disabled", cls: "bg-state-disabled", light: "disabled", dark: "label" },
 ];
 
-
-function page(body: string): HTMLElement {
-  const root = html(
-    `<div class="min-h-screen bg-background-canvas px-6 py-12 text-text-primary tablet:px-12">
-      <div class="mx-auto max-w-site">${body}</div>
-    </div>`,
-  );
-  fillComputedValues(root);
-  return root;
-}
-
 const meta: Meta = {
-  title: "Design system/Colori",
+  title: "Design system/Colors",
   parameters: {
     docs: {
       description: {
         component:
-          "Colori del file Figma SandraDiScipio. Primitivi: utility `bg-<nome>`, `text-<nome>`. Semantici: cambiano tra Light e Dark (selettore Modo nella barra).",
+          "Colors from the SandraDiScipio Figma file. Primitives: `bg-<name>`, `text-<name>` utilities. Semantic colors switch between Light and Dark (Mode selector in the toolbar).",
       },
     },
   },
@@ -63,10 +53,10 @@ export default meta;
 
 type Story = StoryObj;
 
-export const Primitivi: Story = {
+export const Primitives: Story = {
   render: () =>
     page(`
-      ${pageHeader("01 / COLOR", "Warm neutrals. A deliberate accent.", "Collezione Figma <em>Sandra · Primitives</em>. Il valore esadecimale sotto ogni campione è letto dal CSS dei token.")}
+      ${pageHeader("01 / COLOR", "Warm neutrals. A deliberate accent.", "Figma collection <em>Sandra · Primitives</em>. The hex value under each swatch is read from the token CSS.")}
       <div class="grid grid-cols-2 gap-6 mobile:grid-cols-3 tablet:grid-cols-6">
         ${primitives
           .map(
@@ -83,7 +73,7 @@ export const Primitivi: Story = {
           .join("")}
       </div>
       <p class="type-caption mt-10 text-text-secondary">
-        Testo: Ink su Paper · Muted per il testo secondario · Rose è decorativo, non per testo piccolo.
+        Text: Ink on Paper · Muted for secondary copy · Rose is decorative, not for small body text.
       </p>`),
 };
 
@@ -111,34 +101,34 @@ function semanticPanel(mode: "light" | "dark"): string {
     </section>`;
 }
 
-export const Semantici: Story = {
+export const Semantic: Story = {
   render: () =>
     page(`
-      ${pageHeader("01 / COLOR", "Colori semantici", "Collezione Figma <em>Sandra · Semantic</em>: ogni ruolo punta a un primitivo diverso nel modo Light e nel modo Dark. Nel codice si usano questi nomi, non i primitivi.")}
+      ${pageHeader("01 / COLOR", "Semantic colors", "Figma collection <em>Sandra · Semantic</em>: each role points to a different primitive in Light and Dark mode. Code uses these names, not the primitives.")}
       <div class="grid gap-6 tablet:grid-cols-2">
         ${semanticPanel("light")}
         ${semanticPanel("dark")}
       </div>`),
 };
 
-export const InUso: Story = {
-  name: "In uso",
+export const InUse: Story = {
+  name: "In use",
   render: () =>
     page(`
-      ${pageHeader("01 / COLOR", "Colori in uso", "Esempio con i soli colori semantici: cambia modo dalla barra di Storybook per vedere Light e Dark.")}
+      ${pageHeader("01 / COLOR", "Colors in use", "Example built with semantic colors only: switch mode from the Storybook toolbar to see Light and Dark.")}
       <div class="grid gap-6 tablet:grid-cols-2">
         <article class="border border-border-default bg-surface-default p-8">
           <p class="type-eyebrow text-text-secondary">INTERIOR DESIGN</p>
-          <h2 class="type-h2 mt-3">Ogni spazio ha una storia</h2>
-          <p class="type-body mt-4 text-text-secondary">Diamo forma alle idee, trasformandole in ambienti unici.</p>
+          <h2 class="type-h2 mt-3">Every space has a story</h2>
+          <p class="type-body mt-4 text-text-secondary">We give shape to ideas, turning them into unique spaces.</p>
           <a href="#" class="type-link mt-6 inline-flex h-11 items-center rounded-pill bg-action-default px-6 text-action-label transition-colors duration-(--duration-fast) ease-editorial hover:bg-action-hover">
-            RICHIEDI UN PREVENTIVO
+            REQUEST A QUOTE
           </a>
         </article>
         <div class="flex flex-col gap-4 bg-background-subtle p-8">
-          <p class="type-body-small border-l-2 border-feedback-success pl-4">Messaggio inviato: ti rispondiamo presto.</p>
-          <p class="type-body-small border-l-2 border-feedback-error pl-4">Controlla l'indirizzo email.</p>
-          <p class="type-control bg-state-disabled px-4 py-2 text-text-secondary">Campo disattivato</p>
+          <p class="type-body-small border-l-2 border-feedback-success pl-4">Message sent: we will get back to you soon.</p>
+          <p class="type-body-small border-l-2 border-feedback-error pl-4">Please check the email address.</p>
+          <p class="type-control bg-state-disabled px-4 py-2 text-text-secondary">Disabled field</p>
           <hr class="border-border-strong" />
         </div>
       </div>`),

@@ -2,15 +2,15 @@ import type { StorybookConfig } from "@storybook/html-vite";
 import tailwindcss from "@tailwindcss/vite";
 import remarkGfm from "remark-gfm";
 
-// Storybook con framework HTML + Vite (D-050): i componenti Astro non hanno
-// un renderer ufficiale di Storybook, quindi le storie mostrano HTML con le
-// stesse classi Tailwind e gli stessi token usati dal sito.
+// Storybook with the HTML + Vite framework (D-050): Astro components have no
+// official Storybook renderer, so stories render plain HTML using the same
+// Tailwind classes and tokens as the website.
 const config: StorybookConfig = {
   stories: ["../src/stories/**/*.mdx", "../src/stories/**/*.stories.ts"],
   addons: [
     {
       name: "@storybook/addon-docs",
-      // Tabelle Markdown (GFM) nelle pagine .mdx
+      // GitHub-flavored Markdown tables in .mdx pages
       options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } },
     },
   ],

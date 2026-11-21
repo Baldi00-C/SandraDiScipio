@@ -24,7 +24,8 @@ Istruzioni operative per agenti AI che lavorano su questo progetto.
 4. **Rispetta i rinvii**: se in [04-decisioni.md](04-decisioni.md) un tema è `RIMANDATO` a una fase, non riproporlo prima di quella fase.
 5. **Fasi in ordine**: requisiti business → mockup Figma → scelte tecniche → sviluppo, sezione per sezione. Il 2026-11-21 l'utente ha anticipato le scelte tecniche prima dei mockup (→ D-020).
 6. **Non inventare contenuti personali di Sandra** (studi, esperienze, clienti, recensioni, numeri): usa segnaposto evidenti e chiedili all'utente in fase di sviluppo.
-7. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
+7. **Codice in inglese**: nel codice (file, nomi, commenti, storie) si scrive in inglese; la documentazione resta in italiano (→ D-051).
+8. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
 
 ## Prossimo passo previsto
 

@@ -1,13 +1,13 @@
 import type { Preview } from "@storybook/html-vite";
 import "../src/styles/design-system.css";
 
-// Modo Light/Dark della collezione "Sandra · Semantic", dalla barra di Storybook
+// Light/Dark mode of the "Sandra · Semantic" collection, switchable from the toolbar
 const preview: Preview = {
   globalTypes: {
     theme: {
-      description: "Modo dei colori semantici (Figma: Sandra · Semantic)",
+      description: "Semantic color mode (Figma: Sandra · Semantic)",
       toolbar: {
-        title: "Modo",
+        title: "Mode",
         icon: "mirror",
         items: [
           { value: "light", title: "Light" },
@@ -28,7 +28,7 @@ const preview: Preview = {
     layout: "fullscreen",
     backgrounds: { disable: true },
     options: {
-      storySort: { order: ["Design system", ["Introduzione", "Colori", "Tipografia", "Spaziature e layout"]] },
+      storySort: { order: ["Design system", ["Introduction", "Colors", "Typography", "Spacing and layout"]] },
     },
   },
 };

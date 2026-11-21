@@ -6,7 +6,7 @@ Progetto: sito portfolio multilingua (IT, EN, ES) di Sandra Di Scipio, architett
 
 Regole essenziali (dettagli in [docs/05-modo-di-lavorare.md](docs/05-modo-di-lavorare.md)):
 
-- Rispondi sempre in italiano.
+- Rispondi sempre in italiano. Il codice invece è tutto in inglese (nomi, commenti, storie); solo la documentazione è in italiano (D-051).
 - Fai una domanda alla volta.
 - Prima il business, poi la tecnologia: non proporre scelte tecniche finché non sono state chiuse le decisioni di business.
 - Il codice in `src/` è un POC: non è una base vincolante (decisione D-001 in [docs/04-decisioni.md](docs/04-decisioni.md)).

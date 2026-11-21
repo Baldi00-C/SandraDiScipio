@@ -1,13 +1,13 @@
-// Utility comuni alle storie del design system.
+// Shared helpers for the design system stories.
 
-/** Crea un elemento da una stringa HTML. */
+/** Creates an element from an HTML string. */
 export function html(markup: string): HTMLElement {
   const template = document.createElement("template");
   template.innerHTML = markup.trim();
   return template.content.firstElementChild as HTMLElement;
 }
 
-/** Converte "rgb(29, 29, 27)" in "#1D1D1B". */
+/** Converts "rgb(29, 29, 27)" to "#1D1D1B". */
 export function rgbToHex(rgb: string): string {
   const parts = rgb.match(/[\d.]+/g);
   if (!parts || parts.length < 3) return rgb;
@@ -22,29 +22,27 @@ export function rgbToHex(rgb: string): string {
 }
 
 /**
- * Dopo il montaggio della storia, scrive nei nodi [data-read] il valore
- * calcolato dal browser: così i valori mostrati vengono dal CSS dei token,
- * non da una copia scritta a mano.
+ * Once the story is mounted, writes the browser-computed value into every
+ * [data-read] node, so the values shown come from the token CSS rather than
+ * from a hand-written copy.
  */
 export function fillComputedValues(root: HTMLElement): void {
   requestAnimationFrame(() => {
     root.querySelectorAll<HTMLElement>("[data-read]").forEach((node) => {
-      const target = node.dataset.target
-        ? root.querySelector<HTMLElement>(node.dataset.target)
-        : node.closest<HTMLElement>("[data-sample]")?.querySelector<HTMLElement>("[data-probe]");
+      const target = node.closest<HTMLElement>("[data-sample]")?.querySelector<HTMLElement>("[data-probe]");
       if (!target) return;
       const style = getComputedStyle(target);
       const kind = node.dataset.read;
       if (kind === "bg") node.textContent = rgbToHex(style.backgroundColor);
       if (kind === "type") {
         const size = parseFloat(style.fontSize);
-        const line = parseFloat(style.lineHeight);
+        const lineHeight = parseFloat(style.lineHeight);
         const tracking = parseFloat(style.letterSpacing) || 0;
         node.textContent = [
           `${round(size)} px`,
-          `interlinea ${round(line)} px`,
-          `spaziatura ${round((tracking / size) * 100)}%`,
-          `peso ${style.fontWeight}`,
+          `line height ${round(lineHeight)} px`,
+          `tracking ${round((tracking / size) * 100)}%`,
+          `weight ${style.fontWeight}`,
         ].join(" · ");
       }
       if (kind === "width") node.textContent = `${round(parseFloat(style.width))} px`;
@@ -56,7 +54,18 @@ function round(n: number): number {
   return Math.round(n * 100) / 100;
 }
 
-/** Intestazione di pagina nello stile della tavola Foundations di Figma. */
+/** Full-page wrapper for a story, using semantic colors. */
+export function page(body: string): HTMLElement {
+  const root = html(
+    `<div class="min-h-screen bg-background-canvas px-6 py-12 text-text-primary tablet:px-12">
+      <div class="mx-auto max-w-site">${body}</div>
+    </div>`,
+  );
+  fillComputedValues(root);
+  return root;
+}
+
+/** Page header in the style of the Figma Foundations board. */
 export function pageHeader(section: string, title: string, intro: string): string {
   return `
     <header class="mb-12 border-b border-border-default pb-8">

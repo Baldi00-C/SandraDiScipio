@@ -48,7 +48,7 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 - Astro genera pagine statiche; solo gli endpoint dei form girano sul server.
 - Ottimizzazione delle immagini integrata: importante per un portfolio pieno di render e foto.
 - Tailwind 4 con i token (colori, font, spaziature) presi dai mockup Figma, definiti una volta in CSS: `src/styles/tokens.css` (→ D-050).
-- Storybook (`npm run storybook`, porta 6006) mostra il design system: colori primitivi e semantici (Light/Dark), tipografia, spaziature e layout (→ D-050).
+- Storybook (`npm run storybook`, porta 6006) mostra il design system: storie Colors (primitivi e semantici Light/Dark), Typography, Spacing and layout (→ D-050). Il codice è in inglese (→ D-051).
 
 ### Multilingua (D-025)
 

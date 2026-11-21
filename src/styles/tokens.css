@@ -1,16 +1,16 @@
 /* ==========================================================================
-   Sandra Di Scipio — Design token (Tailwind CSS 4)
-   Fonte: file Figma "SandraDiScipio" (Zl3k5Q7AegYlr0mGOQa6YQ), letto il 2026-11-21
-   Collezioni: Sandra · Primitives, Sandra · Semantic (Light/Dark),
-               Sandra · Typography, Sandra · Motion + 12 stili di testo Sandra/*
-   Se un valore cambia in Figma, va aggiornato qui (→ D-050).
+   Sandra Di Scipio — Design tokens (Tailwind CSS 4)
+   Source: Figma file "SandraDiScipio" (Zl3k5Q7AegYlr0mGOQa6YQ), read on 2026-11-21
+   Collections: Sandra · Primitives, Sandra · Semantic (Light/Dark),
+               Sandra · Typography, Sandra · Motion + 12 text styles Sandra/*
+   When a value changes in Figma, update it here (see D-050).
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. PRIMITIVE → utility Tailwind (bg-ink, text-rose-deep, font-display…)
+   1. PRIMITIVES → Tailwind utilities (bg-ink, text-rose-deep, font-display…)
    -------------------------------------------------------------------------- */
 @theme {
-  /* Solo i colori del brand: niente palette di default di Tailwind */
+  /* Brand colors only: Tailwind default palette disabled */
   --color-*: initial;
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -29,13 +29,13 @@
   --color-success: #3d6650;
   --color-disabled: #e5dcd8;
 
-  /* font/* (Sandra · Typography) — font ospitati sul sito (D-032) */
+  /* font/* (Sandra · Typography) — self-hosted fonts (D-032) */
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Gothic A1", "Helvetica Neue", Arial, system-ui, sans-serif;
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
 
-  /* space/* → scala di Tailwind con passo 4 px: space/16 = p-4, space/10 = p-2.5 */
+  /* space/* → Tailwind scale with a 4 px step: space/16 = p-4, space/10 = p-2.5 */
   --spacing: 0.25rem;
 
   /* radius/* */
@@ -48,14 +48,14 @@
   --breakpoint-mobile: 30rem; /* layout/breakpoint-mobile 480 px */
   --breakpoint-tablet: 53.75rem; /* layout/breakpoint-tablet 860 px */
 
-  /* duration/* e easing/* (Sandra · Motion) */
+  /* duration/* and easing/* (Sandra · Motion) */
   --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
   --duration-fast: 250ms;
   --duration-base: 400ms;
   --duration-reveal: 1100ms;
 
-  /* Stili di testo Sandra/* (valori Figma, riferimento desktop 1440 px)
-     Interlinea = line-height Figma / font-size; spaziatura % → em */
+  /* Text styles Sandra/* (Figma values, 1440 px desktop reference)
+     line-height = Figma line height / font size; letter spacing % → em */
   --text-display-hero: 6.6rem; /* 105.6 px */
   --text-display-hero--line-height: 0.98; /* 103.5 px */
   --text-display-hero--letter-spacing: 0.02em;
@@ -114,10 +114,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. SEMANTICI (Sandra · Semantic, modi Light e Dark)
-   Valori in variabili CSS, esposti a Tailwind con @theme inline:
+   2. SEMANTIC (Sandra · Semantic, Light and Dark modes)
+   Values live in CSS variables, exposed to Tailwind through @theme inline:
    bg-background-canvas, text-text-primary, border-border-default…
-   Il modo Dark si attiva con data-theme="dark" su un antenato.
+   Dark mode is enabled by data-theme="dark" on any ancestor.
    -------------------------------------------------------------------------- */
 :root,
 [data-theme="light"] {
@@ -178,8 +178,8 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. STILI DI TESTO COMPLETI (famiglia + dimensione + interlinea + spaziatura)
-   Uso: <h1 class="type-h1">, <p class="type-body">
+   3. COMPOSITE TEXT STYLES (family + size + line height + letter spacing)
+   Usage: <h1 class="type-h1">, <p class="type-body">
    -------------------------------------------------------------------------- */
 @utility type-display-hero {
   font-family: var(--font-display);
