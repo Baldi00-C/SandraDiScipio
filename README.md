@@ -49,11 +49,18 @@ npm install
 npm run dev
 ```
 
-Il sito è su http://localhost:4321. Controllo dei tipi:
+Il sito è su http://localhost:4321.
 
-```bash
-npm run check
-```
+| Comando | Cosa fa |
+| --- | --- |
+| `npm run check` | Controllo dei tipi (`astro check`) |
+| `npm run lint` | ESLint |
+| `npm run format` | Formatta con Prettier (ordina anche import e classi Tailwind) |
+| `npm run test` | Test unitari con Vitest |
+| `npm run build` | Genera il sito in `dist/` |
+| `npm run verify` | Tutti i controlli della CI, in sequenza |
+
+Prima di ogni commit Husky esegue ESLint e Prettier sui file modificati. Su GitHub `main` accetta solo PR con il controllo `Controlli` verde (D-053).
 
 ## POC archiviato
 

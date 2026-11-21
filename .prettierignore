@@ -1,0 +1,11 @@
+dist/
+.astro/
+node_modules/
+poc/
+package-lock.json
+coverage/
+playwright-report/
+test-results/
+
+# Markdown: Prettier allinea le tabelle con spazi e ogni riga nuova riscrive la tabella intera
+*.md

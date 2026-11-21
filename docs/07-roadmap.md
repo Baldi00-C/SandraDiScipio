@@ -183,7 +183,7 @@ Regole:
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | DA FARE |
 | T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | DA FARE |
 | T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
-| T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | DA FARE |
+| T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | FATTO |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | DA FARE |
 | **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | DA FARE |

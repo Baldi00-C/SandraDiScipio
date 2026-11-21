@@ -1,0 +1,46 @@
+# Controlli automatici su ogni PR e su main (D-035, D-052).
+# Il job "Controlli" è obbligatorio per unire su main (regole del branch).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Controlli
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Installazione
+        run: npm ci
+
+      - name: Tipi (astro check)
+        run: npm run check
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Formattazione (Prettier)
+        run: npm run format:check
+
+      - name: Test unitari (Vitest)
+        run: npm run test
+
+      - name: Build
+        run: npm run build
