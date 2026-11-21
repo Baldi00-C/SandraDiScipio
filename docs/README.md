@@ -2,7 +2,7 @@
 title: Indice della documentazione di progetto
 progetto: Sito portfolio Sandra Di Scipio
 versione_prodotto: V.0
-fase_corrente: roadmap V.0 definita → prossime fasi: base comune in Figma (F1) e setup tecnico (F2), in parallelo
+fase_corrente: F1 base comune in Figma in corso (T-02.1 fatto), F2 setup tecnico in parallelo
 ultimo_aggiornamento: 2026-11-21
 lingua: italiano
 ---
@@ -21,7 +21,7 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | --- | --- | --- |
 | Requisiti business V.0 | CHIUSI | [02-requisiti-business.md](02-requisiti-business.md), [03-preventivatore.md](03-preventivatore.md) |
 | Roadmap V.0 | DEFINITA | [07-roadmap.md](07-roadmap.md): bozza completa entro 2026-12-15, online entro 2027-01-31. Storie e task su [GitHub Issues](https://github.com/Baldi00-C/SandraDiScipio/issues) |
-| Design (mockup Figma) | NON INIZIATO | Base comune in Figma, poi pagina per pagina (D-037). Prossimo: F1 |
+| Design (mockup Figma) | IN CORSO | File [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) collegato (D-048); adottata la guida di stile esistente come base (D-049). Prossimo: T-02.2 |
 | Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
 | Sviluppo V.0 | NON INIZIATO | Si riparte da zero. Setup tecnico in parallelo alla base Figma (D-038). Prossimo: F2 |
 
