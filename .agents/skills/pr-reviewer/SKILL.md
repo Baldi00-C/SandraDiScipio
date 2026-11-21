@@ -1,5 +1,5 @@
 ---
-name: sandra-pr-review
+name: pr-reviewer
 description: "Review leggera di una PR o del diff di un branch: individua bug, regressioni e incongruenze concrete. Usare prima della PR o quando viene chiesta una review."
 ---
 

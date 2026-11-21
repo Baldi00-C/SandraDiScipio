@@ -33,7 +33,7 @@ Husky esegue lint-staged prima dei commit; la CI resta necessaria perché copre 
 - La protezione di `main` richiede `Checks` verde e branch aggiornato; non aggirarla. L'utente gestisce il merge secondo il flusso attuale.
 - Le anteprime Cloudflare fanno parte del flusso previsto; finché T-03.4 non è configurato, non promettere un URL di anteprima automatico.
 
-Dopo aver ricevuto l'elenco, l'utente ha autorizzato la prima PR e l'aggiunta delle skill (D-058). Prima delle PR applica `sandra-pr-review`: una sola passata mirata, riusando i risultati validi dei controlli; nessuna orchestrazione multi-modello. Una review della stessa sessione è un'auto-review, non una review indipendente. Per le feature usa `sandra-feature-development`, con test del comportamento e storie per gli elementi visivi riusabili.
+Dopo aver ricevuto l'elenco, l'utente ha autorizzato la prima PR e l'aggiunta delle skill (D-058). Prima delle PR applica `pr-reviewer`: una sola passata mirata, riusando i risultati validi dei controlli; nessuna orchestrazione multi-modello. Una review della stessa sessione è un'auto-review, non una review indipendente. Per le feature usa `feature-developer`, con test del comportamento e storie per gli elementi visivi riusabili.
 
 ## Dati e configurazione
 

@@ -1,5 +1,5 @@
 ---
-name: sandra-i18n
+name: localization-specialist
 description: "Aggiorna o verifica testi e routing IT/EN/ES del sito. Usare per traduzioni, nuove chiavi, slug o problemi del cambio lingua."
 ---
 

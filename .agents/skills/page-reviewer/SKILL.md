@@ -1,5 +1,5 @@
 ---
-name: sandra-page-check
+name: page-reviewer
 description: "Verifica una pagina o un componente visivo del sito su mobile e desktop, rispetto a Figma, lingue, accessibilità e SEO. Usare per UI nuove o modificate."
 ---
 

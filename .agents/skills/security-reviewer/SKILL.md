@@ -1,5 +1,5 @@
 ---
-name: sandra-security-review
+name: security-reviewer
 description: "Review mirata di form, allegati, email, segreti, dipendenze o CI del sito. Usare su richiesta o quando una modifica introduce rischi concreti in queste aree."
 ---
 

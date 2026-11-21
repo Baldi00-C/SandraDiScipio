@@ -26,9 +26,9 @@ Questi documenti raccolgono le decisioni esistenti; i requisiti e il registro in
 
 Le skill condivise sono in `.agents/skills/`. Leggi solo quella pertinente:
 
-- `sandra-feature-development`: feature e bugfix, test di comportamento, storie per UI riusabile e controlli finali.
-- `sandra-pr-review`: review del diff prima della PR, con una sola passata e contesto limitato. Preferisci un modello semplice quando selezionabile; niente orchestrazioni multi-modello automatiche.
-- `sandra-verify`: verifiche del repository e build Storybook quando pertinente.
-- `sandra-design-tokens-sync`, `sandra-i18n`, `sandra-page-check`, `sandra-security-review`: approfondimenti sulle sole superfici coinvolte.
+- `feature-developer`: feature e bugfix, test di comportamento, storie per UI riusabile e controlli finali.
+- `pr-reviewer`: review del diff prima della PR, con una sola passata e contesto limitato. Preferisci un modello semplice quando selezionabile; niente orchestrazioni multi-modello automatiche.
+- `quality-checker`: verifiche del repository e build Storybook quando pertinente.
+- `design-token-sync`, `localization-specialist`, `page-reviewer`, `security-reviewer`: approfondimenti sulle sole superfici coinvolte.
 
 Aggiorna la knowledge base quando cambia ciò che descrive. Riporta solo verifiche eseguite, preserva le modifiche dell'utente e mantieni la PR circoscritta. Le skill non introducono pubblicazioni, merge o deploy automatici.

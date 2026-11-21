@@ -40,17 +40,17 @@ Il profilo Prettier è già introdotto con D-057 su richiesta dell'utente. Nei d
 
 ## Skill versionate
 
-Le istruzioni sono in italiano e rimandano alle fonti canoniche, senza copiare le procedure dei progetti di origine. La skill di esecuzione issue inizialmente proposta è confluita in `sandra-feature-development`.
+Le istruzioni sono in italiano e rimandano alle fonti canoniche, senza copiare le procedure dei progetti di origine. La skill di esecuzione issue inizialmente proposta è confluita in `feature-developer`.
 
 | Skill | Quando usarla |
 | --- | --- |
-| [sandra-feature-development](../../.agents/skills/sandra-feature-development/SKILL.md) | Implementazione di feature e bugfix: requisiti, test di comportamento, Storybook per UI riusabile, controlli e PR |
-| [sandra-pr-review](../../.agents/skills/sandra-pr-review/SKILL.md) | Una review mirata del diff, senza agenti paralleli o cicli multi-modello |
-| [sandra-verify](../../.agents/skills/sandra-verify/SKILL.md) | Controlli disponibili nel repository ed eventuale build Storybook |
-| [sandra-design-tokens-sync](../../.agents/skills/sandra-design-tokens-sync/SKILL.md) | Allineamento manuale Figma, token Tailwind e storie |
-| [sandra-i18n](../../.agents/skills/sandra-i18n/SKILL.md) | Testi, chiavi e routing IT/EN/ES |
-| [sandra-page-check](../../.agents/skills/sandra-page-check/SKILL.md) | Verifica mobile/desktop, accessibilità, CTA e SEO della UI cambiata |
-| [sandra-security-review](../../.agents/skills/sandra-security-review/SKILL.md) | Rischi concreti in form, allegati, email, dipendenze e CI |
+| [feature-developer](../../.agents/skills/feature-developer/SKILL.md) | Implementazione di feature e bugfix: requisiti, test di comportamento, Storybook per UI riusabile, controlli e PR |
+| [pr-reviewer](../../.agents/skills/pr-reviewer/SKILL.md) | Una review mirata del diff, senza agenti paralleli o cicli multi-modello |
+| [quality-checker](../../.agents/skills/quality-checker/SKILL.md) | Controlli disponibili nel repository ed eventuale build Storybook |
+| [design-token-sync](../../.agents/skills/design-token-sync/SKILL.md) | Allineamento manuale Figma, token Tailwind e storie |
+| [localization-specialist](../../.agents/skills/localization-specialist/SKILL.md) | Testi, chiavi e routing IT/EN/ES |
+| [page-reviewer](../../.agents/skills/page-reviewer/SKILL.md) | Verifica mobile/desktop, accessibilità, CTA e SEO della UI cambiata |
+| [security-reviewer](../../.agents/skills/security-reviewer/SKILL.md) | Rischi concreti in form, allegati, email, dipendenze e CI |
 
 ## Costo della review
 

@@ -1,5 +1,5 @@
 ---
-name: sandra-verify
+name: quality-checker
 description: "Esegui i controlli del sito e, quando pertinente, la build Storybook; riporta risultati e lacune. Usare dopo modifiche a codice, test o configurazione."
 ---
 
