@@ -1,4 +1,4 @@
-import { defaultLocale, locales, type Locale } from './config';
+import { defaultLocale, locales, type Locale } from "./config";
 
 /**
  * Translated slugs of every page (D-025). One row per page, one column per
@@ -7,7 +7,7 @@ import { defaultLocale, locales, type Locale } from './config';
  * Always build internal links with `pathFor()`, never by hand.
  */
 export const routes = {
-  home: { it: '', en: '', es: '' },
+  home: { it: "", en: "", es: "" },
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type RouteKey = keyof typeof routes;
@@ -22,6 +22,6 @@ export function pathFor(key: RouteKey, locale: Locale): string {
 export function alternatesFor(key: RouteKey): { hreflang: string; path: string }[] {
   return [
     ...locales.map((locale) => ({ hreflang: locale, path: pathFor(key, locale) })),
-    { hreflang: 'x-default', path: pathFor(key, defaultLocale) },
+    { hreflang: "x-default", path: pathFor(key, defaultLocale) },
   ];
 }
