@@ -2,7 +2,7 @@
 title: Indice della documentazione di progetto
 progetto: Sito portfolio Sandra Di Scipio
 versione_prodotto: V.0
-fase_corrente: requisiti business e stack tecnologico (chiusi) → prossima fase: mockup in Figma
+fase_corrente: roadmap V.0 definita → prossime fasi: base comune in Figma (F1) e setup tecnico (F2), in parallelo
 ultimo_aggiornamento: 2026-11-21
 lingua: italiano
 ---
@@ -20,9 +20,10 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | Area | Stato | Dettaglio |
 | --- | --- | --- |
 | Requisiti business V.0 | CHIUSI | [02-requisiti-business.md](02-requisiti-business.md), [03-preventivatore.md](03-preventivatore.md) |
-| Design (mockup Figma) | NON INIZIATO | Deciso il metodo: mockup in Figma prima del codice. Avvio rimandato dall'utente |
+| Roadmap V.0 | DEFINITA | [07-roadmap.md](07-roadmap.md): bozza completa entro 2026-12-15, online entro 2027-01-31. Storie e task su [GitHub Issues](https://github.com/Baldi00-C/SandraDiScipio/issues) |
+| Design (mockup Figma) | NON INIZIATO | Base comune in Figma, poi pagina per pagina (D-037). Prossimo: F1 |
 | Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
-| Sviluppo V.0 | NON INIZIATO | Si riparte da zero |
+| Sviluppo V.0 | NON INIZIATO | Si riparte da zero. Setup tecnico in parallelo alla base Figma (D-038). Prossimo: F2 |
 
 ## Stato del codice (importante)
 
@@ -42,6 +43,7 @@ Il codice presente nel repository (`src/`, Astro + Tailwind, invio email con Res
 | [04-decisioni.md](04-decisioni.md) | Registro delle decisioni: decise, rimandate, aperte | Prima di proporre qualcosa: verifica che non sia già deciso |
 | [05-modo-di-lavorare.md](05-modo-di-lavorare.md) | Come collaborare con l'utente, ruoli, regole | Sempre, prima di fare domande o proporre lavoro |
 | [06-stack-tecnologico.md](06-stack-tecnologico.md) | Stack, hosting, email, multilingua, privacy, SEO, test, flusso Git | Prima di scrivere codice o configurare servizi |
+| [07-roadmap.md](07-roadmap.md) | Fasi, milestone, date, dipendenze, materiali da fornire, primi task | Prima di iniziare un lavoro: verifica fase e stato |
 | [glossario.md](glossario.md) | Termini del dominio e del progetto | Quando un termine è ambiguo |
 
 ## Regole per aggiornare questa documentazione

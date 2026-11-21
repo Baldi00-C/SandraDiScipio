@@ -19,6 +19,7 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 | Framework | Astro + TypeScript | DECISO | D-023 |
 | Styling | Tailwind CSS 4 | DECISO | D-024 |
 | Multilingua | `/it/`, `/en/`, `/es/` con slug tradotti, hreflang | DECISO | D-025 |
+| Lingua del visitatore | Lingua del browser; fallback inglese; la scelta dal selettore viene ricordata | DECISO | D-046 |
 | Hosting | Cloudflare (Workers + asset statici), piano gratuito | DECISO | D-026 |
 | Email dai form | Resend | DECISO | D-027 |
 | Allegati | Max 5 file, 20 MB in tutto | DECISO | D-015 |
@@ -53,7 +54,12 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 | --- | --- | --- | --- |
 | Esempio | `/it/chi-sono` | `/en/about` | `/es/sobre-mi` |
 
-- La radice `/` reindirizza alla lingua del browser (italiano se non è una delle tre).
+- Lingua mostrata al visitatore (→ D-046):
+  1. Chi arriva sulla radice `/` va nella lingua scelta in una visita precedente, se c'è.
+  2. Altrimenti nella lingua del browser (`Accept-Language`), se è IT, EN o ES.
+  3. Altrimenti in **inglese** (fallback).
+- Gli indirizzi con prefisso (`/it/...`, `/en/...`, `/es/...`) si aprono sempre così come sono: nessun reindirizzamento, per non rompere i link condivisi e la SEO.
+- La scelta fatta col selettore si ricorda con una memoria tecnica nel browser (cookie tecnico o localStorage): non richiede banner (D-032).
 - Il selettore della lingua (REQ-GLOB-1) porta alla stessa pagina nell'altra lingua.
 - Gli slug definitivi si fissano in sviluppo, insieme alle traduzioni (D-007).
 
@@ -109,7 +115,7 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 ### SEO (D-034)
 
 - `title` e `description` per ogni pagina e lingua.
-- `hreflang` tra le versioni IT/EN/ES e `x-default`.
+- `hreflang` tra le versioni IT/EN/ES e `x-default` che punta all'inglese (D-046).
 - Sitemap, `robots.txt`, URL canonici.
 - Open Graph per le anteprime sui social.
 - Dati strutturati schema.org (Person, ProfessionalService) e testo alternativo per le immagini.
