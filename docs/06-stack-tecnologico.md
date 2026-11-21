@@ -61,7 +61,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
   2. Altrimenti nella lingua del browser (`Accept-Language`), se è IT, EN o ES.
   3. Altrimenti in **inglese** (fallback).
 - Gli indirizzi con prefisso (`/it/...`, `/en/...`, `/es/...`) si aprono sempre così come sono: nessun reindirizzamento, per non rompere i link condivisi e la SEO.
-- La scelta fatta col selettore si ricorda con una memoria tecnica nel browser (cookie tecnico o localStorage): non richiede banner (D-032).
+- La scelta fatta col selettore si ricorda con un cookie tecnico (`locale`): non richiede banner (D-032). La scelta della lingua sulla radice avviene nel browser (→ D-056).
 - Il selettore della lingua (REQ-GLOB-1) porta alla stessa pagina nell'altra lingua.
 - Gli slug definitivi si fissano in sviluppo, insieme alle traduzioni (D-007).
 - Nel codice (→ D-051): lingue in `src/i18n/config.ts`, testi dell'interfaccia in `src/i18n/ui/<lingua>.ts`, slug tradotti in `src/i18n/routes.ts`.
