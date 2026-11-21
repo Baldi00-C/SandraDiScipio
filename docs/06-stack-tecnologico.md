@@ -31,6 +31,7 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 | Privacy e cookie policy | Iubenda, IT/EN/ES | DECISO | D-033 |
 | SEO | Pacchetto base | DECISO | D-034 |
 | Profilo Google Business | Da valutare | RIMANDATO | D-034 |
+| Design system | Token Figma in Tailwind (`src/styles/tokens.css`), consultabili in Storybook | DECISO | D-050 |
 | Test e qualità | Completa | DECISO | D-035 |
 | Git e deploy | Branch → PR con anteprima → `main` = produzione | DECISO | D-036 |
 
@@ -46,7 +47,8 @@ Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come 
 
 - Astro genera pagine statiche; solo gli endpoint dei form girano sul server.
 - Ottimizzazione delle immagini integrata: importante per un portfolio pieno di render e foto.
-- Tailwind 4 con i token (colori, font, spaziature) presi dai mockup Figma, definiti una volta in CSS.
+- Tailwind 4 con i token (colori, font, spaziature) presi dai mockup Figma, definiti una volta in CSS: `src/styles/tokens.css` (→ D-050).
+- Storybook (`npm run storybook`, porta 6006) mostra il design system: colori primitivi e semantici (Light/Dark), tipografia, spaziature e layout (→ D-050).
 
 ### Multilingua (D-025)
 

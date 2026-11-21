@@ -26,7 +26,7 @@ Regole:
 | --- | --- | --- | --- | --- |
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
 | F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | IN CORSO |
-| F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | DA FARE |
+| F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | IN CORSO |
 | F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
 | F5 | Preparazione e pubblicazione | 2027-01-10 → 2027-01-31 | F4, materiali di D-044 | DA FARE |
@@ -178,7 +178,7 @@ Regole:
 | T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | DA FARE |
 | T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | DA FARE |
 | T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
-| **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | DA FARE |
+| **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | DA FARE |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | DA FARE |
 | T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | DA FARE |
@@ -186,6 +186,7 @@ Regole:
 | T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | DA FARE |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | DA FARE |
+| T-03.8 | Storybook con il design system dal Figma: token Tailwind, colori, tipografia, spaziature (D-050) | F2 | codice | T-02.1 | [#69](https://github.com/Baldi00-C/SandraDiScipio/issues/69) | FATTO |
 | **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | DA FARE |
 | T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | DA FARE |
 | T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | DA FARE |

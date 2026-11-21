@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Ingresso del design system: font ospitati + Tailwind 4 + token Figma.
+   Usato da Storybook (.storybook/preview.ts) e, dal nuovo progetto (T-03.1),
+   dal layout base di Astro.
+   ========================================================================== */
+
+/* Font ospitati sul sito, niente CDN (D-032). Pesi usati negli stili Figma */
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/gothic-a1/400.css";
+@import "@fontsource/gothic-a1/500.css";
+@import "@fontsource/gothic-a1/600.css";
+
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Le storie sono classi Tailwind scritte in TypeScript */
+@source "../stories";
+
+@layer base {
+  html {
+    background-color: var(--color-background-canvas);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring); /* border/focus */
+    outline-offset: 2px;
+  }
+}
