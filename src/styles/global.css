@@ -4,18 +4,18 @@
  */
 
 /* Self-hosted fonts, no external CDN (D-032). Weights used by the Figma text styles */
-@import '@fontsource/cormorant-garamond/400.css';
-@import '@fontsource/cormorant-garamond/500.css';
-@import '@fontsource/cormorant-garamond/700.css';
-@import '@fontsource/gothic-a1/400.css';
-@import '@fontsource/gothic-a1/500.css';
-@import '@fontsource/gothic-a1/600.css';
+@import "@fontsource/cormorant-garamond/400.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/gothic-a1/400.css";
+@import "@fontsource/gothic-a1/500.css";
+@import "@fontsource/gothic-a1/600.css";
 
-@import 'tailwindcss';
-@import './tokens.css';
+@import "tailwindcss";
+@import "./tokens.css";
 
 /* Stories are Tailwind classes written in TypeScript */
-@source '../stories';
+@source "../stories";
 
 /*
  * TEMPORARY alias for pages built on the provisional T-03.1 tokens
