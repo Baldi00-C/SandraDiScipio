@@ -25,6 +25,10 @@ Istruzioni operative per agenti AI che lavorano su questo progetto.
 5. **Fasi in ordine**: requisiti business → mockup Figma → scelte tecniche → sviluppo, sezione per sezione. Il 2026-11-21 l'utente ha anticipato le scelte tecniche prima dei mockup (→ D-020).
 6. **Non inventare contenuti personali di Sandra** (studi, esperienze, clienti, recensioni, numeri): usa segnaposto evidenti e chiedili all'utente in fase di sviluppo.
 7. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
+8. **Lingua del codice**: identificatori, commenti, configurazioni e test in inglese; documentazione e conversazione in italiano (D-054). I contenuti del sito seguono la propria lingua IT/EN/ES.
+9. **Convenzioni automatiche**: usa Prettier ed ESLint del repository. La configurazione Prettier riprende quella comune ai progetti recenti dell'utente, adattata ad Astro e Tailwind (D-057). Dettagli in [agent_kb/code_conventions.md](agent_kb/code_conventions.md).
+
+La [knowledge base per agenti](agent_kb/README.md) raccoglie contesto e procedure operative (D-056). Le [convenzioni e skill](agent_kb/proposals.md) sono state adottate con D-058: sviluppo feature con test e Storybook quando pertinente, review mirate a costo contenuto e nessuna orchestrazione multi-modello automatica.
 
 ## Prossimo passo previsto
 

@@ -45,6 +45,8 @@ Il primo codice del repository (Astro + Tailwind, invio email con Resend) è un 
 | [06-stack-tecnologico.md](06-stack-tecnologico.md) | Stack, hosting, email, multilingua, privacy, SEO, test, flusso Git | Prima di scrivere codice o configurare servizi |
 | [07-roadmap.md](07-roadmap.md) | Fasi, milestone, date, dipendenze, materiali da fornire, primi task | Prima di iniziare un lavoro: verifica fase e stato |
 | [glossario.md](glossario.md) | Termini del dominio e del progetto | Quando un termine è ambiguo |
+| [agent_kb/README.md](agent_kb/README.md) | Contesto operativo per agenti, convenzioni del codice e verifiche | Prima di modificare codice o preparare una PR |
+| [agent_kb/proposals.md](agent_kb/proposals.md) | Convenzioni e skill adottate, con origine del confronto | Prima di scegliere la procedura per sviluppo e review |
 
 ## Regole per aggiornare questa documentazione
 
