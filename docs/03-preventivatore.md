@@ -12,7 +12,7 @@ ultimo_aggiornamento: 2026-11-21
 | --- | --- | --- |
 | REQ-PREV-1 | Due percorsi a questionario: **Chiavi in mano** e **Solo progetto** | Brief |
 | REQ-PREV-2 | Nella V.0 **nessun percorso mostra un prezzo**. La stima automatica del Chiavi in mano è una possibile evoluzione futura (servono le tariffe di Sandra) | D-004 |
-| REQ-PREV-3 | Allegati facoltativi: planimetria, foto dello stato attuale, immagini di ispirazione (immagini o PDF). Limiti di numero e peso RIMANDATI alle scelte tecniche | D-006, D-015 |
+| REQ-PREV-3 | Allegati facoltativi: planimetria, foto dello stato attuale, immagini di ispirazione. Max 5 file, 20 MB in tutto, formati JPG, PNG, HEIC, WebP, PDF. La copia all'utente elenca solo i nomi dei file | D-006, D-015 |
 | REQ-PREV-4 | Dopo l'invio: Sandra riceve un'email con tutte le risposte e gli allegati; l'utente riceve una copia di riepilogo e conferma | D-009 |
 | REQ-PREV-5 | L'email a Sandra è nella **lingua in cui l'utente ha compilato il form** | D-014 |
 | REQ-PREV-6 | Tempi di risposta promessi all'utente nell'email di conferma: RIMANDATO | D-017 |

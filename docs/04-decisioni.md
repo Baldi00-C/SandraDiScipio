@@ -29,9 +29,25 @@ Regola: prima di fare una domanda all'utente, controlla qui che la risposta non 
 | D-012 | 2026-11-21 | Progetti in evidenza in Home | — | RIMANDATO | Fase: sviluppo della Home |
 | D-013 | 2026-11-21 | Progetti universitari | Elenco e materiale li fornisce l'utente | RIMANDATO | Fase: sviluppo di Progetti |
 | D-014 | 2026-11-21 | Lingua delle email a Sandra | La lingua in cui l'utente ha compilato il form | DECISO | |
-| D-015 | 2026-11-21 | Limiti degli allegati | — | RIMANDATO | Fase: scelte tecniche |
+| D-015 | 2026-11-21 | Limiti degli allegati | Max 5 file, 20 MB in tutto; formati JPG, PNG, HEIC, WebP, PDF; foto grandi ridotte nel browser prima dell'invio. La copia all'utente elenca solo i nomi dei file | DECISO | Deciso il 2026-11-21 nelle scelte tecniche. Dettagli in [06-stack-tecnologico.md](06-stack-tecnologico.md) |
 | D-016 | 2026-11-21 | Elementi extra in Home | Instagram, recensioni, iscrizione all'Ordine: da valutare | RIMANDATO | Fase: sviluppo della Home |
 | D-017 | 2026-11-21 | Tempi di risposta promessi | — | RIMANDATO | Più avanti, nessuna fase indicata |
 | D-018 | 2026-11-21 | Revisori EN/ES | Persone di conoscenza dell'utente | DECISO | |
 | D-019 | 2026-11-21 | Revisione delle domande | Si rivedono con l'utente quando si sviluppano i questionari, poi le valida Sandra (PO) | DECISO | |
-| D-020 | 2026-11-21 | Tecnologia, hosting, dominio, servizio email | — | RIMANDATO | Dopo aver chiuso il business e il design. L'utente non vuole parlarne prima |
+| D-020 | 2026-11-21 | Tecnologia, hosting, dominio, servizio email | Decisi il 2026-11-21, prima dei mockup, su scelta dell'utente: vedi D-021 → D-036 | DECISO | Riepilogo in [06-stack-tecnologico.md](06-stack-tecnologico.md) |
+| D-021 | 2026-11-21 | Chi aggiorna i contenuti | Nella V.0 i contenuti (progetti, testi) sono file nel repository, aggiornati dall'utente (anche con un agente AI). Nessun CMS | DECISO | Il CMS per l'autonomia di Sandra è RIMANDATO (D-022) |
+| D-022 | 2026-11-21 | CMS per Sandra | Da valutare: CMS che lavora sugli stessi file (es. Keystatic, Decap) o CMS online | RIMANDATO | Fase: dopo la pubblicazione della V.0 |
+| D-023 | 2026-11-21 | Framework e linguaggio | Astro + TypeScript | DECISO | Sito di contenuti quasi tutto statico; immagini e i18n inclusi; già provato nel POC |
+| D-024 | 2026-11-21 | Styling | Tailwind CSS 4, token (colori, font, spaziature) allineati ai mockup Figma | DECISO | |
+| D-025 | 2026-11-21 | Indirizzi multilingua | Prefisso per tutte le lingue (`/it/`, `/en/`, `/es/`) con slug tradotti; la radice `/` porta alla lingua del browser; hreflang tra le versioni | DECISO | |
+| D-026 | 2026-11-21 | Hosting | Cloudflare (Workers con asset statici, adapter ufficiale Astro), piano gratuito | DECISO | Accetta invii fino a 100 MB (allegati). Se l'elaborazione degli allegati supera i limiti di CPU del piano gratuito, si passa al piano da 5 $/mese |
+| D-027 | 2026-11-21 | Servizio email | Resend: email a Sandra e copia all'utente, modelli nel codice, uno per lingua; invio dal dominio verificato | DECISO | Piano gratuito: 3.000 email/mese, 100/giorno, max 40 MB per email |
+| D-028 | 2026-11-21 | Dominio | `sandradiscipio.com`, da registrare su Cloudflare Registrar; DNS su Cloudflare | DECISO | Al 2026-11-21 risulta libero, non ancora acquistato. Da comprare prima della pubblicazione |
+| D-029 | 2026-11-21 | Indirizzo email sul dominio | `info@sandradiscipio.com` con inoltro gratuito (Cloudflare Email Routing) alla Gmail di Sandra | DECISO | Casella vera a pagamento valutabile in futuro. Email e numero definitivi restano da confermare (REQ-CONT-6) |
+| D-030 | 2026-11-21 | Anti-spam | Cloudflare Turnstile + campo honeypot + limite di invii per indirizzo | DECISO | Niente reCAPTCHA (cookie di Google, GDPR) |
+| D-031 | 2026-11-21 | Analytics | Cloudflare Web Analytics, senza cookie | DECISO | |
+| D-032 | 2026-11-21 | Cookie e consenso | Nessun cookie di profilazione, quindi nessun banner. Font ospitati sul sito; nessun contenuto esterno (Instagram, Maps, video) senza consenso | DECISO | Se si aggiungono servizi con cookie, serve il banner |
+| D-033 | 2026-11-21 | Testi privacy e cookie policy | Iubenda, in IT, EN, ES | DECISO | Piano e costo da verificare all'acquisto |
+| D-034 | 2026-11-21 | SEO | Pacchetto base: title e description per lingua, hreflang, sitemap, robots.txt, Open Graph, schema.org, alt delle immagini, Google Search Console | DECISO | Profilo Google Business: RIMANDATO, dopo la pubblicazione |
+| D-035 | 2026-11-21 | Test e qualità | Completa: astro check, ESLint, Prettier, Playwright (form, questionari, cambio lingua), test unitari su questionari ed email, axe per l'accessibilità, controllo link rotti, in GitHub Actions su ogni PR; Lighthouse prima del rilascio | DECISO | |
+| D-036 | 2026-11-21 | Flusso Git e deploy | Branch per funzionalità → pull request con controlli e anteprima Cloudflare → merge su `main` = produzione. Commit convenzionali. Chiavi segrete solo nelle variabili d'ambiente di Cloudflare | DECISO | Nessun ambiente di staging fisso |

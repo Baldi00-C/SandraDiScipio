@@ -92,4 +92,4 @@ Vedi [03-preventivatore.md](03-preventivatore.md).
 | REQ-CONT-3 | Telefono: numero cliccabile da smartphone | DECISO |
 | REQ-CONT-4 | Form: nome, email, telefono (facoltativo), oggetto, messaggio, consenso privacy | DECISO |
 | REQ-CONT-5 | Dopo l'invio del form: email a Sandra + copia di conferma all'utente (stesso flusso dei questionari) | DECISO (→ D-009) |
-| REQ-CONT-6 | Email e numero definitivi da confermare. Nel POC: `discipiosandra@gmail.com`, `+39 366 133 1176` | APERTO |
+| REQ-CONT-6 | Email e numero definitivi da confermare. Nel POC: `discipiosandra@gmail.com`, `+39 366 133 1176`. Indirizzo previsto sul sito: `info@sandradiscipio.com`, inoltrato alla Gmail (→ D-029) | APERTO |

@@ -2,7 +2,7 @@
 title: Indice della documentazione di progetto
 progetto: Sito portfolio Sandra Di Scipio
 versione_prodotto: V.0
-fase_corrente: requisiti business (chiusi) → prossima fase: mockup in Figma
+fase_corrente: requisiti business e stack tecnologico (chiusi) → prossima fase: mockup in Figma
 ultimo_aggiornamento: 2026-11-21
 lingua: italiano
 ---
@@ -21,7 +21,7 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | --- | --- | --- |
 | Requisiti business V.0 | CHIUSI | [02-requisiti-business.md](02-requisiti-business.md), [03-preventivatore.md](03-preventivatore.md) |
 | Design (mockup Figma) | NON INIZIATO | Deciso il metodo: mockup in Figma prima del codice. Avvio rimandato dall'utente |
-| Scelte tecniche (stack, hosting, email) | NON INIZIATE | Rimandate di proposito: si decidono dopo il business |
+| Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
 | Sviluppo V.0 | NON INIZIATO | Si riparte da zero |
 
 ## Stato del codice (importante)
@@ -30,7 +30,7 @@ Il codice presente nel repository (`src/`, Astro + Tailwind, invio email con Res
 
 - NON considerare il POC come base vincolante per stile, struttura o tecnologia.
 - Si possono riusare i **contenuti** del POC (testi, foto dei progetti in `src/assets/projects/`, dati di contatto in `src/data/site.ts`) come materiale di partenza.
-- Le scelte tecniche del POC (Astro, Resend, adapter Node) NON sono decisioni confermate.
+- Lo stack deciso ([06-stack-tecnologico.md](06-stack-tecnologico.md)) riprende Astro, Tailwind e Resend, ma con hosting Cloudflare al posto dell'adapter Node e una nuova struttura multilingua. Il codice del POC resta solo un riferimento.
 
 ## Mappa dei documenti
 
@@ -41,6 +41,7 @@ Il codice presente nel repository (`src/`, Astro + Tailwind, invio email con Res
 | [03-preventivatore.md](03-preventivatore.md) | Flusso del preventivatore e bozze dei due questionari | Prima di lavorare su preventivatore, form o email |
 | [04-decisioni.md](04-decisioni.md) | Registro delle decisioni: decise, rimandate, aperte | Prima di proporre qualcosa: verifica che non sia già deciso |
 | [05-modo-di-lavorare.md](05-modo-di-lavorare.md) | Come collaborare con l'utente, ruoli, regole | Sempre, prima di fare domande o proporre lavoro |
+| [06-stack-tecnologico.md](06-stack-tecnologico.md) | Stack, hosting, email, multilingua, privacy, SEO, test, flusso Git | Prima di scrivere codice o configurare servizi |
 | [glossario.md](glossario.md) | Termini del dominio e del progetto | Quando un termine è ambiguo |
 
 ## Regole per aggiornare questa documentazione
