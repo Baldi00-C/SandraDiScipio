@@ -8,7 +8,7 @@ ultimo_aggiornamento: 2026-11-21
 
 Scelte prese con l'utente il 2026-11-21, prima dei mockup (→ D-020). Ogni riga cita la decisione nel [registro](04-decisioni.md).
 
-Il POC in `src/` (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come esperienza: lo stack scelto è simile, ma il codice **non** è una base vincolante (D-001). Si riparte da zero, cambiando l'adapter (Node → Cloudflare) e la struttura multilingua.
+Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter Node) è servito come esperienza: lo stack scelto è simile, ma il codice **non** è una base vincolante (D-001). Si riparte da zero, cambiando l'adapter (Node → Cloudflare) e la struttura multilingua.
 
 ## Riepilogo
 

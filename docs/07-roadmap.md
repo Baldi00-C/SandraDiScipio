@@ -26,7 +26,7 @@ Regole:
 | --- | --- | --- | --- | --- |
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
 | F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | IN CORSO |
-| F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | DA FARE |
+| F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | IN CORSO |
 | F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
 | F5 | Preparazione e pubblicazione | 2027-01-10 → 2027-01-31 | F4, materiali di D-044 | DA FARE |
@@ -64,7 +64,7 @@ Da fare nei task: T-02.2 verifica font ospitabili (D-032) e crea gli stili di te
 
 | Contenuto | Riferimento |
 | --- | --- |
-| Progetto Astro + TypeScript nuovo; il POC resta solo come riferimento | D-001, D-023 |
+| Progetto Astro + TypeScript nuovo; il POC resta solo come riferimento, in `poc/` e nel tag `poc` | D-001, D-023, D-050 |
 | Tailwind 4 con token provvisori, sostituiti da quelli di F1 | D-024 |
 | Struttura multilingua `/it/`, `/en/`, `/es/`, file di traduzione, hreflang con `x-default` in inglese | D-025 |
 | Lingua del visitatore: scelta ricordata → lingua del browser → inglese; link con prefisso mai reindirizzati | D-046 |
@@ -178,8 +178,8 @@ Regole:
 | T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | DA FARE |
 | T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | DA FARE |
 | T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
-| **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | DA FARE |
-| T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | DA FARE |
+| **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
+| T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | DA FARE |
 | T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | DA FARE |
 | T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
