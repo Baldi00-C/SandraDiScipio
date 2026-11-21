@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Sandra Di Scipio — Design tokens (Tailwind CSS 4)
+   Source: Figma file "SandraDiScipio" (Zl3k5Q7AegYlr0mGOQa6YQ), read on 2026-11-21
+   Collections: Sandra · Primitives, Sandra · Semantic (Light/Dark),
+               Sandra · Typography, Sandra · Motion + 12 text styles Sandra/*
+   When a value changes in Figma, update it here (see D-050).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PRIMITIVES → Tailwind utilities (bg-ink, text-rose-deep, font-display…)
+   -------------------------------------------------------------------------- */
+@theme {
+  /* Brand colors only: Tailwind default palette disabled */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* color/* */
+  --color-ink: #1d1d1b;
+  --color-rose: #ba8484;
+  --color-rose-deep: #8c5a5a;
+  --color-blush: #f1e8e5;
+  --color-paper: #fbf8f6;
+  --color-line: #d9cbc7;
+  --color-white: #ffffff;
+  --color-muted: #6b5855;
+  --color-label: #5e4d4a;
+  --color-error: #a03030;
+  --color-success: #3d6650;
+  --color-disabled: #e5dcd8;
+
+  /* font/* (Sandra · Typography) — self-hosted fonts (D-032) */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Gothic A1', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+
+  /* space/* → Tailwind scale with a 4 px step: space/16 = p-4, space/10 = p-2.5 */
+  --spacing: 0.25rem;
+
+  /* radius/* */
+  --radius-*: initial;
+  --radius-square: 0;
+  --radius-pill: 999px;
+
+  /* layout/* */
+  --container-site: 73.75rem; /* layout/max-width 1180 px → max-w-site */
+  --breakpoint-mobile: 30rem; /* layout/breakpoint-mobile 480 px */
+  --breakpoint-tablet: 53.75rem; /* layout/breakpoint-tablet 860 px */
+
+  /* duration/* and easing/* (Sandra · Motion) */
+  --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --duration-fast: 250ms;
+  --duration-base: 400ms;
+  --duration-reveal: 1100ms;
+
+  /* Text styles Sandra/* (Figma values, 1440 px desktop reference)
+     line-height = Figma line height / font size; letter spacing % → em */
+  --text-display-hero: 6.6rem; /* 105.6 px */
+  --text-display-hero--line-height: 0.98; /* 103.5 px */
+  --text-display-hero--letter-spacing: 0.02em;
+  --text-display-hero--font-weight: 700;
+
+  --text-display-large: 4.7rem; /* 75.2 px */
+  --text-display-large--line-height: 1.02; /* 76.7 px */
+  --text-display-large--letter-spacing: 0.02em;
+  --text-display-large--font-weight: 400;
+
+  --text-h1: 3.2rem; /* 51.2 px */
+  --text-h1--line-height: 1.1; /* 56.3 px */
+  --text-h1--letter-spacing: 0.01em;
+  --text-h1--font-weight: 400;
+
+  --text-h2: 2.5rem; /* 40 px */
+  --text-h2--line-height: 1.1; /* 44 px */
+  --text-h2--letter-spacing: 0.01em;
+  --text-h2--font-weight: 400;
+
+  --text-h3: 1.5rem; /* 24 px */
+  --text-h3--line-height: 1.1; /* 26.4 px */
+  --text-h3--letter-spacing: 0.01em;
+  --text-h3--font-weight: 500;
+
+  --text-body-large: 1.15rem; /* 18.4 px */
+  --text-body-large--line-height: 1.7; /* 31.3 px */
+  --text-body-large--font-weight: 400;
+
+  --text-body: 1.09375rem; /* 17.5 px */
+  --text-body--line-height: 1.7; /* 29.75 px */
+  --text-body--font-weight: 400;
+
+  --text-body-small: 0.875rem; /* 14 px */
+  --text-body-small--line-height: 1.7; /* 23.8 px */
+  --text-body-small--font-weight: 400;
+
+  --text-eyebrow: 0.72rem; /* 11.52 px */
+  --text-eyebrow--line-height: 1.6; /* 18.4 px */
+  --text-eyebrow--letter-spacing: 0.16em;
+  --text-eyebrow--font-weight: 500;
+
+  --text-link: 0.78rem; /* 12.48 px */
+  --text-link--line-height: 1.6; /* 20 px */
+  --text-link--letter-spacing: 0.16em;
+  --text-link--font-weight: 500;
+
+  --text-control: 0.95rem; /* 15.2 px */
+  --text-control--line-height: 1.7; /* 25.8 px */
+  --text-control--font-weight: 500;
+
+  --text-caption: 0.78rem; /* 12.48 px */
+  --text-caption--line-height: 1.6; /* 20 px */
+  --text-caption--letter-spacing: 0.1em;
+  --text-caption--font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC (Sandra · Semantic, Light and Dark modes)
+   Values live in CSS variables, exposed to Tailwind through @theme inline:
+   bg-background-canvas, text-text-primary, border-border-default…
+   Dark mode is enabled by data-theme="dark" on any ancestor.
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme='light'] {
+  --sem-background-canvas: var(--color-paper);
+  --sem-background-subtle: var(--color-blush);
+  --sem-surface-default: var(--color-white);
+  --sem-text-primary: var(--color-ink);
+  --sem-text-secondary: var(--color-muted);
+  --sem-text-label: var(--color-label);
+  --sem-text-inverse: var(--color-white);
+  --sem-border-default: var(--color-line);
+  --sem-border-strong: var(--color-ink);
+  --sem-action-default: var(--color-ink);
+  --sem-action-hover: var(--color-rose-deep);
+  --sem-action-label: var(--color-white);
+  --sem-focus-ring: var(--color-rose-deep);
+  --sem-feedback-error: var(--color-error);
+  --sem-feedback-success: var(--color-success);
+  --sem-state-disabled: var(--color-disabled);
+}
+
+[data-theme='dark'] {
+  --sem-background-canvas: var(--color-ink);
+  --sem-background-subtle: var(--color-label);
+  --sem-surface-default: var(--color-ink);
+  --sem-text-primary: var(--color-paper);
+  --sem-text-secondary: var(--color-blush);
+  --sem-text-label: var(--color-blush);
+  --sem-text-inverse: var(--color-ink);
+  --sem-border-default: var(--color-muted);
+  --sem-border-strong: var(--color-paper);
+  --sem-action-default: var(--color-paper);
+  --sem-action-hover: var(--color-blush);
+  --sem-action-label: var(--color-ink);
+  --sem-focus-ring: var(--color-rose);
+  --sem-feedback-error: var(--color-rose);
+  --sem-feedback-success: var(--color-blush);
+  --sem-state-disabled: var(--color-label);
+}
+
+@theme inline {
+  --color-background-canvas: var(--sem-background-canvas);
+  --color-background-subtle: var(--sem-background-subtle);
+  --color-surface-default: var(--sem-surface-default);
+  --color-text-primary: var(--sem-text-primary);
+  --color-text-secondary: var(--sem-text-secondary);
+  --color-text-label: var(--sem-text-label);
+  --color-text-inverse: var(--sem-text-inverse);
+  --color-border-default: var(--sem-border-default);
+  --color-border-strong: var(--sem-border-strong);
+  --color-action-default: var(--sem-action-default);
+  --color-action-hover: var(--sem-action-hover);
+  --color-action-label: var(--sem-action-label);
+  --color-focus-ring: var(--sem-focus-ring);
+  --color-feedback-error: var(--sem-feedback-error);
+  --color-feedback-success: var(--sem-feedback-success);
+  --color-state-disabled: var(--sem-state-disabled);
+}
+
+/* --------------------------------------------------------------------------
+   3. COMPOSITE TEXT STYLES (family + size + line height + letter spacing)
+   Usage: <h1 class="type-h1">, <p class="type-body">
+   -------------------------------------------------------------------------- */
+@utility type-display-hero {
+  font-family: var(--font-display);
+  font-size: var(--text-display-hero);
+  line-height: var(--text-display-hero--line-height);
+  letter-spacing: var(--text-display-hero--letter-spacing);
+  font-weight: var(--text-display-hero--font-weight);
+}
+@utility type-display-large {
+  font-family: var(--font-display);
+  font-size: var(--text-display-large);
+  line-height: var(--text-display-large--line-height);
+  letter-spacing: var(--text-display-large--letter-spacing);
+  font-weight: var(--text-display-large--font-weight);
+}
+@utility type-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  line-height: var(--text-h1--line-height);
+  letter-spacing: var(--text-h1--letter-spacing);
+  font-weight: var(--text-h1--font-weight);
+}
+@utility type-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  line-height: var(--text-h2--line-height);
+  letter-spacing: var(--text-h2--letter-spacing);
+  font-weight: var(--text-h2--font-weight);
+}
+@utility type-h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  line-height: var(--text-h3--line-height);
+  letter-spacing: var(--text-h3--letter-spacing);
+  font-weight: var(--text-h3--font-weight);
+}
+@utility type-body-large {
+  font-family: var(--font-body);
+  font-size: var(--text-body-large);
+  line-height: var(--text-body-large--line-height);
+  font-weight: var(--text-body-large--font-weight);
+}
+@utility type-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  font-weight: var(--text-body--font-weight);
+}
+@utility type-body-small {
+  font-family: var(--font-body);
+  font-size: var(--text-body-small);
+  line-height: var(--text-body-small--line-height);
+  font-weight: var(--text-body-small--font-weight);
+}
+@utility type-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  font-weight: var(--text-eyebrow--font-weight);
+}
+@utility type-link {
+  font-family: var(--font-body);
+  font-size: var(--text-link);
+  line-height: var(--text-link--line-height);
+  letter-spacing: var(--text-link--letter-spacing);
+  font-weight: var(--text-link--font-weight);
+}
+@utility type-control {
+  font-family: var(--font-body);
+  font-size: var(--text-control);
+  line-height: var(--text-control--line-height);
+  font-weight: var(--text-control--font-weight);
+}
+@utility type-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  line-height: var(--text-caption--line-height);
+  letter-spacing: var(--text-caption--letter-spacing);
+  font-weight: var(--text-caption--font-weight);
+}

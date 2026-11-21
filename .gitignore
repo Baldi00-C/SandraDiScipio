@@ -28,3 +28,7 @@ Thumbs.db
 poc/node_modules/
 poc/dist/
 poc/.astro/
+
+# Storybook
+storybook-static/
+*storybook.log

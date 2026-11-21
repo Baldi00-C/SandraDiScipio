@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Design system/Introduction" />
+
+# Design system — Sandra Di Scipio
+
+Tokens and styles taken from the Figma file
+[SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio)
+(_Page 1_, _01 · Foundations_ board), read on 2026-11-21 through the Figma bridge.
+
+| Figma                             | In code                                         | Example                                     |
+| --------------------------------- | ----------------------------------------------- | ------------------------------------------- |
+| `Sandra · Primitives` → `color/*` | `@theme` in `src/styles/tokens.css`             | `bg-ink`, `text-rose-deep`                  |
+| `Sandra · Semantic` (Light, Dark) | CSS variables + `@theme inline`                 | `bg-background-canvas`, `text-text-primary` |
+| `Sandra · Typography`             | `--font-display`, `--font-body`                 | `font-display`                              |
+| `Sandra/*` text styles (12)       | `type-*` utilities                              | `type-h1`, `type-eyebrow`                   |
+| `space/*`                         | Tailwind scale, 4 px step                       | `p-4` = space/16                            |
+| `radius/*`, `layout/*`            | `rounded-*`, `max-w-site`, `mobile:`, `tablet:` | `rounded-pill`                              |
+| `Sandra · Motion`                 | `--duration-*`, `ease-editorial`                | `duration-(--duration-fast)`                |
+
+**Dark** mode is enabled by `data-theme="dark"` on any ancestor. In Storybook, switch it from the _Mode_ selector in the toolbar.
+
+When a value changes in Figma, update `src/styles/tokens.css` (decision D-050 in `docs/04-decisioni.md`).
