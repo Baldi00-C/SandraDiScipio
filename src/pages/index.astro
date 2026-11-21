@@ -1,14 +1,23 @@
 ---
+/*
+ * Root `/`: temporary. T-03.3 replaces it with automatic locale selection
+ * (remembered choice → browser language → English, D-046).
+ */
+import { defaultLocale, localeNames, locales, pathFor } from '../i18n';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Sandra Di Scipio — Architetta e Interior Designer">
+<BaseLayout title="Sandra Di Scipio" locale={defaultLocale}>
   <main class="mx-auto max-w-(--container-site) px-6 py-24">
-    <p class="text-sm tracking-widest text-muted uppercase">Pagina di prova</p>
-    <h1 class="mt-4 font-display text-5xl text-ink">Sandra Di Scipio</h1>
-    <p class="mt-6 max-w-prose text-lg text-muted">
-      Architetta e interior designer. Il sito è in costruzione.
-    </p>
-    <div class="mt-10 h-px w-24 bg-accent"></div>
+    <h1 class="font-display text-5xl">Sandra Di Scipio</h1>
+    <ul class="mt-8 flex gap-6">
+      {locales.map((l) => (
+        <li>
+          <a href={pathFor('home', l)} hreflang={l} lang={l} class="underline underline-offset-4">
+            {localeNames[l]}
+          </a>
+        </li>
+      ))}
+    </ul>
   </main>
 </BaseLayout>

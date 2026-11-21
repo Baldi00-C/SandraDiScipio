@@ -1,23 +1,29 @@
 ---
 import '../styles/global.css';
 
+import Alternates from '../components/Alternates.astro';
+import type { Locale, RouteKey } from '../i18n';
+
 interface Props {
   title: string;
   description?: string;
-  lang?: string;
+  locale: Locale;
+  /** Page key in `src/i18n/routes.ts`: generates canonical and hreflang links. */
+  route?: RouteKey;
 }
 
-const { title, description, lang = 'it' } = Astro.props;
+const { title, description, locale, route } = Astro.props;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    {route && <Alternates route={route} locale={locale} />}
   </head>
   <body class="min-h-screen">
     <slot />

@@ -1,0 +1,16 @@
+---
+import { alternatesFor, pathFor, type Locale, type RouteKey } from '../i18n';
+
+interface Props {
+  route: RouteKey;
+  locale: Locale;
+}
+
+const { route, locale } = Astro.props;
+const toAbsolute = (path: string) => new URL(path, Astro.site ?? Astro.url).href;
+---
+
+<link rel="canonical" href={toAbsolute(pathFor(route, locale))} />
+{alternatesFor(route).map(({ hreflang, path }) => (
+  <link rel="alternate" hreflang={hreflang} href={toAbsolute(path)} />
+))}
