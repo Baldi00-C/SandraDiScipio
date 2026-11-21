@@ -136,6 +136,8 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 
 Tutti i controlli automatici girano in GitHub Actions. Nei test non si inviano email vere.
 
+Strumenti e regole (→ D-052, D-053): Vitest per i test unitari, ESLint e Prettier (con import e classi Tailwind ordinati), Husky + lint-staged prima di ogni commit, `main` protetto (solo PR con il controllo `Checks` verde).
+
 ### Git e deploy (D-036)
 
 ```

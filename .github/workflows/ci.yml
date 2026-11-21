@@ -1,0 +1,46 @@
+# Automated checks on every PR and on main (D-035, D-052).
+# The "Checks" job is required to merge into main (branch ruleset, D-053).
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Types (astro check)
+        run: npm run check
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Format (Prettier)
+        run: npm run format:check
+
+      - name: Unit tests (Vitest)
+        run: npm run test
+
+      - name: Build
+        run: npm run build
