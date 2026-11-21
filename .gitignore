@@ -23,3 +23,8 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# Dipendenze e build del POC archiviato in poc/
+poc/node_modules/
+poc/dist/
+poc/.astro/

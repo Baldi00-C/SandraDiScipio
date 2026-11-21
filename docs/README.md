@@ -2,14 +2,14 @@
 title: Indice della documentazione di progetto
 progetto: Sito portfolio Sandra Di Scipio
 versione_prodotto: V.0
-fase_corrente: F1 base comune in Figma in corso (T-02.1 fatto), F2 setup tecnico in parallelo
+fase_corrente: F1 base comune in Figma in corso (T-02.1 fatto), F2 setup tecnico in corso (T-03.1 fatto)
 ultimo_aggiornamento: 2026-11-21
 lingua: italiano
 ---
 
 # Documentazione di progetto — Sito portfolio Sandra Di Scipio
 
-> **Per agenti AI e LLM: leggi questo file per primo.** Indica cosa è deciso, dove si trova e come lavorare con l'utente. Le cartelle `docs/` sono la fonte di verità sui requisiti; il codice in `src/` NON lo è (vedi "Stato del codice").
+> **Per agenti AI e LLM: leggi questo file per primo.** Indica cosa è deciso, dove si trova e come lavorare con l'utente. Le cartelle `docs/` sono la fonte di verità sui requisiti; il codice del POC in `poc/` NON lo è (vedi "Stato del codice").
 
 ## In una frase
 
@@ -23,14 +23,14 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | Roadmap V.0 | DEFINITA | [07-roadmap.md](07-roadmap.md): bozza completa entro 2026-12-15, online entro 2027-01-31. Storie e task su [GitHub Issues](https://github.com/Baldi00-C/SandraDiScipio/issues) |
 | Design (mockup Figma) | IN CORSO | File [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) collegato (D-048); adottata la guida di stile esistente come base (D-049). Prossimo: T-02.2 |
 | Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
-| Sviluppo V.0 | NON INIZIATO | Si riparte da zero. Setup tecnico in parallelo alla base Figma (D-038). Prossimo: F2 |
+| Sviluppo V.0 | IN CORSO | Setup tecnico (F2) in parallelo alla base Figma (D-038). T-03.1 fatto: nuovo progetto in `src/`, POC in `poc/` (D-050). Prossimo: T-03.2 |
 
 ## Stato del codice (importante)
 
-Il codice presente nel repository (`src/`, Astro + Tailwind, invio email con Resend) è un **POC**. L'utente ha deciso di **ripartire da zero**, dal design allo sviluppo.
+Il primo codice del repository (Astro + Tailwind, invio email con Resend) è un **POC**. L'utente ha deciso di **ripartire da zero**, dal design allo sviluppo. Con T-03.1 il POC è stato archiviato nel tag Git `poc` e spostato nella cartella `poc/`, esclusa da build e controlli (D-050). Il nuovo progetto V.0 è nella radice (`src/`, `package.json`).
 
 - NON considerare il POC come base vincolante per stile, struttura o tecnologia.
-- Si possono riusare i **contenuti** del POC (testi, foto dei progetti in `src/assets/projects/`, dati di contatto in `src/data/site.ts`) come materiale di partenza.
+- Si possono riusare i **contenuti** del POC (testi, foto dei progetti in `poc/src/assets/projects/`, dati di contatto in `poc/src/data/site.ts`) come materiale di partenza.
 - Lo stack deciso ([06-stack-tecnologico.md](06-stack-tecnologico.md)) riprende Astro, Tailwind e Resend, ma con hosting Cloudflare al posto dell'adapter Node e una nuova struttura multilingua. Il codice del POC resta solo un riferimento.
 
 ## Mappa dei documenti

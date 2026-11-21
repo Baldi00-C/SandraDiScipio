@@ -9,5 +9,5 @@ Regole essenziali (dettagli in [docs/05-modo-di-lavorare.md](docs/05-modo-di-lav
 - Rispondi sempre in italiano.
 - Fai una domanda alla volta.
 - Prima il business, poi la tecnologia: non proporre scelte tecniche finché non sono state chiuse le decisioni di business.
-- Il codice in `src/` è un POC: non è una base vincolante (decisione D-001 in [docs/04-decisioni.md](docs/04-decisioni.md)).
+- Il codice del sito V.0 è in `src/` (nuovo progetto, T-03.1). Il POC è archiviato in `poc/` e nel tag Git `poc`: solo riferimento, non base vincolante (D-001, D-050).
 - Registra ogni nuova decisione in [docs/04-decisioni.md](docs/04-decisioni.md).
