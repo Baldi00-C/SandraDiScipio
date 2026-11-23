@@ -72,10 +72,10 @@ Scopo: riassumere tutto il sito e portare il visitatore verso un preventivo o un
 
 | ID | Requisito | Stato |
 | --- | --- | --- |
-| REQ-PROG-1 | Due gruppi: **Non conclusi** (universitari/accademici) e **Conclusi** (professionali) | DECISO |
+| REQ-PROG-1 | Due gruppi: **Non conclusi** (universitari/accademici) e **Conclusi** (professionali). Sul sito: "Progetti universitari" e "Progetti professionali" (→ D-070) | DECISO |
 | REQ-PROG-2 | Scheda di un progetto non concluso: tavole, render, concept, breve descrizione, anno, corso | DECISO |
 | REQ-PROG-3 | Scheda di un progetto concluso: **nella stessa scheda** prima la parte digitale (render, piante, concept), poi la parte interior (foto reali del lavoro finito) | DECISO (→ D-003) |
-| REQ-PROG-4 | Confronti prima/dopo quando esistono le foto dello stato di partenza | DECISO |
+| REQ-PROG-4 | Confronti prima/dopo quando esistono le foto dello stato di partenza, affiancati (→ D-071) | DECISO |
 | REQ-PROG-5 | Elenco e materiale dei progetti universitari forniti dall'utente in fase di sviluppo | RIMANDATO (→ D-013) |
 
 Progetti professionali già presenti nel POC (materiale riusabile, in `poc/src/content/projects/` e `poc/src/assets/projects/`, D-050): Villa privata a Castana (Pavia, 2020), Appartamento ai Magazzini Bracchi (Milano, 2024, solo render), Sala VIP aeroporto di Caracas (Venezuela, 2019).
