@@ -25,7 +25,7 @@ Regole:
 | ID | Fase | Finestra indicativa | Dipende da | Stato |
 | --- | --- | --- | --- | --- |
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
-| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | IN CORSO |
+| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | FATTO |
 | F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | IN CORSO |
 | F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
@@ -57,7 +57,7 @@ Fatto quando: l'utente approva la base comune in Figma.
 | Stili di testo | 12 stili `Sandra/*` legati alle variabili `type/*`, con modi Desktop e Mobile (D-057). Desktop/mobile in px: Hero 104 / 56, Display Large 76 / 44, H1 52 / 36, H2 40 / 30, H3 24 / 22, Body Large 18 / 17, Body 17 / 16, Body Small 14, Control 15 / 16, Link, Caption ed Eyebrow 12 |
 | Spaziature | Base 4 px: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120 (D-058). Margine pagina 24 / 20, spazio tra sezioni 120 / 72 |
 | Layout e griglia | Larghezza massima 1180 px, cambi di layout a 480 e 860 px. Stili `Sandra/Grid/Desktop` (1440 px, 12 colonne, spazio 24) e `Sandra/Grid/Mobile` (375 px, 4 colonne, margini 20, spazio 16) (D-059) |
-| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-060), Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Service card, Estimator step, Contact banner. Elementi globali (T-02.3): Site header (Desktop, Mobile, menu mobile aperto, D-061), Site footer (Desktop, Mobile, D-064), Nav link, Mobile nav link, Footer link, Language option, Language switcher (D-062), Menu button, WhatsApp button (D-063); stati hover, corrente e focus (D-065) |
+| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-060), Brand mark, Service card, Estimator step, Contact banner. Componenti comuni (T-02.4, tavola 02 · Components, tutti con auto-layout): Button (Primario e Secondario, taglie 52 e 44 px, D-066), Editorial link, Filter chip, Checkbox, Text field, Select, File upload, File item (D-068), Notice (D-069), Project card (D-067). Elementi globali (T-02.3): Site header (Desktop, Mobile, menu mobile aperto, D-061), Site footer (Desktop, Mobile, D-064), Nav link, Mobile nav link, Footer link, Language option, Language switcher (D-062), Menu button, WhatsApp button (D-063); stati hover, corrente e focus (D-065) |
 | Effetti | `Sandra/Shadow/Floating` (ombra del pulsante WhatsApp e della tendina lingua) |
 | Motion | Durate 0,25 s, 0,4 s, 1,1 s; curva `cubic-bezier(0.2, 0.7, 0.1, 1)` |
 
@@ -65,7 +65,9 @@ Tavola dello stile approvata in T-02.2: [T-02.2 · Type, spacing & grid](https:/
 
 Elementi globali approvati in T-02.3: tavola [T-02.3 · Global elements](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1225) (Page 1) con i componenti [Site header](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-295), [Site footer](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1708), [Language switcher](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1293), [WhatsApp button](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1323) e gli esempi d'uso desktop e mobile ([desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2050), [menu mobile aperto](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2139)). Header e footer sono aggiornati nelle 9 pagine statiche e in 03 · Patterns.
 
-Da fare nei task: T-02.4 verifica la card progetto e gli altri componenti comuni.
+Componenti comuni approvati in T-02.4: tavola [02 · Components](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-87) (Page 1) con [Button](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-203), [Text field](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-267), [Select](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2305), [File upload](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2443), [Notice](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-280) e [Project card](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2466); esempi d'uso nella sezione [T-02.4 · Common components](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2470) (griglia progetti desktop e mobile, form mobile con pulsante a tutta larghezza). I form di Home e Contatti nelle pagine statiche sono riallineati ai nuovi campi.
+
+Con T-02.4 la base comune (F1) è completa: si passa ai mockup delle pagine (F3).
 
 ### F2 — Setup tecnico (D-038)
 
@@ -181,11 +183,11 @@ Regole:
 | --- | --- | --- | --- | --- | --- | --- |
 | **S-01** | **Organizzazione del lavoro su GitHub** | F0 | docs | — | [#1](https://github.com/Baldi00-C/SandraDiScipio/issues/1) | FATTO |
 | T-01.1 | Label, milestone, storie e task su GitHub; numeri delle issue in questo file | F0 | docs | — | [#2](https://github.com/Baldi00-C/SandraDiScipio/issues/2) | FATTO |
-| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | IN CORSO |
+| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | FATTO |
 | T-02.1 | Collegare Figma all'agente e creare il file del sito | F1 | design | — | [#4](https://github.com/Baldi00-C/SandraDiScipio/issues/4) | FATTO |
 | T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | FATTO |
 | T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | FATTO |
-| T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
+| T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | FATTO |
 | **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | FATTO |

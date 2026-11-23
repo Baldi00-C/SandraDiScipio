@@ -2,7 +2,7 @@
 title: Indice della documentazione di progetto
 progetto: Sito portfolio Sandra Di Scipio
 versione_prodotto: V.0
-fase_corrente: F1 base comune in Figma in corso (T-02.1, T-02.2, T-02.3 fatti), F2 setup tecnico in corso (T-03.1, T-03.2, T-03.5 fatti)
+fase_corrente: F1 base comune in Figma fatta (T-02.1 → T-02.4), F2 setup tecnico in corso (T-03.1, T-03.2, T-03.5 fatti)
 ultimo_aggiornamento: 2026-11-23
 lingua: italiano
 ---
@@ -21,7 +21,7 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | --- | --- | --- |
 | Requisiti business V.0 | CHIUSI | [02-requisiti-business.md](02-requisiti-business.md), [03-preventivatore.md](03-preventivatore.md) |
 | Roadmap V.0 | DEFINITA | [07-roadmap.md](07-roadmap.md): bozza completa entro 2026-12-15, online entro 2027-01-31. Storie e task su [GitHub Issues](https://github.com/Baldi00-C/SandraDiScipio/issues) |
-| Design (mockup Figma) | IN CORSO | File [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) collegato (D-048); adottata la guida di stile esistente come base (D-049). T-02.2 fatto: font ospitabili (D-056), scala tipografica desktop e mobile (D-057), spaziature (D-058), griglia (D-059), logo nel menu e nel footer (D-060). T-02.3 fatto: menu desktop e mobile con menu a schermo intero (D-061), selettore lingua (D-062), pulsante WhatsApp (D-063), footer con riga legale (D-064), stati hover e focus (D-065). Prossimo: T-02.4 |
+| Design (mockup Figma) | IN CORSO | File [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) collegato (D-048); adottata la guida di stile esistente come base (D-049). T-02.2 fatto: font ospitabili (D-056), scala tipografica desktop e mobile (D-057), spaziature (D-058), griglia (D-059), logo nel menu e nel footer (D-060). T-02.3 fatto: menu desktop e mobile con menu a schermo intero (D-061), selettore lingua (D-062), pulsante WhatsApp (D-063), footer con riga legale (D-064), stati hover e focus (D-065). T-02.4 fatto: pulsanti (D-066), card progetto (D-067), campi dei form con menu a tendina e allegati (D-068), messaggi (D-069). Prossimo: mockup delle pagine (F3) |
 | Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
 | Sviluppo V.0 | IN CORSO | Setup tecnico (F2) in parallelo alla base Figma (D-038). T-03.1 fatto: nuovo progetto in `src/`, POC in `poc/` (D-050). T-03.2 fatto: struttura `/it/` `/en/` `/es/` (D-051). T-03.5 fatto: test, lint, formattazione e CI (D-052), `main` protetto (D-053). Prossimo: T-03.3 |
 
