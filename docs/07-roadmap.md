@@ -1,7 +1,7 @@
 ---
 title: Roadmap della V.0
 stato: DECISO
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-23
 ---
 
 # Roadmap della V.0
@@ -46,19 +46,23 @@ Fatto quando: l'utente approva la base comune in Figma.
 
 | Pagina Figma | Contenuto |
 | --- | --- |
-| Page 1 | 01 Foundations, 02 Components, 03 Patterns, 04 Claude Code handoff, 05 Motion principles |
+| Page 1 | 00 Logo, 01 Foundations, 02 Components, 03 Patterns, 04 Claude Code handoff, 05 Motion principles |
 | Website · Static design | 9 pagine statiche: Home, Chi sono, Servizi, Progetti, Progetto, Preventivatore, Contatti, Privacy Policy, Cookie Policy |
 
 | Elemento | Valori nel file |
 | --- | --- |
-| Variabili | 67 in 4 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography`, `Sandra · Motion` |
-| Colori base | ink `#1D1D1B`, rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
-| Font | Titoli Cormorant Garamond, testo Gothic A1. Nessuno stile di testo salvato |
-| Layout | Larghezza massima 1180 px, 12 colonne, margine 24 px (20 su mobile), cambi di layout a 480 e 860 px |
-| Componenti | Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Site header, Service card, Estimator step, Contact banner, Site footer |
+| Variabili | 89 in 5 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography` (Desktop e Mobile), `Sandra · Layout` (Desktop e Mobile), `Sandra · Motion` |
+| Colori base | ink `#1D1D1B`, stone `#989897` (solo logo), rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
+| Font | Titoli Cormorant Garamond, testo Gothic A1, licenza OFL 1.1, ospitati con Fontsource (D-056) |
+| Stili di testo | 12 stili `Sandra/*` legati alle variabili `type/*`, con modi Desktop e Mobile (D-057). Desktop/mobile in px: Hero 104 / 56, Display Large 76 / 44, H1 52 / 36, H2 40 / 30, H3 24 / 22, Body Large 18 / 17, Body 17 / 16, Body Small 14, Control 15 / 16, Link, Caption ed Eyebrow 12 |
+| Spaziature | Base 4 px: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120 (D-058). Margine pagina 24 / 20, spazio tra sezioni 120 / 72 |
+| Layout e griglia | Larghezza massima 1180 px, cambi di layout a 480 e 860 px. Stili `Sandra/Grid/Desktop` (1440 px, 12 colonne, spazio 24) e `Sandra/Grid/Mobile` (375 px, 4 colonne, margini 20, spazio 16) (D-059) |
+| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-060), Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Site header, Service card, Estimator step, Contact banner, Site footer |
 | Motion | Durate 0,25 s, 0,4 s, 1,1 s; curva `cubic-bezier(0.2, 0.7, 0.1, 1)` |
 
-Da fare nei task: T-02.2 verifica font ospitabili (D-032) e crea gli stili di testo; T-02.3 aggiunge, se mancano, selettore lingua e pulsante WhatsApp; T-02.4 verifica la card progetto.
+Tavola dello stile approvata in T-02.2: [T-02.2 · Type, spacing & grid](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=34-224) (Page 1), insieme a [01 · Foundations](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-82) e [00 · Logo](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=34-399).
+
+Da fare nei task: T-02.3 aggiunge, se mancano, selettore lingua e pulsante WhatsApp; T-02.4 verifica la card progetto.
 
 ### F2 — Setup tecnico (D-038)
 
@@ -175,7 +179,7 @@ Regole:
 | T-01.1 | Label, milestone, storie e task su GitHub; numeri delle issue in questo file | F0 | docs | — | [#2](https://github.com/Baldi00-C/SandraDiScipio/issues/2) | FATTO |
 | **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | IN CORSO |
 | T-02.1 | Collegare Figma all'agente e creare il file del sito | F1 | design | — | [#4](https://github.com/Baldi00-C/SandraDiScipio/issues/4) | FATTO |
-| T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | DA FARE |
+| T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | FATTO |
 | T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | DA FARE |
 | T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
 | **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
