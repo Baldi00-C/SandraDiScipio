@@ -1,7 +1,7 @@
 ---
 title: Requisiti business delle pagine (V.0)
 stato: DECISO (con punti rimandati indicati)
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-23
 ---
 
 # Requisiti business delle pagine
@@ -28,15 +28,15 @@ Su ogni pagina: selettore lingua IT / EN / ES, pulsante WhatsApp fisso.
 Nel footer: privacy policy, cookie policy.
 ```
 
-Menu principale, in quest'ordine: Home, Chi sono, Servizi, Progetti, Preventivatore, Contatti.
+Menu principale, in quest'ordine: Home, Chi sono, Servizi, Progetti, Preventivatore, Contatti (→ D-061).
 
 ## Elementi globali
 
 | ID | Requisito |
 | --- | --- |
-| REQ-GLOB-1 | Selettore della lingua (IT, EN, ES) visibile su ogni pagina |
-| REQ-GLOB-2 | Pulsante WhatsApp fisso su ogni pagina |
-| REQ-GLOB-3 | Footer con link a privacy policy e cookie policy |
+| REQ-GLOB-1 | Selettore della lingua (IT, EN, ES) visibile su ogni pagina (→ D-062) |
+| REQ-GLOB-2 | Pulsante WhatsApp fisso su ogni pagina (→ D-063) |
+| REQ-GLOB-3 | Footer con link a privacy policy e cookie policy (→ D-064) |
 | REQ-GLOB-4 | Lingua iniziale = lingua del browser (se IT, EN o ES), altrimenti inglese; la scelta fatta col selettore viene ricordata (→ D-046) |
 
 ## Home
