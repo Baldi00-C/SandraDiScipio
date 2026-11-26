@@ -1,7 +1,7 @@
 ---
 title: Stack tecnologico (V.0)
 stato: DECISO (con punti rimandati indicati)
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Stack tecnologico
@@ -109,7 +109,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 
 - Cloudflare Web Analytics: senza cookie, nessun dato personale.
 - Nessun banner: il sito non usa cookie di profilazione. Regole per restare così:
-  - font ospitati sul sito (niente Google Fonts da CDN);
+  - font ospitati sul sito con Fontsource, niente Google Fonts da CDN (Cormorant Garamond e Gothic A1, licenza OFL 1.1, → D-057); il logo è un SVG con il nome in tracciati, quindi il suo font (Plus Jakarta Sans) non si carica (→ D-061);
   - nessun contenuto esterno (Instagram, Google Maps, YouTube) caricato senza consenso;
   - se in futuro si aggiunge un servizio con cookie, serve il banner (nuova decisione).
 - Privacy policy e cookie policy generate con Iubenda in IT, EN, ES. Piano da scegliere all'acquisto in base alle lingue.

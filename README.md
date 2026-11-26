@@ -22,7 +22,7 @@ Istruzioni per agenti AI: [AGENTS.md](AGENTS.md).
 | --- | --- |
 | Requisiti business V.0 | Chiusi |
 | Stack tecnologico | Deciso |
-| Design (mockup Figma) | In corso |
+| Design (mockup Figma) | In corso: stile base fatto (T-02.2), prossimi elementi globali e componenti |
 | Sviluppo V.0 | In corso: setup tecnico (F2) |
 
 ## Stack deciso
