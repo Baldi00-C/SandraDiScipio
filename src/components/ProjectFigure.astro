@@ -10,6 +10,7 @@ import { getImage, Image } from "astro:assets";
 
 import { useTranslations, type Locale } from "../i18n";
 import { isDrawing, mediaAspect, type ProjectImageKind } from "../lib/projects";
+import Curtain from "./Curtain.astro";
 
 interface Props {
   image: { src: ImageMetadata; alt: string; caption?: string; kind: ProjectImageKind };
@@ -33,6 +34,7 @@ const full = await getImage({ src: image.src, width: Math.min(image.src.width, 2
   <button
     type="button"
     data-viewer-item
+    data-curtain
     data-viewer-src={full.src}
     data-viewer-alt={image.alt}
     data-viewer-caption={caption}
@@ -50,6 +52,7 @@ const full = await getImage({ src: image.src, width: Math.min(image.src.width, 2
       loading={priority ? "eager" : "lazy"}
       class:list={["size-full", drawing ? "object-contain" : "object-cover"]}
     />
+    <Curtain />
     {tag && <span class="type-eyebrow absolute top-3 left-3 bg-surface-default px-2 py-1 uppercase">{tag}</span>}
     <span
       aria-hidden="true"

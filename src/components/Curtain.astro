@@ -1,0 +1,20 @@
+---
+/**
+ * Photo curtain reveal (Figma "05 · Motion principles" 03, D-091): seven
+ * strips in the surrounding surface color that retract upward when the
+ * parent `[data-curtain]` enters the viewport. Place it inside a positioned,
+ * clipped image box. Hidden with reduced motion or without JavaScript.
+ */
+interface Props {
+  /** Surface color around the photo (default: the page canvas). */
+  color?: string;
+}
+
+const { color } = Astro.props;
+---
+
+<span aria-hidden="true" class="curtain" style={color ? `--curtain-color: ${color}` : undefined}>
+  {Array.from({ length: 7 }, (_, strip) => (
+    <span style={`--strip: ${strip}`} />
+  ))}
+</span>

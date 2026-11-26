@@ -37,19 +37,25 @@ const channels = [
   route="contact"
 >
   <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-24">
-    <p class="type-eyebrow text-text-label uppercase">{t("nav.contact")}</p>
-    <h1 class="type-display-large">
+    <p class="type-eyebrow text-text-label uppercase" data-reveal>
+      {t("nav.contact")}
+    </p>
+    <h1 class="type-display-large" data-reveal style="--reveal-delay: 100ms">
       {t("contactPage.heading")}
       <br />
       {t("contactPage.headingSecond")}
     </h1>
-    <p class="type-body-large max-w-[48.75rem]">{t("contactPage.lead")}</p>
+    <p class="type-body-large max-w-[48.75rem]" data-reveal style="--reveal-delay: 200ms">
+      {t("contactPage.lead")}
+    </p>
   </section>
 
   <div class="container-site grid gap-12 pt-10 pb-section tablet:grid-cols-[minmax(0,520fr)_minmax(0,596fr)] tablet:gap-16 tablet:pt-12">
     <div class="flex flex-col gap-12">
-      <p class="type-body-large">{t("contactPage.text")}</p>
-      <ul class="border-b border-border-default">
+      <p class="type-body-large" data-reveal>
+        {t("contactPage.text")}
+      </p>
+      <ul class="border-b border-border-default" data-reveal style="--reveal-delay: 100ms">
         {channels.map(({ label, value, help, href, external }) => (
           <li class="border-t border-border-default">
             <a

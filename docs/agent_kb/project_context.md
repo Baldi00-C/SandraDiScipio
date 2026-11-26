@@ -33,6 +33,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/layouts/BaseLayout.astro` | Struttura HTML comune e lingua della pagina |
 | `src/layouts/PageLayout.astro` | Layout di ogni pagina: header, contenuto, footer e pulsante WhatsApp |
 | `src/scripts/` | Memoria della lingua scelta e apertura/chiusura del menu mobile |
+| `src/styles/motion.css`, `src/scripts/motion.ts`, `src/components/Curtain.astro` | Motion del design system (D-091): `data-reveal` per le entrate allo scroll, `data-curtain` + `<Curtain />` per le tende sulle foto; tutto disattivato con "riduci movimento" o senza JavaScript |
 | `src/styles/tokens.css` | Token derivati da Figma e classi tipografiche condivise |
 | `src/styles/global.css` | Import di font ospitati localmente, token e Tailwind |
 | `src/stories/`, `.storybook/` | Catalogo HTML del design system, basato sugli stessi stili del sito |

@@ -90,13 +90,21 @@ const boardPlaceholders = [
       {t("project.back")}
     </EditorialLink>
     <div class="flex flex-col gap-4">
-      <p class="type-eyebrow text-text-label uppercase">
+      <p class="type-eyebrow text-text-label uppercase" data-reveal>
         {t(isUniversity ? "project.university" : "project.professional")}
       </p>
-      <h1 class="type-display-large">{data.title}</h1>
-      <p class="type-body-large max-w-[48.75rem]">{data.lead}</p>
+      <h1 class="type-display-large" data-reveal style="--reveal-delay: 100ms">
+        {data.title}
+      </h1>
+      <p class="type-body-large max-w-[48.75rem]" data-reveal style="--reveal-delay: 200ms">
+        {data.lead}
+      </p>
     </div>
-    <dl class="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border-default pt-4 tablet:flex tablet:flex-wrap tablet:gap-x-12">
+    <dl
+      class="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border-default pt-4 tablet:flex tablet:flex-wrap tablet:gap-x-12"
+      data-reveal
+      style="--reveal-delay: 200ms"
+    >
       {facts.map(([label, value]) => (
         <div class="flex flex-col gap-1">
           <dt class="type-eyebrow text-text-label uppercase">{label}</dt>
@@ -116,7 +124,7 @@ const boardPlaceholders = [
     <section class="container-site pt-section">
       <div class="grid gap-8 tablet:grid-cols-12 tablet:gap-gutter">
         {data.solutions.length > 0 && (
-          <div class="flex flex-col gap-4 tablet:col-span-4">
+          <div class="flex flex-col gap-4 tablet:col-span-4" data-reveal>
             <h2 class="type-eyebrow text-text-label uppercase">{t("project.solutions")}</h2>
             <ul>
               {data.solutions.map((solution) => (
@@ -125,7 +133,11 @@ const boardPlaceholders = [
             </ul>
           </div>
         )}
-        <div class="type-body-large flex flex-col gap-4 tablet:col-span-7 tablet:col-start-6">
+        <div
+          class="type-body-large flex flex-col gap-4 tablet:col-span-7 tablet:col-start-6"
+          data-reveal
+          style="--reveal-delay: 100ms"
+        >
           <Content />
         </div>
       </div>
@@ -153,7 +165,9 @@ const boardPlaceholders = [
       />
       {data.beforeAfter.map((pair) => (
         <div class="flex flex-col gap-4">
-          <h3 class="type-h3">{pair.label}</h3>
+          <h3 class="type-h3" data-reveal>
+            {pair.label}
+          </h3>
           <div class="grid gap-4 tablet:grid-cols-2 tablet:gap-gutter">
             <ProjectFigure image={pair.before} span={6} locale={locale} tag={t("project.before")} />
             <ProjectFigure image={pair.after} span={6} locale={locale} tag={t("project.after")} />
@@ -177,7 +191,9 @@ const boardPlaceholders = [
 
   {isUniversity && (
     <section class="container-site flex flex-col gap-6 pt-12 pb-section tablet:gap-10 tablet:pt-16">
-      <h2 class="type-eyebrow text-text-label uppercase">{t("project.boards")}</h2>
+      <h2 class="type-eyebrow text-text-label uppercase" data-reveal>
+        {t("project.boards")}
+      </h2>
       {data.boards.length > 0 ? (
         <ProjectGallery images={data.boards} locale={locale} />
       ) : (
@@ -189,12 +205,15 @@ const boardPlaceholders = [
                   "type-body-small grid aspect-4/3 place-items-center bg-background-subtle text-text-secondary",
                   span,
                 ]}
+                data-reveal
               >
                 {label}
               </div>
             ))}
           </div>
-          <p class="type-caption text-text-secondary">{t("project.boardsPlaceholderNote")}</p>
+          <p class="type-caption text-text-secondary" data-reveal>
+            {t("project.boardsPlaceholderNote")}
+          </p>
         </>
       )}
     </section>
@@ -205,6 +224,7 @@ const boardPlaceholders = [
       <a
         href={pathFor("projects", locale, next.slug)}
         class="group flex items-start gap-6 border-t border-border-default pt-8 tablet:items-center"
+        data-reveal
       >
         {nextImage && (
           <Image
@@ -218,7 +238,10 @@ const boardPlaceholders = [
         <span class="flex flex-col gap-2">
           <span class="type-eyebrow text-text-label uppercase">{t("project.next")}</span>
           <span class="type-h2 decoration-1 underline-offset-[0.2em] transition-colors duration-fast ease-editorial group-hover:text-action-hover group-hover:underline">
-            {next.title}&nbsp;&nbsp;→
+            {next.title}&nbsp;&nbsp;
+            <span aria-hidden="true" class="motion-arrow">
+              →
+            </span>
           </span>
         </span>
       </a>

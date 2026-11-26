@@ -22,6 +22,10 @@ const { title, description, locale, route, subpath } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Motion runs only with JavaScript: without it everything is visible (D-091) -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
@@ -29,5 +33,8 @@ const { title, description, locale, route, subpath } = Astro.props;
   </head>
   <body class="min-h-screen">
     <slot />
+    <script>
+      import "../scripts/motion";
+    </script>
   </body>
 </html>
