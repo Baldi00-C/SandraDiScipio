@@ -1,11 +1,14 @@
 dist/
 .astro/
 node_modules/
+.cache/
+.husky/_/
 poc/
 package-lock.json
 coverage/
 playwright-report/
 test-results/
+storybook-static/
 
 # Markdown: Prettier pads tables with spaces and every new row rewrites the whole table
 *.md

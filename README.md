@@ -16,6 +16,8 @@ Requisiti, decisioni e modo di lavorare sono in [`docs/`](docs/README.md). Parti
 
 Istruzioni per agenti AI: [AGENTS.md](AGENTS.md).
 
+Knowledge base operativa: [docs/agent_kb/](docs/agent_kb/README.md), con mappa del codice, convenzioni e verifiche. Le [convenzioni e skill adottate](docs/agent_kb/proposals.md) descrivono anche sviluppo feature e review a costo contenuto.
+
 ## Stato
 
 | Area | Stato |
