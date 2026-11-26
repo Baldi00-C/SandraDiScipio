@@ -17,6 +17,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | --- | --- |
 | `src/pages/` | Pagine Astro; `/` porta alla lingua del visitatore (D-046) |
 | `src/pages/[lang]/index.astro` | Home provvisoria generata nelle tre lingue |
+| `src/pages/[lang]/[projects]/index.astro` | Elenco dei progetti (T-04.3, D-086) |
 | `src/pages/[lang]/[slug].astro` | Pagine segnaposto di `placeholderPages` (D-083): ogni task di pagina toglie la sua chiave |
 | `src/i18n/config.ts` | Lingue supportate e fallback inglese |
 | `src/i18n/routes.ts` | Chiavi delle pagine, slug tradotti, voci del menu (`mainNav`), segnaposto, `pathFor()` e `alternatesFor()` |
@@ -25,6 +26,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/lib/projects.ts`, `src/lib/project-entries.ts` | Funzioni dei progetti (ordine, progetto successivo, riga di dettagli, impaginazione delle gallerie) e lettura della collection per lingua |
 | `src/data/contact.ts` | Email, telefono, link WhatsApp con messaggio già scritto (D-076), partita IVA |
 | `src/i18n/ui/` | Dizionari dell'interfaccia; italiano come riferimento delle chiavi |
+| `src/components/classes.ts` | Classi Tailwind di `Button`, `ProjectCard`, `SectionHeading`, `ContactCta`, condivise con le storie (D-086) |
 | `src/components/` | Header con menu mobile, selettore lingua, footer, pulsante WhatsApp, logo SVG (`src/assets/brand/`) e metadati canonical/hreflang (D-082) |
 | `src/layouts/BaseLayout.astro` | Struttura HTML comune e lingua della pagina |
 | `src/layouts/PageLayout.astro` | Layout di ogni pagina: header, contenuto, footer e pulsante WhatsApp |

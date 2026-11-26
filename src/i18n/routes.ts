@@ -36,7 +36,6 @@ export const mainNav = [
 export const placeholderPages = [
   "about",
   "services",
-  "projects",
   "quote",
   "contact",
   "privacy",

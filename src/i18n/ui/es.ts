@@ -33,6 +33,22 @@ export const es: UiDictionary = {
   "footer.cookies": "Política de cookies",
   "footer.vat": "P. IVA",
   "footer.vatPending": "[pendiente]",
+  "projects.description":
+    "Proyectos de arquitectura e interiorismo de Sandra Di Scipio: trabajos profesionales y universitarios.",
+  "projects.heading": "Nuestros proyectos, nuestras historias.",
+  "projects.lead": "Una selección de trabajos que cuentan nuestra forma de proyectar y diseñar.",
+  "projects.countOne": "{count} proyecto",
+  "projects.countMany": "{count} proyectos",
+  "projects.comingSoon": "Próximamente",
+  "projects.professional": "Proyectos profesionales",
+  "projects.professionalLead": "Propuestas, renders y trabajos realizados para clientes particulares y empresas.",
+  "projects.university": "Proyectos universitarios",
+  "projects.universityLead": "Láminas, renders y conceptos de los proyectos de la carrera.",
+  "projects.universityPlaceholder":
+    "Marcador de posición: lista y material de los proyectos universitarios en camino antes del 15/12.",
+  "projects.ctaTitle": "¿Tienes un proyecto en mente?",
+  "projects.ctaText": "Todo gran proyecto nace de una primera idea y de una conversación.",
+  "cta.quote": "Solicita un presupuesto",
   "placeholder.eyebrow": "Página en construcción",
   "placeholder.lead": "El contenido de esta página está en preparación.",
 };

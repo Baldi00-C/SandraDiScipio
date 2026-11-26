@@ -25,7 +25,7 @@ Knowledge base operativa: [docs/agent_kb/](docs/agent_kb/README.md), con mappa d
 | Requisiti business V.0 | Chiusi |
 | Stack tecnologico | Deciso |
 | Design (mockup Figma) | Base comune fatta (F1): stile (T-02.2), elementi globali (T-02.3) e componenti comuni (T-02.4: pulsanti, card progetto, campi dei form, messaggi). Mockup delle pagine (F3) in corso: Progetti (T-04.1) e Contatti (T-05.1) fatti |
-| Sviluppo V.0 | In corso: setup tecnico (F2). Elementi globali (header, menu, footer, WhatsApp) e pagine segnaposto nelle tre lingue fatti (T-03.7). Progetti: content collection fatta (T-04.2) |
+| Sviluppo V.0 | In corso: setup tecnico (F2). Elementi globali (header, menu, footer, WhatsApp) e pagine segnaposto nelle tre lingue fatti (T-03.7). Progetti: content collection (T-04.2) e pagina elenco (T-04.3) fatte |
 
 ## Stack deciso
 

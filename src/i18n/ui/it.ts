@@ -35,6 +35,22 @@ export const it = {
   "footer.cookies": "Cookie Policy",
   "footer.vat": "P.IVA",
   "footer.vatPending": "[da fornire]",
+  "projects.description":
+    "Progetti di architettura e interior design di Sandra Di Scipio: lavori professionali e universitari.",
+  "projects.heading": "I nostri progetti, le nostre storie.",
+  "projects.lead": "Una selezione di lavori che raccontano il nostro approccio alla progettazione e al design.",
+  "projects.countOne": "{count} progetto",
+  "projects.countMany": "{count} progetti",
+  "projects.comingSoon": "In arrivo",
+  "projects.professional": "Progetti professionali",
+  "projects.professionalLead": "Proposte, render e lavori realizzati per clienti privati e aziende.",
+  "projects.university": "Progetti universitari",
+  "projects.universityLead": "Tavole, render e concept dei progetti del percorso di studi.",
+  "projects.universityPlaceholder":
+    "Segnaposto: elenco e materiale dei progetti universitari in arrivo entro il 15/12.",
+  "projects.ctaTitle": "Hai un progetto da realizzare?",
+  "projects.ctaText": "Ogni grande progetto nasce da una prima idea e da una conversazione.",
+  "cta.quote": "Richiedi un preventivo",
   "placeholder.eyebrow": "Pagina in costruzione",
   "placeholder.lead": "Il contenuto di questa pagina è in preparazione.",
 } as const;

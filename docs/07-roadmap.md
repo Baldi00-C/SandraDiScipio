@@ -210,7 +210,7 @@ Regole:
 | **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | IN CORSO |
 | T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | FATTO |
 | T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | FATTO |
-| T-04.3 | Pagina elenco con i gruppi Non conclusi e Conclusi | F3 | codice | T-04.1, T-04.2, T-03.7 | [#19](https://github.com/Baldi00-C/SandraDiScipio/issues/19) | DA FARE |
+| T-04.3 | Pagina elenco con i gruppi Non conclusi e Conclusi | F3 | codice | T-04.1, T-04.2, T-03.7 | [#19](https://github.com/Baldi00-C/SandraDiScipio/issues/19) | FATTO |
 | T-04.4 | Scheda progetto: parte digitale, parte interior, prima/dopo | F3 | codice | T-04.3 | [#20](https://github.com/Baldi00-C/SandraDiScipio/issues/20) | DA FARE |
 | **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | IN CORSO |
 | T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | FATTO |
