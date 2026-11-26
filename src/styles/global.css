@@ -17,14 +17,6 @@
 /* Stories are Tailwind classes written in TypeScript */
 @source "../stories";
 
-/*
- * TEMPORARY alias for pages built on the provisional T-03.1 tokens
- * (bg-accent). Remove it once those pages use the Figma names.
- */
-@theme {
-  --color-accent: var(--color-rose-deep);
-}
-
 @layer base {
   html {
     background-color: var(--color-background-canvas);
@@ -33,8 +25,69 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Keyboard focus: 2 px ring, 4 px away from the element (D-066) */
   :focus-visible {
     outline: 2px solid var(--color-focus-ring); /* border/focus */
-    outline-offset: 2px;
+    outline-offset: 4px;
+  }
+}
+
+/* Page content box: 1180 px wide with the page margin on smaller screens (D-060) */
+@utility container-site {
+  width: min(100% - 2 * var(--spacing-page), var(--container-site));
+  margin-inline: auto;
+}
+
+/* Text links of the header, language switcher and footer (D-066):
+   hover = rose-deep + underline, current page or locale = underline */
+@utility link-underline {
+  text-decoration-line: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: color var(--duration-fast) var(--ease-editorial);
+
+  &:hover {
+    color: var(--color-action-hover);
+    text-decoration-line: underline;
+  }
+
+  &[aria-current="page"] {
+    text-decoration-line: underline;
+  }
+}
+
+@layer components {
+  /* Mobile language dropdown (D-063): opens under the header, aligned right */
+  .language-panel {
+    position: fixed;
+    inset: auto;
+    top: calc(var(--spacing-header) - 0.25rem);
+    right: calc(var(--spacing-page) + 3rem);
+    margin: 0;
+    width: 10rem;
+  }
+
+  /* Full-screen mobile menu (D-062), a modal <dialog> */
+  .site-menu {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    background-color: var(--color-background-canvas);
+    color: var(--color-text-primary);
+  }
+
+  .site-menu::backdrop {
+    background-color: var(--color-background-canvas);
+  }
+}
+
+@layer base {
+  /* No page scroll behind the open mobile menu */
+  html:has(.site-menu[open]) {
+    overflow: hidden;
   }
 }

@@ -69,7 +69,7 @@ export const TypeScale: Story = {
   name: "Type scale",
   render: () =>
     page(`
-      ${pageHeader("02 / TYPOGRAPHY", "Type scale", "The 12 Sandra/* text styles from the Figma file, at desktop values (1440 px). The measurements under each name are read from the CSS.")}
+      ${pageHeader("02 / TYPOGRAPHY", "Type scale", "The 12 Sandra/* text styles from the Figma file: mobile values below 860 px, desktop values from 860 px (D-058). Resize the canvas to switch. The measurements under each name are read from the CSS.")}
       <ul class="divide-y divide-border-default">
         ${styles
           .map(

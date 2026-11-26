@@ -1,0 +1,69 @@
+---
+/**
+ * Site footer (D-065, Figma `Site footer`): logo and tagline, Contacts and
+ * Legal columns, legal line with the VAT number. On mobile the two link
+ * columns sit side by side. "Manage cookies" arrives with Iubenda (T-12.4,
+ * D-083); Instagram appears once there is a profile.
+ */
+import { contact, emailHref, phoneHref, whatsappHref } from "../data/contact";
+import { pathFor, useTranslations, type Locale } from "../i18n";
+import Logo from "./Logo.astro";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const newTab = t("contact.newTab");
+const year = new Date().getFullYear();
+
+const contactLinks = [
+  { label: t("contact.phone"), href: phoneHref(contact.phoneNumber), external: false },
+  { label: t("contact.email"), href: emailHref(contact.email), external: false },
+  { label: t("contact.whatsapp"), href: whatsappHref(t("whatsapp.message")), external: true },
+  ...(contact.instagram ? [{ label: "Instagram", href: contact.instagram, external: true }] : []),
+];
+const legalLinks = [
+  { label: t("footer.privacy"), href: pathFor("privacy", locale), external: false },
+  { label: t("footer.cookies"), href: pathFor("cookies", locale), external: false },
+];
+const legalLine = `© ${year} ${t("site.name")} · ${t("footer.vat")} ${contact.vatNumber || t("footer.vatPending")}`;
+const columns = [
+  { heading: t("contact.heading"), links: contactLinks },
+  { heading: t("footer.legal"), links: legalLinks },
+];
+---
+
+<footer class="bg-background-subtle pt-12 pb-8 tablet:pt-16">
+  <div class="container-site">
+    <div class="grid gap-10 tablet:grid-cols-12 tablet:gap-gutter">
+      <div class="flex flex-col gap-4 tablet:col-span-6">
+        <Logo variant="horizontal" class="h-12" />
+        <p class="type-body-small">{t("footer.tagline")}</p>
+      </div>
+      <div class="grid grid-cols-2 gap-4 tablet:col-span-6 tablet:gap-gutter">
+        {columns.map(({ heading, links }) => (
+          <div class="flex flex-col gap-3">
+            <h2 class="type-eyebrow text-text-label uppercase">{heading}</h2>
+            <ul class="flex flex-col gap-1">
+              {links.map(({ label, href, external }) => (
+                <li>
+                  <a
+                    href={href}
+                    class="link-underline type-body-small inline-flex min-h-8 items-center"
+                    {...(external ? { target: "_blank", rel: "noopener" } : {})}
+                  >
+                    {label}
+                    {external && <span class="sr-only"> ({newTab})</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+    <p class="type-caption mt-10 border-t border-border-default pt-6 text-text-secondary tablet:mt-12">{legalLine}</p>
+  </div>
+</footer>
