@@ -1,7 +1,7 @@
 ---
 title: Roadmap della V.0
 stato: DECISO
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Roadmap della V.0
@@ -25,7 +25,7 @@ Regole:
 | ID | Fase | Finestra indicativa | Dipende da | Stato |
 | --- | --- | --- | --- | --- |
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
-| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | IN CORSO |
+| F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | FATTO |
 | F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | IN CORSO |
 | F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
@@ -46,19 +46,28 @@ Fatto quando: l'utente approva la base comune in Figma.
 
 | Pagina Figma | Contenuto |
 | --- | --- |
-| Page 1 | 01 Foundations, 02 Components, 03 Patterns, 04 Claude Code handoff, 05 Motion principles |
+| Page 1 | 00 Logo, 01 Foundations, 02 Components, 03 Patterns, 04 Claude Code handoff, 05 Motion principles |
 | Website · Static design | 9 pagine statiche: Home, Chi sono, Servizi, Progetti, Progetto, Preventivatore, Contatti, Privacy Policy, Cookie Policy |
 
 | Elemento | Valori nel file |
 | --- | --- |
-| Variabili | 67 in 4 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography`, `Sandra · Motion` |
-| Colori base | ink `#1D1D1B`, rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
-| Font | Titoli Cormorant Garamond, testo Gothic A1. Nessuno stile di testo salvato |
-| Layout | Larghezza massima 1180 px, 12 colonne, margine 24 px (20 su mobile), cambi di layout a 480 e 860 px |
-| Componenti | Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Site header, Service card, Estimator step, Contact banner, Site footer |
+| Variabili | 89 in 5 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography` (Desktop e Mobile), `Sandra · Layout` (Desktop e Mobile), `Sandra · Motion` |
+| Colori base | ink `#1D1D1B`, stone `#989897` (solo logo), rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
+| Font | Titoli Cormorant Garamond, testo Gothic A1, licenza OFL 1.1, ospitati con Fontsource (D-057) |
+| Stili di testo | 12 stili `Sandra/*` legati alle variabili `type/*`, con modi Desktop e Mobile (D-058). Desktop/mobile in px: Hero 104 / 56, Display Large 76 / 44, H1 52 / 36, H2 40 / 30, H3 24 / 22, Body Large 18 / 17, Body 17 / 16, Body Small 14, Control 15 / 16, Link, Caption ed Eyebrow 12 |
+| Spaziature | Base 4 px: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120 (D-059). Margine pagina 24 / 20, spazio tra sezioni 120 / 72 |
+| Layout e griglia | Larghezza massima 1180 px, cambi di layout a 480 e 860 px. Stili `Sandra/Grid/Desktop` (1440 px, 12 colonne, spazio 24) e `Sandra/Grid/Mobile` (375 px, 4 colonne, margini 20, spazio 16) (D-060) |
+| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-061), Brand mark, Service card, Estimator step, Contact banner. Componenti comuni (T-02.4, tavola 02 · Components, tutti con auto-layout): Button (Primario e Secondario, taglie 52 e 44 px, D-067), Editorial link, Filter chip, Checkbox, Text field, Select, File upload, File item (D-069), Notice (D-070), Project card (D-068). Elementi globali (T-02.3): Site header (Desktop, Mobile, menu mobile aperto, D-062), Site footer (Desktop, Mobile, D-065), Nav link, Mobile nav link, Footer link, Language option, Language switcher (D-063), Menu button, WhatsApp button (D-064); stati hover, corrente e focus (D-066) |
+| Effetti | `Sandra/Shadow/Floating` (ombra del pulsante WhatsApp e della tendina lingua) |
 | Motion | Durate 0,25 s, 0,4 s, 1,1 s; curva `cubic-bezier(0.2, 0.7, 0.1, 1)` |
 
-Da fare nei task: T-02.2 verifica font ospitabili (D-032) e crea gli stili di testo; T-02.3 aggiunge, se mancano, selettore lingua e pulsante WhatsApp; T-02.4 verifica la card progetto.
+Tavola dello stile approvata in T-02.2: [T-02.2 · Type, spacing & grid](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=34-224) (Page 1), insieme a [01 · Foundations](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-82) e [00 · Logo](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=34-399).
+
+Elementi globali approvati in T-02.3: tavola [T-02.3 · Global elements](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1225) (Page 1) con i componenti [Site header](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-295), [Site footer](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1708), [Language switcher](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1293), [WhatsApp button](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-1323) e gli esempi d'uso desktop e mobile ([desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2050), [menu mobile aperto](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2139)). Header e footer sono aggiornati nelle 9 pagine statiche e in 03 · Patterns.
+
+Componenti comuni approvati in T-02.4: tavola [02 · Components](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-87) (Page 1) con [Button](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-203), [Text field](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-267), [Select](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2305), [File upload](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2443), [Notice](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=3-280) e [Project card](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2466); esempi d'uso nella sezione [T-02.4 · Common components](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=35-2470) (griglia progetti desktop e mobile, form mobile con pulsante a tutta larghezza). I form di Home e Contatti nelle pagine statiche sono riallineati ai nuovi campi.
+
+Con T-02.4 la base comune (F1) è completa: si passa ai mockup delle pagine (F3).
 
 ### F2 — Setup tecnico (D-038)
 
@@ -89,6 +98,15 @@ Per ogni pagina: mockup in Figma → approvazione dell'utente → sviluppo → P
 | 6 | Home | REQ-HOME-1 … 6 | Qui si decidono progetti in evidenza (D-012) ed elementi extra (D-016) |
 
 Fatto quando (M1): tutte e 6 le pagine sono in bozza online sull'indirizzo di anteprima.
+
+Mockup approvati, nella pagina Figma "Website · Static design":
+
+| Pagina | Sezione Figma | Decisioni |
+| --- | --- | --- |
+| Progetti: elenco, scheda professionale, scheda universitaria, visore immagini (desktop e mobile) | [T-04.1 · Progetti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2559): [elenco](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2560), [scheda](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2788), [visore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3170), [scheda universitaria](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3197) | D-071, D-072, D-073 |
+| Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
+
+I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 
 ### F4 — Completamento delle pagine (D-040, D-042)
 
@@ -125,6 +143,7 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 | Acquisto del dominio | Utente | 2027-01-10 | F5 |
 | Attivazione di Iubenda | Utente | 2027-01-10 | F5 |
 | Accesso a Figma per l'agente | Utente | prima di F1 | F1 (fornito il 2026-11-21) |
+| Partita IVA di Sandra (riga legale del footer, D-065) | Utente | 2027-01-10 | F5 |
 
 ## Temi rimandati e loro collocazione
 
@@ -173,28 +192,28 @@ Regole:
 | --- | --- | --- | --- | --- | --- | --- |
 | **S-01** | **Organizzazione del lavoro su GitHub** | F0 | docs | — | [#1](https://github.com/Baldi00-C/SandraDiScipio/issues/1) | FATTO |
 | T-01.1 | Label, milestone, storie e task su GitHub; numeri delle issue in questo file | F0 | docs | — | [#2](https://github.com/Baldi00-C/SandraDiScipio/issues/2) | FATTO |
-| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | IN CORSO |
+| **S-02** | **Base comune in Figma** | F1 | design | S-01 | [#3](https://github.com/Baldi00-C/SandraDiScipio/issues/3) | FATTO |
 | T-02.1 | Collegare Figma all'agente e creare il file del sito | F1 | design | — | [#4](https://github.com/Baldi00-C/SandraDiScipio/issues/4) | FATTO |
-| T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | DA FARE |
-| T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | DA FARE |
-| T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | DA FARE |
+| T-02.2 | Stile: colori, font, scala tipografica, spaziature, griglia (mobile e desktop) | F1 | design | T-02.1 | [#5](https://github.com/Baldi00-C/SandraDiScipio/issues/5) | FATTO |
+| T-02.3 | Elementi globali: menu, footer, selettore lingua, pulsante WhatsApp | F1 | design | T-02.2 | [#6](https://github.com/Baldi00-C/SandraDiScipio/issues/6) | FATTO |
+| T-02.4 | Componenti comuni: pulsanti, card progetto, campi dei form, messaggi di conferma ed errore | F1 | design | T-02.2 | [#7](https://github.com/Baldi00-C/SandraDiScipio/issues/7) | FATTO |
 | **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | FATTO |
-| T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | DA FARE |
+| T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | FATTO |
 | T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
 | T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | FATTO |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | DA FARE |
 | T-03.8 | Storybook con il design system dal Figma: token Tailwind, colori, tipografia, spaziature (D-055) | F2 | codice | T-02.1, T-03.1 | [#69](https://github.com/Baldi00-C/SandraDiScipio/issues/69) | FATTO |
-| T-03.9 | Knowledge base agenti, skill di sviluppo/review e convenzioni Prettier (D-056 … D-058) | F2 | docs | T-03.5, T-03.8 | [#72](https://github.com/Baldi00-C/SandraDiScipio/issues/72) | FATTO |
-| **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | DA FARE |
-| T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | DA FARE |
+| T-03.9 | Knowledge base agenti, skill di sviluppo/review e convenzioni Prettier (D-078 … D-081) | F2 | docs | T-03.5, T-03.8 | [#72](https://github.com/Baldi00-C/SandraDiScipio/issues/72) | FATTO |
+| **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | IN CORSO |
+| T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | FATTO |
 | T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | DA FARE |
 | T-04.3 | Pagina elenco con i gruppi Non conclusi e Conclusi | F3 | codice | T-04.1, T-04.2, T-03.7 | [#19](https://github.com/Baldi00-C/SandraDiScipio/issues/19) | DA FARE |
 | T-04.4 | Scheda progetto: parte digitale, parte interior, prima/dopo | F3 | codice | T-04.3 | [#20](https://github.com/Baldi00-C/SandraDiScipio/issues/20) | DA FARE |
-| **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | DA FARE |
-| T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | DA FARE |
+| **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | IN CORSO |
+| T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | FATTO |
 | T-05.2 | Pagina con WhatsApp (messaggio precompilato), email, telefono | F3 | codice | T-05.1, T-03.7 | [#23](https://github.com/Baldi00-C/SandraDiScipio/issues/23) | DA FARE |
 | T-05.3 | Form contatti ed endpoint: email a Sandra e copia all'utente con Resend, modelli per lingua | F3 | codice | T-05.2 | [#24](https://github.com/Baldi00-C/SandraDiScipio/issues/24) | DA FARE |
 | T-05.4 | Anti-spam: Turnstile, honeypot, limite di invii | F3 | codice | T-05.3 | [#25](https://github.com/Baldi00-C/SandraDiScipio/issues/25) | DA FARE |

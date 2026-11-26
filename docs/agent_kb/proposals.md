@@ -1,12 +1,12 @@
 ---
 title: Convenzioni adottate e origine delle skill
-stato: ADOTTATO — D-058
+stato: ADOTTATO — D-080
 ultimo_aggiornamento: 2026-11-21
 ---
 
 # Convenzioni e skill adottate
 
-Questa pagina conserva l'origine del confronto e le convenzioni adottate con D-058. Dopo aver ricevuto l'elenco, l'utente ha autorizzato la prima PR, richiesto una skill di sviluppo feature con test e Storybook e scelto review poco costose. Le skill sono versionate in `.agents/skills/`; non autorizzano merge, deploy o commenti a terzi oltre la richiesta in corso.
+Questa pagina conserva l'origine del confronto e le convenzioni adottate con D-080. Dopo aver ricevuto l'elenco, l'utente ha autorizzato la prima PR, richiesto una skill di sviluppo feature con test e Storybook e scelto review poco costose. Le skill sono versionate in `.agents/skills/`; non autorizzano merge, deploy o commenti a terzi oltre la richiesta in corso.
 
 ## Metodo del confronto
 
@@ -23,9 +23,9 @@ Le fonti consultate vengono indicate nella chat di accompagnamento. Questa docum
 - Stesso sistema di token tra design e codice; niente stili inventati fuori dal design approvato (D-024, D-055).
 - Segreti fuori dal repository; email vere escluse dai test automatici (D-035, D-036).
 
-Il profilo Prettier è già introdotto con D-057 su richiesta dell'utente. Nei due progetti TypeScript esaminati coincide; non è una preferenza universale dedotta da ogni repository.
+Il profilo Prettier è già introdotto con D-079 su richiesta dell'utente. Nei due progetti TypeScript esaminati coincide; non è una preferenza universale dedotta da ogni repository.
 
-## Regole adottate (D-058)
+## Regole adottate (D-080)
 
 | Riferimento | Regola | Evidenza e adattamento |
 | --- | --- | --- |

@@ -12,7 +12,7 @@ ultimo_aggiornamento: 2026-11-21
 - Testi rivolti ai visitatori nella lingua del contenuto: italiano, inglese o spagnolo. Non tradurre in inglese i valori dei dizionari IT/ES per applicare la regola del codice.
 - Nomi propri e slug pubblici tradotti mantengono la forma prevista. Il POC resta archiviato così com'è.
 
-## Prettier ed editor (D-052, D-057)
+## Prettier ed editor (D-052, D-079)
 
 La configurazione vincolante è [`.prettierrc.json`](../../.prettierrc.json); [`.editorconfig`](../../.editorconfig) uniforma l'editor. Il profilo comune rilevato nell'app e nel Web SDK dei progetti recenti è stato adattato al sito:
 

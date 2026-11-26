@@ -5,14 +5,14 @@ ultimo_aggiornamento: 2026-11-21
 
 # Knowledge base per agenti
 
-Parti da [../README.md](../README.md), poi leggi l'approfondimento relativo al lavoro. Questa base rende navigabile la conoscenza del progetto senza sostituire requisiti, roadmap o registro delle decisioni (D-056).
+Parti da [../README.md](../README.md), poi leggi l'approfondimento relativo al lavoro. Questa base rende navigabile la conoscenza del progetto senza sostituire requisiti, roadmap o registro delle decisioni (D-078).
 
 | Documento | Quando leggerlo |
 | --- | --- |
 | [project_context.md](project_context.md) | Per capire prodotto, struttura e differenza tra ciò che esiste e ciò che è previsto |
 | [code_conventions.md](code_conventions.md) | Prima di scrivere codice, traduzioni, componenti o configurazioni |
 | [verification_and_prs.md](verification_and_prs.md) | Prima di verificare una modifica o preparare una pull request |
-| [proposals.md](proposals.md) | Per consultare convenzioni e skill adottate con D-058 |
+| [proposals.md](proposals.md) | Per consultare convenzioni e skill adottate con D-080 |
 
 ## Manutenzione
 

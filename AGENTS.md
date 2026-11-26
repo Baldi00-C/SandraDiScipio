@@ -20,9 +20,9 @@ Dopo l'indice di progetto, consulta [docs/agent_kb/README.md](docs/agent_kb/READ
 - [Convenzioni del codice](docs/agent_kb/code_conventions.md): lingua, Prettier, TypeScript, multilingua e design system.
 - [Verifiche e pull request](docs/agent_kb/verification_and_prs.md): comandi reali, controlli ancora da implementare e flusso Git.
 
-Questi documenti raccolgono le decisioni esistenti; i requisiti e il registro in `docs/` restano le fonti canoniche. [Convenzioni e skill](docs/agent_kb/proposals.md) descrive le pratiche adottate con D-058. `CLAUDE.md` rimanda a questo file per mantenere una sola base di istruzioni.
+Questi documenti raccolgono le decisioni esistenti; i requisiti e il registro in `docs/` restano le fonti canoniche. [Convenzioni e skill](docs/agent_kb/proposals.md) descrive le pratiche adottate con D-080. `CLAUDE.md` rimanda a questo file per mantenere una sola base di istruzioni.
 
-## Skill del repository (D-058)
+## Skill del repository (D-080)
 
 Le skill condivise sono in `.agents/skills/`. Leggi solo quella pertinente:
 

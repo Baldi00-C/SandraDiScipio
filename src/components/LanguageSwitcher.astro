@@ -18,6 +18,7 @@ const t = useTranslations(locale);
           href={pathFor(route, targetLocale)}
           hreflang={targetLocale}
           lang={targetLocale}
+          data-locale-choice={targetLocale}
           aria-current={targetLocale === locale ? "page" : undefined}
           class:list={["underline-offset-4 hover:underline", targetLocale === locale && "font-semibold underline"]}
         >
@@ -27,3 +28,7 @@ const t = useTranslations(locale);
     ))}
   </ul>
 </nav>
+
+<script>
+  import "../scripts/remember-locale";
+</script>
