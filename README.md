@@ -23,14 +23,14 @@ Istruzioni per agenti AI: [AGENTS.md](AGENTS.md).
 | Requisiti business V.0 | Chiusi |
 | Stack tecnologico | Deciso |
 | Design (mockup Figma) | In corso |
-| Sviluppo V.0 | In corso: setup tecnico (F2) |
+| Sviluppo V.0 | In corso: setup tecnico (F2). Fatti T-03.1, T-03.2, T-03.3, T-03.5; in corso T-03.4 (Cloudflare) |
 
 ## Stack deciso
 
 Dettagli e motivazioni in [docs/06-stack-tecnologico.md](docs/06-stack-tecnologico.md).
 
 - **Astro** + **TypeScript**, **Tailwind CSS 4**
-- Multilingua con indirizzi `/it/`, `/en/`, `/es/` e slug tradotti
+- Multilingua con indirizzi `/it/`, `/en/`, `/es/` e slug tradotti; la radice `/` porta alla lingua scelta in precedenza, altrimenti a quella del browser, altrimenti all'inglese (D-046, D-056)
 - Hosting su **Cloudflare** (Workers con asset statici), dominio `sandradiscipio.com`
 - Email dei form con **Resend** (a Sandra e copia all'utente, nella sua lingua)
 - Anti-spam con **Cloudflare Turnstile**, analytics senza cookie (**Cloudflare Web Analytics**), policy con **Iubenda**
@@ -61,6 +61,41 @@ Il sito è su http://localhost:4321.
 | `npm run verify` | Tutti i controlli della CI, in sequenza |
 
 Prima di ogni commit Husky esegue ESLint e Prettier sui file modificati. Su GitHub `main` accetta solo PR con il controllo `Checks` verde (D-053).
+
+## Pubblicazione su Cloudflare
+
+Il sito gira su Cloudflare Workers con asset statici (D-026, D-074). Il deploy lo fa **Workers Builds**, l'integrazione Git di Cloudflare: nessun token Cloudflare nel repository né in GitHub.
+
+| Evento | Risultato |
+| --- | --- |
+| Push su `main` (PR unita) | Produzione: `npx wrangler deploy` |
+| Push su un altro branch / PR | Anteprima con indirizzo proprio: `npx wrangler versions upload`, link nella PR |
+
+Fino alla pubblicazione (M2) il sito non è indicizzabile: `public/_headers` aggiunge `X-Robots-Tag: noindex, nofollow` e `public/robots.txt` blocca tutto. Si tolgono in T-14.1.
+
+Provare in locale con il runtime di Cloudflare:
+
+```bash
+npm run build && npm run preview
+```
+
+### Configurazione su Cloudflare (una volta sola, la fa il titolare dell'account)
+
+1. Cloudflare → **Workers & Pages** → **Create** → **Import a repository** → collegare GitHub e scegliere `Baldi00-C/SandraDiScipio`.
+2. Nome del progetto: `sandra-di-scipio` (deve essere uguale a `name` in `wrangler.jsonc`).
+3. Impostazioni di build:
+
+   | Campo | Valore |
+   | --- | --- |
+   | Build command | `npm run build` |
+   | Deploy command | `npx wrangler deploy` |
+   | Non-production branch deploy command | `npx wrangler versions upload` |
+   | Root directory | `/` |
+   | Production branch | `main` |
+   | Builds for non-production branches | attivo |
+
+4. Variabili di build: `SITE_URL` = indirizzo `*.workers.dev` del Worker (es. `https://sandra-di-scipio.<sottodominio>.workers.dev`), poi `sandradiscipio.com` in T-14.1.
+5. Nelle impostazioni del Worker lasciare attivi **workers.dev** e **Preview URLs**.
 
 ## POC archiviato
 

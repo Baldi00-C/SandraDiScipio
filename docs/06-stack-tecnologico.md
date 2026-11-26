@@ -71,6 +71,8 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 - Cloudflare Workers con asset statici e adapter ufficiale `@astrojs/cloudflare`.
 - Motivo principale: accetta richieste fino a 100 MB, quindi gli allegati arrivano all'endpoint senza storage intermedio. Vercel (4,5 MB) e Netlify (circa 6 MB) avrebbero richiesto soluzioni in più.
 - Rischio noto: il piano gratuito ha un limite di tempo CPU per richiesta. Se l'invio con allegati lo supera, si passa al piano Workers a pagamento (5 $/mese). Da verificare in sviluppo con allegati da 20 MB.
+- Deploy con Workers Builds (→ D-074): `main` va in produzione, ogni PR ha la sua anteprima. Configurazione in `wrangler.jsonc`, passaggi su Cloudflare nel README.
+- Fino a M2 il sito non è indicizzabile: `X-Robots-Tag: noindex` e `robots.txt` che blocca tutto (D-034, D-074).
 
 ### Email (D-027, D-014, D-009)
 

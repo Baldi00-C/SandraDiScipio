@@ -23,7 +23,7 @@ Sito portfolio multilingua (IT, EN, ES) per **Sandra Di Scipio**, architetta e i
 | Roadmap V.0 | DEFINITA | [07-roadmap.md](07-roadmap.md): bozza completa entro 2026-12-15, online entro 2027-01-31. Storie e task su [GitHub Issues](https://github.com/Baldi00-C/SandraDiScipio/issues) |
 | Design (mockup Figma) | IN CORSO | File [SandraDiScipio](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio) collegato (D-048); adottata la guida di stile esistente come base (D-049). Prossimo: T-02.2 |
 | Scelte tecniche (stack, hosting, email) | DECISE | [06-stack-tecnologico.md](06-stack-tecnologico.md): Astro + Tailwind su Cloudflare, email con Resend |
-| Sviluppo V.0 | IN CORSO | Setup tecnico (F2) in parallelo alla base Figma (D-038). T-03.1 fatto: nuovo progetto in `src/`, POC in `poc/` (D-050). T-03.2 fatto: struttura `/it/` `/en/` `/es/` (D-051). T-03.3 fatto: lingua del visitatore sulla radice (D-056). T-03.5 fatto: test, lint, formattazione e CI (D-052), `main` protetto (D-053). Prossimo: T-03.4 |
+| Sviluppo V.0 | IN CORSO | Setup tecnico (F2) in parallelo alla base Figma (D-038). T-03.1 fatto: nuovo progetto in `src/`, POC in `poc/` (D-050). T-03.2 fatto: struttura `/it/` `/en/` `/es/` (D-051). T-03.3 fatto: lingua del visitatore sulla radice (D-056). T-03.5 fatto: test, lint, formattazione e CI (D-052), `main` protetto (D-053). In corso: T-03.4, deploy su Cloudflare (D-074) |
 
 ## Stato del codice (importante)
 

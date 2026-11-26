@@ -1,0 +1,4 @@
+# Until the V.0 launch (M2) the site must not be indexed (D-034, T-03.4).
+# T-14.1 replaces this file with the public rules and the sitemap.
+User-agent: *
+Disallow: /

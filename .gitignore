@@ -4,6 +4,7 @@ node_modules/
 # Astro build
 dist/
 .astro/
+.wrangler/
 
 # Secrets and sensitive config (NEVER on GitHub: the repo is public)
 .env

@@ -182,7 +182,7 @@ Regole:
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | FATTO |
 | T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | FATTO |
-| T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
+| T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | IN CORSO |
 | T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | FATTO |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | DA FARE |
@@ -239,7 +239,7 @@ Regole:
 | T-13.1 | Revisione umana unica dei testi EN/ES e correzioni (D-040) | F5 | contenuti | S-11 | [#60](https://github.com/Baldi00-C/SandraDiScipio/issues/60) | DA FARE |
 | T-13.2 | Collaudo finale: form e questionari con email vere, Lighthouse | F5 | docs | T-12.3, T-13.1 | [#61](https://github.com/Baldi00-C/SandraDiScipio/issues/61) | DA FARE |
 | **S-14** | **Pubblicazione** | F5 | infrastruttura | S-13 | [#62](https://github.com/Baldi00-C/SandraDiScipio/issues/62) | DA FARE |
-| T-14.1 | Collegare il dominio, attivare l'indicizzazione, registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
+| T-14.1 | Collegare il dominio, attivare l'indicizzazione (togliere `X-Robots-Tag` da `public/_headers` e il blocco in `robots.txt`, D-074), registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
 
 ## Primo step
 

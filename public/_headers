@@ -1,0 +1,4 @@
+# Until the V.0 launch (M2) the site must not be indexed (D-034, T-03.4).
+# Remove this rule in T-14.1, when the domain goes live.
+/*
+  X-Robots-Tag: noindex, nofollow
