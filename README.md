@@ -25,7 +25,7 @@ Knowledge base operativa: [docs/agent_kb/](docs/agent_kb/README.md), con mappa d
 | Requisiti business V.0 | Chiusi |
 | Stack tecnologico | Deciso |
 | Design (mockup Figma) | Base comune fatta (F1): stile (T-02.2), elementi globali (T-02.3) e componenti comuni (T-02.4: pulsanti, card progetto, campi dei form, messaggi). Mockup delle pagine (F3) in corso: Progetti (T-04.1) e Contatti (T-05.1) fatti |
-| Sviluppo V.0 | In corso: setup tecnico (F2). Elementi globali (header, menu, footer, WhatsApp) e pagine segnaposto nelle tre lingue fatti (T-03.7). Deploy su Cloudflare con anteprime delle PR fatto (T-03.4). Progetti in bozza fatti: content collection (T-04.2), elenco (T-04.3) e scheda con visore delle immagini (T-04.4) |
+| Sviluppo V.0 | In corso: setup tecnico (F2). Elementi globali (header, menu, footer, WhatsApp) e pagine segnaposto nelle tre lingue fatti (T-03.7). Deploy su Cloudflare con anteprime delle PR fatto (T-03.4). Progetti in bozza fatti: content collection (T-04.2), elenco (T-04.3) e scheda con visore delle immagini (T-04.4). Contatti: pagina con recapiti (T-05.2), form in arrivo (T-05.3) |
 
 ## Stack deciso
 
@@ -66,7 +66,7 @@ Prima di ogni commit Husky esegue ESLint e Prettier sui file modificati. Su GitH
 
 ## Pubblicazione su Cloudflare
 
-Il sito gira su Cloudflare Workers con asset statici (D-026, D-088). Il deploy lo fa **Workers Builds**, l'integrazione Git di Cloudflare: nessun token Cloudflare nel repository né in GitHub.
+Il sito gira su Cloudflare Workers con asset statici (D-026, D-089). Il deploy lo fa **Workers Builds**, l'integrazione Git di Cloudflare: nessun token Cloudflare nel repository né in GitHub.
 
 | Evento | Risultato |
 | --- | --- |

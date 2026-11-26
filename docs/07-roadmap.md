@@ -214,7 +214,7 @@ Regole:
 | T-04.4 | Scheda progetto: parte digitale, parte interior, prima/dopo | F3 | codice | T-04.3 | [#20](https://github.com/Baldi00-C/SandraDiScipio/issues/20) | FATTO |
 | **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | IN CORSO |
 | T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | FATTO |
-| T-05.2 | Pagina con WhatsApp (messaggio precompilato), email, telefono | F3 | codice | T-05.1, T-03.7 | [#23](https://github.com/Baldi00-C/SandraDiScipio/issues/23) | DA FARE |
+| T-05.2 | Pagina con WhatsApp (messaggio precompilato), email, telefono | F3 | codice | T-05.1, T-03.7 | [#23](https://github.com/Baldi00-C/SandraDiScipio/issues/23) | FATTO |
 | T-05.3 | Form contatti ed endpoint: email a Sandra e copia all'utente con Resend, modelli per lingua | F3 | codice | T-05.2 | [#24](https://github.com/Baldi00-C/SandraDiScipio/issues/24) | DA FARE |
 | T-05.4 | Anti-spam: Turnstile, honeypot, limite di invii | F3 | codice | T-05.3 | [#25](https://github.com/Baldi00-C/SandraDiScipio/issues/25) | DA FARE |
 | **S-06** | **Chi sono in bozza** | F3 | codice | S-05 | [#26](https://github.com/Baldi00-C/SandraDiScipio/issues/26) | DA FARE |
@@ -259,7 +259,7 @@ Regole:
 | T-13.1 | Revisione umana unica dei testi EN/ES e correzioni (D-040) | F5 | contenuti | S-11 | [#60](https://github.com/Baldi00-C/SandraDiScipio/issues/60) | DA FARE |
 | T-13.2 | Collaudo finale: form e questionari con email vere, Lighthouse | F5 | docs | T-12.3, T-13.1 | [#61](https://github.com/Baldi00-C/SandraDiScipio/issues/61) | DA FARE |
 | **S-14** | **Pubblicazione** | F5 | infrastruttura | S-13 | [#62](https://github.com/Baldi00-C/SandraDiScipio/issues/62) | DA FARE |
-| T-14.1 | Collegare il dominio, attivare l'indicizzazione (togliere `X-Robots-Tag` da `public/_headers` e il blocco in `robots.txt`, D-088), registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
+| T-14.1 | Collegare il dominio, attivare l'indicizzazione (togliere `X-Robots-Tag` da `public/_headers` e il blocco in `robots.txt`, D-089), registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
 
 ## Primo step
 
