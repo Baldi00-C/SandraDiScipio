@@ -15,7 +15,15 @@ const { href, arrow = "forward" } = Astro.props;
 ---
 
 <a href={href} class={editorialLinkClasses}>
-  {arrow === "back" && <span aria-hidden="true">←</span>}
+  {arrow === "back" && (
+    <span aria-hidden="true" class="motion-arrow motion-arrow-back">
+      ←
+    </span>
+  )}
   <slot />
-  {arrow === "forward" && <span aria-hidden="true">→</span>}
+  {arrow === "forward" && (
+    <span aria-hidden="true" class="motion-arrow">
+      →
+    </span>
+  )}
 </a>

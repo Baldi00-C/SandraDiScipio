@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Sandra Di Scipio — Motion (Figma "05 · Motion principles", D-091)
+   Tokens: duration/fast 250 ms, base 400 ms, reveal 1.1 s, easing/editorial.
+   Everything moves only when the visitor accepts motion
+   (prefers-reduced-motion: no-preference) and JavaScript is running
+   (`js` class set in BaseLayout): otherwise text and photos are already in
+   their final place (reduced motion is a first-class state).
+   ========================================================================== */
+
+@theme {
+  /* 03 / Photo curtain reveal */
+  --ease-curtain: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* Curtain strips are decoration only: hidden unless they can animate */
+.curtain {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 12 / Page feedback: a new page fades in over 700 ms */
+  html.js body {
+    animation: page-fade 700ms var(--ease-editorial) both;
+  }
+
+  /* 02 / Scroll entrances: fade in while rising 46 px, 1 s, editorial
+     easing; group delays 0 / 100 / 200 ms via --reveal-delay */
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(46px);
+    transition:
+      opacity 1000ms var(--ease-editorial),
+      transform 1000ms var(--ease-editorial);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html.js [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 03 / Photo curtain reveal: 7 vertical strips in the surrounding surface
+     color retract upward, 80 ms apart, 1.1 s; the image itself never fades */
+  html.js .curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    pointer-events: none;
+  }
+
+  html.js .curtain > span {
+    flex: 1;
+    margin-right: -1px; /* no hairline gaps between strips */
+    background-color: var(--curtain-color, var(--color-background-canvas));
+    transform-origin: top;
+    transition: transform var(--duration-reveal) var(--ease-curtain);
+    transition-delay: calc(var(--strip) * 80ms);
+  }
+
+  html.js .is-revealed > .curtain > span,
+  html.js .is-revealed .curtain > span {
+    transform: scaleY(0);
+  }
+
+  /* 12 / Editorial arrows move 8 px over 400 ms on hover */
+  .motion-arrow {
+    display: inline-block;
+    transition: transform var(--duration-base) var(--ease-editorial);
+  }
+
+  .group:hover .motion-arrow,
+  a:hover > .motion-arrow {
+    transform: translateX(8px);
+  }
+
+  .group:hover .motion-arrow-back,
+  a:hover > .motion-arrow-back {
+    transform: translateX(-8px);
+  }
+
+  /* 10 / Continuous accents: WhatsApp halo, 100 % → 145 %, fading, 2.8 s */
+  .whatsapp-halo {
+    animation: halo 2.8s ease-out infinite;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes halo {
+  from {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.45);
+  }
+}

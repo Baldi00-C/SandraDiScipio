@@ -9,6 +9,7 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 
 import { projectCardClasses as classes } from "./classes";
+import Curtain from "./Curtain.astro";
 
 interface Props {
   href?: string;
@@ -23,7 +24,7 @@ const Tag = href ? "a" : "div";
 ---
 
 <Tag href={href} class={classes.root}>
-  <div class={classes.media}>
+  <div class={classes.media} data-curtain>
     {image && (
       <Image
         src={image}
@@ -33,6 +34,7 @@ const Tag = href ? "a" : "div";
         class={classes.image}
       />
     )}
+    {image && <Curtain />}
   </div>
   <div class={classes.text}>
     <h3 class={classes.title}>{title}</h3>

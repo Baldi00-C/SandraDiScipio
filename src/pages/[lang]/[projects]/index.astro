@@ -50,9 +50,15 @@ const groups = [
   route="projects"
 >
   <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-24">
-    <p class="type-eyebrow text-text-label uppercase">{t("nav.projects")}</p>
-    <h1 class="type-display-large">{t("projects.heading")}</h1>
-    <p class="type-body-large max-w-[48.75rem]">{t("projects.lead")}</p>
+    <p class="type-eyebrow text-text-label uppercase" data-reveal>
+      {t("nav.projects")}
+    </p>
+    <h1 class="type-display-large" data-reveal style="--reveal-delay: 100ms">
+      {t("projects.heading")}
+    </h1>
+    <p class="type-body-large max-w-[48.75rem]" data-reveal style="--reveal-delay: 200ms">
+      {t("projects.lead")}
+    </p>
   </section>
 
   {groups.map((group, index) => (
@@ -70,8 +76,8 @@ const groups = [
         description={group.lead}
       />
       <ul class="grid grid-cols-1 gap-10 tablet:grid-cols-3 tablet:gap-gutter">
-        {group.projects.map(({ entry, ...project }) => (
-          <li>
+        {group.projects.map(({ entry, ...project }, cardIndex) => (
+          <li data-reveal style={`--reveal-delay: ${(cardIndex % 3) * 100}ms`}>
             <ProjectCard
               href={pathFor("projects", locale, project.slug)}
               title={project.title}
@@ -82,7 +88,11 @@ const groups = [
           </li>
         ))}
       </ul>
-      {group.hasPlaceholders && <p class="type-caption text-text-secondary">{t("projects.universityPlaceholder")}</p>}
+      {group.hasPlaceholders && (
+        <p class="type-caption text-text-secondary" data-reveal>
+          {t("projects.universityPlaceholder")}
+        </p>
+      )}
     </section>
   ))}
 

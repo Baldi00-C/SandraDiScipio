@@ -1,7 +1,8 @@
 ---
 /**
  * Floating WhatsApp button (D-064): ink circle, white icon, rose-deep hover,
- * bottom right on every page. 48 px at 16 px from the edges on mobile,
+ * bottom right on every page, with a soft pulsing halo (D-091).
+ * 48 px at 16 px from the edges on mobile,
  * 56 px at 24 px from 860 px. The open mobile menu covers it.
  */
 import { whatsappHref } from "../data/contact";
@@ -23,5 +24,6 @@ const t = useTranslations(locale);
   aria-label={`${t("whatsapp.label")} (${t("contact.newTab")})`}
   class="fixed right-4 bottom-4 z-40 inline-flex size-12 items-center justify-center rounded-pill bg-action-default text-action-label shadow-floating transition-colors duration-(--duration-fast) ease-editorial hover:bg-action-hover tablet:right-6 tablet:bottom-6 tablet:size-14"
 >
-  <WhatsAppIcon class="size-6 tablet:size-7" />
+  <span aria-hidden="true" class="whatsapp-halo absolute inset-0 rounded-pill bg-action-default"></span>
+  <WhatsAppIcon class="relative size-6 tablet:size-7" />
 </a>

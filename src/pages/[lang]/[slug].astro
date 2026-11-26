@@ -29,8 +29,14 @@ const title = t(routeLabels[page]);
 
 <PageLayout title={`${title} — ${t("site.name")}`} locale={lang} route={page}>
   <section class="container-site py-section">
-    <p class="type-eyebrow text-text-label uppercase">{t("placeholder.eyebrow")}</p>
-    <h1 class="type-h1 mt-4">{title}</h1>
-    <p class="type-body-large mt-6 max-w-prose text-text-secondary">{t("placeholder.lead")}</p>
+    <p class="type-eyebrow text-text-label uppercase" data-reveal>
+      {t("placeholder.eyebrow")}
+    </p>
+    <h1 class="type-h1 mt-4" data-reveal style="--reveal-delay: 100ms">
+      {title}
+    </h1>
+    <p class="type-body-large mt-6 max-w-prose text-text-secondary" data-reveal style="--reveal-delay: 200ms">
+      {t("placeholder.lead")}
+    </p>
   </section>
 </PageLayout>
