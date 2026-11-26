@@ -16,7 +16,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | Percorso | Responsabilità |
 | --- | --- |
 | `src/pages/` | Pagine Astro; `/` porta alla lingua del visitatore (D-046) |
-| `src/pages/[lang]/index.astro` | Home (T-09.3, D-089): immagini di esempio in `src/assets/home/`, progetti in evidenza con `src/lib/home.ts` e `src/scripts/home-slider.ts` |
+| `src/pages/[lang]/index.astro` | Home (T-09.3, D-090): immagini di esempio in `src/assets/home/`, progetti in evidenza con `src/lib/home.ts` e `src/scripts/home-slider.ts` |
 | `src/pages/[lang]/[projects]/index.astro` | Elenco dei progetti (T-04.3, D-086) |
 | `src/pages/[lang]/[projects]/[project].astro` | Scheda progetto con visore delle immagini (T-04.4, D-087); `src/scripts/image-viewer.ts` e `src/lib/viewer.ts` |
 | `src/pages/[lang]/[contact]/index.astro` | Pagina Contatti con recapiti (T-05.2, D-088) |

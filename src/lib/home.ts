@@ -1,5 +1,5 @@
 /**
- * Pure helpers for the Home page (D-089).
+ * Pure helpers for the Home page (D-090).
  */
 import { isDrawing, sortProjects, type ProjectGroup, type ProjectImageKind } from "./projects";
 
@@ -11,7 +11,7 @@ interface FeaturedCandidate {
 }
 
 /**
- * Projects shown in the Home slider (D-012, D-089): professional projects
+ * Projects shown in the Home slider (D-012, D-090): professional projects
  * with real material, in display order. Placeholders never appear.
  */
 export function featuredProjects<T extends FeaturedCandidate>(projects: readonly T[]): T[] {

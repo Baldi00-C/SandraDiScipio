@@ -105,7 +105,7 @@ Mockup approvati, nella pagina Figma "Website · Static design":
 | --- | --- | --- |
 | Progetti: elenco, scheda professionale, scheda universitaria, visore immagini (desktop e mobile) | [T-04.1 · Progetti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2559): [elenco](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2560), [scheda](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2788), [visore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3170), [scheda universitaria](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3197) | D-071, D-072, D-073 |
 | Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
-| Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-089 |
+| Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-090 |
 
 I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 
@@ -150,8 +150,8 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 
 | Tema | Decisione | Fase |
 | --- | --- | --- |
-| Progetti in evidenza in Home | D-012 | Deciso: D-089 |
-| Elementi extra in Home | D-016 | Deciso: nessuno nella bozza (D-089) |
+| Progetti in evidenza in Home | D-012 | Deciso: D-090 |
+| Elementi extra in Home | D-016 | Deciso: nessuno nella bozza (D-090) |
 | Contenuti Chi sono | D-008 | F3 (segnaposto), F4 (reali) |
 | Progetti universitari | D-013 | F3 (segnaposto), F4 (reali) |
 | Revisione delle domande dei questionari | D-019 | F3, Preventivatore |
@@ -202,7 +202,7 @@ Regole:
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | FATTO |
 | T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | FATTO |
-| T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
+| T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | FATTO |
 | T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | FATTO |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | FATTO |
@@ -260,7 +260,7 @@ Regole:
 | T-13.1 | Revisione umana unica dei testi EN/ES e correzioni (D-040) | F5 | contenuti | S-11 | [#60](https://github.com/Baldi00-C/SandraDiScipio/issues/60) | DA FARE |
 | T-13.2 | Collaudo finale: form e questionari con email vere, Lighthouse | F5 | docs | T-12.3, T-13.1 | [#61](https://github.com/Baldi00-C/SandraDiScipio/issues/61) | DA FARE |
 | **S-14** | **Pubblicazione** | F5 | infrastruttura | S-13 | [#62](https://github.com/Baldi00-C/SandraDiScipio/issues/62) | DA FARE |
-| T-14.1 | Collegare il dominio, attivare l'indicizzazione, registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
+| T-14.1 | Collegare il dominio, attivare l'indicizzazione (togliere `X-Robots-Tag` da `public/_headers` e il blocco in `robots.txt`, D-089), registrare Google Search Console | F5 | infrastruttura | T-13.2 | [#63](https://github.com/Baldi00-C/SandraDiScipio/issues/63) | DA FARE |
 
 ## Primo step
 

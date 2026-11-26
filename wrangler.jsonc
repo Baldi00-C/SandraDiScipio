@@ -1,0 +1,9 @@
+// Cloudflare Worker configuration (D-026, T-03.4).
+// The Astro adapter fills in `main` and the `ASSETS` binding at build time.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "sandra-di-scipio",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+}
