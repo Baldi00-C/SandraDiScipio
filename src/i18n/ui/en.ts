@@ -125,6 +125,13 @@ export const en: UiDictionary = {
   "viewer.next": "Next image",
   "viewer.counter": "{current} of {total}",
   "viewer.hint": "Double tap or pinch to zoom",
+  "contactPage.description": "Contact Sandra Di Scipio, architect and interior designer: WhatsApp, email and phone.",
+  "contactPage.heading": "Do you have a project in mind?",
+  "contactPage.headingSecond": "Let’s talk!",
+  "contactPage.lead": "Every great project starts with a first idea and a conversation.",
+  "contactPage.text":
+    "Whether you are thinking of a full renovation, a new interior design project or simply refreshing your spaces, I will be happy to listen to your needs and guide you through your project.",
+  "contactPage.whatsappHelp": "Opens a chat with a message already written.",
   "placeholder.eyebrow": "Page under construction",
   "placeholder.lead": "The content of this page is being prepared.",
 };

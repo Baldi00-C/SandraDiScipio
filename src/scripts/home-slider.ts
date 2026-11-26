@@ -1,5 +1,5 @@
 /**
- * Featured projects slider of the Home (D-088). Without JavaScript every
+ * Featured projects slider of the Home (D-089). Without JavaScript every
  * slide is listed; with it one slide is shown and the arrows move through
  * them, wrapping around.
  */

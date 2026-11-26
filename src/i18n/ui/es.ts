@@ -127,6 +127,13 @@ export const es: UiDictionary = {
   "viewer.next": "Imagen siguiente",
   "viewer.counter": "{current} de {total}",
   "viewer.hint": "Toca dos veces o separa los dedos para ampliar",
+  "contactPage.description": "Contacto de Sandra Di Scipio, arquitecta e interiorista: WhatsApp, email y teléfono.",
+  "contactPage.heading": "¿Tienes un proyecto en mente?",
+  "contactPage.headingSecond": "¡Hablemos!",
+  "contactPage.lead": "Todo gran proyecto nace de una primera idea y de una conversación.",
+  "contactPage.text":
+    "Tanto si piensas en una reforma integral, en un nuevo proyecto de interiores o simplemente en renovar tus espacios, estaré encantada de escuchar tus necesidades y acompañarte en la realización de tu proyecto.",
+  "contactPage.whatsappHelp": "Abre un chat con un mensaje ya escrito.",
   "placeholder.eyebrow": "Página en construcción",
   "placeholder.lead": "El contenido de esta página está en preparación.",
 };

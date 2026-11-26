@@ -128,6 +128,14 @@ export const it = {
   "viewer.next": "Immagine successiva",
   "viewer.counter": "{current} di {total}",
   "viewer.hint": "Tocca due volte o allarga con le dita per ingrandire",
+  "contactPage.description":
+    "Contatti di Sandra Di Scipio, architetta e interior designer: WhatsApp, email e telefono.",
+  "contactPage.heading": "Hai un progetto da realizzare?",
+  "contactPage.headingSecond": "Parliamone!",
+  "contactPage.lead": "Ogni grande progetto nasce da una prima idea e da una conversazione.",
+  "contactPage.text":
+    "Che tu stia pensando a una ristrutturazione completa, a un nuovo progetto d’interni o semplicemente a rinnovare i tuoi spazi, sarò felice di ascoltare le tue esigenze e accompagnarti nella realizzazione del tuo progetto.",
+  "contactPage.whatsappHelp": "Apre una chat con un messaggio già scritto.",
   "placeholder.eyebrow": "Pagina in costruzione",
   "placeholder.lead": "Il contenuto di questa pagina è in preparazione.",
 } as const;
