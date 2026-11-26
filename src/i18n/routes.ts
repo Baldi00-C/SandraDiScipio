@@ -37,7 +37,6 @@ export const placeholderPages = [
   "about",
   "services",
   "quote",
-  "contact",
   "privacy",
   "cookies",
 ] as const satisfies readonly RouteKey[];

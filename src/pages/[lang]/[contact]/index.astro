@@ -1,0 +1,72 @@
+---
+/**
+ * Contact page (T-05.2, Figma `07 · Contatti`, D-074, D-076): intro, then
+ * the contact details in this order: WhatsApp with the pre-filled message,
+ * email, phone. Values from the POC until Sandra confirms them (REQ-CONT-6).
+ * The form of the right column arrives with T-05.3 (D-088).
+ */
+import type { GetStaticPaths } from "astro";
+
+import { contact, emailHref, phoneHref, whatsappHref } from "../../../data/contact";
+import { locales, routes, useTranslations, type Locale } from "../../../i18n";
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+export const getStaticPaths = (() =>
+  locales.map((lang) => ({ params: { lang, contact: routes.contact[lang] } }))) satisfies GetStaticPaths;
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const channels = [
+  {
+    label: t("contact.whatsapp"),
+    value: t("whatsapp.label"),
+    help: t("contactPage.whatsappHelp"),
+    href: whatsappHref(t("whatsapp.message")),
+    external: true,
+  },
+  { label: t("contact.email"), value: contact.email, href: emailHref(contact.email), external: false },
+  { label: t("contact.phone"), value: contact.phoneDisplay, href: phoneHref(contact.phoneNumber), external: false },
+];
+---
+
+<PageLayout
+  title={`${t("nav.contact")} — ${t("site.name")}`}
+  description={t("contactPage.description")}
+  locale={locale}
+  route="contact"
+>
+  <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-24">
+    <p class="type-eyebrow text-text-label uppercase">{t("nav.contact")}</p>
+    <h1 class="type-display-large">
+      {t("contactPage.heading")}
+      <br />
+      {t("contactPage.headingSecond")}
+    </h1>
+    <p class="type-body-large max-w-[48.75rem]">{t("contactPage.lead")}</p>
+  </section>
+
+  <div class="container-site grid gap-12 pt-10 pb-section tablet:grid-cols-[minmax(0,520fr)_minmax(0,596fr)] tablet:gap-16 tablet:pt-12">
+    <div class="flex flex-col gap-12">
+      <p class="type-body-large">{t("contactPage.text")}</p>
+      <ul class="border-b border-border-default">
+        {channels.map(({ label, value, help, href, external }) => (
+          <li class="border-t border-border-default">
+            <a
+              href={href}
+              class="group flex flex-col gap-3 py-6"
+              {...(external ? { target: "_blank", rel: "noopener" } : {})}
+            >
+              <span class="type-eyebrow text-text-label uppercase">{label}</span>
+              <span class="type-h3 decoration-1 underline-offset-[0.2em] transition-colors duration-fast ease-editorial group-hover:text-action-hover group-hover:underline">
+                {value}
+              </span>
+              {help && <span class="type-body-small text-text-secondary">{help}</span>}
+              {external && <span class="sr-only">({t("contact.newTab")})</span>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</PageLayout>
