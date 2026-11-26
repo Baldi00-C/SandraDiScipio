@@ -21,6 +21,8 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/i18n/config.ts` | Lingue supportate e fallback inglese |
 | `src/i18n/routes.ts` | Chiavi delle pagine, slug tradotti, voci del menu (`mainNav`), segnaposto, `pathFor()` e `alternatesFor()` |
 | `src/i18n/labels.ts` | Testo che dà il nome a ogni pagina (menu, footer, titolo) |
+| `src/content.config.ts`, `src/content/projects/<lingua>/` | Content collection dei progetti: un file per progetto e per lingua, stesso slug (D-084). Foto in `src/assets/projects/<slug>/` |
+| `src/lib/projects.ts`, `src/lib/project-entries.ts` | Funzioni dei progetti (ordine, progetto successivo, riga di dettagli, impaginazione delle gallerie) e lettura della collection per lingua |
 | `src/data/contact.ts` | Email, telefono, link WhatsApp con messaggio già scritto (D-076), partita IVA |
 | `src/i18n/ui/` | Dizionari dell'interfaccia; italiano come riferimento delle chiavi |
 | `src/components/` | Header con menu mobile, selettore lingua, footer, pulsante WhatsApp, logo SVG (`src/assets/brand/`) e metadati canonical/hreflang (D-082) |
@@ -46,7 +48,8 @@ Verifica la [roadmap](../07-roadmap.md) e il codice corrente prima di iniziare: 
 | Design system e Storybook | Token e prime storie presenti (T-03.8); completamento design mobile ancora in F1 |
 | Cloudflare e anteprime PR | Stack deciso, adapter/deploy ancora da configurare (T-03.4) |
 | Playwright, axe e link rotti | Previsti in T-03.6; non presenti nella CI attuale |
-| Pagine complete, content collection, form e invio email V.0 | Ancora da sviluppare; la presenza di implementazioni nel POC non le rende disponibili nel nuovo sito |
+| Content collection dei progetti | Fatta (T-04.2): 3 progetti professionali del POC in IT, EN, ES e un universitario segnaposto (D-084, D-085) |
+| Pagine complete, form e invio email V.0 | Ancora da sviluppare; la presenza di implementazioni nel POC non le rende disponibili nel nuovo sito |
 
 La scelta futura della lingua segue: scelta ricordata → browser supportato → inglese; gli URL con prefisso restano nella lingua richiesta (D-046). La V.0 userà Cloudflare, Resend e Turnstile secondo [lo stack deciso](../06-stack-tecnologico.md). Non dedurre configurazioni o credenziali attive da queste scelte.
 

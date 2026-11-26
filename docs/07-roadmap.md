@@ -77,7 +77,7 @@ Con T-02.4 la base comune (F1) è completa: si passa ai mockup delle pagine (F3)
 | Tailwind 4 con token provvisori, sostituiti da quelli di F1 | D-024 |
 | Struttura multilingua `/it/`, `/en/`, `/es/`, file di traduzione, hreflang con `x-default` in inglese | D-025 |
 | Lingua del visitatore: scelta ricordata → lingua del browser → inglese; link con prefisso mai reindirizzati | D-046 |
-| Content collection dei progetti (un file per progetto e per lingua) | D-021 |
+| Content collection dei progetti (un file per progetto e per lingua) — fatta in T-04.2 | D-021, D-084 |
 | Adapter Cloudflare, deploy di `main` e anteprime delle PR | D-026, D-036 |
 | GitHub Actions: astro check, ESLint, Prettier, test unitari, Playwright, axe, link rotti | D-035 |
 | Fino alla pubblicazione il sito vive sull'indirizzo Cloudflare di anteprima, non indicizzato dai motori di ricerca | D-034 |
@@ -209,7 +209,7 @@ Regole:
 | T-03.9 | Knowledge base agenti, skill di sviluppo/review e convenzioni Prettier (D-078 … D-081) | F2 | docs | T-03.5, T-03.8 | [#72](https://github.com/Baldi00-C/SandraDiScipio/issues/72) | FATTO |
 | **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | IN CORSO |
 | T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | FATTO |
-| T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | DA FARE |
+| T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | FATTO |
 | T-04.3 | Pagina elenco con i gruppi Non conclusi e Conclusi | F3 | codice | T-04.1, T-04.2, T-03.7 | [#19](https://github.com/Baldi00-C/SandraDiScipio/issues/19) | DA FARE |
 | T-04.4 | Scheda progetto: parte digitale, parte interior, prima/dopo | F3 | codice | T-04.3 | [#20](https://github.com/Baldi00-C/SandraDiScipio/issues/20) | DA FARE |
 | **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | IN CORSO |
