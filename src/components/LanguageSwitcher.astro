@@ -14,9 +14,11 @@ interface Props {
   variant: "inline" | "dropdown";
   /** Unique id for the dropdown panel (the header renders more than one). */
   id?: string;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
 }
 
-const { route, locale, variant, id = "language-menu" } = Astro.props;
+const { route, locale, variant, id = "language-menu", subpath } = Astro.props;
 const t = useTranslations(locale);
 ---
 
@@ -31,7 +33,7 @@ const t = useTranslations(locale);
             </span>
           )}
           <a
-            href={pathFor(route, targetLocale)}
+            href={pathFor(route, targetLocale, subpath)}
             hreflang={targetLocale}
             lang={targetLocale}
             data-locale-choice={targetLocale}
@@ -65,7 +67,7 @@ const t = useTranslations(locale);
         {locales.map((targetLocale) => (
           <li>
             <a
-              href={pathFor(route, targetLocale)}
+              href={pathFor(route, targetLocale, subpath)}
               hreflang={targetLocale}
               lang={targetLocale}
               data-locale-choice={targetLocale}

@@ -14,9 +14,11 @@ import Logo from "./Logo.astro";
 interface Props {
   locale: Locale;
   route: RouteKey;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
 }
 
-const { locale, route } = Astro.props;
+const { locale, route, subpath } = Astro.props;
 const t = useTranslations(locale);
 const homeHref = pathFor("home", locale);
 const newTab = t("contact.newTab");
@@ -51,11 +53,11 @@ const quickContacts = [
         </ul>
       </nav>
       <span aria-hidden="true" class="h-6 w-px bg-border-default"></span>
-      <LanguageSwitcher route={route} locale={locale} variant="inline" />
+      <LanguageSwitcher route={route} subpath={subpath} locale={locale} variant="inline" />
     </div>
 
     <div class="flex items-center gap-1 desktop:hidden">
-      <LanguageSwitcher route={route} locale={locale} variant="dropdown" id="language-menu-header" />
+      <LanguageSwitcher route={route} subpath={subpath} locale={locale} variant="dropdown" id="language-menu-header" />
       <button
         type="button"
         class="inline-flex size-11 items-center justify-center hover:text-action-hover"
@@ -80,7 +82,13 @@ const quickContacts = [
             <Logo variant="compact" class="h-10" />
           </a>
           <div class="flex items-center gap-1">
-            <LanguageSwitcher route={route} locale={locale} variant="dropdown" id="language-menu-dialog" />
+            <LanguageSwitcher
+              route={route}
+              subpath={subpath}
+              locale={locale}
+              variant="dropdown"
+              id="language-menu-dialog"
+            />
             <button
               type="button"
               class="inline-flex size-11 items-center justify-center hover:text-action-hover"

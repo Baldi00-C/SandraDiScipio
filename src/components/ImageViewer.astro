@@ -1,0 +1,70 @@
+---
+/**
+ * Full-screen image viewer (D-073, Figma `05 · Progetto · Visore`): dark
+ * background, counter "3 di 7", caption, previous / next and × (also Esc).
+ * It shows every `[data-viewer-item]` of the page, in page order. Pinch or
+ * double tap to zoom. A modal <dialog>: focus and Esc handled by the browser.
+ */
+import { useTranslations, type Locale } from "../i18n";
+import { viewerButtonClasses } from "./classes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<dialog data-image-viewer data-counter={t("viewer.counter")} aria-label={t("viewer.label")} class="image-viewer">
+  <div class="relative flex h-full flex-col">
+    <div class="flex items-center justify-between py-3 pr-3 pl-5 tablet:py-4 tablet:pr-6 tablet:pl-6">
+      <p data-viewer-counter class="type-caption text-white/80"></p>
+      <button type="button" data-viewer-close class={viewerButtonClasses}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-6">
+          <path d="M5.5 5.5L18.5 18.5M18.5 5.5L5.5 18.5" stroke="currentColor" stroke-width="1.25"></path>
+        </svg>
+        <span class="sr-only">{t("viewer.close")}</span>
+      </button>
+    </div>
+    <figure class="flex min-h-0 flex-1 flex-col items-center gap-5 tablet:gap-5 tablet:px-[11.8%] tablet:pt-4">
+      <div class="relative min-h-0 w-full flex-1 overflow-hidden">
+        <img
+          data-viewer-image
+          alt=""
+          class="absolute inset-0 size-full object-contain transition-transform duration-base ease-editorial"
+        />
+      </div>
+      <figcaption class="flex flex-col items-center gap-3 px-5 text-center">
+        <span data-viewer-text class="type-body max-w-[50rem] text-white"></span>
+        <span class="type-caption text-white/70 tablet:hidden">{t("viewer.hint")}</span>
+      </figcaption>
+    </figure>
+    <div data-viewer-nav class="flex justify-center gap-8 pt-8 pb-10 tablet:contents">
+      <button
+        type="button"
+        data-viewer-previous
+        class:list={[viewerButtonClasses, "tablet:absolute tablet:top-1/2 tablet:left-6 tablet:-translate-y-1/2"]}
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-6">
+          <path d="M14.5 5.5L8 12L14.5 18.5" stroke="currentColor" stroke-width="1.25"></path>
+        </svg>
+        <span class="sr-only">{t("viewer.previous")}</span>
+      </button>
+      <button
+        type="button"
+        data-viewer-next
+        class:list={[viewerButtonClasses, "tablet:absolute tablet:top-1/2 tablet:right-6 tablet:-translate-y-1/2"]}
+      >
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="size-6">
+          <path d="M9.5 5.5L16 12L9.5 18.5" stroke="currentColor" stroke-width="1.25"></path>
+        </svg>
+        <span class="sr-only">{t("viewer.next")}</span>
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import "../scripts/image-viewer";
+</script>

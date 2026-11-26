@@ -1,0 +1,35 @@
+---
+/**
+ * Images of a project section, two by two on the 12-column grid (Figma
+ * `Gallery`): photo 8 + drawing 4, two of a kind 6 + 6, a lone image full
+ * width (`galleryRows`). Full width on mobile.
+ */
+import type { ComponentProps } from "astro/types";
+
+import type { Locale } from "../i18n";
+import { galleryRows } from "../lib/projects";
+import ProjectFigure from "./ProjectFigure.astro";
+
+interface Props {
+  images: ComponentProps<typeof ProjectFigure>["image"][];
+  locale: Locale;
+}
+
+const { images, locale } = Astro.props;
+const spanClass = {
+  4: "tablet:col-span-4",
+  6: "tablet:col-span-6",
+  8: "tablet:col-span-8",
+  12: "tablet:col-span-12",
+};
+---
+
+{galleryRows(images).map((row) => (
+  <div class="grid gap-6 tablet:grid-cols-12 tablet:gap-gutter">
+    {row.map(({ image, span }) => (
+      <div class={spanClass[span]}>
+        <ProjectFigure image={image} span={span} locale={locale} />
+      </div>
+    ))}
+  </div>
+))}

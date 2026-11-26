@@ -14,13 +14,15 @@ interface Props {
   description?: string;
   locale: Locale;
   route: RouteKey;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
 }
 
-const { title, description, locale, route } = Astro.props;
+const { title, description, locale, route, subpath } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title={title} description={description} locale={locale} route={route}>
+<BaseLayout title={title} description={description} locale={locale} route={route} subpath={subpath}>
   <a
     href="#main"
     class="type-control sr-only z-50 bg-surface-default px-4 py-3 focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
@@ -28,7 +30,7 @@ const t = useTranslations(locale);
     {t("nav.skip")}
   </a>
   <div class="flex min-h-screen flex-col">
-    <SiteHeader locale={locale} route={route} />
+    <SiteHeader locale={locale} route={route} subpath={subpath} />
     <main id="main" tabindex="-1" class="flex-1">
       <slot />
     </main>

@@ -1,7 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
 
 import villaCover from "../assets/projects/villa-castana-pavia/villa-castana-pavia-render-soggiorno.jpg?url";
-import { buttonClasses, contactCtaClasses, projectCardClasses, sectionHeadingClasses } from "../components/classes";
+import {
+  buttonClasses,
+  contactCtaClasses,
+  editorialLinkClasses,
+  projectCardClasses,
+  sectionHeadingClasses,
+  viewerButtonClasses,
+} from "../components/classes";
 import { page, pageHeader } from "./helpers";
 
 // Figma: page "Page 1", board "02 · Components" (T-02.4). Class lists come
@@ -71,4 +78,28 @@ export const ContactCta: StoryObj = {
           <a href="#" class="${buttonClasses("primary", "default", true)}">Richiedi un preventivo</a>
         </div>
       </section>`),
+};
+
+export const EditorialLink: StoryObj = {
+  render: () =>
+    page(`
+      ${pageHeader("04 / COMPONENTS", "Editorial link.", "Figma <em>Editorial link</em>: uppercase label with an ink underline. Hover = rose-deep.")}
+      <div class="flex flex-col gap-8">
+        <a href="#" class="${editorialLinkClasses}"><span aria-hidden="true">←</span>Tutti i progetti</a>
+        <a href="#" class="${editorialLinkClasses}">Scopri i servizi<span aria-hidden="true">→</span></a>
+      </div>`),
+};
+
+export const ViewerButtons: StoryObj = {
+  render: () =>
+    page(`
+      ${pageHeader("04 / COMPONENTS", "Image viewer buttons.", "Figma <em>05 · Progetto · Visore</em> (D-073): round 48 px buttons, white 12 % on ink 96 %.")}
+      <div class="flex items-center gap-8 p-10" style="background: rgb(29 29 27 / 0.96)">
+        ${["M14.5 5.5L8 12L14.5 18.5", "M9.5 5.5L16 12L9.5 18.5", "M5.5 5.5L18.5 18.5M18.5 5.5L5.5 18.5"]
+          .map(
+            (path) =>
+              `<button type="button" class="${viewerButtonClasses}"><svg viewBox="0 0 24 24" fill="none" class="size-6"><path d="${path}" stroke="currentColor" stroke-width="1.25"></path></svg></button>`
+          )
+          .join("")}
+      </div>`),
 };

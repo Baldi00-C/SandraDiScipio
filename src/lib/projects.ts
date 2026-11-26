@@ -105,3 +105,14 @@ export function galleryRows<T extends { kind: ProjectImageKind }>(
   }
   return rows;
 }
+
+/**
+ * Aspect ratio of an image box (Figma `05 · Progetto`): photos 4:3, drawings
+ * 7:8; a full-width image is 16:9 from the tablet breakpoint; a drawing next
+ * to a photo (4 of 12 columns) matches the photo height.
+ */
+export function mediaAspect(kind: ProjectImageKind, span: 4 | 6 | 8 | 12): string {
+  if (span === 12) return "aspect-4/3 tablet:aspect-[1180/664]";
+  if (!isDrawing(kind)) return "aspect-4/3";
+  return span === 4 ? "aspect-7/8 tablet:aspect-[377/584]" : "aspect-7/8";
+}

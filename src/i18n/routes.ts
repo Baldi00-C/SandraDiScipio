@@ -44,16 +44,21 @@ export const placeholderPages = [
 
 export type PlaceholderPage = (typeof placeholderPages)[number];
 
-/** Relative path of a page in a locale, e.g. `/it/chi-sono/`. */
-export function pathFor(key: RouteKey, locale: Locale): string {
+/**
+ * Relative path of a page in a locale, e.g. `/it/chi-sono/`. `subpath` adds a
+ * page below it with the same slug in every locale, e.g. a project (D-084):
+ * `pathFor("projects", "en", "villa-castana-pavia")` = `/en/projects/villa-castana-pavia/`.
+ */
+export function pathFor(key: RouteKey, locale: Locale, subpath?: string): string {
   const slug = routes[key][locale];
-  return slug ? `/${locale}/${slug}/` : `/${locale}/`;
+  const base = slug ? `/${locale}/${slug}/` : `/${locale}/`;
+  return subpath ? `${base}${subpath}/` : base;
 }
 
 /** Paths of the same page in every locale, plus `x-default`. */
-export function alternatesFor(key: RouteKey): { hreflang: string; path: string }[] {
+export function alternatesFor(key: RouteKey, subpath?: string): { hreflang: string; path: string }[] {
   return [
-    ...locales.map((locale) => ({ hreflang: locale, path: pathFor(key, locale) })),
-    { hreflang: "x-default", path: pathFor(key, defaultLocale) },
+    ...locales.map((locale) => ({ hreflang: locale, path: pathFor(key, locale, subpath) })),
+    { hreflang: "x-default", path: pathFor(key, defaultLocale, subpath) },
   ];
 }

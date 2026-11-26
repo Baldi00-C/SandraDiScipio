@@ -1,0 +1,69 @@
+---
+/**
+ * Image of the project page with caption (Figma `Figure`). The whole image
+ * opens the full-screen viewer (D-073) and shows the small "open" mark at the
+ * top right. Drawings (plans, concept boards) are shown whole on white.
+ * `tag` = PRIMA / DOPO label at the top left (D-072).
+ */
+import type { ImageMetadata } from "astro";
+import { getImage, Image } from "astro:assets";
+
+import { useTranslations, type Locale } from "../i18n";
+import { isDrawing, mediaAspect, type ProjectImageKind } from "../lib/projects";
+
+interface Props {
+  image: { src: ImageMetadata; alt: string; caption?: string; kind: ProjectImageKind };
+  /** Desktop columns out of 12 (full width on mobile). */
+  span: 4 | 6 | 8 | 12;
+  locale: Locale;
+  tag?: string;
+  /** First image of the page: loaded eagerly. */
+  priority?: boolean;
+}
+
+const { image, span, locale, tag, priority = false } = Astro.props;
+const t = useTranslations(locale);
+const drawing = isDrawing(image.kind);
+const caption = image.caption ?? image.alt;
+// Large version for the viewer, never wider than the original
+const full = await getImage({ src: image.src, width: Math.min(image.src.width, 2000), format: "webp" });
+---
+
+<figure class="flex flex-col gap-2">
+  <button
+    type="button"
+    data-viewer-item
+    data-viewer-src={full.src}
+    data-viewer-alt={image.alt}
+    data-viewer-caption={caption}
+    class:list={[
+      "group relative block w-full cursor-zoom-in overflow-hidden",
+      mediaAspect(image.kind, span),
+      drawing ? "border border-border-default bg-surface-default" : "bg-background-subtle",
+    ]}
+  >
+    <Image
+      src={image.src}
+      alt={image.alt}
+      widths={[480, 800, 1200, 1600, 2000]}
+      sizes={`(min-width: 53.75rem) ${Math.round((span / 12) * 100)}vw, 100vw`}
+      loading={priority ? "eager" : "lazy"}
+      class:list={["size-full", drawing ? "object-contain" : "object-cover"]}
+    />
+    {tag && <span class="type-eyebrow absolute top-3 left-3 bg-surface-default px-2 py-1 uppercase">{tag}</span>}
+    <span
+      aria-hidden="true"
+      class="absolute top-3 right-3 grid size-8 place-items-center bg-surface-default/92 text-text-primary transition-colors duration-fast group-hover:text-action-hover"
+    >
+      <svg viewBox="0 0 16 16" fill="none" class="size-4">
+        <path
+          d="M13.5 6.5V2.5H9.5M13.5 2.5L9 7M2.5 9.5V13.5H6.5M2.5 13.5L7 9"
+          stroke="currentColor"
+          stroke-width="1.2"
+        ></path>
+      </svg>
+    </span>
+    <span class="sr-only">{t("viewer.open")}</span>
+  </button>
+  <figcaption class="type-body-small text-text-secondary">{caption}</figcaption>
+</figure>

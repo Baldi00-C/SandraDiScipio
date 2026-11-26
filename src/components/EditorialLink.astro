@@ -1,0 +1,21 @@
+---
+/**
+ * Editorial link (Figma `Editorial link`): uppercase link label with an ink
+ * underline, e.g. "← TUTTI I PROGETTI". Hover: rose-deep.
+ */
+import { editorialLinkClasses } from "./classes";
+
+interface Props {
+  href: string;
+  /** Arrow before the label ("back") or after it ("forward"). */
+  arrow?: "back" | "forward";
+}
+
+const { href, arrow = "forward" } = Astro.props;
+---
+
+<a href={href} class={editorialLinkClasses}>
+  {arrow === "back" && <span aria-hidden="true">←</span>}
+  <slot />
+  {arrow === "forward" && <span aria-hidden="true">→</span>}
+</a>
