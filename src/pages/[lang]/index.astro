@@ -11,6 +11,7 @@ import heroImage from "../../assets/home/hero-sample.jpg";
 import introMainImage from "../../assets/home/intro-bedroom-sample.jpg";
 import introDetailImage from "../../assets/home/intro-niche-sample.jpg";
 import Button from "../../components/Button.astro";
+import Curtain from "../../components/Curtain.astro";
 import EditorialLink from "../../components/EditorialLink.astro";
 import Logo from "../../components/Logo.astro";
 import { contact, emailHref, phoneHref, whatsappHref } from "../../data/contact";
@@ -53,31 +54,64 @@ const lines = (text: string) => text.split("\n");
 
 <PageLayout title={t("home.title")} description={t("home.description")} locale={locale} route="home">
   <!-- Hero -->
-  <section class="relative isolate flex min-h-[38rem] items-center overflow-hidden text-text-inverse tablet:min-h-[51.5rem]">
-    <Image
-      src={heroImage}
-      alt={t("home.heroAlt")}
-      widths={[640, 1024, 1440, 1920]}
-      sizes="100vw"
-      loading="eager"
-      fetchpriority="high"
-      class="absolute inset-0 -z-10 size-full object-cover"
-    />
+  <section
+    class="relative isolate flex min-h-[38rem] items-center overflow-hidden text-text-inverse tablet:min-h-[51.5rem]"
+    data-pointer-light
+  >
+    <div class="hero-settle absolute inset-0 -z-10">
+      <Image
+        src={heroImage}
+        alt={t("home.heroAlt")}
+        widths={[640, 1024, 1440, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="size-full object-cover"
+      />
+    </div>
     <div class="absolute inset-0 -z-10 bg-ink/55"></div>
+    <!-- 09 / Pointer-following light (D-091): brightened copy of the photo + warm glow -->
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+      <div class="hero-settle absolute inset-0">
+        <Image
+          src={heroImage}
+          alt=""
+          widths={[640, 1024, 1440, 1920]}
+          sizes="100vw"
+          loading="eager"
+          class="light-photo size-full object-cover"
+        />
+      </div>
+      <div class="light-glow"></div>
+    </div>
     <div class="container-site flex flex-col gap-8 py-16 tablet:py-24">
-      <p class={eyebrow}>{t("home.heroEyebrow")}</p>
+      <p class:list={[eyebrow, "hero-fade"]} style="--delay: 150ms">
+        {t("home.heroEyebrow")}
+      </p>
       <h1 class="type-h1 uppercase tablet:type-display-hero">
-        <span class="block">{t("home.heroLine1")}</span>
-        <span class="block tablet:pl-[16%]">{t("home.heroLine2")}</span>
-        <span class="block tablet:pl-[8.5%]">{t("home.heroLine3")}</span>
+        <span class="hero-line">
+          <span style="--delay: 300ms">{t("home.heroLine1")}</span>
+        </span>
+        <span class="hero-line tablet:pl-[16%]">
+          <span style="--delay: 500ms">{t("home.heroLine2")}</span>
+        </span>
+        <span class="hero-line tablet:pl-[8.5%]">
+          <span style="--delay: 700ms">{t("home.heroLine3")}</span>
+        </span>
       </h1>
       <div class="flex max-w-[30rem] flex-col gap-10 tablet:ml-[16%]">
-        <p class="type-body-large">{t("home.heroLead")}</p>
+        <p class="type-body-large hero-fade" style="--delay: 1100ms">
+          {t("home.heroLead")}
+        </p>
         <a
+          style="--delay: 1300ms"
           href={pathFor("quote", locale)}
-          class="type-link inline-flex items-center gap-3 self-start border-b border-white pt-3 pb-2 uppercase transition-colors duration-fast ease-editorial hover:border-blush hover:text-blush"
+          class="hero-fade type-link inline-flex items-center gap-3 self-start border-b border-white pt-3 pb-2 uppercase transition-colors duration-fast ease-editorial hover:border-blush hover:text-blush"
         >
-          {t("cta.quote")} <span aria-hidden="true">→</span>
+          {t("cta.quote")}{" "}
+          <span aria-hidden="true" class="motion-arrow">
+            →
+          </span>
         </a>
       </div>
       <p class="type-eyebrow uppercase opacity-80">{t("home.sampleImage")}</p>
@@ -91,31 +125,49 @@ const lines = (text: string) => text.split("\n");
   >
     <div class="flex flex-col gap-4 tablet:col-span-5">
       <div class="relative pb-16 tablet:pb-20">
-        <Image
-          src={introMainImage}
-          alt={t("home.introAltMain")}
-          widths={[400, 600, 840]}
-          sizes="(min-width: 53.75rem) 36vw, 80vw"
-          class="aspect-[420/580] w-[78%] object-cover"
-        />
-        <Image
-          src={introDetailImage}
-          alt={t("home.introAltDetail")}
-          widths={[300, 520]}
-          sizes="(min-width: 53.75rem) 18vw, 45vw"
-          class="absolute right-0 bottom-0 aspect-[260/300] w-[48%] border-8 border-background-canvas object-cover"
-        />
+        <div class="relative aspect-[420/580] w-[78%] overflow-hidden" data-curtain>
+          <Image
+            src={introMainImage}
+            alt={t("home.introAltMain")}
+            widths={[400, 600, 840]}
+            sizes="(min-width: 53.75rem) 36vw, 80vw"
+            class="size-full object-cover"
+          />
+          <Curtain />
+        </div>
+        <div
+          class="absolute right-0 bottom-0 aspect-[260/300] w-[48%] overflow-hidden border-8 border-background-canvas"
+          data-curtain
+          style="--reveal-delay: 200ms"
+        >
+          <Image
+            src={introDetailImage}
+            alt={t("home.introAltDetail")}
+            widths={[300, 520]}
+            sizes="(min-width: 53.75rem) 18vw, 45vw"
+            class="size-full object-cover"
+          />
+          <Curtain />
+        </div>
       </div>
       <p class="type-eyebrow text-text-label uppercase">{t("home.sampleImages")}</p>
     </div>
     <div class="flex flex-col gap-8 tablet:col-span-6 tablet:col-start-7">
-      <p class:list={[eyebrow, "text-text-label"]}>{t("home.introEyebrow")}</p>
-      <h2 id="home-intro" class="type-h1">
+      <p class:list={[eyebrow, "text-text-label"]} data-reveal>
+        {t("home.introEyebrow")}
+      </p>
+      <h2 id="home-intro" class="type-h1" data-reveal style="--reveal-delay: 100ms">
         {t("home.introTitle")}
       </h2>
-      <p class="type-body">{t("home.introText1")}</p>
-      <p class="type-body">{t("home.introText2")}</p>
-      <p class="type-body">{t("home.introText3")}</p>
+      <p class="type-body" data-reveal style="--reveal-delay: 200ms">
+        {t("home.introText1")}
+      </p>
+      <p class="type-body" data-reveal>
+        {t("home.introText2")}
+      </p>
+      <p class="type-body" data-reveal>
+        {t("home.introText3")}
+      </p>
       <EditorialLink href={pathFor("services", locale)}>{t("home.introLink")}</EditorialLink>
     </div>
   </section>
@@ -123,7 +175,7 @@ const lines = (text: string) => text.split("\n");
   <!-- Featured projects (D-012, D-090) -->
   {projects.length > 0 && (
     <section aria-labelledby="home-projects" class="container-site flex flex-col gap-12 pb-section" data-slider>
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6" data-reveal>
         <p class:list={[eyebrow, "text-text-label"]}>{t("home.projectsEyebrow")}</p>
         <h2 id="home-projects" class="type-display-large">
           {lines(t("home.projectsTitle")).map((line) => (
@@ -137,8 +189,9 @@ const lines = (text: string) => text.split("\n");
             {project.cover && (
               <a
                 href={pathFor("projects", locale, project.slug)}
-                class="group block overflow-hidden tablet:col-span-7"
+                class="group relative block overflow-hidden tablet:col-span-7"
                 tabindex="-1"
+                data-curtain
               >
                 <Image
                   src={project.cover.src}
@@ -147,10 +200,11 @@ const lines = (text: string) => text.split("\n");
                   sizes="(min-width: 53.75rem) 58vw, 100vw"
                   class="aspect-[700/510] w-full object-cover transition-transform duration-base ease-editorial group-hover:scale-104"
                 />
+                <Curtain />
               </a>
             )}
             <div class="flex flex-col gap-6 tablet:col-span-5 tablet:grid tablet:grid-cols-5 tablet:gap-gutter">
-              <div class="flex flex-col gap-4 tablet:col-span-3">
+              <div class="flex flex-col gap-4 tablet:col-span-3" data-slide-text>
                 <p class:list={[eyebrow, "text-text-label"]}>{slideCounter(index, projects.length)}</p>
                 <h3 class="type-h2">{project.title}</h3>
                 {project.type && <p class="type-body-small text-text-secondary">{project.type}</p>}
@@ -162,7 +216,11 @@ const lines = (text: string) => text.split("\n");
                 </div>
               </div>
               {project.detail && (
-                <div class="hidden tablet:col-span-2 tablet:flex tablet:items-center">
+                <div
+                  class="relative hidden overflow-hidden tablet:col-span-2 tablet:flex tablet:items-center"
+                  data-curtain
+                  style="--reveal-delay: 200ms"
+                >
                   <Image
                     src={project.detail.src}
                     alt={project.detail.alt}
@@ -170,6 +228,7 @@ const lines = (text: string) => text.split("\n");
                     sizes="16vw"
                     class="aspect-[190/300] w-full object-cover"
                   />
+                  <Curtain />
                 </div>
               )}
             </div>
@@ -203,7 +262,7 @@ const lines = (text: string) => text.split("\n");
   <!-- Services -->
   <section aria-labelledby="home-services" class="bg-ink py-section text-paper">
     <div class="container-site flex flex-col gap-12">
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6" data-reveal>
         <p class={eyebrow}>{t("home.servicesEyebrow")}</p>
         <h2 id="home-services" class="type-display-large">
           {t("home.servicesTitle")}
@@ -211,8 +270,12 @@ const lines = (text: string) => text.split("\n");
         <p class="type-body max-w-[65rem]">{t("home.servicesLead")}</p>
       </div>
       <ul class="grid gap-6 tablet:grid-cols-2">
-        {services.map((service) => (
-          <li class="flex min-h-[18rem] flex-col gap-4 bg-surface-default p-8 text-text-primary tablet:p-10">
+        {services.map((service, serviceIndex) => (
+          <li
+            data-reveal
+            style={`--reveal-delay: ${(serviceIndex % 2) * 100}ms`}
+            class="flex min-h-[18rem] flex-col gap-4 bg-surface-default p-8 text-text-primary tablet:p-10"
+          >
             <p class:list={[eyebrow, "text-text-label"]}>{service.eyebrow}</p>
             <h3 class="type-h2">{service.title}</h3>
             <p class="type-body">{service.text}</p>
@@ -228,7 +291,7 @@ const lines = (text: string) => text.split("\n");
   <!-- Contacts (D-090: links instead of the form until T-05.3) -->
   <section aria-labelledby="home-contact" class="bg-background-subtle py-section">
     <div class="container-site grid gap-12 tablet:grid-cols-12 tablet:gap-gutter">
-      <div class="flex flex-col gap-8 tablet:col-span-6">
+      <div class="flex flex-col gap-8 tablet:col-span-6" data-reveal>
         <p class:list={[eyebrow, "text-text-label"]}>{t("home.contactEyebrow")}</p>
         <h2 id="home-contact" class="type-display-large">
           {lines(t("home.contactTitle")).map((line) => (
@@ -238,7 +301,11 @@ const lines = (text: string) => text.split("\n");
         <p class="type-body max-w-[33rem]">{t("home.contactLead")}</p>
         <Logo variant="symbol" class="mt-4 hidden h-24 tablet:block" />
       </div>
-      <div class="flex flex-col justify-center gap-8 tablet:col-span-5 tablet:col-start-8">
+      <div
+        class="flex flex-col justify-center gap-8 tablet:col-span-5 tablet:col-start-8"
+        data-reveal
+        style="--reveal-delay: 100ms"
+      >
         <ul class="flex flex-col border-t border-border-default">
           {quickContacts.map(({ label, href, external }) => (
             <li class="border-b border-border-default">
