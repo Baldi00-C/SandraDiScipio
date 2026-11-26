@@ -22,3 +22,48 @@ if (reduced || !("IntersectionObserver" in window)) {
   );
   targets.forEach((target) => observer.observe(target));
 }
+
+/**
+ * 09 / Pointer-following light over `[data-pointer-light]` (Home hero): the
+ * light follows the pointer with 12 % interpolation per frame and fades out
+ * when the pointer leaves. Fine hovering pointers only.
+ */
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+if (!reduced && finePointer) {
+  document.querySelectorAll<HTMLElement>("[data-pointer-light]").forEach((zone) => {
+    let targetX = 0;
+    let targetY = 0;
+    let x = 0;
+    let y = 0;
+    let frame = 0;
+    let active = false;
+
+    const loop = () => {
+      x += (targetX - x) * 0.12;
+      y += (targetY - y) * 0.12;
+      zone.style.setProperty("--lx", `${x.toFixed(1)}px`);
+      zone.style.setProperty("--ly", `${y.toFixed(1)}px`);
+      const moving = Math.abs(targetX - x) > 0.5 || Math.abs(targetY - y) > 0.5;
+      frame = active || moving ? requestAnimationFrame(loop) : 0;
+    };
+
+    zone.addEventListener("pointermove", (event) => {
+      const box = zone.getBoundingClientRect();
+      targetX = event.clientX - box.left;
+      targetY = event.clientY - box.top;
+      if (!active) {
+        active = true;
+        x = targetX;
+        y = targetY;
+        zone.classList.add("light-on");
+      }
+      if (!frame) frame = requestAnimationFrame(loop);
+    });
+
+    zone.addEventListener("pointerleave", () => {
+      active = false;
+      zone.classList.remove("light-on");
+    });
+  });
+}
