@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { locales } from "../i18n/config";
 import {
   galleryRows,
+  mediaAspect,
   nextProject,
   parseProjectId,
   projectDetails,
@@ -99,6 +100,21 @@ describe("galleryRows", () => {
   it("splits two images of the same nature in half and a lone image full width", () => {
     const rows = galleryRows([{ kind: "plan" }, { kind: "concept" }, { kind: "photo" }]);
     expect(rows.map((row) => row.map((cell) => cell.span))).toEqual([[6, 6], [12]]);
+  });
+});
+
+describe("mediaAspect", () => {
+  it("uses 4:3 for photos and 7:8 for drawings", () => {
+    expect(mediaAspect("photo", 6)).toBe("aspect-4/3");
+    expect(mediaAspect("plan", 6)).toBe("aspect-7/8");
+  });
+
+  it("matches the photo height for a drawing in 4 columns", () => {
+    expect(mediaAspect("plan", 4)).toContain("tablet:aspect-[377/584]");
+  });
+
+  it("goes 16:9 at full width on desktop", () => {
+    expect(mediaAspect("concept", 12)).toContain("tablet:aspect-[1180/664]");
   });
 });
 

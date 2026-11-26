@@ -73,6 +73,7 @@ const groups = [
         {group.projects.map(({ entry, ...project }) => (
           <li>
             <ProjectCard
+              href={pathFor("projects", locale, project.slug)}
               title={project.title}
               details={projectDetails(project)}
               image={(entry.data.thumbnail ?? entry.data.cover)?.src}

@@ -47,3 +47,11 @@ export const contactCtaClasses = {
   title: "type-h2",
   body: "type-body",
 };
+
+/** Editorial link (Figma `Editorial link`): uppercase label, ink underline. */
+export const editorialLinkClasses =
+  "type-link inline-flex items-center gap-3 self-start border-b border-border-strong pt-3 pb-2 uppercase transition-colors duration-fast ease-editorial hover:border-action-hover hover:text-action-hover";
+
+/** Round icon button of the image viewer, on the dark background (D-073). */
+export const viewerButtonClasses =
+  "grid size-12 shrink-0 place-items-center rounded-pill bg-white/12 text-white transition-colors duration-fast ease-editorial hover:bg-white/24";

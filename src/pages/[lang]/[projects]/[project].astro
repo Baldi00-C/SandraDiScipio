@@ -1,0 +1,238 @@
+---
+/**
+ * Project page (T-04.4, Figma `05 · Progetto` and `05b · Progetto
+ * universitario`, D-072, D-073).
+ * Professional: back link, title, facts, cover, solutions and text, then
+ * 01 Project, 02 Before and after, 03 Realisation (each only when there is
+ * material), next project and the invitation to the quote.
+ * University: title, course and year, then the boards.
+ * Every image opens the full-screen viewer.
+ */
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+import { render } from "astro:content";
+
+import ContactCta from "../../../components/ContactCta.astro";
+import EditorialLink from "../../../components/EditorialLink.astro";
+import ImageViewer from "../../../components/ImageViewer.astro";
+import ProjectFigure from "../../../components/ProjectFigure.astro";
+import ProjectGallery from "../../../components/ProjectGallery.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import { locales, pathFor, routes, useTranslations } from "../../../i18n";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import { getProjects, type LocalizedProject } from "../../../lib/project-entries";
+import { nextProject, sectionNumber } from "../../../lib/projects";
+
+export const getStaticPaths = (async () => {
+  const paths = await Promise.all(
+    locales.map(async (lang) => {
+      const projects = await getProjects(lang);
+      return projects.map((project) => ({
+        params: { lang, projects: routes.projects[lang], project: project.slug },
+        props: { project, next: nextProject(projects, project) },
+      }));
+    })
+  );
+  return paths.flat();
+}) satisfies GetStaticPaths;
+
+interface Props {
+  project: LocalizedProject;
+  next?: LocalizedProject;
+}
+
+const { project, next } = Astro.props;
+const { locale, slug } = project;
+const data = project.entry.data;
+const t = useTranslations(locale);
+const { Content } = await render(project.entry);
+const isUniversity = data.group === "university";
+
+const facts = (
+  isUniversity
+    ? [
+        [t("project.course"), data.course],
+        [t("project.year"), data.year],
+      ]
+    : [
+        [t("project.type"), data.type],
+        [t("project.location"), data.location],
+        [t("project.year"), data.year],
+        [t("project.area"), data.area],
+      ]
+).filter((fact): fact is [string, string] => Boolean(fact[1]));
+
+// Numbered sections: only those with material (D-072)
+const sections = [
+  data.digital.length > 0 && "digital",
+  data.beforeAfter.length > 0 && "beforeAfter",
+  data.interior.length > 0 && "interior",
+].filter((section): section is "digital" | "beforeAfter" | "interior" => Boolean(section));
+const numberOf = (section: (typeof sections)[number]) => sectionNumber(sections.indexOf(section));
+
+const nextImage = next && (next.entry.data.thumbnail ?? next.entry.data.cover);
+const boardPlaceholders = [
+  { label: t("project.boardPlaceholder"), span: "tablet:col-span-2 tablet:aspect-[1180/664]" },
+  { label: t("project.renderPlaceholder"), span: "" },
+  { label: t("project.conceptPlaceholder"), span: "" },
+];
+---
+
+<PageLayout
+  title={`${data.title} — ${t("site.name")}`}
+  description={data.seoDescription ?? data.lead}
+  locale={locale}
+  route="projects"
+  subpath={slug}
+>
+  <section class="container-site flex flex-col gap-6 pt-8 tablet:pt-16">
+    <EditorialLink href={pathFor("projects", locale)} arrow="back">
+      {t("project.back")}
+    </EditorialLink>
+    <div class="flex flex-col gap-4">
+      <p class="type-eyebrow text-text-label uppercase">
+        {t(isUniversity ? "project.university" : "project.professional")}
+      </p>
+      <h1 class="type-display-large">{data.title}</h1>
+      <p class="type-body-large max-w-[48.75rem]">{data.lead}</p>
+    </div>
+    <dl class="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-border-default pt-4 tablet:flex tablet:flex-wrap tablet:gap-x-12">
+      {facts.map(([label, value]) => (
+        <div class="flex flex-col gap-1">
+          <dt class="type-eyebrow text-text-label uppercase">{label}</dt>
+          <dd class="type-body">{value}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  {data.cover && (
+    <section class="container-site pt-8 tablet:pt-12">
+      <ProjectFigure image={data.cover} span={12} locale={locale} priority />
+    </section>
+  )}
+
+  {!isUniversity && (
+    <section class="container-site pt-section">
+      <div class="grid gap-8 tablet:grid-cols-12 tablet:gap-gutter">
+        {data.solutions.length > 0 && (
+          <div class="flex flex-col gap-4 tablet:col-span-4">
+            <h2 class="type-eyebrow text-text-label uppercase">{t("project.solutions")}</h2>
+            <ul>
+              {data.solutions.map((solution) => (
+                <li class="type-body border-b border-border-default py-3">{solution}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div class="type-body-large flex flex-col gap-4 tablet:col-span-7 tablet:col-start-6">
+          <Content />
+        </div>
+      </div>
+    </section>
+  )}
+
+  {data.digital.length > 0 && (
+    <section aria-labelledby="digital" class="container-site flex flex-col gap-6 pt-section tablet:gap-10">
+      <SectionHeading
+        id="digital"
+        eyebrow={`${numberOf("digital")} · ${t("project.digital")}`}
+        title={t("project.digitalTitle")}
+        description={t("project.digitalLead")}
+      />
+      <ProjectGallery images={data.digital} locale={locale} />
+    </section>
+  )}
+
+  {data.beforeAfter.length > 0 && (
+    <section aria-labelledby="before-after" class="container-site flex flex-col gap-6 pt-section tablet:gap-10">
+      <SectionHeading
+        id="before-after"
+        eyebrow={`${numberOf("beforeAfter")} · ${t("project.beforeAfter")}`}
+        title={t("project.beforeAfter")}
+      />
+      {data.beforeAfter.map((pair) => (
+        <div class="flex flex-col gap-4">
+          <h3 class="type-h3">{pair.label}</h3>
+          <div class="grid gap-4 tablet:grid-cols-2 tablet:gap-gutter">
+            <ProjectFigure image={pair.before} span={6} locale={locale} tag={t("project.before")} />
+            <ProjectFigure image={pair.after} span={6} locale={locale} tag={t("project.after")} />
+          </div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  {data.interior.length > 0 && (
+    <section aria-labelledby="interior" class="container-site flex flex-col gap-6 pt-section tablet:gap-10">
+      <SectionHeading
+        id="interior"
+        eyebrow={`${numberOf("interior")} · ${t("project.interior")}`}
+        title={t("project.interiorTitle")}
+        description={t("project.interiorLead")}
+      />
+      <ProjectGallery images={data.interior} locale={locale} />
+    </section>
+  )}
+
+  {isUniversity && (
+    <section class="container-site flex flex-col gap-6 pt-12 pb-section tablet:gap-10 tablet:pt-16">
+      <h2 class="type-eyebrow text-text-label uppercase">{t("project.boards")}</h2>
+      {data.boards.length > 0 ? (
+        <ProjectGallery images={data.boards} locale={locale} />
+      ) : (
+        <>
+          <div class="grid gap-6 tablet:grid-cols-2 tablet:gap-x-gutter tablet:gap-y-10">
+            {boardPlaceholders.map(({ label, span }) => (
+              <div
+                class:list={[
+                  "type-body-small grid aspect-4/3 place-items-center bg-background-subtle text-text-secondary",
+                  span,
+                ]}
+              >
+                {label}
+              </div>
+            ))}
+          </div>
+          <p class="type-caption text-text-secondary">{t("project.boardsPlaceholderNote")}</p>
+        </>
+      )}
+    </section>
+  )}
+
+  {next && (
+    <section class="container-site py-section">
+      <a
+        href={pathFor("projects", locale, next.slug)}
+        class="group flex items-start gap-6 border-t border-border-default pt-8 tablet:items-center"
+      >
+        {nextImage && (
+          <Image
+            src={nextImage.src}
+            alt=""
+            widths={[200, 400]}
+            sizes="(min-width: 53.75rem) 180px, 96px"
+            class="aspect-3/4 w-24 shrink-0 object-cover tablet:w-45"
+          />
+        )}
+        <span class="flex flex-col gap-2">
+          <span class="type-eyebrow text-text-label uppercase">{t("project.next")}</span>
+          <span class="type-h2 decoration-1 underline-offset-[0.2em] transition-colors duration-fast ease-editorial group-hover:text-action-hover group-hover:underline">
+            {next.title}&nbsp;&nbsp;→
+          </span>
+        </span>
+      </a>
+    </section>
+  )}
+
+  {!isUniversity && (
+    <ContactCta
+      title={t("project.ctaTitle")}
+      text={t("project.ctaText")}
+      label={t("cta.quote")}
+      href={pathFor("quote", locale)}
+    />
+  )}
+
+  <ImageViewer locale={locale} />
+</PageLayout>

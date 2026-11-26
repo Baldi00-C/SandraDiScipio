@@ -10,9 +10,11 @@ interface Props {
   locale: Locale;
   /** Page key in `src/i18n/routes.ts`: generates canonical and hreflang links. */
   route?: RouteKey;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
 }
 
-const { title, description, locale, route } = Astro.props;
+const { title, description, locale, route, subpath } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +25,7 @@ const { title, description, locale, route } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    {route && <Alternates route={route} locale={locale} />}
+    {route && <Alternates route={route} subpath={subpath} locale={locale} />}
   </head>
   <body class="min-h-screen">
     <slot />

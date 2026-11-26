@@ -19,6 +19,11 @@ describe("pathFor", () => {
     expect(pathFor("about", "en")).toBe("/en/about/");
     expect(pathFor("quote", "es")).toBe("/es/presupuesto/");
   });
+
+  it("adds a page below the route with the same slug in every locale (D-084)", () => {
+    expect(pathFor("projects", "it", "villa-castana-pavia")).toBe("/it/progetti/villa-castana-pavia/");
+    expect(pathFor("projects", "es", "villa-castana-pavia")).toBe("/es/proyectos/villa-castana-pavia/");
+  });
 });
 
 describe("routes", () => {
@@ -53,6 +58,16 @@ describe("alternatesFor", () => {
     expect(alternates.map((alternate) => alternate.hreflang)).toEqual([...locales, "x-default"]);
     expect(alternates.at(-1)?.path).toBe(pathFor("home", "en"));
     expect(defaultLocale).toBe("en");
+  });
+
+  it("keeps the subpath in every alternate", () => {
+    const alternates = alternatesFor("projects", "villa");
+    expect(alternates.map((alternate) => alternate.path)).toEqual([
+      "/it/progetti/villa/",
+      "/en/projects/villa/",
+      "/es/proyectos/villa/",
+      "/en/projects/villa/",
+    ]);
   });
 });
 

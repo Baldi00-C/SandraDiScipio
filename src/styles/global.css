@@ -83,11 +83,28 @@
   .site-menu::backdrop {
     background-color: var(--color-background-canvas);
   }
+  /* Full-screen image viewer (D-073), a modal <dialog> on ink 96 % */
+  .image-viewer {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(29 29 27 / 0.96);
+    color: var(--color-white);
+  }
+
+  .image-viewer::backdrop {
+    background-color: transparent;
+  }
 }
 
 @layer base {
   /* No page scroll behind the open mobile menu */
-  html:has(.site-menu[open]) {
+  html:has(.site-menu[open]),
+  html:has(.image-viewer[open]) {
     overflow: hidden;
   }
 }
