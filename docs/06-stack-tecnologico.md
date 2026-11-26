@@ -1,7 +1,7 @@
 ---
 title: Stack tecnologico (V.0)
 stato: DECISO (con punti rimandati indicati)
-ultimo_aggiornamento: 2026-11-23
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Stack tecnologico
@@ -61,7 +61,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
   2. Altrimenti nella lingua del browser (`Accept-Language`), se è IT, EN o ES.
   3. Altrimenti in **inglese** (fallback).
 - Gli indirizzi con prefisso (`/it/...`, `/en/...`, `/es/...`) si aprono sempre così come sono: nessun reindirizzamento, per non rompere i link condivisi e la SEO.
-- La scelta fatta col selettore si ricorda con una memoria tecnica nel browser (cookie tecnico o localStorage): non richiede banner (D-032).
+- La scelta fatta col selettore si ricorda con un cookie tecnico (`locale`): non richiede banner (D-032). La scelta della lingua sulla radice avviene nel browser (→ D-056).
 - Il selettore della lingua (REQ-GLOB-1) porta alla stessa pagina nell'altra lingua.
 - Gli slug definitivi si fissano in sviluppo, insieme alle traduzioni (D-007).
 - Nel codice (→ D-051): lingue in `src/i18n/config.ts`, testi dell'interfaccia in `src/i18n/ui/<lingua>.ts`, slug tradotti in `src/i18n/routes.ts`.
@@ -109,7 +109,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 
 - Cloudflare Web Analytics: senza cookie, nessun dato personale.
 - Nessun banner: il sito non usa cookie di profilazione. Regole per restare così:
-  - font ospitati sul sito con Fontsource, niente Google Fonts da CDN (Cormorant Garamond e Gothic A1, licenza OFL 1.1, → D-056); il logo è un SVG con il nome in tracciati, quindi il suo font (Plus Jakarta Sans) non si carica (→ D-060);
+  - font ospitati sul sito con Fontsource, niente Google Fonts da CDN (Cormorant Garamond e Gothic A1, licenza OFL 1.1, → D-057); il logo è un SVG con il nome in tracciati, quindi il suo font (Plus Jakarta Sans) non si carica (→ D-061);
   - nessun contenuto esterno (Instagram, Google Maps, YouTube) caricato senza consenso;
   - se in futuro si aggiunge un servizio con cookie, serve il banner (nuova decisione).
 - Privacy policy e cookie policy generate con Iubenda in IT, EN, ES. Piano da scegliere all'acquisto in base alle lingue.

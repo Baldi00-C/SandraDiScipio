@@ -1,7 +1,7 @@
 ---
 title: Modo di lavorare con l'utente
 stato: DECISO
-ultimo_aggiornamento: 2026-11-23
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Modo di lavorare
