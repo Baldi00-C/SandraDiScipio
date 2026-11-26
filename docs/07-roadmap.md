@@ -105,6 +105,7 @@ Mockup approvati, nella pagina Figma "Website · Static design":
 | --- | --- | --- |
 | Progetti: elenco, scheda professionale, scheda universitaria, visore immagini (desktop e mobile) | [T-04.1 · Progetti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2559): [elenco](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2560), [scheda](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2788), [visore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3170), [scheda universitaria](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3197) | D-071, D-072, D-073 |
 | Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
+| Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-090 |
 
 I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 
@@ -149,8 +150,8 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 
 | Tema | Decisione | Fase |
 | --- | --- | --- |
-| Progetti in evidenza in Home | D-012 | F3, Home |
-| Elementi extra in Home | D-016 | F3, Home |
+| Progetti in evidenza in Home | D-012 | Deciso: D-090 |
+| Elementi extra in Home | D-016 | Deciso: nessuno nella bozza (D-090) |
 | Contenuti Chi sono | D-008 | F3 (segnaposto), F4 (reali) |
 | Progetti universitari | D-013 | F3 (segnaposto), F4 (reali) |
 | Revisione delle domande dei questionari | D-019 | F3, Preventivatore |
@@ -230,10 +231,10 @@ Regole:
 | T-08.4 | Questionario Chiavi in mano | F3 | codice | T-08.3, T-05.3 | [#36](https://github.com/Baldi00-C/SandraDiScipio/issues/36) | DA FARE |
 | T-08.5 | Questionario Solo progetto (4 passaggi) | F3 | codice | T-08.3, T-05.3 | [#37](https://github.com/Baldi00-C/SandraDiScipio/issues/37) | DA FARE |
 | T-08.6 | Allegati: riduzione delle foto nel browser, controlli, prova con 20 MB su Cloudflare | F3 | codice | T-08.4 | [#38](https://github.com/Baldi00-C/SandraDiScipio/issues/38) | DA FARE |
-| **S-09** | **Home in bozza** | F3 | codice | S-08 | [#39](https://github.com/Baldi00-C/SandraDiScipio/issues/39) | DA FARE |
-| T-09.1 | Decidere progetti in evidenza ed elementi extra (D-012, D-016) | F3 | docs | — | [#40](https://github.com/Baldi00-C/SandraDiScipio/issues/40) | DA FARE |
-| T-09.2 | Mockup della Home | F3 | design | T-09.1, T-02.4 | [#41](https://github.com/Baldi00-C/SandraDiScipio/issues/41) | DA FARE |
-| T-09.3 | Pagina Home | F3 | codice | T-09.2, T-03.7 | [#42](https://github.com/Baldi00-C/SandraDiScipio/issues/42) | DA FARE |
+| **S-09** | **Home in bozza** | F3 | codice | S-08 | [#39](https://github.com/Baldi00-C/SandraDiScipio/issues/39) | FATTO |
+| T-09.1 | Decidere progetti in evidenza ed elementi extra (D-012, D-016) | F3 | docs | — | [#40](https://github.com/Baldi00-C/SandraDiScipio/issues/40) | FATTO |
+| T-09.2 | Mockup della Home | F3 | design | T-09.1, T-02.4 | [#41](https://github.com/Baldi00-C/SandraDiScipio/issues/41) | FATTO |
+| T-09.3 | Pagina Home | F3 | codice | T-09.2, T-03.7 | [#42](https://github.com/Baldi00-C/SandraDiScipio/issues/42) | FATTO |
 
 ### M2 — V.0 online (entro 2027-01-31)
 

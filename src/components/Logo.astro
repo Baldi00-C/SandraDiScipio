@@ -4,20 +4,24 @@
  * Text is outlined, so the logo font is never loaded.
  * - horizontal: symbol, name and "ARCHITECT · INTERIOR DESIGNER"
  * - compact: symbol and name only
+ * - symbol: the symbol alone (Figma `Sandra brand mark`), cropped from compact
  */
 import compact from "../assets/brand/logo-compact.svg?raw";
 import horizontal from "../assets/brand/logo-horizontal.svg?raw";
 
 interface Props {
-  variant: "horizontal" | "compact";
+  variant: "horizontal" | "compact" | "symbol";
   class?: string;
 }
 
 const { variant, class: className } = Astro.props;
-const svg = (variant === "horizontal" ? horizontal : compact).replace(
-  "<svg ",
-  `<svg aria-hidden="true" focusable="false" class="block h-full w-auto" `
-);
+const source =
+  variant === "horizontal"
+    ? horizontal
+    : variant === "symbol"
+      ? compact.replace('viewBox="0 0 340 59"', 'viewBox="0 0 49 59"')
+      : compact;
+const svg = source.replace("<svg ", `<svg aria-hidden="true" focusable="false" class="block h-full w-auto" `);
 ---
 
 <span class:list={["block", className]} set:html={svg} />

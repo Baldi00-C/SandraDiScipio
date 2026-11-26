@@ -32,6 +32,6 @@ La [knowledge base per agenti](agent_kb/README.md) raccoglie contesto e procedur
 
 ## Prossimo passo previsto
 
-Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1, T-02.1 → T-02.4 e T-03.1 sono fatti: la base comune in Figma (F1) è completa; dei mockup delle pagine (F3) sono fatti T-04.1 (Progetti) e T-05.1 (Contatti), il prossimo è T-06.1 (Chi sono). Del setup tecnico restano T-03.4 (Cloudflare) e T-03.6 (Playwright e axe). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
+Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1, T-02.1 → T-02.4 e T-03.1 sono fatti: la base comune in Figma (F1) è completa; dei mockup delle pagine (F3) sono fatti T-04.1 (Progetti), T-05.1 (Contatti) e T-09.2 (Home, approvata con le immagini di esempio), il prossimo è T-06.1 (Chi sono). Del setup tecnico restano T-03.4 (Cloudflare) e T-03.6 (Playwright e axe). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
 
 Le revisioni di Sandra come PO non si pianificano: le gestisce l'utente (D-041).

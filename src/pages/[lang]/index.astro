@@ -1,22 +1,271 @@
 ---
+/**
+ * Home (T-09.3, Figma `01 · Home`, D-090): hero, introduction, featured
+ * projects, services and contacts. Hero and introduction use the sample
+ * images of the mockup, marked as such, until Sandra's photos arrive.
+ */
 import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
 
-import { locales, useTranslations, type Locale } from "../../i18n";
+import heroImage from "../../assets/home/hero-sample.jpg";
+import introMainImage from "../../assets/home/intro-bedroom-sample.jpg";
+import introDetailImage from "../../assets/home/intro-niche-sample.jpg";
+import Button from "../../components/Button.astro";
+import EditorialLink from "../../components/EditorialLink.astro";
+import Logo from "../../components/Logo.astro";
+import { contact, emailHref, phoneHref, whatsappHref } from "../../data/contact";
+import { locales, pathFor, useTranslations, type Locale } from "../../i18n";
 import PageLayout from "../../layouts/PageLayout.astro";
+import { detailImage, featuredProjects, slideCounter } from "../../lib/home";
+import { getProjects } from "../../lib/project-entries";
 
 export const getStaticPaths = (() => locales.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
 
 const locale = Astro.params.lang as Locale;
 const t = useTranslations(locale);
+
+const projects = featuredProjects(
+  (await getProjects(locale)).map((project) => ({ ...project, placeholder: project.entry.data.placeholder }))
+).map((project) => {
+  const { cover, interior, digital, beforeAfter } = project.entry.data;
+  return {
+    ...project,
+    cover,
+    detail: detailImage(cover, [interior, digital, beforeAfter.map((pair) => pair.after)]),
+  };
+});
+
+const services = [1, 2, 3, 4].map((number) => ({
+  eyebrow: `0${number} / ${t(`home.service${number}Eyebrow` as "home.service1Eyebrow")}`,
+  title: t(`home.service${number}Title` as "home.service1Title"),
+  text: t(`home.service${number}Text` as "home.service1Text"),
+}));
+
+const newTab = t("contact.newTab");
+const quickContacts = [
+  { label: t("contact.whatsapp"), href: whatsappHref(t("whatsapp.message")), external: true },
+  { label: contact.email, href: emailHref(contact.email), external: false },
+  { label: contact.phoneDisplay, href: phoneHref(contact.phoneNumber), external: false },
+];
+const eyebrow = "type-eyebrow uppercase";
+const lines = (text: string) => text.split("\n");
 ---
 
 <PageLayout title={t("home.title")} description={t("home.description")} locale={locale} route="home">
-  <section class="container-site py-section">
-    <p class="type-eyebrow text-text-label uppercase">{t("home.eyebrow")}</p>
-    <h1 class="type-display-large mt-4">{t("site.name")}</h1>
-    <p class="type-body-large mt-6 max-w-prose text-text-secondary">
-      {t("site.role")}. {t("home.lead")}
-    </p>
-    <div class="mt-10 h-px w-24 bg-rose-deep"></div>
+  <!-- Hero -->
+  <section class="relative isolate flex min-h-[38rem] items-center overflow-hidden text-text-inverse tablet:min-h-[51.5rem]">
+    <Image
+      src={heroImage}
+      alt={t("home.heroAlt")}
+      widths={[640, 1024, 1440, 1920]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+      class="absolute inset-0 -z-10 size-full object-cover"
+    />
+    <div class="absolute inset-0 -z-10 bg-ink/55"></div>
+    <div class="container-site flex flex-col gap-8 py-16 tablet:py-24">
+      <p class={eyebrow}>{t("home.heroEyebrow")}</p>
+      <h1 class="type-h1 uppercase tablet:type-display-hero">
+        <span class="block">{t("home.heroLine1")}</span>
+        <span class="block tablet:pl-[16%]">{t("home.heroLine2")}</span>
+        <span class="block tablet:pl-[8.5%]">{t("home.heroLine3")}</span>
+      </h1>
+      <div class="flex max-w-[30rem] flex-col gap-10 tablet:ml-[16%]">
+        <p class="type-body-large">{t("home.heroLead")}</p>
+        <a
+          href={pathFor("quote", locale)}
+          class="type-link inline-flex items-center gap-3 self-start border-b border-white pt-3 pb-2 uppercase transition-colors duration-fast ease-editorial hover:border-blush hover:text-blush"
+        >
+          {t("cta.quote")} <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <p class="type-eyebrow uppercase opacity-80">{t("home.sampleImage")}</p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section
+    aria-labelledby="home-intro"
+    class="container-site grid gap-12 py-section tablet:grid-cols-12 tablet:gap-gutter"
+  >
+    <div class="flex flex-col gap-4 tablet:col-span-5">
+      <div class="relative pb-16 tablet:pb-20">
+        <Image
+          src={introMainImage}
+          alt={t("home.introAltMain")}
+          widths={[400, 600, 840]}
+          sizes="(min-width: 53.75rem) 36vw, 80vw"
+          class="aspect-[420/580] w-[78%] object-cover"
+        />
+        <Image
+          src={introDetailImage}
+          alt={t("home.introAltDetail")}
+          widths={[300, 520]}
+          sizes="(min-width: 53.75rem) 18vw, 45vw"
+          class="absolute right-0 bottom-0 aspect-[260/300] w-[48%] border-8 border-background-canvas object-cover"
+        />
+      </div>
+      <p class="type-eyebrow text-text-label uppercase">{t("home.sampleImages")}</p>
+    </div>
+    <div class="flex flex-col gap-8 tablet:col-span-6 tablet:col-start-7">
+      <p class:list={[eyebrow, "text-text-label"]}>{t("home.introEyebrow")}</p>
+      <h2 id="home-intro" class="type-h1">
+        {t("home.introTitle")}
+      </h2>
+      <p class="type-body">{t("home.introText1")}</p>
+      <p class="type-body">{t("home.introText2")}</p>
+      <p class="type-body">{t("home.introText3")}</p>
+      <EditorialLink href={pathFor("services", locale)}>{t("home.introLink")}</EditorialLink>
+    </div>
+  </section>
+
+  <!-- Featured projects (D-012, D-090) -->
+  {projects.length > 0 && (
+    <section aria-labelledby="home-projects" class="container-site flex flex-col gap-12 pb-section" data-slider>
+      <div class="flex flex-col gap-6">
+        <p class:list={[eyebrow, "text-text-label"]}>{t("home.projectsEyebrow")}</p>
+        <h2 id="home-projects" class="type-display-large">
+          {lines(t("home.projectsTitle")).map((line) => (
+            <span class="block">{line}</span>
+          ))}
+        </h2>
+      </div>
+      <ul>
+        {projects.map((project, index) => (
+          <li data-slide class="grid gap-8 tablet:grid-cols-12 tablet:gap-gutter">
+            {project.cover && (
+              <a
+                href={pathFor("projects", locale, project.slug)}
+                class="group block overflow-hidden tablet:col-span-7"
+                tabindex="-1"
+              >
+                <Image
+                  src={project.cover.src}
+                  alt={project.cover.alt}
+                  widths={[480, 720, 1000, 1400]}
+                  sizes="(min-width: 53.75rem) 58vw, 100vw"
+                  class="aspect-[700/510] w-full object-cover transition-transform duration-base ease-editorial group-hover:scale-104"
+                />
+              </a>
+            )}
+            <div class="flex flex-col gap-6 tablet:col-span-5 tablet:grid tablet:grid-cols-5 tablet:gap-gutter">
+              <div class="flex flex-col gap-4 tablet:col-span-3">
+                <p class:list={[eyebrow, "text-text-label"]}>{slideCounter(index, projects.length)}</p>
+                <h3 class="type-h2">{project.title}</h3>
+                {project.type && <p class="type-body-small text-text-secondary">{project.type}</p>}
+                <p class="type-body">{project.entry.data.lead}</p>
+                <div class="mt-auto pt-4">
+                  <EditorialLink href={pathFor("projects", locale, project.slug)}>
+                    {t("home.projectLink")}
+                  </EditorialLink>
+                </div>
+              </div>
+              {project.detail && (
+                <div class="hidden tablet:col-span-2 tablet:flex tablet:items-center">
+                  <Image
+                    src={project.detail.src}
+                    alt={project.detail.alt}
+                    widths={[200, 400]}
+                    sizes="16vw"
+                    class="aspect-[190/300] w-full object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div class="flex flex-wrap items-center justify-between gap-6">
+        <EditorialLink href={pathFor("projects", locale)}>{t("home.projectsAll")}</EditorialLink>
+        <div class="flex gap-2" data-slide-controls hidden>
+          <button
+            type="button"
+            data-slide-previous
+            class="grid size-11 place-items-center rounded-pill border border-border-strong transition-colors duration-fast ease-editorial hover:border-action-hover hover:text-action-hover"
+          >
+            <span aria-hidden="true">←</span>
+            <span class="sr-only">{t("home.projectPrevious")}</span>
+          </button>
+          <button
+            type="button"
+            data-slide-next
+            class="grid size-11 place-items-center rounded-pill border border-border-strong transition-colors duration-fast ease-editorial hover:border-action-hover hover:text-action-hover"
+          >
+            <span aria-hidden="true">→</span>
+            <span class="sr-only">{t("home.projectNext")}</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Services -->
+  <section aria-labelledby="home-services" class="bg-ink py-section text-paper">
+    <div class="container-site flex flex-col gap-12">
+      <div class="flex flex-col gap-6">
+        <p class={eyebrow}>{t("home.servicesEyebrow")}</p>
+        <h2 id="home-services" class="type-display-large">
+          {t("home.servicesTitle")}
+        </h2>
+        <p class="type-body max-w-[65rem]">{t("home.servicesLead")}</p>
+      </div>
+      <ul class="grid gap-6 tablet:grid-cols-2">
+        {services.map((service) => (
+          <li class="flex min-h-[18rem] flex-col gap-4 bg-surface-default p-8 text-text-primary tablet:p-10">
+            <p class:list={[eyebrow, "text-text-label"]}>{service.eyebrow}</p>
+            <h3 class="type-h2">{service.title}</h3>
+            <p class="type-body">{service.text}</p>
+            <div class="mt-auto pt-6">
+              <EditorialLink href={pathFor("services", locale)}>{t("home.servicesLink")}</EditorialLink>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contacts (D-090: links instead of the form until T-05.3) -->
+  <section aria-labelledby="home-contact" class="bg-background-subtle py-section">
+    <div class="container-site grid gap-12 tablet:grid-cols-12 tablet:gap-gutter">
+      <div class="flex flex-col gap-8 tablet:col-span-6">
+        <p class:list={[eyebrow, "text-text-label"]}>{t("home.contactEyebrow")}</p>
+        <h2 id="home-contact" class="type-display-large">
+          {lines(t("home.contactTitle")).map((line) => (
+            <span class="block">{line}</span>
+          ))}
+        </h2>
+        <p class="type-body max-w-[33rem]">{t("home.contactLead")}</p>
+        <Logo variant="symbol" class="mt-4 hidden h-24 tablet:block" />
+      </div>
+      <div class="flex flex-col justify-center gap-8 tablet:col-span-5 tablet:col-start-8">
+        <ul class="flex flex-col border-t border-border-default">
+          {quickContacts.map(({ label, href, external }) => (
+            <li class="border-b border-border-default">
+              <a
+                href={href}
+                class="type-h3 flex min-h-16 items-center justify-between gap-4 py-4 transition-colors duration-fast ease-editorial hover:text-action-hover"
+                {...(external ? { target: "_blank", rel: "noopener" } : {})}
+              >
+                <span>
+                  {label}
+                  {external && <span class="sr-only"> ({newTab})</span>}
+                </span>
+                <span aria-hidden="true" class="type-link">
+                  →
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <Button href={pathFor("contact", locale)} block>
+          {t("home.contactButton")}
+        </Button>
+      </div>
+    </div>
   </section>
 </PageLayout>
+
+<script>
+  import "../../scripts/home-slider";
+</script>
