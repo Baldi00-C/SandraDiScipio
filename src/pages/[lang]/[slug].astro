@@ -1,0 +1,36 @@
+---
+/**
+ * Placeholder pages (D-083): every menu and footer link works while the real
+ * pages are still to be built. A page leaves `placeholderPages` when its own
+ * task adds it.
+ */
+import type { GetStaticPaths } from "astro";
+
+import { locales, placeholderPages, routeLabels, routes, useTranslations, type PlaceholderPage } from "../../i18n";
+import PageLayout from "../../layouts/PageLayout.astro";
+
+export const getStaticPaths = (() =>
+  locales.flatMap((lang) =>
+    placeholderPages.map((page) => ({
+      params: { lang, slug: routes[page][lang] },
+      props: { lang, page },
+    }))
+  )) satisfies GetStaticPaths;
+
+interface Props {
+  lang: (typeof locales)[number];
+  page: PlaceholderPage;
+}
+
+const { lang, page } = Astro.props;
+const t = useTranslations(lang);
+const title = t(routeLabels[page]);
+---
+
+<PageLayout title={`${title} — ${t("site.name")}`} locale={lang} route={page}>
+  <section class="container-site py-section">
+    <p class="type-eyebrow text-text-label uppercase">{t("placeholder.eyebrow")}</p>
+    <h1 class="type-h1 mt-4">{title}</h1>
+    <p class="type-body-large mt-6 max-w-prose text-text-secondary">{t("placeholder.lead")}</p>
+  </section>
+</PageLayout>

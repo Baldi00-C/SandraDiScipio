@@ -1,0 +1,150 @@
+---
+/**
+ * Site header (D-062, Figma `Site header`).
+ * - From 1080 px: horizontal logo, the 6 menu links and the inline language
+ *   switcher, 80 px high.
+ * - Below: compact logo, language dropdown and menu button, 68 px high. The
+ *   menu opens full screen in a modal <dialog> (Esc, × or a link close it).
+ */
+import { contact, emailHref, phoneHref, whatsappHref } from "../data/contact";
+import { mainNav, pathFor, routeLabels, useTranslations, type Locale, type RouteKey } from "../i18n";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import Logo from "./Logo.astro";
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
+}
+
+const { locale, route, subpath } = Astro.props;
+const t = useTranslations(locale);
+const homeHref = pathFor("home", locale);
+const newTab = t("contact.newTab");
+const quickContacts = [
+  { label: t("contact.whatsapp"), href: whatsappHref(t("whatsapp.message")), external: true },
+  { label: t("contact.email"), href: emailHref(contact.email), external: false },
+  { label: t("contact.phone"), href: phoneHref(contact.phoneNumber), external: false },
+];
+---
+
+<header class="border-b border-border-default bg-background-canvas">
+  <div class="container-site flex h-header items-center justify-between">
+    <a href={homeHref} class="block shrink-0" aria-label={t("nav.homeLink")}>
+      <Logo variant="horizontal" class="hidden h-14 desktop:block" />
+      <Logo variant="compact" class="h-10 desktop:hidden" />
+    </a>
+
+    <div class="hidden items-center gap-8 desktop:flex">
+      <nav aria-label={t("nav.main")}>
+        <ul class="flex items-center gap-1">
+          {mainNav.map((key) => (
+            <li>
+              <a
+                href={pathFor(key, locale)}
+                aria-current={key === route ? "page" : undefined}
+                class="link-underline type-control inline-flex min-h-10 items-center px-2"
+              >
+                {t(routeLabels[key])}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <span aria-hidden="true" class="h-6 w-px bg-border-default"></span>
+      <LanguageSwitcher route={route} subpath={subpath} locale={locale} variant="inline" />
+    </div>
+
+    <div class="flex items-center gap-1 desktop:hidden">
+      <LanguageSwitcher route={route} subpath={subpath} locale={locale} variant="dropdown" id="language-menu-header" />
+      <button
+        type="button"
+        class="inline-flex size-11 items-center justify-center hover:text-action-hover"
+        aria-haspopup="dialog"
+        aria-controls="site-menu"
+        aria-expanded="false"
+        data-menu-open
+      >
+        <span class="sr-only">{t("menu.open")}</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="size-6">
+          <path d="M3 7h18M3 12h18M3 17h18" fill="none" stroke="currentColor" stroke-width="1.25"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <dialog id="site-menu" class="site-menu" aria-label={t("nav.main")}>
+    <div class="flex min-h-full flex-col">
+      <div class="border-b border-border-default">
+        <div class="container-site flex h-header items-center justify-between">
+          <a href={homeHref} class="block shrink-0" aria-label={t("nav.homeLink")}>
+            <Logo variant="compact" class="h-10" />
+          </a>
+          <div class="flex items-center gap-1">
+            <LanguageSwitcher
+              route={route}
+              subpath={subpath}
+              locale={locale}
+              variant="dropdown"
+              id="language-menu-dialog"
+            />
+            <button
+              type="button"
+              class="inline-flex size-11 items-center justify-center hover:text-action-hover"
+              data-menu-close
+            >
+              <span class="sr-only">{t("menu.close")}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="size-6">
+                <path d="M5.5 5.5l13 13M18.5 5.5l-13 13" fill="none" stroke="currentColor" stroke-width="1.25"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <nav aria-label={t("nav.main")} class="container-site flex-1 py-10">
+        <ul class="flex flex-col gap-1">
+          {mainNav.map((key) => (
+            <li>
+              <a
+                href={pathFor(key, locale)}
+                aria-current={key === route ? "page" : undefined}
+                class="group type-h2 inline-flex items-center gap-3 py-2 hover:text-action-hover aria-[current=page]:text-action-hover"
+              >
+                <span aria-hidden="true" class="hidden h-px w-6 bg-action-hover group-aria-[current=page]:block" />
+                {t(routeLabels[key])}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="border-t border-border-default">
+        <div class="container-site pt-6 pb-10">
+          <p class="type-eyebrow text-text-label uppercase">{t("contact.heading")}</p>
+          <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            {quickContacts.map(({ label, href, external }) => (
+              <li>
+                <a
+                  href={href}
+                  class="link-underline type-body-small inline-flex min-h-8 items-center"
+                  {...(external ? { target: "_blank", rel: "noopener" } : {})}
+                >
+                  {label}
+                  {external && <span class="sr-only"> ({newTab})</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</header>
+
+<script>
+  import { setupSiteMenu } from "../scripts/site-menu";
+
+  setupSiteMenu(document);
+</script>

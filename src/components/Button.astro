@@ -1,0 +1,33 @@
+---
+/**
+ * Pill button (D-067, Figma `Button`). Primary = ink, Secondary = outline.
+ * Default 52 px, small 44 px. With `href` it renders a link. `block` makes it
+ * fill the width on mobile and hug the label from the tablet breakpoint (D-066).
+ */
+import type { HTMLAttributes } from "astro/types";
+
+import { buttonClasses, type ButtonKind, type ButtonSize } from "./classes";
+
+interface Props {
+  href?: string;
+  kind?: ButtonKind;
+  size?: ButtonSize;
+  /** Full width on mobile, as in the Figma mobile pages. */
+  block?: boolean;
+  type?: HTMLAttributes<"button">["type"];
+  class?: string;
+}
+
+const { href, kind, size, block, type = "button", class: className } = Astro.props;
+const classes = [buttonClasses(kind, size, block), className];
+---
+
+{href ? (
+  <a href={href} class:list={classes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class:list={classes}>
+    <slot />
+  </button>
+)}

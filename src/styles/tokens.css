@@ -1,9 +1,11 @@
 /* ==========================================================================
    Sandra Di Scipio — Design tokens (Tailwind CSS 4)
-   Source: Figma file "SandraDiScipio" (Zl3k5Q7AegYlr0mGOQa6YQ), read on 2026-11-21
+   Source: Figma file "SandraDiScipio" (Zl3k5Q7AegYlr0mGOQa6YQ), read on 2026-11-26
    Collections: Sandra · Primitives, Sandra · Semantic (Light/Dark),
-               Sandra · Typography, Sandra · Motion + 12 text styles Sandra/*
-   When a value changes in Figma, update it here (see D-050).
+               Sandra · Typography (Desktop/Mobile), Sandra · Layout
+               (Desktop/Mobile), Sandra · Motion, 12 text styles Sandra/*
+               and the effect style Sandra/Shadow/Floating
+   When a value changes in Figma, update it here (see D-055).
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -28,15 +30,23 @@
   --color-error: #a03030;
   --color-success: #3d6650;
   --color-disabled: #e5dcd8;
+  --color-stone: #989897; /* logo only (D-061) */
 
   /* font/* (Sandra · Typography) — self-hosted fonts (D-032) */
-  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
-  --font-body: 'Gothic A1', 'Helvetica Neue', Arial, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body: "Gothic A1", "Helvetica Neue", Arial, system-ui, sans-serif;
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
 
-  /* space/* → Tailwind scale with a 4 px step: space/16 = p-4, space/10 = p-2.5 */
+  /* space/* → Tailwind scale with a 4 px step: space/16 = p-4, space/32 = p-8 (D-059) */
   --spacing: 0.25rem;
+
+  /* layout/* (Sandra · Layout), mobile values; desktop values in section 4.
+     px-page, py-section, gap-gutter */
+  --spacing-page: 1.25rem; /* layout/page-margin 20 px */
+  --spacing-section: 4.5rem; /* layout/section-spacing 72 px */
+  --spacing-gutter: 1rem; /* layout/grid-gutter 16 px */
+  --spacing-header: 4.25rem; /* Site header height 68 px (D-062) */
 
   /* radius/* */
   --radius-*: initial;
@@ -46,7 +56,11 @@
   /* layout/* */
   --container-site: 73.75rem; /* layout/max-width 1180 px → max-w-site */
   --breakpoint-mobile: 30rem; /* layout/breakpoint-mobile 480 px */
-  --breakpoint-tablet: 53.75rem; /* layout/breakpoint-tablet 860 px */
+  --breakpoint-tablet: 53.75rem; /* layout/breakpoint-tablet 860 px: desktop type and layout */
+  --breakpoint-desktop: 67.5rem; /* 1080 px: full menu in the header (D-082) */
+
+  /* Sandra/Shadow/Floating (WhatsApp button, D-064) */
+  --shadow-floating: 0 4px 16px rgb(29 29 27 / 0.18);
 
   /* duration/* and easing/* (Sandra · Motion) */
   --ease-editorial: cubic-bezier(0.2, 0.7, 0.1, 1);
@@ -54,61 +68,62 @@
   --duration-base: 400ms;
   --duration-reveal: 1100ms;
 
-  /* Text styles Sandra/* (Figma values, 1440 px desktop reference)
-     line-height = Figma line height / font size; letter spacing % → em */
-  --text-display-hero: 6.6rem; /* 105.6 px */
-  --text-display-hero--line-height: 0.98; /* 103.5 px */
+  /* Text styles Sandra/* (D-058): mobile values here (Figma mode Mobile),
+     desktop values from the tablet breakpoint in section 4.
+     Sizes and line heights in rem (16 px), letter spacing % → em */
+  --text-display-hero: 3.5rem; /* 56 px */
+  --text-display-hero--line-height: 3.5rem; /* 56 px */
   --text-display-hero--letter-spacing: 0.02em;
   --text-display-hero--font-weight: 700;
 
-  --text-display-large: 4.7rem; /* 75.2 px */
-  --text-display-large--line-height: 1.02; /* 76.7 px */
+  --text-display-large: 2.75rem; /* 44 px */
+  --text-display-large--line-height: 2.875rem; /* 46 px */
   --text-display-large--letter-spacing: 0.02em;
   --text-display-large--font-weight: 400;
 
-  --text-h1: 3.2rem; /* 51.2 px */
-  --text-h1--line-height: 1.1; /* 56.3 px */
+  --text-h1: 2.25rem; /* 36 px */
+  --text-h1--line-height: 2.5rem; /* 40 px */
   --text-h1--letter-spacing: 0.01em;
   --text-h1--font-weight: 400;
 
-  --text-h2: 2.5rem; /* 40 px */
-  --text-h2--line-height: 1.1; /* 44 px */
+  --text-h2: 1.875rem; /* 30 px */
+  --text-h2--line-height: 2.125rem; /* 34 px */
   --text-h2--letter-spacing: 0.01em;
   --text-h2--font-weight: 400;
 
-  --text-h3: 1.5rem; /* 24 px */
-  --text-h3--line-height: 1.1; /* 26.4 px */
+  --text-h3: 1.375rem; /* 22 px */
+  --text-h3--line-height: 1.625rem; /* 26 px */
   --text-h3--letter-spacing: 0.01em;
   --text-h3--font-weight: 500;
 
-  --text-body-large: 1.15rem; /* 18.4 px */
-  --text-body-large--line-height: 1.7; /* 31.3 px */
+  --text-body-large: 1.0625rem; /* 17 px */
+  --text-body-large--line-height: 1.75rem; /* 28 px */
   --text-body-large--font-weight: 400;
 
-  --text-body: 1.09375rem; /* 17.5 px */
-  --text-body--line-height: 1.7; /* 29.75 px */
+  --text-body: 1rem; /* 16 px */
+  --text-body--line-height: 1.625rem; /* 26 px */
   --text-body--font-weight: 400;
 
   --text-body-small: 0.875rem; /* 14 px */
-  --text-body-small--line-height: 1.7; /* 23.8 px */
+  --text-body-small--line-height: 1.375rem; /* 22 px */
   --text-body-small--font-weight: 400;
 
-  --text-eyebrow: 0.72rem; /* 11.52 px */
-  --text-eyebrow--line-height: 1.6; /* 18.4 px */
+  --text-eyebrow: 0.75rem; /* 12 px */
+  --text-eyebrow--line-height: 1.125rem; /* 18 px */
   --text-eyebrow--letter-spacing: 0.16em;
   --text-eyebrow--font-weight: 500;
 
-  --text-link: 0.78rem; /* 12.48 px */
-  --text-link--line-height: 1.6; /* 20 px */
+  --text-link: 0.75rem; /* 12 px */
+  --text-link--line-height: 1.25rem; /* 20 px */
   --text-link--letter-spacing: 0.16em;
   --text-link--font-weight: 500;
 
-  --text-control: 0.95rem; /* 15.2 px */
-  --text-control--line-height: 1.7; /* 25.8 px */
+  --text-control: 1rem; /* 16 px: no automatic zoom on iPhone */
+  --text-control--line-height: 1.5rem; /* 24 px */
   --text-control--font-weight: 500;
 
-  --text-caption: 0.78rem; /* 12.48 px */
-  --text-caption--line-height: 1.6; /* 20 px */
+  --text-caption: 0.75rem; /* 12 px */
+  --text-caption--line-height: 1.25rem; /* 20 px */
   --text-caption--letter-spacing: 0.1em;
   --text-caption--font-weight: 500;
 }
@@ -120,7 +135,7 @@
    Dark mode is enabled by data-theme="dark" on any ancestor.
    -------------------------------------------------------------------------- */
 :root,
-[data-theme='light'] {
+[data-theme="light"] {
   --sem-background-canvas: var(--color-paper);
   --sem-background-subtle: var(--color-blush);
   --sem-surface-default: var(--color-white);
@@ -139,7 +154,7 @@
   --sem-state-disabled: var(--color-disabled);
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --sem-background-canvas: var(--color-ink);
   --sem-background-subtle: var(--color-label);
   --sem-surface-default: var(--color-ink);
@@ -260,4 +275,39 @@
   line-height: var(--text-caption--line-height);
   letter-spacing: var(--text-caption--letter-spacing);
   font-weight: var(--text-caption--font-weight);
+}
+
+/* --------------------------------------------------------------------------
+   4. DESKTOP VALUES (Figma modes Desktop of Sandra · Typography and
+   Sandra · Layout), from the tablet breakpoint (860 px, D-060)
+   -------------------------------------------------------------------------- */
+@media (width >= 53.75rem) {
+  :root {
+    --spacing-page: 1.5rem; /* 24 px */
+    --spacing-section: 7.5rem; /* 120 px */
+    --spacing-gutter: 1.5rem; /* 24 px */
+
+    --text-display-hero: 6.5rem; /* 104 px */
+    --text-display-hero--line-height: 6.25rem; /* 100 px */
+    --text-display-large: 4.75rem; /* 76 px */
+    --text-display-large--line-height: 4.875rem; /* 78 px */
+    --text-h1: 3.25rem; /* 52 px */
+    --text-h1--line-height: 3.5rem; /* 56 px */
+    --text-h2: 2.5rem; /* 40 px */
+    --text-h2--line-height: 2.75rem; /* 44 px */
+    --text-h3: 1.5rem; /* 24 px */
+    --text-h3--line-height: 1.75rem; /* 28 px */
+    --text-body-large: 1.125rem; /* 18 px */
+    --text-body-large--line-height: 1.875rem; /* 30 px */
+    --text-body: 1.0625rem; /* 17 px */
+    --text-body--line-height: 1.75rem; /* 28 px */
+    --text-body-small--line-height: 1.5rem; /* 24 px */
+    --text-control: 0.9375rem; /* 15 px */
+  }
+}
+
+@media (width >= 67.5rem) {
+  :root {
+    --spacing-header: 5rem; /* Site header height 80 px */
+  }
 }

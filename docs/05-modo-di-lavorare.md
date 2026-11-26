@@ -1,7 +1,7 @@
 ---
 title: Modo di lavorare con l'utente
 stato: DECISO
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Modo di lavorare
@@ -25,9 +25,13 @@ Istruzioni operative per agenti AI che lavorano su questo progetto.
 5. **Fasi in ordine**: requisiti business → mockup Figma → scelte tecniche → sviluppo, sezione per sezione. Il 2026-11-21 l'utente ha anticipato le scelte tecniche prima dei mockup (→ D-020).
 6. **Non inventare contenuti personali di Sandra** (studi, esperienze, clienti, recensioni, numeri): usa segnaposto evidenti e chiedili all'utente in fase di sviluppo.
 7. **Documenta**: ogni decisione nuova va in [04-decisioni.md](04-decisioni.md) e, se serve, nel file del requisito.
+8. **Lingua del codice**: identificatori, commenti, configurazioni e test in inglese; documentazione e conversazione in italiano (D-054). I contenuti del sito seguono la propria lingua IT/EN/ES.
+9. **Convenzioni automatiche**: usa Prettier ed ESLint del repository. La configurazione Prettier riprende quella comune ai progetti recenti dell'utente, adattata ad Astro e Tailwind (D-079). Dettagli in [agent_kb/code_conventions.md](agent_kb/code_conventions.md).
+
+La [knowledge base per agenti](agent_kb/README.md) raccoglie contesto e procedure operative (D-078). Le [convenzioni e skill](agent_kb/proposals.md) sono state adottate con D-080: sviluppo feature con test e Storybook quando pertinente, review mirate a costo contenuto e nessuna orchestrazione multi-modello automatica.
 
 ## Prossimo passo previsto
 
-Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1, T-02.1 e T-03.1 sono fatti: ora in parallelo T-02.2 (stile in Figma) e il setup tecnico (T-03.2 → T-03.6). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
+Segui [07-roadmap.md](07-roadmap.md). Lavora per task: ogni task è una issue su GitHub (sotto-issue di una storia, in una milestone) e si chiude con una sola PR (`Closes #n`), che aggiorna anche lo stato in [07-roadmap.md](07-roadmap.md) (D-047). T-01.1, T-02.1 → T-02.4 e T-03.1 sono fatti: la base comune in Figma (F1) è completa; dei mockup delle pagine (F3) sono fatti T-04.1 (Progetti) e T-05.1 (Contatti), il prossimo è T-06.1 (Chi sono). Del setup tecnico restano T-03.4 (Cloudflare) e T-03.6 (Playwright e axe). Per lavorare su Figma serve il plugin Desktop Bridge aperto dall'utente nel file del sito (D-048).
 
 Le revisioni di Sandra come PO non si pianificano: le gestisce l'utente (D-041).

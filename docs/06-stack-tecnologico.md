@@ -1,7 +1,7 @@
 ---
 title: Stack tecnologico (V.0)
 stato: DECISO (con punti rimandati indicati)
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Stack tecnologico
@@ -71,8 +71,8 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 - Cloudflare Workers con asset statici e adapter ufficiale `@astrojs/cloudflare`.
 - Motivo principale: accetta richieste fino a 100 MB, quindi gli allegati arrivano all'endpoint senza storage intermedio. Vercel (4,5 MB) e Netlify (circa 6 MB) avrebbero richiesto soluzioni in più.
 - Rischio noto: il piano gratuito ha un limite di tempo CPU per richiesta. Se l'invio con allegati lo supera, si passa al piano Workers a pagamento (5 $/mese). Da verificare in sviluppo con allegati da 20 MB.
-- Deploy con Workers Builds (→ D-074): `main` va in produzione, ogni PR ha la sua anteprima. Configurazione in `wrangler.jsonc`, passaggi su Cloudflare nel README.
-- Fino a M2 il sito non è indicizzabile: `X-Robots-Tag: noindex` e `robots.txt` che blocca tutto (D-034, D-074).
+- Deploy con Workers Builds (→ D-088): `main` va in produzione, ogni PR ha la sua anteprima. Configurazione in `wrangler.jsonc`, passaggi su Cloudflare nel README.
+- Fino a M2 il sito non è indicizzabile: `X-Robots-Tag: noindex` e `robots.txt` che blocca tutto (D-034, D-088).
 
 ### Email (D-027, D-014, D-009)
 
@@ -111,7 +111,7 @@ Il POC, archiviato in `poc/` (D-050) (Astro 5 + Tailwind 4 + Resend + adapter No
 
 - Cloudflare Web Analytics: senza cookie, nessun dato personale.
 - Nessun banner: il sito non usa cookie di profilazione. Regole per restare così:
-  - font ospitati sul sito (niente Google Fonts da CDN);
+  - font ospitati sul sito con Fontsource, niente Google Fonts da CDN (Cormorant Garamond e Gothic A1, licenza OFL 1.1, → D-057); il logo è un SVG con il nome in tracciati, quindi il suo font (Plus Jakarta Sans) non si carica (→ D-061);
   - nessun contenuto esterno (Instagram, Google Maps, YouTube) caricato senza consenso;
   - se in futuro si aggiunge un servizio con cookie, serve il banner (nuova decisione).
 - Privacy policy e cookie policy generate con Iubenda in IT, EN, ES. Piano da scegliere all'acquisto in base alle lingue.

@@ -1,0 +1,23 @@
+---
+/**
+ * Sandra's logo (D-061), exported as SVG from the Figma `Logo` component.
+ * Text is outlined, so the logo font is never loaded.
+ * - horizontal: symbol, name and "ARCHITECT · INTERIOR DESIGNER"
+ * - compact: symbol and name only
+ */
+import compact from "../assets/brand/logo-compact.svg?raw";
+import horizontal from "../assets/brand/logo-horizontal.svg?raw";
+
+interface Props {
+  variant: "horizontal" | "compact";
+  class?: string;
+}
+
+const { variant, class: className } = Astro.props;
+const svg = (variant === "horizontal" ? horizontal : compact).replace(
+  "<svg ",
+  `<svg aria-hidden="true" focusable="false" class="block h-full w-auto" `
+);
+---
+
+<span class:list={["block", className]} set:html={svg} />

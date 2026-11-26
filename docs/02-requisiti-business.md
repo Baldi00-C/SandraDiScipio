@@ -1,7 +1,7 @@
 ---
 title: Requisiti business delle pagine (V.0)
 stato: DECISO (con punti rimandati indicati)
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-23
 ---
 
 # Requisiti business delle pagine
@@ -28,15 +28,15 @@ Su ogni pagina: selettore lingua IT / EN / ES, pulsante WhatsApp fisso.
 Nel footer: privacy policy, cookie policy.
 ```
 
-Menu principale, in quest'ordine: Home, Chi sono, Servizi, Progetti, Preventivatore, Contatti.
+Menu principale, in quest'ordine: Home, Chi sono, Servizi, Progetti, Preventivatore, Contatti (→ D-062).
 
 ## Elementi globali
 
 | ID | Requisito |
 | --- | --- |
-| REQ-GLOB-1 | Selettore della lingua (IT, EN, ES) visibile su ogni pagina |
-| REQ-GLOB-2 | Pulsante WhatsApp fisso su ogni pagina |
-| REQ-GLOB-3 | Footer con link a privacy policy e cookie policy |
+| REQ-GLOB-1 | Selettore della lingua (IT, EN, ES) visibile su ogni pagina (→ D-063) |
+| REQ-GLOB-2 | Pulsante WhatsApp fisso su ogni pagina (→ D-064) |
+| REQ-GLOB-3 | Footer con link a privacy policy e cookie policy (→ D-065) |
 | REQ-GLOB-4 | Lingua iniziale = lingua del browser (se IT, EN o ES), altrimenti inglese; la scelta fatta col selettore viene ricordata (→ D-046) |
 
 ## Home
@@ -72,10 +72,10 @@ Scopo: riassumere tutto il sito e portare il visitatore verso un preventivo o un
 
 | ID | Requisito | Stato |
 | --- | --- | --- |
-| REQ-PROG-1 | Due gruppi: **Non conclusi** (universitari/accademici) e **Conclusi** (professionali) | DECISO |
+| REQ-PROG-1 | Due gruppi: **Non conclusi** (universitari/accademici) e **Conclusi** (professionali). Sul sito: "Progetti universitari" e "Progetti professionali" (→ D-071) | DECISO |
 | REQ-PROG-2 | Scheda di un progetto non concluso: tavole, render, concept, breve descrizione, anno, corso | DECISO |
 | REQ-PROG-3 | Scheda di un progetto concluso: **nella stessa scheda** prima la parte digitale (render, piante, concept), poi la parte interior (foto reali del lavoro finito) | DECISO (→ D-003) |
-| REQ-PROG-4 | Confronti prima/dopo quando esistono le foto dello stato di partenza | DECISO |
+| REQ-PROG-4 | Confronti prima/dopo quando esistono le foto dello stato di partenza, affiancati (→ D-072) | DECISO |
 | REQ-PROG-5 | Elenco e materiale dei progetti universitari forniti dall'utente in fase di sviluppo | RIMANDATO (→ D-013) |
 
 Progetti professionali già presenti nel POC (materiale riusabile, in `poc/src/content/projects/` e `poc/src/assets/projects/`, D-050): Villa privata a Castana (Pavia, 2020), Appartamento ai Magazzini Bracchi (Milano, 2024, solo render), Sala VIP aeroporto di Caracas (Venezuela, 2019).
@@ -88,9 +88,9 @@ Vedi [03-preventivatore.md](03-preventivatore.md).
 
 | ID | Requisito | Stato |
 | --- | --- | --- |
-| REQ-CONT-1 | WhatsApp: apre una chat con Sandra con un messaggio iniziale già scritto | DECISO |
+| REQ-CONT-1 | WhatsApp: apre una chat con Sandra con un messaggio iniziale già scritto | DECISO (→ D-076) |
 | REQ-CONT-2 | Email: link che apre il programma di posta | DECISO |
 | REQ-CONT-3 | Telefono: numero cliccabile da smartphone | DECISO |
-| REQ-CONT-4 | Form: nome, email, telefono (facoltativo), oggetto, messaggio, consenso privacy | DECISO |
+| REQ-CONT-4 | Form: nome, email, telefono (facoltativo), oggetto, messaggio, consenso privacy | DECISO (→ D-074, D-075, D-077) |
 | REQ-CONT-5 | Dopo l'invio del form: email a Sandra + copia di conferma all'utente (stesso flusso dei questionari) | DECISO (→ D-009) |
 | REQ-CONT-6 | Email e numero definitivi da confermare. Nel POC: `discipiosandra@gmail.com`, `+39 366 133 1176`. Indirizzo previsto sul sito: `info@sandradiscipio.com`, inoltrato alla Gmail (→ D-029) | APERTO |

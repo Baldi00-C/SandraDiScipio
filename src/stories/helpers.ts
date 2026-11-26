@@ -2,7 +2,7 @@
 
 /** Creates an element from an HTML string. */
 export function html(markup: string): HTMLElement {
-  const template = document.createElement('template');
+  const template = document.createElement("template");
   template.innerHTML = markup.trim();
   return template.content.firstElementChild as HTMLElement;
 }
@@ -12,11 +12,11 @@ export function rgbToHex(rgb: string): string {
   const parts = rgb.match(/[\d.]+/g);
   if (!parts || parts.length < 3) return rgb;
   return (
-    '#' +
+    "#" +
     parts
       .slice(0, 3)
-      .map((n) => Math.round(Number(n)).toString(16).padStart(2, '0'))
-      .join('')
+      .map((channel) => Math.round(Number(channel)).toString(16).padStart(2, "0"))
+      .join("")
       .toUpperCase()
   );
 }
@@ -28,13 +28,13 @@ export function rgbToHex(rgb: string): string {
  */
 export function fillComputedValues(root: HTMLElement): void {
   requestAnimationFrame(() => {
-    root.querySelectorAll<HTMLElement>('[data-read]').forEach((node) => {
-      const target = node.closest<HTMLElement>('[data-sample]')?.querySelector<HTMLElement>('[data-probe]');
+    root.querySelectorAll<HTMLElement>("[data-read]").forEach((node) => {
+      const target = node.closest<HTMLElement>("[data-sample]")?.querySelector<HTMLElement>("[data-probe]");
       if (!target) return;
       const style = getComputedStyle(target);
       const kind = node.dataset.read;
-      if (kind === 'bg') node.textContent = rgbToHex(style.backgroundColor);
-      if (kind === 'type') {
+      if (kind === "bg") node.textContent = rgbToHex(style.backgroundColor);
+      if (kind === "type") {
         const size = parseFloat(style.fontSize);
         const lineHeight = parseFloat(style.lineHeight);
         const tracking = parseFloat(style.letterSpacing) || 0;
@@ -43,15 +43,15 @@ export function fillComputedValues(root: HTMLElement): void {
           `line height ${round(lineHeight)} px`,
           `tracking ${round((tracking / size) * 100)}%`,
           `weight ${style.fontWeight}`,
-        ].join(' · ');
+        ].join(" · ");
       }
-      if (kind === 'width') node.textContent = `${round(parseFloat(style.width))} px`;
+      if (kind === "width") node.textContent = `${round(parseFloat(style.width))} px`;
     });
   });
 }
 
-function round(n: number): number {
-  return Math.round(n * 100) / 100;
+function round(value: number): number {
+  return Math.round(value * 100) / 100;
 }
 
 /** Full-page wrapper for a story, using semantic colors. */
@@ -59,7 +59,7 @@ export function page(body: string): HTMLElement {
   const root = html(
     `<div class="min-h-screen bg-background-canvas px-6 py-12 text-text-primary tablet:px-12">
       <div class="mx-auto max-w-site">${body}</div>
-    </div>`,
+    </div>`
   );
   fillComputedValues(root);
   return root;

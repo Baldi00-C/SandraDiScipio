@@ -1,34 +1,94 @@
 ---
-import { localeNames, locales, pathFor, useTranslations, type Locale, type RouteKey } from '../i18n';
+/**
+ * Language switcher (D-063). Every option links to the same page in the other
+ * locale and remembers the choice (D-046, `data-locale-choice`).
+ * - inline: "IT · EN · ES" next to the desktop menu
+ * - dropdown: "IT ▾" button in the mobile header, with a popover listing the
+ *   locales by name
+ */
+import { localeNames, locales, pathFor, useTranslations, type Locale, type RouteKey } from "../i18n";
 
 interface Props {
   route: RouteKey;
   locale: Locale;
+  variant: "inline" | "dropdown";
+  /** Unique id for the dropdown panel (the header renders more than one). */
+  id?: string;
+  /** Page below the route, same slug in every locale (D-084). */
+  subpath?: string;
 }
 
-const { route, locale } = Astro.props;
+const { route, locale, variant, id = "language-menu", subpath } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<nav aria-label={t('nav.language')}>
-  <ul class="flex gap-4 text-sm">
-    {locales.map((l) => (
-      <li>
-        <a
-          href={pathFor(route, l)}
-          hreflang={l}
-          lang={l}
-          data-locale-choice={l}
-          aria-current={l === locale ? 'page' : undefined}
-          class:list={['underline-offset-4 hover:underline', l === locale && 'font-semibold underline']}
-        >
-          {localeNames[l]}
-        </a>
-      </li>
-    ))}
-  </ul>
-</nav>
+{variant === "inline" ? (
+  <nav aria-label={t("nav.language")}>
+    <ul class="flex items-center">
+      {locales.map((targetLocale, index) => (
+        <li class="flex items-center">
+          {index > 0 && (
+            <span aria-hidden="true" class="type-control text-text-label">
+              ·
+            </span>
+          )}
+          <a
+            href={pathFor(route, targetLocale, subpath)}
+            hreflang={targetLocale}
+            lang={targetLocale}
+            data-locale-choice={targetLocale}
+            aria-current={targetLocale === locale ? "page" : undefined}
+            class="link-underline type-control inline-flex min-h-10 items-center px-1 text-text-secondary uppercase aria-[current=page]:text-text-primary"
+          >
+            <span aria-hidden="true">{targetLocale}</span>
+            <span class="sr-only">{localeNames[targetLocale]}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+) : (
+  <div class="relative">
+    <button
+      type="button"
+      popovertarget={id}
+      class="type-control inline-flex h-11 items-center gap-1 px-2 text-text-primary uppercase hover:text-action-hover"
+    >
+      <span aria-hidden="true">{locale}</span>
+      <span class="sr-only">
+        {t("nav.changeLanguage")}: {localeNames[locale]}
+      </span>
+      <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" class="size-3">
+        <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.25" />
+      </svg>
+    </button>
+    <div id={id} popover class="language-panel border border-border-default bg-surface-default p-1">
+      <ul>
+        {locales.map((targetLocale) => (
+          <li>
+            <a
+              href={pathFor(route, targetLocale, subpath)}
+              hreflang={targetLocale}
+              lang={targetLocale}
+              data-locale-choice={targetLocale}
+              aria-current={targetLocale === locale ? "page" : undefined}
+              class="group flex h-11 items-center gap-3 px-3 hover:bg-background-subtle"
+            >
+              <span
+                aria-hidden="true"
+                class="type-caption w-5 text-text-label uppercase group-aria-[current=page]:text-action-hover"
+              >
+                {targetLocale}
+              </span>
+              <span class="type-control text-text-primary">{localeNames[targetLocale]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
 
 <script>
-  import '../scripts/remember-locale';
+  import "../scripts/remember-locale";
 </script>

@@ -4,24 +4,24 @@
  * The redirect runs in the browser so the site stays fully static; the links
  * below are the fallback when JavaScript is off.
  */
-import { defaultLocale, localeNames, locales, pathFor } from '../i18n';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { defaultLocale, localeNames, locales, pathFor } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Sandra Di Scipio" locale={defaultLocale}>
   <main class="mx-auto max-w-(--container-site) px-6 py-24">
     <h1 class="font-display text-5xl">Sandra Di Scipio</h1>
     <ul class="mt-8 flex gap-6">
-      {locales.map((l) => (
+      {locales.map((targetLocale) => (
         <li>
           <a
-            href={pathFor('home', l)}
-            hreflang={l}
-            lang={l}
-            data-locale-choice={l}
+            href={pathFor("home", targetLocale)}
+            hreflang={targetLocale}
+            lang={targetLocale}
+            data-locale-choice={targetLocale}
             class="underline underline-offset-4"
           >
-            {localeNames[l]}
+            {localeNames[targetLocale]}
           </a>
         </li>
       ))}
@@ -30,13 +30,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { pathFor, pickLocale, readSavedLocale } from '../i18n';
+  import { pathFor, pickLocale, readSavedLocale } from "../i18n";
 
-  import '../scripts/remember-locale';
+  import "../scripts/remember-locale";
 
   const locale = pickLocale({
     saved: readSavedLocale(document.cookie),
     browserLanguages: navigator.languages?.length ? navigator.languages : [navigator.language],
   });
-  window.location.replace(pathFor('home', locale));
+  window.location.replace(pathFor("home", locale));
 </script>
