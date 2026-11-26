@@ -99,6 +99,15 @@ Per ogni pagina: mockup in Figma → approvazione dell'utente → sviluppo → P
 
 Fatto quando (M1): tutte e 6 le pagine sono in bozza online sull'indirizzo di anteprima.
 
+Mockup approvati, nella pagina Figma "Website · Static design":
+
+| Pagina | Sezione Figma | Decisioni |
+| --- | --- | --- |
+| Progetti: elenco, scheda professionale, scheda universitaria, visore immagini (desktop e mobile) | [T-04.1 · Progetti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2559): [elenco](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2560), [scheda](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2788), [visore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3170), [scheda universitaria](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3197) | D-071, D-072, D-073 |
+| Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
+
+I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
+
 ### F4 — Completamento delle pagine (D-040, D-042)
 
 | Contenuto | Riferimento |
@@ -197,13 +206,13 @@ Regole:
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
 | T-03.7 | Token di Tailwind ed elementi globali dal Figma (layout base di tutte le pagine) | F2 | codice | T-02.3, T-03.2 | [#15](https://github.com/Baldi00-C/SandraDiScipio/issues/15) | DA FARE |
 | T-03.8 | Storybook con il design system dal Figma: token Tailwind, colori, tipografia, spaziature (D-055) | F2 | codice | T-02.1, T-03.1 | [#69](https://github.com/Baldi00-C/SandraDiScipio/issues/69) | FATTO |
-| **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | DA FARE |
-| T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | DA FARE |
+| **S-04** | **Progetti in bozza** | F3 | codice | S-02, S-03 | [#16](https://github.com/Baldi00-C/SandraDiScipio/issues/16) | IN CORSO |
+| T-04.1 | Mockup di elenco e scheda progetto | F3 | design | T-02.4 | [#17](https://github.com/Baldi00-C/SandraDiScipio/issues/17) | FATTO |
 | T-04.2 | Content collection dei progetti con i 3 progetti professionali del POC | F3 | contenuti | T-03.2 | [#18](https://github.com/Baldi00-C/SandraDiScipio/issues/18) | DA FARE |
 | T-04.3 | Pagina elenco con i gruppi Non conclusi e Conclusi | F3 | codice | T-04.1, T-04.2, T-03.7 | [#19](https://github.com/Baldi00-C/SandraDiScipio/issues/19) | DA FARE |
 | T-04.4 | Scheda progetto: parte digitale, parte interior, prima/dopo | F3 | codice | T-04.3 | [#20](https://github.com/Baldi00-C/SandraDiScipio/issues/20) | DA FARE |
-| **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | DA FARE |
-| T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | DA FARE |
+| **S-05** | **Contatti in bozza** | F3 | codice | S-04 | [#21](https://github.com/Baldi00-C/SandraDiScipio/issues/21) | IN CORSO |
+| T-05.1 | Mockup della pagina Contatti | F3 | design | T-02.4 | [#22](https://github.com/Baldi00-C/SandraDiScipio/issues/22) | FATTO |
 | T-05.2 | Pagina con WhatsApp (messaggio precompilato), email, telefono | F3 | codice | T-05.1, T-03.7 | [#23](https://github.com/Baldi00-C/SandraDiScipio/issues/23) | DA FARE |
 | T-05.3 | Form contatti ed endpoint: email a Sandra e copia all'utente con Resend, modelli per lingua | F3 | codice | T-05.2 | [#24](https://github.com/Baldi00-C/SandraDiScipio/issues/24) | DA FARE |
 | T-05.4 | Anti-spam: Turnstile, honeypot, limite di invii | F3 | codice | T-05.3 | [#25](https://github.com/Baldi00-C/SandraDiScipio/issues/25) | DA FARE |
