@@ -1,7 +1,7 @@
 ---
 title: Roadmap della V.0
 stato: DECISO
-ultimo_aggiornamento: 2026-11-23
+ultimo_aggiornamento: 2026-11-26
 ---
 
 # Roadmap della V.0
@@ -53,11 +53,11 @@ Fatto quando: l'utente approva la base comune in Figma.
 | --- | --- |
 | Variabili | 89 in 5 collezioni: `Sandra · Primitives`, `Sandra · Semantic` (Light e Dark), `Sandra · Typography` (Desktop e Mobile), `Sandra · Layout` (Desktop e Mobile), `Sandra · Motion` |
 | Colori base | ink `#1D1D1B`, stone `#989897` (solo logo), rose `#BA8484`, rose-deep `#8C5A5A`, blush `#F1E8E5`, paper `#FBF8F6`, line `#D9CBC7`, muted `#6B5855`, label `#5E4D4A`; error `#A03030`, success `#3D6650`, disabled `#E5DCD8` |
-| Font | Titoli Cormorant Garamond, testo Gothic A1, licenza OFL 1.1, ospitati con Fontsource (D-056) |
-| Stili di testo | 12 stili `Sandra/*` legati alle variabili `type/*`, con modi Desktop e Mobile (D-057). Desktop/mobile in px: Hero 104 / 56, Display Large 76 / 44, H1 52 / 36, H2 40 / 30, H3 24 / 22, Body Large 18 / 17, Body 17 / 16, Body Small 14, Control 15 / 16, Link, Caption ed Eyebrow 12 |
-| Spaziature | Base 4 px: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120 (D-058). Margine pagina 24 / 20, spazio tra sezioni 120 / 72 |
-| Layout e griglia | Larghezza massima 1180 px, cambi di layout a 480 e 860 px. Stili `Sandra/Grid/Desktop` (1440 px, 12 colonne, spazio 24) e `Sandra/Grid/Mobile` (375 px, 4 colonne, margini 20, spazio 16) (D-059) |
-| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-060), Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Service card, Estimator step, Contact banner. Elementi globali (T-02.3): Site header (Desktop, Mobile, menu mobile aperto, D-061), Site footer (Desktop, Mobile, D-064), Nav link, Mobile nav link, Footer link, Language option, Language switcher (D-062), Menu button, WhatsApp button (D-063); stati hover, corrente e focus (D-065) |
+| Font | Titoli Cormorant Garamond, testo Gothic A1, licenza OFL 1.1, ospitati con Fontsource (D-057) |
+| Stili di testo | 12 stili `Sandra/*` legati alle variabili `type/*`, con modi Desktop e Mobile (D-058). Desktop/mobile in px: Hero 104 / 56, Display Large 76 / 44, H1 52 / 36, H2 40 / 30, H3 24 / 22, Body Large 18 / 17, Body 17 / 16, Body Small 14, Control 15 / 16, Link, Caption ed Eyebrow 12 |
+| Spaziature | Base 4 px: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120 (D-059). Margine pagina 24 / 20, spazio tra sezioni 120 / 72 |
+| Layout e griglia | Larghezza massima 1180 px, cambi di layout a 480 e 860 px. Stili `Sandra/Grid/Desktop` (1440 px, 12 colonne, spazio 24) e `Sandra/Grid/Mobile` (375 px, 4 colonne, margini 20, spazio 16) (D-060) |
+| Componenti | Logo (simbolo originale, nome in Plus Jakarta Sans, 8 varianti, D-061), Brand mark, Button, Editorial link, Filter chip, Checkbox, Text field, Notice, Service card, Estimator step, Contact banner. Elementi globali (T-02.3): Site header (Desktop, Mobile, menu mobile aperto, D-062), Site footer (Desktop, Mobile, D-065), Nav link, Mobile nav link, Footer link, Language option, Language switcher (D-063), Menu button, WhatsApp button (D-064); stati hover, corrente e focus (D-066) |
 | Effetti | `Sandra/Shadow/Floating` (ombra del pulsante WhatsApp e della tendina lingua) |
 | Motion | Durate 0,25 s, 0,4 s, 1,1 s; curva `cubic-bezier(0.2, 0.7, 0.1, 1)` |
 
@@ -132,7 +132,7 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 | Acquisto del dominio | Utente | 2027-01-10 | F5 |
 | Attivazione di Iubenda | Utente | 2027-01-10 | F5 |
 | Accesso a Figma per l'agente | Utente | prima di F1 | F1 (fornito il 2026-11-21) |
-| Partita IVA di Sandra (riga legale del footer, D-064) | Utente | 2027-01-10 | F5 |
+| Partita IVA di Sandra (riga legale del footer, D-065) | Utente | 2027-01-10 | F5 |
 
 ## Temi rimandati e loro collocazione
 
@@ -189,7 +189,7 @@ Regole:
 | **S-03** | **Setup tecnico** | F2 | infrastruttura | S-01 | [#8](https://github.com/Baldi00-C/SandraDiScipio/issues/8) | IN CORSO |
 | T-03.1 | Archiviare il POC (tag Git) e creare il nuovo progetto Astro + TypeScript + Tailwind 4 | F2 | codice | — | [#9](https://github.com/Baldi00-C/SandraDiScipio/issues/9) | FATTO |
 | T-03.2 | Struttura multilingua `/it/` `/en/` `/es/`, file di traduzione, hreflang con `x-default` in inglese | F2 | codice | T-03.1 | [#10](https://github.com/Baldi00-C/SandraDiScipio/issues/10) | FATTO |
-| T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | DA FARE |
+| T-03.3 | Lingua del visitatore: scelta ricordata → browser → inglese (D-046) | F2 | codice | T-03.2 | [#11](https://github.com/Baldi00-C/SandraDiScipio/issues/11) | FATTO |
 | T-03.4 | Cloudflare: adapter, deploy di `main`, anteprime delle PR, sito non indicizzato fino a M2 | F2 | infrastruttura | T-03.1 | [#12](https://github.com/Baldi00-C/SandraDiScipio/issues/12) | DA FARE |
 | T-03.5 | GitHub Actions: astro check, ESLint, Prettier, test unitari | F2 | infrastruttura | T-03.1 | [#13](https://github.com/Baldi00-C/SandraDiScipio/issues/13) | FATTO |
 | T-03.6 | GitHub Actions: Playwright, axe, controllo link rotti | F2 | infrastruttura | T-03.5 | [#14](https://github.com/Baldi00-C/SandraDiScipio/issues/14) | DA FARE |
