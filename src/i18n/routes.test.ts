@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import { defaultLocale, isLocale, locales } from "./config";
-import { alternatesFor, pathFor } from "./routes";
+import { routeLabels } from "./labels";
+import { alternatesFor, mainNav, pathFor, placeholderPages, routes, type RouteKey } from "./routes";
 import { en } from "./ui/en";
 import { es } from "./ui/es";
 import { it as itUi } from "./ui/it";
@@ -11,6 +12,38 @@ describe("pathFor", () => {
     expect(pathFor("home", "it")).toBe("/it/");
     expect(pathFor("home", "en")).toBe("/en/");
     expect(pathFor("home", "es")).toBe("/es/");
+  });
+
+  it("uses the translated slug of each locale", () => {
+    expect(pathFor("about", "it")).toBe("/it/chi-sono/");
+    expect(pathFor("about", "en")).toBe("/en/about/");
+    expect(pathFor("quote", "es")).toBe("/es/presupuesto/");
+  });
+});
+
+describe("routes", () => {
+  const keys = Object.keys(routes) as RouteKey[];
+
+  it("have URL-safe slugs, unique within each locale", () => {
+    for (const locale of locales) {
+      const slugs = keys.map((key) => routes[key][locale]);
+      expect(new Set(slugs).size).toBe(slugs.length);
+      for (const slug of slugs) expect(slug).toMatch(/^([a-z0-9]+(-[a-z0-9]+)*)?$/);
+    }
+  });
+
+  it("list the 6 menu entries in the order of D-062", () => {
+    expect(mainNav).toEqual(["home", "about", "services", "projects", "quote", "contact"]);
+  });
+
+  it("never use a placeholder for the home page", () => {
+    expect(placeholderPages).not.toContain("home");
+  });
+
+  it("have a label in every locale", () => {
+    for (const key of keys) {
+      for (const dictionary of [itUi, en, es]) expect(dictionary[routeLabels[key]]).toBeTruthy();
+    }
   });
 });
 

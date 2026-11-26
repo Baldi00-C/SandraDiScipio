@@ -15,13 +15,18 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 
 | Percorso | Responsabilità |
 | --- | --- |
-| `src/pages/` | Pagine Astro; `/` è ancora una scelta manuale della lingua |
+| `src/pages/` | Pagine Astro; `/` porta alla lingua del visitatore (D-046) |
 | `src/pages/[lang]/index.astro` | Home provvisoria generata nelle tre lingue |
+| `src/pages/[lang]/[slug].astro` | Pagine segnaposto di `placeholderPages` (D-083): ogni task di pagina toglie la sua chiave |
 | `src/i18n/config.ts` | Lingue supportate e fallback inglese |
-| `src/i18n/routes.ts` | Chiavi delle pagine, slug, `pathFor()` e `alternatesFor()` |
+| `src/i18n/routes.ts` | Chiavi delle pagine, slug tradotti, voci del menu (`mainNav`), segnaposto, `pathFor()` e `alternatesFor()` |
+| `src/i18n/labels.ts` | Testo che dà il nome a ogni pagina (menu, footer, titolo) |
+| `src/data/contact.ts` | Email, telefono, link WhatsApp con messaggio già scritto (D-076), partita IVA |
 | `src/i18n/ui/` | Dizionari dell'interfaccia; italiano come riferimento delle chiavi |
-| `src/components/` | Selettore lingua e metadati canonical/hreflang |
+| `src/components/` | Header con menu mobile, selettore lingua, footer, pulsante WhatsApp, logo SVG (`src/assets/brand/`) e metadati canonical/hreflang (D-082) |
 | `src/layouts/BaseLayout.astro` | Struttura HTML comune e lingua della pagina |
+| `src/layouts/PageLayout.astro` | Layout di ogni pagina: header, contenuto, footer e pulsante WhatsApp |
+| `src/scripts/` | Memoria della lingua scelta e apertura/chiusura del menu mobile |
 | `src/styles/tokens.css` | Token derivati da Figma e classi tipografiche condivise |
 | `src/styles/global.css` | Import di font ospitati localmente, token e Tailwind |
 | `src/stories/`, `.storybook/` | Catalogo HTML del design system, basato sugli stessi stili del sito |

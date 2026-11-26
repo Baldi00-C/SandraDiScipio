@@ -4,15 +4,18 @@ import { page, pageHeader } from "./helpers";
 
 // Figma: "Sandra · Primitives" collection, space/*, radius/* and layout/* groups.
 // Tailwind scale with a 4 px step: class = Figma value / 4
-const spaces = [4, 8, 10, 12, 14, 16, 18, 20, 24, 28, 30, 32, 40, 44, 48, 56, 64, 72, 76, 96, 120];
+const spaces = [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 96, 120]; // D-059
 
 const layout = [
   ["layout/max-width", "1180 px", "max-w-site"],
   ["layout/columns", "12", "grid-cols-12"],
-  ["layout/gutter", "24 px", "gap-6 / px-6"],
-  ["layout/gutter-mobile", "20 px", "gap-5 / px-5"],
+  ["layout/page-margin (Desktop · Mobile)", "24 · 20 px", "px-page"],
+  ["layout/section-spacing (Desktop · Mobile)", "120 · 72 px", "py-section"],
+  ["layout/grid-gutter (Desktop · Mobile)", "24 · 16 px", "gap-gutter"],
   ["layout/breakpoint-mobile", "480 px", "mobile:"],
-  ["layout/breakpoint-tablet", "860 px", "tablet:"],
+  ["layout/breakpoint-tablet", "860 px: desktop type and layout", "tablet:"],
+  ["Site header: full menu", "1080 px (D-082)", "desktop:"],
+  ["Sandra/Shadow/Floating", "0 4 16, ink 18 %", "shadow-floating"],
   ["size/target", "44 px", "h-11 / min-h-11"],
   ["border/thin", "1 px", "border"],
   ["border/focus", "2 px", "outline-2 (focus-visible)"],
@@ -28,7 +31,7 @@ export default meta;
 export const Spacing: StoryObj = {
   render: () =>
     page(`
-      ${pageHeader("03 / SPACE & STRUCTURE", "Room to breathe.", "Figma group <em>space/*</em>. Tailwind uses a 4 px step: space/16 = <code>p-4</code>, space/10 = <code>p-2.5</code>.")}
+      ${pageHeader("03 / SPACE & STRUCTURE", "Room to breathe.", "Figma group <em>space/*</em>. Tailwind uses a 4 px step: space/16 = <code>p-4</code>, space/32 = <code>p-8</code>.")}
       <ul class="flex flex-col gap-3">
         ${spaces
           .map(

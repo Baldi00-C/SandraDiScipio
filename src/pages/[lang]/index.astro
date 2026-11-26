@@ -1,9 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 
-import LanguageSwitcher from "../../components/LanguageSwitcher.astro";
 import { locales, useTranslations, type Locale } from "../../i18n";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageLayout from "../../layouts/PageLayout.astro";
 
 export const getStaticPaths = (() => locales.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
 
@@ -11,16 +10,13 @@ const locale = Astro.params.lang as Locale;
 const t = useTranslations(locale);
 ---
 
-<BaseLayout title={t("home.title")} description={t("home.description")} locale={locale} route="home">
-  <header class="mx-auto flex max-w-(--container-site) justify-end px-6 pt-6">
-    <LanguageSwitcher route="home" locale={locale} />
-  </header>
-  <main class="mx-auto max-w-(--container-site) px-6 py-24">
-    <p class="text-sm tracking-widest text-muted uppercase">{t("home.eyebrow")}</p>
-    <h1 class="mt-4 font-display text-5xl text-ink">{t("site.name")}</h1>
-    <p class="mt-6 max-w-prose text-lg text-muted">
+<PageLayout title={t("home.title")} description={t("home.description")} locale={locale} route="home">
+  <section class="container-site py-section">
+    <p class="type-eyebrow text-text-label uppercase">{t("home.eyebrow")}</p>
+    <h1 class="type-display-large mt-4">{t("site.name")}</h1>
+    <p class="type-body-large mt-6 max-w-prose text-text-secondary">
       {t("site.role")}. {t("home.lead")}
     </p>
-    <div class="mt-10 h-px w-24 bg-accent"></div>
-  </main>
-</BaseLayout>
+    <div class="mt-10 h-px w-24 bg-rose-deep"></div>
+  </section>
+</PageLayout>
