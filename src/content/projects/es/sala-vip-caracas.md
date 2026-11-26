@@ -11,6 +11,10 @@ cover:
   src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-concept-board.jpg
   alt: Lámina de concepto con el plano de la sala VIP y las imágenes de referencia de asientos, mesas y complementos
   kind: concept
+thumbnail:
+  src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
+  alt: Plano amueblado de la sala VIP sobre suelo efecto madera
+  kind: plan
 solutions:
   - "Distribución por zonas: espera, descanso, piano bar y reuniones"
   - Nuevos tabiques para baños con ducha y servicios

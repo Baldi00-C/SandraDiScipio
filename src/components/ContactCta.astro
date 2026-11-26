@@ -1,0 +1,30 @@
+---
+/**
+ * Invitation to the quote at the end of the content pages (Figma
+ * `Contact CTA`): blush band, H2 title, one line of text and a primary button.
+ * Mobile: stacked, button full width.
+ */
+import Button from "./Button.astro";
+import { contactCtaClasses as classes } from "./classes";
+
+interface Props {
+  title: string;
+  text: string;
+  label: string;
+  href: string;
+}
+
+const { title, text, label, href } = Astro.props;
+---
+
+<section class={classes.root}>
+  <div class={classes.container}>
+    <div class={classes.text}>
+      <h2 class={classes.title}>{title}</h2>
+      <p class={classes.body}>{text}</p>
+    </div>
+    <Button href={href} block>
+      {label}
+    </Button>
+  </div>
+</section>

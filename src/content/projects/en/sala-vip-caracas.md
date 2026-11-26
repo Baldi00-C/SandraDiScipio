@@ -11,6 +11,10 @@ cover:
   src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-concept-board.jpg
   alt: Concept board with the plan of the VIP lounge and reference images of seating, tables and accessories
   kind: concept
+thumbnail:
+  src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
+  alt: Furnished plan of the VIP lounge on a wood-effect floor
+  kind: plan
 solutions:
   - "Layout by zones: waiting, relaxation, piano bar and meetings"
   - New walls for bathrooms with showers and services

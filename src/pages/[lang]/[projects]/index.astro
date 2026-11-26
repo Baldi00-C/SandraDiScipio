@@ -1,0 +1,94 @@
+---
+/**
+ * Projects list (T-04.3, Figma `04 · Progetti`, D-071): intro, professional
+ * projects, then university projects, each with heading and cards (3 per row
+ * on desktop, 1 on mobile), and the invitation to the quote.
+ */
+import type { GetStaticPaths } from "astro";
+
+import ContactCta from "../../../components/ContactCta.astro";
+import ProjectCard from "../../../components/ProjectCard.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import { locales, pathFor, routes, useTranslations, type Locale } from "../../../i18n";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import { getProjects } from "../../../lib/project-entries";
+import { projectDetails, sectionNumber } from "../../../lib/projects";
+
+export const getStaticPaths = (() =>
+  locales.map((lang) => ({ params: { lang, projects: routes.projects[lang] } }))) satisfies GetStaticPaths;
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const projects = await getProjects(locale);
+
+const count = (total: number) =>
+  t(total === 1 ? "projects.countOne" : "projects.countMany").replace("{count}", String(total));
+
+const groups = [
+  {
+    id: "professional-projects",
+    title: t("projects.professional"),
+    lead: t("projects.professionalLead"),
+    projects: projects.filter((project) => project.group === "professional"),
+  },
+  {
+    id: "university-projects",
+    title: t("projects.university"),
+    lead: t("projects.universityLead"),
+    projects: projects.filter((project) => project.group === "university"),
+  },
+].map((group) => ({
+  ...group,
+  hasPlaceholders: group.projects.some((project) => project.entry.data.placeholder),
+}));
+---
+
+<PageLayout
+  title={`${t("nav.projects")} — ${t("site.name")}`}
+  description={t("projects.description")}
+  locale={locale}
+  route="projects"
+>
+  <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-24">
+    <p class="type-eyebrow text-text-label uppercase">{t("nav.projects")}</p>
+    <h1 class="type-display-large">{t("projects.heading")}</h1>
+    <p class="type-body-large max-w-[48.75rem]">{t("projects.lead")}</p>
+  </section>
+
+  {groups.map((group, index) => (
+    <section
+      aria-labelledby={group.id}
+      class:list={[
+        "container-site flex flex-col gap-8 pt-section tablet:gap-10",
+        index === groups.length - 1 && "pb-section",
+      ]}
+    >
+      <SectionHeading
+        id={group.id}
+        eyebrow={`${sectionNumber(index)} · ${group.hasPlaceholders ? t("projects.comingSoon") : count(group.projects.length)}`}
+        title={group.title}
+        description={group.lead}
+      />
+      <ul class="grid grid-cols-1 gap-10 tablet:grid-cols-3 tablet:gap-gutter">
+        {group.projects.map(({ entry, ...project }) => (
+          <li>
+            <ProjectCard
+              title={project.title}
+              details={projectDetails(project)}
+              image={(entry.data.thumbnail ?? entry.data.cover)?.src}
+              alt={(entry.data.thumbnail ?? entry.data.cover)?.alt}
+            />
+          </li>
+        ))}
+      </ul>
+      {group.hasPlaceholders && <p class="type-caption text-text-secondary">{t("projects.universityPlaceholder")}</p>}
+    </section>
+  ))}
+
+  <ContactCta
+    title={t("projects.ctaTitle")}
+    text={t("projects.ctaText")}
+    label={t("cta.quote")}
+    href={pathFor("quote", locale)}
+  />
+</PageLayout>

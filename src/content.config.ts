@@ -40,6 +40,8 @@ const projects = defineCollection({
         course: z.string().optional(),
         year: z.string(),
         cover: projectImage.optional(),
+        /** Image of the project card and of "Next project", when it differs from the cover. */
+        thumbnail: projectImage.optional(),
         solutions: z.array(z.string()).default([]),
         /** 01 Project: renders, plans, concept (digital part, REQ-PROG-3). */
         digital: z.array(projectImage).default([]),

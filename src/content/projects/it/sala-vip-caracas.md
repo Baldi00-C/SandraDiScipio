@@ -11,6 +11,10 @@ cover:
   src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-concept-board.jpg
   alt: Tavola di concept con la pianta della sala VIP e le immagini di riferimento di sedute, tavoli e complementi
   kind: concept
+thumbnail:
+  src: ../../../assets/projects/sala-vip-caracas/sala-vip-caracas-pianta-arredi.jpg
+  alt: Pianta arredata della sala VIP su pavimento effetto legno
+  kind: plan
 solutions:
   - "Distribuzione per zone: attesa, relax, piano bar e riunioni"
   - Nuove pareti per bagni con doccia e servizi
