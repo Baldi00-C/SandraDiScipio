@@ -47,10 +47,10 @@ Scopo: riassumere tutto il sito e portare il visitatore verso un preventivo o un
 | --- | --- | --- |
 | REQ-HOME-1 | Apertura con nome, ruolo e un'immagine forte di un progetto | DECISO |
 | REQ-HOME-2 | Breve presentazione di Sandra con link a Chi sono | DECISO |
-| REQ-HOME-3 | Progetti principali in evidenza, con link a Progetti | DECISO; **quali progetti** è RIMANDATO allo sviluppo della Home (→ D-012) |
+| REQ-HOME-3 | Progetti principali in evidenza, con link a Progetti | DECISO (→ D-012, D-088) |
 | REQ-HOME-4 | Invito al preventivatore con le due strade: Chiavi in mano e Solo progetto | DECISO |
 | REQ-HOME-5 | Contatti rapidi: WhatsApp, email, telefono | DECISO |
-| REQ-HOME-6 | Elementi extra (Instagram, recensioni, iscrizione all'Ordine degli Architetti) | RIMANDATO allo sviluppo della Home (→ D-016) |
+| REQ-HOME-6 | Elementi extra (Instagram, recensioni, iscrizione all'Ordine degli Architetti) | Nessuno nella bozza (→ D-016, D-088) |
 
 ## Chi sono
 
