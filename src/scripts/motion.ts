@@ -3,11 +3,17 @@
  * Adds `is-revealed` to every `[data-reveal]` and `[data-curtain]` element the
  * first time about 14 % of it enters the viewport (−6 % lower margin), and
  * never replays. With reduced motion everything is revealed at once.
+ * A page opened in a background tab is also shown at once, without
+ * transitions: browsers pause them while the page is hidden, which would
+ * leave the content invisible (`motion-off`).
  */
 const targets = document.querySelectorAll<HTMLElement>("[data-reveal], [data-curtain]");
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const hidden = document.visibilityState === "hidden";
 
-if (reduced || !("IntersectionObserver" in window)) {
+if (hidden) document.documentElement.classList.add("motion-off");
+
+if (reduced || hidden || !("IntersectionObserver" in window)) {
   targets.forEach((target) => target.classList.add("is-revealed"));
 } else {
   const observer = new IntersectionObserver(
