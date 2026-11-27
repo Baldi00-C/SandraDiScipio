@@ -24,7 +24,7 @@ Knowledge base operativa: [docs/agent_kb/](docs/agent_kb/README.md), con mappa d
 | --- | --- |
 | Requisiti business V.0 | Chiusi |
 | Stack tecnologico | Deciso |
-| Design (mockup Figma) | Base comune fatta (F1): stile (T-02.2), elementi globali (T-02.3) e componenti comuni (T-02.4: pulsanti, card progetto, campi dei form, messaggi). Mockup delle pagine (F3) in corso: Progetti (T-04.1), Contatti (T-05.1) e Home (T-09.2, con immagini di esempio) Chi sono (T-06.1), Servizi (T-07.1) e Preventivatore (T-08.2: scheda progetto con moodboard) fatti |
+| Design (mockup Figma) | Base comune fatta (F1): stile (T-02.2), elementi globali (T-02.3) e componenti comuni (T-02.4: pulsanti, card progetto, campi dei form, messaggi). Mockup delle pagine (F3) fatti: Progetti (T-04.1), Contatti (T-05.1), Home (T-09.2, con immagini di esempio), Chi sono (T-06.1), Servizi (T-07.1) e Preventivatore (T-08.2: scheda progetto con moodboard) |
 | Sviluppo V.0 | In corso: setup tecnico (F2). Elementi globali (header, menu, footer, WhatsApp) e pagine segnaposto nelle tre lingue fatti (T-03.7). Deploy su Cloudflare con anteprime delle PR fatto (T-03.4). Progetti in bozza fatti: content collection (T-04.2), elenco (T-04.3) e scheda con visore delle immagini (T-04.4). Contatti: pagina con recapiti (T-05.2), form in arrivo (T-05.3). Home in bozza (T-09.3). Chi sono con foto e testi veri (T-06.2). Servizi (T-07.2). Preventivatore (T-08.3 → T-08.6): scelta del percorso, Chiavi in mano e Solo progetto con scheda progetto, moodboard e allegati; invio da collegare con T-05.3 |
 
 ## Stack deciso

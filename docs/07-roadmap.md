@@ -27,7 +27,7 @@ Regole:
 | F0 | Roadmap e organizzazione su GitHub | 2026-11-21 | Requisiti e stack (chiusi) | FATTO |
 | F1 | Base comune in Figma | 2026-11-22 → 2026-11-28 | F0; accesso a Figma | FATTO |
 | F2 | Setup tecnico | 2026-11-22 → 2026-11-28, in parallelo a F1 | F0 | IN CORSO |
-| F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | DA FARE |
+| F3 | Pagine in bozza (mockup + sviluppo, D-039) | 2026-11-29 → 2026-12-15 | F1, F2 | IN CORSO |
 | F4 | Completamento delle pagine (da "Bozza" a "Fatta") | 2026-12-16 → 2027-01-20 | F3, materiali di D-044 | DA FARE |
 | F5 | Preparazione e pubblicazione | 2027-01-10 → 2027-01-31 | F4, materiali di D-044 | DA FARE |
 
@@ -108,6 +108,7 @@ Mockup approvati, nella pagina Figma "Website · Static design":
 | Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-090 |
 | Chi sono (desktop; mobile ricavato nel codice) | [02 · Chi sono](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-20), con foto e testi veri | D-093 |
 | Servizi (desktop; mobile ricavato nel codice) | [03 · Servizi](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-29), con testi veri e immagini di esempio | D-094 |
+| Preventivatore: scelta del percorso, Chiavi in mano, Solo progetto con scheda progetto e moodboard | [T-08.2 · Preventivatore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=351-1998) | D-095 … D-102 |
 
 I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 

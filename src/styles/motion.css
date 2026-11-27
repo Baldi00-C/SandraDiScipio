@@ -166,6 +166,18 @@
   }
 }
 
+/* Page opened in a background tab: content in place, no transitions */
+html.motion-off [data-reveal],
+html.motion-off .curtain > span {
+  transition: none !important;
+}
+
+html.motion-off body,
+html.motion-off .hero-line > span,
+html.motion-off .hero-fade {
+  animation: none !important;
+}
+
 @keyframes line-rise {
   from {
     transform: translateY(110%);
