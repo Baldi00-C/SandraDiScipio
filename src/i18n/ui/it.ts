@@ -4,9 +4,30 @@
  */
 export const it = {
   "site.name": "Sandra Di Scipio",
-  "site.role": "Architetta e interior designer",
-  "home.title": "Sandra Di Scipio — Architetta e interior designer",
-  "home.description": "Portfolio di Sandra Di Scipio, architetta e interior designer.",
+  "site.role": "Architetto e interior designer",
+  "home.title": "Sandra Di Scipio — Architetto e interior designer",
+  "home.description": "Portfolio di Sandra Di Scipio, architetto e interior designer.",
+  "about.description":
+    "Sandra Di Scipio, architetto e interior designer: formazione a Caracas e al Politecnico di Milano, progettazione, ristrutturazioni e arredo.",
+  "about.role": "Architetto | Interior Designer",
+  "about.photoAlt": "Ritratto di Sandra Di Scipio seduta alla scrivania del suo studio",
+  "about.text1":
+    "La passione per l’architettura e il design d’interni nasce dal desiderio di trasformare gli spazi in luoghi capaci di esprimere identità, emozioni e personalità.",
+  "about.text2":
+    "Mi sono laureata in Architettura a Caracas, in Venezuela, nel 2016, e ho successivamente conseguito una specializzazione in Interior Design presso il Politecnico di Milano nel 2018.",
+  "about.text3":
+    "Il mio percorso professionale mi ha permesso di sviluppare competenze nella progettazione, nella ristrutturazione degli ambienti e nella consulenza per la selezione di arredi e complementi, collaborando anche con importanti brand del settore dell’arredamento di alta gamma.",
+  "about.text4":
+    "Credo che ogni progetto debba nascere dall’ascolto delle esigenze del cliente e svilupparsi attraverso soluzioni personalizzate, capaci di coniugare bellezza, comfort e funzionalità.",
+  "about.text5":
+    "Il mio obiettivo è accompagnare ogni cliente in un percorso creativo e progettuale, trasformando le sue idee in spazi concreti, armoniosi e senza tempo.",
+  "about.studiesLabel": "Formazione",
+  "about.study1": "Architettura\nCaracas, Venezuela",
+  "about.study2": "Interior Design\nPolitecnico di Milano",
+  "about.contactLink": "Parliamone",
+  "about.ctaTitle": "Hai un progetto da realizzare?",
+  "about.ctaText": "Ogni grande progetto nasce da una prima idea e da una conversazione.",
+  "about.ctaButton": "Parliamone",
   "home.heroEyebrow": "Architettura · Interior design · Ristrutturazioni",
   "home.heroLine1": "Progettiamo spazi,",
   "home.heroLine2": "realizziamo",
@@ -129,7 +150,7 @@ export const it = {
   "viewer.counter": "{current} di {total}",
   "viewer.hint": "Tocca due volte o allarga con le dita per ingrandire",
   "contactPage.description":
-    "Contatti di Sandra Di Scipio, architetta e interior designer: WhatsApp, email e telefono.",
+    "Contatti di Sandra Di Scipio, architetto e interior designer: WhatsApp, email e telefono.",
   "contactPage.heading": "Hai un progetto da realizzare?",
   "contactPage.headingSecond": "Parliamone!",
   "contactPage.lead": "Ogni grande progetto nasce da una prima idea e da una conversazione.",

@@ -106,6 +106,7 @@ Mockup approvati, nella pagina Figma "Website · Static design":
 | Progetti: elenco, scheda professionale, scheda universitaria, visore immagini (desktop e mobile) | [T-04.1 · Progetti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2559): [elenco](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2560), [scheda](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-2788), [visore](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3170), [scheda universitaria](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=65-3197) | D-071, D-072, D-073 |
 | Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
 | Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-090 |
+| Chi sono (desktop; mobile ricavato nel codice) | [02 · Chi sono](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-20), con foto e testi veri | D-093 |
 
 I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 
@@ -138,7 +139,7 @@ Fatto quando (M2): il sito è online su `sandradiscipio.com` nelle 3 lingue e i 
 
 | Materiale | Chi | Entro | Serve per |
 | --- | --- | --- | --- |
-| Testi e foto di Chi sono | Utente | 2026-12-15 | F4, pagina Chi sono |
+| Testi e foto di Chi sono | Utente | ARRIVATI il 2026-11-27 (D-093) | F4, pagina Chi sono |
 | Elenco e materiale dei progetti universitari | Utente | 2026-12-15 | F4, pagina Progetti |
 | Email e numero definitivi | Utente | 2027-01-10 | F5 |
 | Acquisto del dominio | Utente | 2027-01-10 | F5 |
@@ -218,9 +219,9 @@ Regole:
 | T-05.2 | Pagina con WhatsApp (messaggio precompilato), email, telefono | F3 | codice | T-05.1, T-03.7 | [#23](https://github.com/Baldi00-C/SandraDiScipio/issues/23) | FATTO |
 | T-05.3 | Form contatti ed endpoint: email a Sandra e copia all'utente con Resend, modelli per lingua | F3 | codice | T-05.2 | [#24](https://github.com/Baldi00-C/SandraDiScipio/issues/24) | DA FARE |
 | T-05.4 | Anti-spam: Turnstile, honeypot, limite di invii | F3 | codice | T-05.3 | [#25](https://github.com/Baldi00-C/SandraDiScipio/issues/25) | DA FARE |
-| **S-06** | **Chi sono in bozza** | F3 | codice | S-05 | [#26](https://github.com/Baldi00-C/SandraDiScipio/issues/26) | DA FARE |
-| T-06.1 | Mockup della pagina Chi sono | F3 | design | T-02.4 | [#27](https://github.com/Baldi00-C/SandraDiScipio/issues/27) | DA FARE |
-| T-06.2 | Pagina Chi sono con segnaposto | F3 | codice | T-06.1, T-03.7 | [#28](https://github.com/Baldi00-C/SandraDiScipio/issues/28) | DA FARE |
+| **S-06** | **Chi sono in bozza** | F3 | codice | S-05 | [#26](https://github.com/Baldi00-C/SandraDiScipio/issues/26) | FATTO |
+| T-06.1 | Mockup della pagina Chi sono | F3 | design | T-02.4 | [#27](https://github.com/Baldi00-C/SandraDiScipio/issues/27) | FATTO |
+| T-06.2 | Pagina Chi sono con segnaposto | F3 | codice | T-06.1, T-03.7 | [#28](https://github.com/Baldi00-C/SandraDiScipio/issues/28) | FATTO |
 | **S-07** | **Servizi in bozza** | F3 | codice | S-06 | [#29](https://github.com/Baldi00-C/SandraDiScipio/issues/29) | DA FARE |
 | T-07.1 | Mockup della pagina Servizi | F3 | design | T-02.4 | [#30](https://github.com/Baldi00-C/SandraDiScipio/issues/30) | DA FARE |
 | T-07.2 | Pagina Servizi con i collegamenti ai percorsi del preventivatore | F3 | codice | T-07.1, T-03.7 | [#31](https://github.com/Baldi00-C/SandraDiScipio/issues/31) | DA FARE |
@@ -241,7 +242,7 @@ Regole:
 | ID | Storia / task | Fase | Area | Dipende da | Issue | Stato |
 | --- | --- | --- | --- | --- | --- | --- |
 | **S-10** | **Contenuti reali** | F4 | contenuti | M1 | [#43](https://github.com/Baldi00-C/SandraDiScipio/issues/43) | DA FARE |
-| T-10.1 | Testi e foto di Chi sono nella pagina (materiale entro 2026-12-15) | F4 | contenuti | T-06.2 | [#44](https://github.com/Baldi00-C/SandraDiScipio/issues/44) | DA FARE |
+| T-10.1 | Testi e foto di Chi sono nella pagina (materiale entro 2026-12-15) | F4 | contenuti | T-06.2 | [#44](https://github.com/Baldi00-C/SandraDiScipio/issues/44) | FATTO |
 | T-10.2 | Progetti universitari nella content collection (materiale entro 2026-12-15) | F4 | contenuti | T-04.2 | [#45](https://github.com/Baldi00-C/SandraDiScipio/issues/45) | DA FARE |
 | **S-11** | **Pagine fatte** (livello "Fatta", D-042: testi IT definitivi, EN/ES dall'AI, slug, SEO della pagina, rifinitura) | F4 | codice | S-10 | [#46](https://github.com/Baldi00-C/SandraDiScipio/issues/46) | DA FARE |
 | T-11.1 | Progetti fatta | F4 | codice | T-10.2 | [#47](https://github.com/Baldi00-C/SandraDiScipio/issues/47) | DA FARE |

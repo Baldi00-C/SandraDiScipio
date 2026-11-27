@@ -33,13 +33,7 @@ export const mainNav = [
  * Pages that exist only as placeholders until their own task builds them
  * (D-083). Remove a key from here when its real page is added.
  */
-export const placeholderPages = [
-  "about",
-  "services",
-  "quote",
-  "privacy",
-  "cookies",
-] as const satisfies readonly RouteKey[];
+export const placeholderPages = ["services", "quote", "privacy", "cookies"] as const satisfies readonly RouteKey[];
 
 export type PlaceholderPage = (typeof placeholderPages)[number];
 

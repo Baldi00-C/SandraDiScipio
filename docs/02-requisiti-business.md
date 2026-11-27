@@ -56,8 +56,8 @@ Scopo: riassumere tutto il sito e portare il visitatore verso un preventivo o un
 
 | ID | Requisito | Stato |
 | --- | --- | --- |
-| REQ-CHI-1 | Foto di Sandra e testo di presentazione | DECISO |
-| REQ-CHI-2 | Percorso di studi e professionale (studi, dove ha lavorato, lavori precedenti, la sua storia). Forma da definire nei mockup (es. timeline) | DECISO |
+| REQ-CHI-1 | Foto di Sandra e testo di presentazione | DECISO (→ D-093) |
+| REQ-CHI-2 | Percorso di studi e professionale (studi, dove ha lavorato, lavori precedenti, la sua storia). Forma da definire nei mockup (es. timeline) | DECISO: formazione 2016 e 2018 sotto la foto (→ D-093) |
 | REQ-CHI-3 | Invito finale a vedere i progetti o chiedere un preventivo | DECISO |
 | REQ-CHI-4 | I contenuti testuali li fornisce l'utente in fase di sviluppo; nel design si usano segnaposto | DECISO (→ D-008) |
 

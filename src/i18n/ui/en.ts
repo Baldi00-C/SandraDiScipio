@@ -5,6 +5,27 @@ export const en: UiDictionary = {
   "site.role": "Architect and interior designer",
   "home.title": "Sandra Di Scipio — Architect and interior designer",
   "home.description": "Portfolio of Sandra Di Scipio, architect and interior designer.",
+  "about.description":
+    "Sandra Di Scipio, architect and interior designer: trained in Caracas and at the Politecnico di Milano; design, renovations and furnishing.",
+  "about.role": "Architect | Interior Designer",
+  "about.photoAlt": "Portrait of Sandra Di Scipio sitting at the desk of her studio",
+  "about.text1":
+    "My passion for architecture and interior design comes from the wish to turn spaces into places that express identity, emotion and personality.",
+  "about.text2":
+    "I graduated in Architecture in Caracas, Venezuela, in 2016, and went on to complete a specialisation in Interior Design at the Politecnico di Milano in 2018.",
+  "about.text3":
+    "My career has allowed me to develop skills in design, in the renovation of spaces and in advising on the choice of furniture and accessories, also working with leading high-end furniture brands.",
+  "about.text4":
+    "I believe every project should start by listening to the client’s needs and grow through tailored solutions that combine beauty, comfort and functionality.",
+  "about.text5":
+    "My goal is to guide each client through a creative design journey, turning their ideas into real, harmonious and timeless spaces.",
+  "about.studiesLabel": "Education",
+  "about.study1": "Architecture\nCaracas, Venezuela",
+  "about.study2": "Interior Design\nPolitecnico di Milano",
+  "about.contactLink": "Let’s talk",
+  "about.ctaTitle": "Have a project in mind?",
+  "about.ctaText": "Every great project starts with a first idea and a conversation.",
+  "about.ctaButton": "Let’s talk",
   "home.heroEyebrow": "Architecture · Interior design · Renovations",
   "home.heroLine1": "We design spaces,",
   "home.heroLine2": "we create",
