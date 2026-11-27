@@ -5,6 +5,44 @@ export const es: UiDictionary = {
   "site.role": "Arquitecta e interiorista",
   "home.title": "Sandra Di Scipio — Arquitecta e interiorista",
   "home.description": "Portafolio de Sandra Di Scipio, arquitecta e interiorista.",
+  "services.description":
+    "Los servicios de Sandra Di Scipio: arquitectura y proyecto, interiorismo, reformas, amueblamiento y soluciones llave en mano.",
+  "services.eyebrow": "Nuestros servicios",
+  "services.heading": "Damos forma a tus ideas,\nacompañándote en cada fase.",
+  "services.lead":
+    "Cada proyecto es diferente y merece un enfoque personalizado. Por eso ofrecemos distintas soluciones, desde una consulta puntual hasta la gestión completa de la obra.",
+  "services.number": "Servicio",
+  "services.sampleImage": "Imagen de ejemplo",
+  "services.quoteTurnkey": "Pide un presupuesto · Llave en mano",
+  "services.quoteDesign": "Pide un presupuesto · Solo proyecto",
+  "services.closing": "Un único interlocutor, un proyecto coordinado, un resultado pensado a tu medida.",
+  "services.ctaTitle": "¿Tienes un proyecto en mente?",
+  "services.ctaText": "Todo gran proyecto nace de una primera idea y de una conversación.",
+  "services.ctaButton": "Hablemos",
+  "services.s1Title": "Arquitectura y proyecto",
+  "services.s1Text":
+    "Desde la idea inicial hasta el desarrollo del proyecto, estudiamos soluciones arquitectónicas pensadas para valorizar cada ambiente.",
+  "services.s1Items":
+    "Asesoramiento proyectual\nMedición y análisis de los espacios\nDistribución y optimización de los ambientes\nPlanos y documentación gráfica\nProyecto arquitectónico y de interiores\nModelado y visualización 3D",
+  "services.s1Alt": "Estudio con escritorio de madera, estantes y lámpara (imagen de ejemplo)",
+  "services.s2Title": "Interiorismo",
+  "services.s2Text":
+    "Diseñamos ambientes que reflejan el estilo y la personalidad de quienes los viven, mediante una cuidadosa selección de materiales, colores, acabados e iluminación.",
+  "services.s2Items":
+    "Concepto y moodboard\nEstudio de estilos y paletas cromáticas\nSelección de materiales y revestimientos\nDiseño de muebles a medida\nEstudio de la iluminación\nSelección de complementos y accesorios",
+  "services.s2Alt": "Hornacina en arco con un jarrón de cerámica (imagen de ejemplo)",
+  "services.s3Title": "Reformas",
+  "services.s3Text":
+    "Acompañamos la transformación de los ambientes, coordinando las distintas fases de la obra para garantizar coherencia entre proyecto, plazos y resultado final.",
+  "services.s3Items":
+    "Estudio preliminar de la intervención\nDesarrollo del proyecto de reforma\nMediciones y análisis de costes\nSelección de materiales y proveedores\nCoordinación de los trabajos y de los gremios\nAsistencia y supervisión durante la ejecución",
+  "services.s3Alt": "Salón con sofá curvo y puertas en arco (imagen de ejemplo)",
+  "services.s4Title": "Amueblamiento y soluciones llave en mano",
+  "services.s4Text":
+    "Damos continuidad al proyecto con la selección y el suministro de muebles, colaborando con marcas y empresas especializadas en mobiliario y diseño.",
+  "services.s4Items":
+    "Asesoramiento en la elección del mobiliario\nSelección de marcas y proveedores\nPropuestas de mobiliario personalizadas\nBúsqueda y suministro de muebles y complementos\nCoordinación de entregas y montaje\nGestión integral del proyecto hasta su finalización",
+  "services.s4Alt": "Dormitorio con arco de obra y textiles claros (imagen de ejemplo)",
   "about.description":
     "Sandra Di Scipio, arquitecta e interiorista: formada en Caracas y en el Politecnico di Milano; proyectos, reformas y mobiliario.",
   "about.role": "Arquitecta | Interiorista",

@@ -7,6 +7,44 @@ export const it = {
   "site.role": "Architetto e interior designer",
   "home.title": "Sandra Di Scipio — Architetto e interior designer",
   "home.description": "Portfolio di Sandra Di Scipio, architetto e interior designer.",
+  "services.description":
+    "I servizi di Sandra Di Scipio: architettura e progettazione, interior design, ristrutturazioni, arredamento e soluzioni chiavi in mano.",
+  "services.eyebrow": "I nostri servizi",
+  "services.heading": "Diamo forma alle tue idee,\nseguendoti in ogni fase.",
+  "services.lead":
+    "Ogni progetto è diverso e merita un approccio personalizzato. Per questo offriamo diverse soluzioni, dalla singola consulenza alla gestione completa dell’intervento.",
+  "services.number": "Servizio",
+  "services.sampleImage": "Immagine di esempio",
+  "services.quoteTurnkey": "Richiedi un preventivo · Chiavi in mano",
+  "services.quoteDesign": "Richiedi un preventivo · Solo progetto",
+  "services.closing": "Un unico referente, un progetto coordinato, un risultato pensato intorno a te.",
+  "services.ctaTitle": "Hai un progetto da realizzare?",
+  "services.ctaText": "Ogni grande progetto nasce da una prima idea e da una conversazione.",
+  "services.ctaButton": "Parliamone",
+  "services.s1Title": "Architettura e progettazione",
+  "services.s1Text":
+    "Dall’idea iniziale allo sviluppo del progetto, studiamo soluzioni architettoniche pensate per valorizzare ogni ambiente.",
+  "services.s1Items":
+    "Consulenza progettuale\nRilievo e analisi degli spazi\nDistribuzione e ottimizzazione degli ambienti\nElaborati grafici e planimetrici\nProgettazione architettonica e d’interni\nModellazione e visualizzazione 3D",
+  "services.s1Alt": "Studio con scrivania in legno, mensole e lampada (immagine di esempio)",
+  "services.s2Title": "Interior Design",
+  "services.s2Text":
+    "Progettiamo ambienti che rispecchiano lo stile e la personalità di chi li vive, attraverso un’attenta selezione di materiali, colori, finiture e illuminazione.",
+  "services.s2Items":
+    "Concept e moodboard\nStudio degli stili e delle palette cromatiche\nSelezione di materiali e rivestimenti\nProgettazione di arredi su misura\nStudio dell’illuminazione\nSelezione di complementi e accessori",
+  "services.s2Alt": "Nicchia ad arco con un vaso in ceramica (immagine di esempio)",
+  "services.s3Title": "Ristrutturazioni",
+  "services.s3Text":
+    "Seguiamo il processo di trasformazione degli ambienti, coordinando le diverse fasi operative per garantire coerenza tra progetto, tempi e risultato finale.",
+  "services.s3Items":
+    "Studio preliminare dell’intervento\nSviluppo del progetto di ristrutturazione\nComputo e analisi dei costi\nSelezione di materiali e fornitori\nCoordinamento delle lavorazioni e delle maestranze\nAssistenza e supervisione durante le fasi di realizzazione",
+  "services.s3Alt": "Soggiorno con divano curvo e porte ad arco (immagine di esempio)",
+  "services.s4Title": "Arredamento e soluzioni chiavi in mano",
+  "services.s4Text":
+    "Diamo continuità al progetto attraverso la selezione e la fornitura di arredi, collaborando con brand e aziende specializzate nel settore dell’arredamento e del design.",
+  "services.s4Items":
+    "Consulenza per la scelta degli arredi\nSelezione di brand e fornitori\nProposte d’arredo personalizzate\nRicerca e fornitura di mobili e complementi\nCoordinamento delle consegne e del montaggio\nGestione integrata del progetto fino alla realizzazione finale",
+  "services.s4Alt": "Camera da letto con arco in muratura e tessili chiari (immagine di esempio)",
   "about.description":
     "Sandra Di Scipio, architetto e interior designer: formazione a Caracas e al Politecnico di Milano, progettazione, ristrutturazioni e arredo.",
   "about.role": "Architetto | Interior Designer",

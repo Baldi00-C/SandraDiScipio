@@ -66,7 +66,7 @@ Scopo: riassumere tutto il sito e portare il visitatore verso un preventivo o un
 | ID | Requisito | Stato |
 | --- | --- | --- |
 | REQ-SERV-1 | Pagina a sé nel menu che spiega cosa offre Sandra e cosa include ogni servizio | DECISO (→ D-011) |
-| REQ-SERV-2 | Ogni servizio porta al percorso giusto del preventivatore | DECISO |
+| REQ-SERV-2 | Ogni servizio porta al percorso giusto del preventivatore | DECISO (→ D-094) |
 
 ## Progetti
 
