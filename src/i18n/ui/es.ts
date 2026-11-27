@@ -5,6 +5,27 @@ export const es: UiDictionary = {
   "site.role": "Arquitecta e interiorista",
   "home.title": "Sandra Di Scipio — Arquitecta e interiorista",
   "home.description": "Portafolio de Sandra Di Scipio, arquitecta e interiorista.",
+  "about.description":
+    "Sandra Di Scipio, arquitecta e interiorista: formada en Caracas y en el Politecnico di Milano; proyectos, reformas y mobiliario.",
+  "about.role": "Arquitecta | Interiorista",
+  "about.photoAlt": "Retrato de Sandra Di Scipio sentada en el escritorio de su estudio",
+  "about.text1":
+    "La pasión por la arquitectura y el diseño de interiores nace del deseo de transformar los espacios en lugares capaces de expresar identidad, emociones y personalidad.",
+  "about.text2":
+    "Me licencié en Arquitectura en Caracas, Venezuela, en 2016, y después obtuve una especialización en Diseño de Interiores en el Politecnico di Milano en 2018.",
+  "about.text3":
+    "Mi trayectoria profesional me ha permitido desarrollar competencias en el diseño, en la reforma de espacios y en el asesoramiento para la selección de muebles y complementos, colaborando también con importantes marcas del sector del mobiliario de alta gama.",
+  "about.text4":
+    "Creo que cada proyecto debe nacer de la escucha de las necesidades del cliente y desarrollarse mediante soluciones personalizadas, capaces de unir belleza, confort y funcionalidad.",
+  "about.text5":
+    "Mi objetivo es acompañar a cada cliente en un recorrido creativo y proyectual, transformando sus ideas en espacios concretos, armoniosos y atemporales.",
+  "about.studiesLabel": "Formación",
+  "about.study1": "Arquitectura\nCaracas, Venezuela",
+  "about.study2": "Diseño de Interiores\nPolitecnico di Milano",
+  "about.contactLink": "Hablemos",
+  "about.ctaTitle": "¿Tienes un proyecto en mente?",
+  "about.ctaText": "Todo gran proyecto nace de una primera idea y de una conversación.",
+  "about.ctaButton": "Hablemos",
   "home.heroEyebrow": "Arquitectura · Interiorismo · Reformas",
   "home.heroLine1": "Diseñamos espacios,",
   "home.heroLine2": "creamos",

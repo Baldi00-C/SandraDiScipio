@@ -8,7 +8,7 @@ ultimo_aggiornamento: 2026-11-21
 
 ## Chi è il cliente del progetto
 
-- **Sandra Di Scipio**: architetta e interior designer. È la proprietaria del sito e la **Product Owner (PO)**: valida i contenuti e le scelte, ma le decisioni operative si prendono con l'utente (vedi [05-modo-di-lavorare.md](05-modo-di-lavorare.md)).
+- **Sandra Di Scipio**: architetto e interior designer. È la proprietaria del sito e la **Product Owner (PO)**: valida i contenuti e le scelte, ma le decisioni operative si prendono con l'utente (vedi [05-modo-di-lavorare.md](05-modo-di-lavorare.md)).
 - Sandra sta avviando un'**attività in proprio**: il sito serve a farsi conoscere e a trovare clienti.
 
 ## Obiettivi del sito (V.0)

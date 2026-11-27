@@ -1,0 +1,101 @@
+---
+/**
+ * About page (T-06.2, Figma `02 · Chi sono`, D-093): name and role, Sandra's
+ * portrait, her text from "SITO WEB.docx" (REQ-CHI-1), the two study steps
+ * (REQ-CHI-2) and the invitation to get in touch.
+ */
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+
+import portrait from "../../../assets/about/sandra-di-scipio.jpg";
+import ContactCta from "../../../components/ContactCta.astro";
+import Curtain from "../../../components/Curtain.astro";
+import EditorialLink from "../../../components/EditorialLink.astro";
+import { locales, pathFor, routes, useTranslations, type Locale } from "../../../i18n";
+import PageLayout from "../../../layouts/PageLayout.astro";
+
+export const getStaticPaths = (() =>
+  locales.map((lang) => ({ params: { lang, about: routes.about[lang] } }))) satisfies GetStaticPaths;
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+
+const paragraphs = [t("about.text1"), t("about.text2"), t("about.text3"), t("about.text4"), t("about.text5")];
+const studies = [
+  { year: "2016", lines: t("about.study1").split("\n") },
+  { year: "2018", lines: t("about.study2").split("\n") },
+];
+---
+
+<PageLayout
+  title={`${t("nav.about")} — ${t("site.name")}`}
+  description={t("about.description")}
+  locale={locale}
+  route="about"
+>
+  <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-20">
+    <p class="type-eyebrow text-text-label uppercase" data-reveal>
+      {t("nav.about")}
+    </p>
+    <h1 class="type-display-large" data-reveal style="--reveal-delay: 100ms">
+      {t("site.name")}
+    </h1>
+    <p class="type-h3 text-text-secondary" data-reveal style="--reveal-delay: 200ms">
+      {t("about.role")}
+    </p>
+  </section>
+
+  <section
+    aria-label={t("nav.about")}
+    class="container-site grid gap-12 pt-10 pb-section tablet:grid-cols-12 tablet:gap-gutter tablet:pt-16"
+  >
+    <div class="flex flex-col gap-12 tablet:col-span-5">
+      <div class="relative aspect-[498/660] overflow-hidden" data-curtain>
+        <Image
+          src={portrait}
+          alt={t("about.photoAlt")}
+          widths={[400, 640, 832]}
+          sizes="(min-width: 53.75rem) 40vw, 100vw"
+          loading="eager"
+          class="size-full object-cover"
+        />
+        <Curtain />
+      </div>
+      <div>
+        <h2 class="sr-only">{t("about.studiesLabel")}</h2>
+        <ol class="grid grid-cols-2 gap-gutter">
+          {studies.map(({ year, lines }) => (
+            <li class="flex flex-col gap-3" data-reveal>
+              <p class="type-h2">{year}</p>
+              <p class="type-body-small text-text-secondary">
+                {lines.map((line, index) => (
+                  <>
+                    {index > 0 && <br />}
+                    {line}
+                  </>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+    <div class="flex flex-col gap-6 tablet:col-span-6 tablet:col-start-7">
+      {paragraphs.map((paragraph, index) => (
+        <p class="type-body" data-reveal style={`--reveal-delay: ${Math.min(index, 2) * 100}ms`}>
+          {paragraph}
+        </p>
+      ))}
+      <div class="pt-4" data-reveal>
+        <EditorialLink href={pathFor("contact", locale)}>{t("about.contactLink")}</EditorialLink>
+      </div>
+    </div>
+  </section>
+
+  <ContactCta
+    title={t("about.ctaTitle")}
+    text={t("about.ctaText")}
+    label={t("about.ctaButton")}
+    href={pathFor("contact", locale)}
+  />
+</PageLayout>
