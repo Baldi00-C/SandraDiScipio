@@ -107,6 +107,7 @@ Mockup approvati, nella pagina Figma "Website · Static design":
 | Contatti: pagina, invio riuscito, stati del form (oggetto "Altro", errori, tendina aperta) (desktop e mobile) | [T-05.1 · Contatti](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1339): [desktop](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1340), [mobile](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=266-1488), [inviato](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1616), [oggetto Altro](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1738), [errori](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=268-1865) | D-074, D-075, D-076, D-077 |
 | Home (desktop; mobile ricavato nel codice) | [01 · Home](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-8), con immagini di esempio | D-012, D-016, D-090 |
 | Chi sono (desktop; mobile ricavato nel codice) | [02 · Chi sono](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-20), con foto e testi veri | D-093 |
+| Servizi (desktop; mobile ricavato nel codice) | [03 · Servizi](https://www.figma.com/design/Zl3k5Q7AegYlr0mGOQa6YQ/SandraDiScipio?node-id=4-29), con testi veri e immagini di esempio | D-094 |
 
 I mockup usano il materiale reale del POC (Villa a Castana per la scheda). Le vecchie bozze 04, 05 e 07 restano nel file, segnate come superate.
 
@@ -222,9 +223,9 @@ Regole:
 | **S-06** | **Chi sono in bozza** | F3 | codice | S-05 | [#26](https://github.com/Baldi00-C/SandraDiScipio/issues/26) | FATTO |
 | T-06.1 | Mockup della pagina Chi sono | F3 | design | T-02.4 | [#27](https://github.com/Baldi00-C/SandraDiScipio/issues/27) | FATTO |
 | T-06.2 | Pagina Chi sono con segnaposto | F3 | codice | T-06.1, T-03.7 | [#28](https://github.com/Baldi00-C/SandraDiScipio/issues/28) | FATTO |
-| **S-07** | **Servizi in bozza** | F3 | codice | S-06 | [#29](https://github.com/Baldi00-C/SandraDiScipio/issues/29) | DA FARE |
-| T-07.1 | Mockup della pagina Servizi | F3 | design | T-02.4 | [#30](https://github.com/Baldi00-C/SandraDiScipio/issues/30) | DA FARE |
-| T-07.2 | Pagina Servizi con i collegamenti ai percorsi del preventivatore | F3 | codice | T-07.1, T-03.7 | [#31](https://github.com/Baldi00-C/SandraDiScipio/issues/31) | DA FARE |
+| **S-07** | **Servizi in bozza** | F3 | codice | S-06 | [#29](https://github.com/Baldi00-C/SandraDiScipio/issues/29) | FATTO |
+| T-07.1 | Mockup della pagina Servizi | F3 | design | T-02.4 | [#30](https://github.com/Baldi00-C/SandraDiScipio/issues/30) | FATTO |
+| T-07.2 | Pagina Servizi con i collegamenti ai percorsi del preventivatore | F3 | codice | T-07.1, T-03.7 | [#31](https://github.com/Baldi00-C/SandraDiScipio/issues/31) | FATTO |
 | **S-08** | **Preventivatore in bozza** | F3 | codice | S-07 | [#32](https://github.com/Baldi00-C/SandraDiScipio/issues/32) | DA FARE |
 | T-08.1 | Revisione delle domande dei questionari con l'utente (D-019) | F3 | docs | — | [#33](https://github.com/Baldi00-C/SandraDiScipio/issues/33) | DA FARE |
 | T-08.2 | Mockup: scelta del percorso e i due questionari | F3 | design | T-08.1, T-02.4 | [#34](https://github.com/Baldi00-C/SandraDiScipio/issues/34) | DA FARE |

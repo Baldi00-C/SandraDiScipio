@@ -5,6 +5,44 @@ export const en: UiDictionary = {
   "site.role": "Architect and interior designer",
   "home.title": "Sandra Di Scipio — Architect and interior designer",
   "home.description": "Portfolio of Sandra Di Scipio, architect and interior designer.",
+  "services.description":
+    "Sandra Di Scipio's services: architecture and design, interior design, renovations, furnishing and turnkey solutions.",
+  "services.eyebrow": "Our services",
+  "services.heading": "We give shape to your ideas,\nguiding you at every stage.",
+  "services.lead":
+    "Every project is different and deserves a tailored approach. That is why we offer different solutions, from a single consultation to managing the whole job.",
+  "services.number": "Service",
+  "services.sampleImage": "Sample image",
+  "services.quoteTurnkey": "Request a quote · Turnkey",
+  "services.quoteDesign": "Request a quote · Design only",
+  "services.closing": "A single point of contact, a coordinated project, a result designed around you.",
+  "services.ctaTitle": "Have a project in mind?",
+  "services.ctaText": "Every great project starts with a first idea and a conversation.",
+  "services.ctaButton": "Let’s talk",
+  "services.s1Title": "Architecture and design",
+  "services.s1Text":
+    "From the first idea to the development of the project, we study architectural solutions designed to make the most of every space.",
+  "services.s1Items":
+    "Design consultancy\nSurvey and analysis of the spaces\nLayout and optimisation of the rooms\nDrawings and floor plans\nArchitectural and interior design\n3D modelling and visualisation",
+  "services.s1Alt": "Studio with a wooden desk, shelves and a lamp (sample image)",
+  "services.s2Title": "Interior Design",
+  "services.s2Text":
+    "We design spaces that reflect the style and personality of the people who live in them, through a careful choice of materials, colours, finishes and lighting.",
+  "services.s2Items":
+    "Concept and moodboard\nStudy of styles and colour palettes\nChoice of materials and finishes\nBespoke furniture design\nLighting design\nChoice of accessories and decor",
+  "services.s2Alt": "Arched niche with a ceramic vase (sample image)",
+  "services.s3Title": "Renovations",
+  "services.s3Text":
+    "We guide the transformation of your spaces, coordinating every stage of the works to keep project, timing and final result consistent.",
+  "services.s3Items":
+    "Preliminary study of the works\nDevelopment of the renovation project\nBill of quantities and cost analysis\nChoice of materials and suppliers\nCoordination of works and trades\nAssistance and supervision during construction",
+  "services.s3Alt": "Living room with a curved sofa and arched doors (sample image)",
+  "services.s4Title": "Furnishing and turnkey solutions",
+  "services.s4Text":
+    "We carry the project through with the selection and supply of furniture, working with brands and companies specialised in furniture and design.",
+  "services.s4Items":
+    "Advice on choosing furniture\nSelection of brands and suppliers\nTailored furnishing proposals\nSourcing and supply of furniture and accessories\nCoordination of deliveries and assembly\nIntegrated management of the project up to completion",
+  "services.s4Alt": "Bedroom with a masonry arch and light textiles (sample image)",
   "about.description":
     "Sandra Di Scipio, architect and interior designer: trained in Caracas and at the Politecnico di Milano; design, renovations and furnishing.",
   "about.role": "Architect | Interior Designer",

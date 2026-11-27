@@ -20,6 +20,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/pages/[lang]/[projects]/index.astro` | Elenco dei progetti (T-04.3, D-086) |
 | `src/pages/[lang]/[projects]/[project].astro` | Scheda progetto con visore delle immagini (T-04.4, D-087); `src/scripts/image-viewer.ts` e `src/lib/viewer.ts` |
 | `src/pages/[lang]/[about]/index.astro` | Pagina Chi sono (T-06.2, D-093): foto in `src/assets/about/`, testi `about.*` dai dizionari |
+| `src/pages/[lang]/[services]/index.astro` | Pagina Servizi (T-07.2, D-094); servizi e percorso del preventivatore in `src/data/services.ts` |
 | `src/pages/[lang]/[contact]/index.astro` | Pagina Contatti con recapiti (T-05.2, D-088) |
 | `src/pages/[lang]/[slug].astro` | Pagine segnaposto di `placeholderPages` (D-083): ogni task di pagina toglie la sua chiave |
 | `src/i18n/config.ts` | Lingue supportate e fallback inglese |
