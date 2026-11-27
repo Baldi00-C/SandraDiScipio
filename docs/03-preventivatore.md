@@ -1,7 +1,7 @@
 ---
 title: Preventivatore — flusso e bozze dei questionari
-stato: flusso DECISO; domande in BOZZA
-ultimo_aggiornamento: 2026-11-21
+stato: flusso DECISO; domande APPROVATE dall'utente (T-08.1), da validare con Sandra
+ultimo_aggiornamento: 2026-11-27
 ---
 
 # Preventivatore
@@ -17,13 +17,15 @@ ultimo_aggiornamento: 2026-11-21
 | REQ-PREV-5 | L'email a Sandra è nella **lingua in cui l'utente ha compilato il form** | D-014 |
 | REQ-PREV-6 | Tempi di risposta promessi all'utente nell'email di conferma: RIMANDATO | D-017 |
 | REQ-PREV-7 | La pagina spiega la differenza: Chiavi in mano segue tutto, dal progetto alla realizzazione; Solo progetto resta in digitale | — |
+| REQ-PREV-8 | Esperienza "Scheda progetto": capitoli, una schermata alla volta, scelte visive, scheda del progetto che si compone e si modifica, riepilogo prima dell'invio, accessibile e con "riduci movimento" | D-095 |
+| REQ-PREV-9 | Moodboard in tutti e due i percorsi: atmosfere, colori, materiali e reference del visitatore (link e immagini) | D-099 |
 
 ## Flusso
 
 ```
 Preventivatore (scelta del percorso)
    ├── Chiavi in mano (15 domande, nessun prezzo) ──┐
-   └── Solo progetto  (4 passaggi, 18 domande) ─────┤
+   └── Solo progetto  (7 schermate, brief) ──────────┤
                                                     ▼
                                     Invio (con allegati facoltativi)
                                        ├──► Email a Sandra: risposte + allegati, nella lingua dell'utente
@@ -34,72 +36,58 @@ Preventivatore (scelta del percorso)
 
 ## Stato delle domande
 
-Le domande sotto sono una **BOZZA scritta dall'AI**. Processo deciso (→ D-005, D-019):
-1. Si rivedono insieme all'utente **quando si sviluppano i questionari** (non prima).
-2. Poi le valida Sandra come PO.
+Le domande sotto sono state **riviste con l'utente in T-08.1** (D-095 → D-101). Prossimo passo: le valida Sandra come PO (D-019). Le risposte segnate con * sono obbligatorie.
 
-Non considerarle definitive e non riscriverle di tua iniziativa prima di quella fase.
+## Testi della pagina di scelta
 
-## Bozza — Questionario Chiavi in mano
+Fonte: sezione "6. PREVENTIVATORE ONLINE" del file "SITO WEB (1).docx" (D-096). Titolo "Il tuo progetto inizia da qui." Al posto della "prima stima dei costi" la pagina promette una **proposta su misura preparata da Sandra**: nessuna cifra (D-004).
 
-Scopo: raccogliere i dati di un intervento completo, dal progetto alla realizzazione.
+## Moodboard (comune ai due percorsi, D-099)
 
-| # | Domanda | Tipo di risposta | Obbligatoria |
+| Elemento | Risposta |
+| --- | --- |
+| Atmosfere | Card con immagine, scelta multipla: calda e accogliente, luminosa e minimale, elegante e classica, naturale, industriale, contemporanea (immagini di esempio, D-101) |
+| Colori che ami | Tavolozza di 8 campioni, scelta multipla |
+| Colori da evitare | Testo breve |
+| Materiali | Chip, scelta multipla: legno, pietra, mattone, metallo, tessuti naturali, resina |
+| Le tue reference | Link (Pinterest, Instagram, altri siti) e immagini caricate; i file contano nei limiti di D-015 |
+
+Tutto il moodboard è facoltativo.
+
+## Questionario Chiavi in mano (D-097)
+
+Scopo: raccogliere i dati di un intervento completo, dal progetto alla realizzazione. 15 domande in 4 capitoli, poi il riepilogo.
+
+| Capitolo | # | Domanda | Risposta |
 | --- | --- | --- | --- |
-| 1 | Che tipo di immobile è? | Scelta singola: appartamento, casa indipendente o villa, ufficio, negozio o locale, altro | Sì |
-| 2 | Dove si trova? | Testo: città e provincia (o Paese) | Sì |
-| 3 | Quanti mq circa? | Numero | Sì |
-| 4 | L'immobile è già tuo? | Scelta singola: sì, in acquisto, sto valutando | Sì |
-| 5 | Che tipo di intervento immagini? | Scelta singola: ristrutturazione completa, parziale, solo arredo | Sì |
-| 6 | Quali ambienti sono coinvolti? | Scelta multipla: cucina, soggiorno, camere, bagni, esterni, tutto | Sì |
-| 7 | Ci sono lavori impiantistici da fare? | Scelta multipla: elettrico, idraulico, riscaldamento o clima, non so | No |
-| 8 | Serve anche la fornitura degli arredi? | Scelta singola: sì, in parte, no | Sì |
-| 9 | Quale budget complessivo hai in mente? | Fasce di prezzo + "preferisco parlarne" | No |
-| 10 | Entro quando vorresti finire? | Scelta singola: entro 6 mesi, 6–12 mesi, oltre, nessuna fretta | Sì |
-| 11 | Che stile ti piace? | Scelta multipla con immagini: moderno, classico, industriale, naturale, minimal | No |
-| 12 | Vuoi aggiungere altro? | Testo libero | No |
-| 13 | Allegati | File: planimetria, foto dello stato attuale, ispirazioni (immagini o PDF) | No |
-| 14 | I tuoi dati | Nome, email, telefono, contatto preferito (email, telefono, WhatsApp) | Sì |
-| 15 | Privacy | Consenso al trattamento dei dati | Sì |
+| 1 · L'immobile | 1* | Che tipo di immobile è? | Card con icona: appartamento, casa o villa, ufficio, negozio o locale, altro |
+| | 2* | Dove si trova? | Testo: città (o Paese) |
+| | 3* | Quanti mq circa? | Numero |
+| | 4* | L'immobile è già tuo? | Sì, in acquisto, sto valutando |
+| 2 · L'intervento | 5* | Che tipo di intervento immagini? | Card: ristrutturazione completa, parziale, solo arredo |
+| | 6* | Quali ambienti sono coinvolti? | Multipla con icone: cucina, soggiorno, camere, bagni, studio, esterni, tutto |
+| | 7 | Ci sono lavori sugli impianti? | Multipla: elettrico, idraulico, riscaldamento o clima, nessuno, non so |
+| | 8* | Serve anche la fornitura degli arredi? | Sì, in parte, no |
+| 3 · Gusti e tempi | 9 | Moodboard | Vedi sopra |
+| | 10 | Quale budget complessivo hai in mente? | Fino a 30.000 €, 30.000–60.000 €, 60.000–100.000 €, oltre 100.000 €, preferisco parlarne (D-100) |
+| | 11* | Entro quando vorresti finire? | Entro 6 mesi, 6–12 mesi, oltre, nessuna fretta |
+| 4 · Tu e il progetto | 12 | Vuoi aggiungere altro? | Testo libero |
+| | 13 | Allegati | Planimetria, foto dello stato attuale, ispirazioni (D-015) |
+| | 14* | I tuoi dati | Nome*, email*, telefono, contatto preferito* (email, telefono, WhatsApp); telefono obbligatorio se il contatto preferito è telefono o WhatsApp |
+| | 15* | Privacy | Consenso al trattamento dei dati |
+| Riepilogo | — | Scheda completa, ogni voce modificabile | — |
 
-## Bozza — Questionario Solo progetto
+## Questionario Solo progetto (D-098)
 
-Scopo: capire a fondo i desideri di chi vuole solo il progetto digitale (render, piante, scelta di arredi e materiali) e poi far realizzare i lavori per conto suo. Diviso in 4 passaggi.
+Scopo: capire a fondo i desideri di chi vuole solo il progetto digitale (render, piante, scelta di arredi e materiali) e poi far realizzare i lavori per conto suo. Un brief con moodboard: 7 schermate in 4 capitoli, 4 sole risposte obbligatorie.
 
-### Passaggio 1 — Lo spazio
-
-| # | Domanda | Tipo di risposta | Obbligatoria |
-| --- | --- | --- | --- |
-| 1 | Che tipo di spazio è? | Scelta singola: casa, ufficio, negozio o locale, altro | Sì |
-| 2 | Quanti mq circa? | Numero | Sì |
-| 3 | Quali ambienti vuoi progettare? | Scelta multipla: cucina, soggiorno, camere, bagni, studio, esterni, tutto | Sì |
-| 4 | Cosa ti serve? | Scelta multipla: nuova distribuzione, render 3D, scelta arredi, materiali e colori, illuminazione | Sì |
-
-### Passaggio 2 — Chi lo vive
-
-| # | Domanda | Tipo di risposta | Obbligatoria |
-| --- | --- | --- | --- |
-| 5 | Chi vive o usa lo spazio? | Numero di persone, età dei bambini, animali | Sì |
-| 6 | Come passi le giornate in casa? | Scelta multipla: lavoro da casa, cucino spesso, ricevo ospiti, leggo, guardo film, sport | No |
-| 7 | Cosa non funziona oggi? | Testo libero | No |
-| 8 | Cosa non può mancare? | Testo libero (es. cabina armadio, isola in cucina) | No |
-| 9 | Ci sono arredi o oggetti da tenere? | Testo libero o foto | No |
-
-### Passaggio 3 — Gusti
-
-| # | Domanda | Tipo di risposta | Obbligatoria |
-| --- | --- | --- | --- |
-| 10 | Che atmosfera desideri? | Scelta con immagini: calda e accogliente, luminosa e minimale, elegante, naturale, industriale | Sì |
-| 11 | Colori che ami e colori che eviti | Testo libero o tavolozza | No |
-| 12 | Materiali preferiti | Scelta multipla: legno, pietra, mattone, metallo, tessuti naturali, resina | No |
-| 13 | Hai immagini di ispirazione? | Link (Pinterest, Instagram) o allegati | No |
-
-### Passaggio 4 — Tempi, budget, contatti
-
-| # | Domanda | Tipo di risposta | Obbligatoria |
-| --- | --- | --- | --- |
-| 14 | Budget previsto per lavori e arredi | Fasce di prezzo + "preferisco parlarne" | No |
-| 15 | Quando vorresti avere il progetto? | Scelta singola: entro 1 mese, 1–3 mesi, nessuna fretta | Sì |
-| 16 | Allegati | File: planimetria, foto dello stato attuale (immagini o PDF) | No |
-| 17 | I tuoi dati | Nome, email, telefono, contatto preferito | Sì |
-| 18 | Privacy | Consenso al trattamento dei dati | Sì |
+| Capitolo | Schermata | Contenuto |
+| --- | --- | --- |
+| 1 · Lo spazio | 1 | Che tipo di spazio è?* (card: casa, ufficio, negozio o locale, altro) e quanti mq circa (numero) |
+| | 2 | Quali ambienti vuoi progettare?* (multipla con icone: cucina, soggiorno, camere, bagni, studio, esterni, tutto) |
+| 2 · Le esigenze | 3 | Cosa ti serve? (multipla: nuova distribuzione, render 3D, scelta arredi, materiali e colori, illuminazione) e chi vive lo spazio (contatori adulti e bambini, animali sì o no) |
+| | 4 | Raccontami il tuo spazio: un testo libero con spunti cliccabili (lavoro da casa, cucino spesso, ricevo ospiti, cosa non funziona oggi, cosa non può mancare, arredi da tenere) |
+| 3 · Il tuo moodboard | 5 | Moodboard (vedi sopra) |
+| 4 · Tempi e contatti | 6 | Quando vorresti avere il progetto?* (entro 1 mese, 1–3 mesi, nessuna fretta); budget per lavori e arredi (fino a 20.000 €, 20.000–50.000 €, 50.000–100.000 €, oltre 100.000 €, preferisco parlarne, D-100); allegati: planimetria e foto dello stato attuale |
+| | 7 | I tuoi dati* e privacy*, come nel Chiavi in mano |
+| Riepilogo | — | Scheda completa, ogni voce modificabile |
