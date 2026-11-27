@@ -1,6 +1,6 @@
 ---
 title: Convenzioni del codice
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-27
 ---
 
 # Convenzioni del codice
@@ -39,6 +39,7 @@ Usa la configurazione strict di Astro e le regole di [ESLint](../../eslint.confi
 ## Multilingua (D-025, D-046, D-051)
 
 - Testi dell'interfaccia in `src/i18n/ui/<lingua>.ts`, con le stesse chiavi in tutte le lingue.
+- Eccezione: i testi del preventivatore, molti e annidati per domanda, sono in `src/i18n/quote/<lingua>.ts` con il tipo `QuoteDictionary` che impone le stesse chiavi (D-103).
 - Slug in `src/i18n/routes.ts`; costruisci i link interni delle pagine con `pathFor()`.
 - Prefisso anche per l'inglese e barra finale negli URL. Canonical e hreflang assoluti dalla configurazione `SITE_URL`.
 - `x-default` punta all'inglese; l'italiano è la lingua in cui nascono i testi.

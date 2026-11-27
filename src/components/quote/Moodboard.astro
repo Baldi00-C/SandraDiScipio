@@ -1,0 +1,200 @@
+---
+/**
+ * Moodboard of both quote paths (D-099, Figma `T-08.2 · Preventivatore`):
+ * atmospheres with sample images (D-101), a palette, materials and the
+ * visitor's own references (links and images). Everything is optional.
+ */
+import { Image } from "astro:assets";
+
+import bright from "../../assets/quote/bright-sample.jpg";
+import contemporary from "../../assets/quote/contemporary-sample.jpg";
+import elegant from "../../assets/quote/elegant-sample.jpg";
+import industrial from "../../assets/quote/industrial-sample.jpg";
+import natural from "../../assets/quote/natural-sample.jpg";
+import warm from "../../assets/quote/warm-sample.jpg";
+import type { QuoteDictionary } from "../../i18n/quote";
+import { moodboardOptions } from "../../lib/quote";
+import { buttonClasses, choicePillClasses, fieldClasses, moodCardClasses, optionCardClasses } from "../classes";
+import FileUpload from "./FileUpload.astro";
+import QuoteIcon from "./QuoteIcon.astro";
+
+interface Props {
+  text: QuoteDictionary;
+  idPrefix: string;
+}
+
+const { text, idPrefix } = Astro.props;
+const images = { warm, bright, elegant, natural, industrial, contemporary };
+const blockClasses = "flex flex-col gap-4 border-t border-border-default pt-8";
+const headClasses = "flex flex-col gap-1";
+const id = `${idPrefix}-moodboard`;
+---
+
+<div class="flex flex-col gap-8" data-moodboard>
+  <fieldset
+    class={blockClasses}
+    data-field="atmospheres"
+    data-kind="multi"
+    data-summary={text.moodboard.summaryAtmospheres}
+  >
+    <legend class="contents">
+      <span class={headClasses}>
+        <span class="type-h3">{text.moodboard.atmospheres}</span>
+        <span class="type-body-small text-text-secondary">{text.moodboard.atmospheresHelp}</span>
+      </span>
+    </legend>
+    <div class="grid grid-cols-2 gap-3 tablet:grid-cols-3 tablet:gap-4">
+      {moodboardOptions.atmospheres.map((option) => (
+        <label class={moodCardClasses.root}>
+          <input type="checkbox" name="atmospheres" value={option} class="sr-only" />
+          <span class={moodCardClasses.media}>
+            <Image
+              src={images[option]}
+              alt=""
+              widths={[240, 360, 480]}
+              sizes="(min-width: 860px) 230px, 45vw"
+              class={moodCardClasses.image}
+              data-mood-image
+            />
+            <span class={`${optionCardClasses.check} absolute top-3 right-3 border-white/80 bg-ink/10`}>
+              <QuoteIcon name="check" class={optionCardClasses.checkIcon} />
+            </span>
+          </span>
+          <span class={moodCardClasses.label} data-option-label>
+            {text.options.atmospheres[option]}
+          </span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <fieldset class={blockClasses} data-field="colors" data-kind="multi" data-summary={text.moodboard.summaryColors}>
+    <legend class="contents">
+      <span class="type-h3">{text.moodboard.colors}</span>
+    </legend>
+    <div class="grid grid-cols-4 gap-x-2 gap-y-4 mobile:flex mobile:flex-wrap mobile:gap-5">
+      {moodboardOptions.colors.map(({ id: color, hex }) => (
+        <label class="group flex cursor-pointer flex-col items-center gap-2 mobile:w-16">
+          <input type="checkbox" name="colors" value={color} class="sr-only" />
+          <span class="grid size-13 place-items-center rounded-pill border-2 border-transparent transition-colors duration-fast ease-editorial group-hover:border-border-default group-has-checked:border-border-strong group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2 group-has-focus-visible:outline-focus-ring">
+            <span
+              class="size-10 rounded-pill border border-border-default"
+              style={`background-color: ${hex}`}
+              data-swatch={hex}
+            />
+          </span>
+          <span
+            class="type-caption text-center text-text-secondary group-has-checked:text-text-primary"
+            data-option-label
+          >
+            {text.options.colors[color]}
+          </span>
+        </label>
+      ))}
+    </div>
+    <div class={fieldClasses.root} data-field="avoidColors" data-kind="text" data-summary={text.moodboard.summaryAvoid}>
+      <label for={`${id}-avoid`} class={fieldClasses.label}>
+        {text.moodboard.avoid}
+      </label>
+      <input
+        id={`${id}-avoid`}
+        name="avoidColors"
+        type="text"
+        autocomplete="off"
+        maxlength={200}
+        placeholder={text.moodboard.avoidPlaceholder}
+        aria-describedby={`${id}-avoid-help`}
+        class={fieldClasses.control}
+      />
+      <p id={`${id}-avoid-help`} class={fieldClasses.help}>
+        {text.moodboard.avoidHelp}
+      </p>
+    </div>
+  </fieldset>
+
+  <fieldset
+    class={blockClasses}
+    data-field="materials"
+    data-kind="multi"
+    data-summary={text.moodboard.summaryMaterials}
+  >
+    <legend class="contents">
+      <span class="type-h3">{text.moodboard.materials}</span>
+    </legend>
+    <div class="flex flex-wrap gap-2 tablet:gap-3">
+      {moodboardOptions.materials.map((material) => (
+        <label class={choicePillClasses.root}>
+          <input type="checkbox" name="materials" value={material} class={choicePillClasses.input} />
+          <QuoteIcon name="check" class={choicePillClasses.checkIcon} />
+          <span class={choicePillClasses.label} data-option-label>
+            {text.options.materials[material]}
+          </span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div
+    class={blockClasses}
+    data-links
+    data-summary={text.moodboard.summaryLinks}
+    data-count-text={text.moodboard.linksCount}
+  >
+    <div class={headClasses}>
+      <h3 class="type-h3">{text.moodboard.references}</h3>
+      <p class="type-body-small text-text-secondary">{text.moodboard.referencesHelp}</p>
+    </div>
+    <div class={fieldClasses.root} data-link-field>
+      <label for={`${id}-link`} class={fieldClasses.label}>
+        {text.moodboard.link}
+      </label>
+      <div class="flex flex-col gap-3 mobile:flex-row">
+        <input
+          id={`${id}-link`}
+          type="url"
+          inputmode="url"
+          autocomplete="off"
+          placeholder={text.moodboard.linkPlaceholder}
+          aria-describedby={`${id}-link-help`}
+          class={fieldClasses.control}
+          data-link-input
+          data-error-message={text.moodboard.linkInvalid}
+        />
+        <button type="button" class={`${buttonClasses("secondary")} mobile:w-auto`} data-link-add>
+          {text.moodboard.linkAdd}
+        </button>
+      </div>
+      <p id={`${id}-link-help`} class={fieldClasses.help} data-help>
+        {text.moodboard.linkHelp}
+      </p>
+      <p class={fieldClasses.error} data-error hidden></p>
+    </div>
+    <ul class="flex flex-col" data-link-list></ul>
+    <template data-link-item>
+      <li class="flex items-center justify-between gap-4 border-b border-border-default py-3">
+        <a
+          class="type-body-small min-w-0 truncate underline-offset-[0.3em] hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-link-label
+        ></a>
+        <input type="hidden" name="referenceLinks" data-link-value />
+        <button
+          type="button"
+          class="type-link shrink-0 text-action-hover uppercase underline-offset-[0.3em] hover:underline"
+          data-link-remove
+          data-label-template={text.moodboard.removeLink}
+        >
+          {text.moodboard.remove}
+        </button>
+      </li>
+    </template>
+    <FileUpload
+      name="referenceFiles"
+      label={text.moodboard.images}
+      summary={text.moodboard.summaryImages}
+      text={text}
+      id={`${id}-files`}
+    />
+  </div>
+</div>

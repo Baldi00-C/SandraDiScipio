@@ -1,6 +1,6 @@
 ---
 title: Contesto operativo e mappa del codice
-ultimo_aggiornamento: 2026-11-21
+ultimo_aggiornamento: 2026-11-27
 ---
 
 # Contesto e codice
@@ -22,6 +22,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/pages/[lang]/[about]/index.astro` | Pagina Chi sono (T-06.2, D-093): foto in `src/assets/about/`, testi `about.*` dai dizionari |
 | `src/pages/[lang]/[services]/index.astro` | Pagina Servizi (T-07.2, D-094); servizi e percorso del preventivatore in `src/data/services.ts` |
 | `src/pages/[lang]/[contact]/index.astro` | Pagina Contatti con recapiti (T-05.2, D-088) |
+| `src/pages/[lang]/[quote]/index.astro` | Preventivatore (S-08, D-095 → D-103): scelta del percorso e i due questionari `#turnkey` e `#design` in `src/components/quote/` (un `<form>` per percorso, scheda progetto, riepilogo, conferma). Domande in `src/lib/quote.ts`, testi in `src/i18n/quote/`, comportamento in `src/scripts/quote.ts`, allegati in `src/lib/attachments.ts` e `src/scripts/quote-files.ts`, invio da collegare in `src/lib/quote-submit.ts` (T-05.3) |
 | `src/pages/[lang]/[slug].astro` | Pagine segnaposto di `placeholderPages` (D-083): ogni task di pagina toglie la sua chiave |
 | `src/i18n/config.ts` | Lingue supportate e fallback inglese |
 | `src/i18n/routes.ts` | Chiavi delle pagine, slug tradotti, voci del menu (`mainNav`), segnaposto, `pathFor()` e `alternatesFor()` |
@@ -30,7 +31,7 @@ Sandra è la PO; le decisioni quotidiane si prendono con l'utente. Non inventare
 | `src/lib/projects.ts`, `src/lib/project-entries.ts` | Funzioni dei progetti (ordine, progetto successivo, riga di dettagli, impaginazione delle gallerie) e lettura della collection per lingua |
 | `src/data/contact.ts` | Email, telefono, link WhatsApp con messaggio già scritto (D-076), partita IVA |
 | `src/i18n/ui/` | Dizionari dell'interfaccia; italiano come riferimento delle chiavi |
-| `src/components/classes.ts` | Classi Tailwind di `Button`, `ProjectCard`, `SectionHeading`, `ContactCta`, condivise con le storie (D-086) |
+| `src/components/classes.ts` | Classi Tailwind di `Button`, `ProjectCard`, `SectionHeading`, `ContactCta`, campi dei form e risposte del preventivatore, condivise con le storie (D-086, D-095) |
 | `src/components/` | Header con menu mobile, selettore lingua, footer, pulsante WhatsApp, logo SVG (`src/assets/brand/`) e metadati canonical/hreflang (D-082) |
 | `src/layouts/BaseLayout.astro` | Struttura HTML comune e lingua della pagina |
 | `src/layouts/PageLayout.astro` | Layout di ogni pagina: header, contenuto, footer e pulsante WhatsApp |
@@ -56,7 +57,8 @@ Verifica la [roadmap](../07-roadmap.md) e il codice corrente prima di iniziare: 
 | Cloudflare e anteprime PR | Stack deciso, adapter/deploy ancora da configurare (T-03.4) |
 | Playwright, axe e link rotti | Previsti in T-03.6; non presenti nella CI attuale |
 | Content collection dei progetti | Fatta (T-04.2): 3 progetti professionali del POC in IT, EN, ES e un universitario segnaposto (D-084, D-085) |
-| Pagine complete, form e invio email V.0 | Ancora da sviluppare; la presenza di implementazioni nel POC non le rende disponibili nel nuovo sito |
+| Preventivatore | Fatto in bozza (T-08.3 → T-08.6, D-103): l'invio non spedisce nulla finché `PUBLIC_QUOTE_ENDPOINT` non è impostato (T-05.3) e la pagina lo dice al visitatore |
+| Form Contatti e invio email V.0 | Ancora da sviluppare; la presenza di implementazioni nel POC non le rende disponibili nel nuovo sito |
 
 La scelta futura della lingua segue: scelta ricordata → browser supportato → inglese; gli URL con prefisso restano nella lingua richiesta (D-046). La V.0 userà Cloudflare, Resend e Turnstile secondo [lo stack deciso](../06-stack-tecnologico.md). Non dedurre configurazioni o credenziali attive da queste scelte.
 

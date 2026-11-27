@@ -91,3 +91,9 @@ Scopo: capire a fondo i desideri di chi vuole solo il progetto digitale (render,
 | 4 · Tempi e contatti | 6 | Quando vorresti avere il progetto?* (entro 1 mese, 1–3 mesi, nessuna fretta); budget per lavori e arredi (fino a 20.000 €, 20.000–50.000 €, 50.000–100.000 €, oltre 100.000 €, preferisco parlarne, D-100); allegati: planimetria e foto dello stato attuale |
 | | 7 | I tuoi dati* e privacy*, come nel Chiavi in mano |
 | Riepilogo | — | Scheda completa, ogni voce modificabile |
+
+## Nel codice (D-103)
+
+- Pagina: `src/pages/[lang]/[quote]/index.astro`; ancore `#turnkey` (Chiavi in mano) e `#design` (Solo progetto).
+- Domande: `src/lib/quote.ts`; testi IT/EN/ES: `src/i18n/quote/` (EN ed ES tradotti dall'AI, da rivedere secondo D-007).
+- Invio: `src/lib/quote-submit.ts` manda un `multipart/form-data` all'endpoint di T-05.3 (`PUBLIC_QUOTE_ENDPOINT`). Campi: `path`, `locale`, una voce per risposta (ripetuta per le scelte multiple e i link `referenceLinks`), `privacy=accepted`, file in `attachments` e `referenceFiles`. Senza endpoint non parte nulla e la conferma mostra "Anteprima del sito".
