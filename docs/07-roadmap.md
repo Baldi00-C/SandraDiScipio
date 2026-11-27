@@ -1,7 +1,7 @@
 ---
 title: Roadmap della V.0
 stato: DECISO
-ultimo_aggiornamento: 2026-11-26
+ultimo_aggiornamento: 2026-11-27
 ---
 
 # Roadmap della V.0
@@ -226,9 +226,9 @@ Regole:
 | **S-07** | **Servizi in bozza** | F3 | codice | S-06 | [#29](https://github.com/Baldi00-C/SandraDiScipio/issues/29) | FATTO |
 | T-07.1 | Mockup della pagina Servizi | F3 | design | T-02.4 | [#30](https://github.com/Baldi00-C/SandraDiScipio/issues/30) | FATTO |
 | T-07.2 | Pagina Servizi con i collegamenti ai percorsi del preventivatore | F3 | codice | T-07.1, T-03.7 | [#31](https://github.com/Baldi00-C/SandraDiScipio/issues/31) | FATTO |
-| **S-08** | **Preventivatore in bozza** | F3 | codice | S-07 | [#32](https://github.com/Baldi00-C/SandraDiScipio/issues/32) | DA FARE |
-| T-08.1 | Revisione delle domande dei questionari con l'utente (D-019) | F3 | docs | — | [#33](https://github.com/Baldi00-C/SandraDiScipio/issues/33) | DA FARE |
-| T-08.2 | Mockup: scelta del percorso e i due questionari | F3 | design | T-08.1, T-02.4 | [#34](https://github.com/Baldi00-C/SandraDiScipio/issues/34) | DA FARE |
+| **S-08** | **Preventivatore in bozza** | F3 | codice | S-07 | [#32](https://github.com/Baldi00-C/SandraDiScipio/issues/32) | IN CORSO |
+| T-08.1 | Revisione delle domande dei questionari con l'utente (D-019) | F3 | docs | — | [#33](https://github.com/Baldi00-C/SandraDiScipio/issues/33) | FATTO (D-095 → D-101) |
+| T-08.2 | Mockup: scelta del percorso e i due questionari | F3 | design | T-08.1, T-02.4 | [#34](https://github.com/Baldi00-C/SandraDiScipio/issues/34) | FATTO (D-102) |
 | T-08.3 | Pagina di scelta del percorso | F3 | codice | T-08.2, T-03.7 | [#35](https://github.com/Baldi00-C/SandraDiScipio/issues/35) | DA FARE |
 | T-08.4 | Questionario Chiavi in mano | F3 | codice | T-08.3, T-05.3 | [#36](https://github.com/Baldi00-C/SandraDiScipio/issues/36) | DA FARE |
 | T-08.5 | Questionario Solo progetto (4 passaggi) | F3 | codice | T-08.3, T-05.3 | [#37](https://github.com/Baldi00-C/SandraDiScipio/issues/37) | DA FARE |
