@@ -229,10 +229,10 @@ Regole:
 | **S-08** | **Preventivatore in bozza** | F3 | codice | S-07 | [#32](https://github.com/Baldi00-C/SandraDiScipio/issues/32) | IN CORSO |
 | T-08.1 | Revisione delle domande dei questionari con l'utente (D-019) | F3 | docs | — | [#33](https://github.com/Baldi00-C/SandraDiScipio/issues/33) | FATTO (D-095 → D-101) |
 | T-08.2 | Mockup: scelta del percorso e i due questionari | F3 | design | T-08.1, T-02.4 | [#34](https://github.com/Baldi00-C/SandraDiScipio/issues/34) | FATTO (D-102) |
-| T-08.3 | Pagina di scelta del percorso | F3 | codice | T-08.2, T-03.7 | [#35](https://github.com/Baldi00-C/SandraDiScipio/issues/35) | DA FARE |
-| T-08.4 | Questionario Chiavi in mano | F3 | codice | T-08.3, T-05.3 | [#36](https://github.com/Baldi00-C/SandraDiScipio/issues/36) | DA FARE |
-| T-08.5 | Questionario Solo progetto (4 passaggi) | F3 | codice | T-08.3, T-05.3 | [#37](https://github.com/Baldi00-C/SandraDiScipio/issues/37) | DA FARE |
-| T-08.6 | Allegati: riduzione delle foto nel browser, controlli, prova con 20 MB su Cloudflare | F3 | codice | T-08.4 | [#38](https://github.com/Baldi00-C/SandraDiScipio/issues/38) | DA FARE |
+| T-08.3 | Pagina di scelta del percorso | F3 | codice | T-08.2, T-03.7 | [#35](https://github.com/Baldi00-C/SandraDiScipio/issues/35) | FATTO (D-103) |
+| T-08.4 | Questionario Chiavi in mano | F3 | codice | T-08.3, T-05.3 | [#36](https://github.com/Baldi00-C/SandraDiScipio/issues/36) | FATTO (D-103) |
+| T-08.5 | Questionario Solo progetto (4 passaggi) | F3 | codice | T-08.3, T-05.3 | [#37](https://github.com/Baldi00-C/SandraDiScipio/issues/37) | FATTO (D-103) |
+| T-08.6 | Allegati: riduzione delle foto nel browser, controlli, prova con 20 MB su Cloudflare | F3 | codice | T-08.4 | [#38](https://github.com/Baldi00-C/SandraDiScipio/issues/38) | IN CORSO: allegati nel browser fatti (D-103); prova con 20 MB su Cloudflare con T-05.3 |
 | **S-09** | **Home in bozza** | F3 | codice | S-08 | [#39](https://github.com/Baldi00-C/SandraDiScipio/issues/39) | FATTO |
 | T-09.1 | Decidere progetti in evidenza ed elementi extra (D-012, D-016) | F3 | docs | — | [#40](https://github.com/Baldi00-C/SandraDiScipio/issues/40) | FATTO |
 | T-09.2 | Mockup della Home | F3 | design | T-09.1, T-02.4 | [#41](https://github.com/Baldi00-C/SandraDiScipio/issues/41) | FATTO |

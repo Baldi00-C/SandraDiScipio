@@ -1,0 +1,78 @@
+---
+/**
+ * Attachments field (D-069, Figma `File upload`, T-08.6): drag and drop on
+ * desktop, "Scegli i file" everywhere, list with name, size and a button to
+ * remove each file. Limits (5 files, 20 MB) are shared by every uploader of
+ * the same form; photos are reduced in the browser (`src/scripts/quote-files.ts`).
+ */
+import type { QuoteDictionary } from "../../i18n/quote";
+import { acceptAttribute } from "../../lib/attachments";
+import { buttonClasses, fieldClasses } from "../classes";
+import QuoteIcon from "./QuoteIcon.astro";
+
+interface Props {
+  name: string;
+  label: string;
+  /** Short label in the project sheet. */
+  summary: string;
+  text: QuoteDictionary;
+  id: string;
+  /** Hide the label: the screen title already asks the question. */
+  hideLabel?: boolean;
+}
+
+const { name, label, summary, text, id, hideLabel = false } = Astro.props;
+---
+
+<div class={fieldClasses.root} data-uploader={name} data-summary={summary}>
+  <span id={`${id}-label`} class:list={[hideLabel ? "sr-only" : fieldClasses.label]}>
+    {label}
+  </span>
+  <div
+    class="flex flex-col items-center gap-3 border border-dashed border-border-strong bg-surface-default px-6 py-8 text-center transition-colors duration-fast ease-editorial data-dragover:border-action-hover data-dragover:bg-background-subtle"
+    data-dropzone
+  >
+    <QuoteIcon name="upload" class="size-6" />
+    <p class="type-body-small hidden tablet:block">{text.files.drop}</p>
+    <label
+      for={id}
+      class={`${buttonClasses("secondary", "small")} cursor-pointer has-focus-visible:outline-2 has-focus-visible:outline-offset-4 has-focus-visible:outline-focus-ring`}
+    >
+      {text.files.choose}
+      <input
+        id={id}
+        type="file"
+        name={name}
+        multiple
+        accept={acceptAttribute}
+        class="sr-only"
+        aria-describedby={`${id}-help`}
+      />
+    </label>
+    <p class="type-caption text-text-secondary">{text.files.formats}</p>
+  </div>
+  <p id={`${id}-help`} class={fieldClasses.help} data-help>
+    {text.files.help}
+  </p>
+  <p class={fieldClasses.error} data-error role="alert" hidden></p>
+  <ul class="flex flex-col" data-file-list aria-labelledby={`${id}-label`}></ul>
+  <p class="type-caption text-text-secondary" data-file-total hidden></p>
+  <template data-file-item>
+    <li class="flex items-center justify-between gap-4 border-b border-border-default py-3">
+      <span class="flex min-w-0 items-center gap-3">
+        <QuoteIcon name="file" class="size-5 shrink-0" />
+        <span class="flex min-w-0 flex-col">
+          <span class="type-body-small truncate" data-file-name></span>
+          <span class="type-caption text-text-secondary" data-file-size></span>
+        </span>
+      </span>
+      <button
+        type="button"
+        class="type-link shrink-0 text-action-hover uppercase underline-offset-[0.3em] hover:underline"
+        data-file-remove
+      >
+        {text.files.remove}
+      </button>
+    </li>
+  </template>
+</div>

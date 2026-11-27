@@ -1,10 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/html-vite";
 
 import villaCover from "../assets/projects/villa-castana-pavia/villa-castana-pavia-render-soggiorno.jpg?url";
+import warmSample from "../assets/quote/warm-sample.jpg?url";
 import {
   buttonClasses,
+  choicePillClasses,
   contactCtaClasses,
   editorialLinkClasses,
+  fieldClasses,
+  moodCardClasses,
+  optionCardClasses,
   projectCardClasses,
   sectionHeadingClasses,
   viewerButtonClasses,
@@ -101,5 +106,73 @@ export const ViewerButtons: StoryObj = {
               `<button type="button" class="${viewerButtonClasses}"><svg viewBox="0 0 24 24" fill="none" class="size-6"><path d="${path}" stroke="currentColor" stroke-width="1.25"></path></svg></button>`
           )
           .join("")}
+      </div>`),
+};
+
+const check = (className: string) =>
+  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="${className}"><path d="M5 12l5 5L20 7"></path></svg>`;
+
+const sofaIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="${optionCardClasses.icon}"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3 M2 13a2 2 0 0 1 4 0v2h12v-2a2 2 0 0 1 4 0v5H2z M5 18v2 M19 18v2"></path></svg>`;
+
+const optionCard = (label: string, checked: boolean, icon: boolean) => `
+  <label class="${optionCardClasses.root} ${icon ? optionCardClasses.stacked : optionCardClasses.inline}">
+    <input type="checkbox" class="${optionCardClasses.input}" ${checked ? "checked" : ""} />
+    ${
+      icon
+        ? `<span class="${optionCardClasses.top}">${sofaIcon}<span class="${optionCardClasses.check}">${check(optionCardClasses.checkIcon)}</span></span>`
+        : `<span class="${optionCardClasses.check}">${check(optionCardClasses.checkIcon)}</span>`
+    }
+    <span class="${optionCardClasses.label}">${label}</span>
+  </label>`;
+
+export const QuoteAnswers: StoryObj = {
+  render: () =>
+    page(`
+      ${pageHeader("04 / COMPONENTS", "Quote answers.", "Figma <em>T-08.2 · Preventivatore</em> (D-095, D-099): answer cards with or without icon, pills, atmosphere card. Real radio and checkbox inputs: click to choose, keyboard focus on the whole card.")}
+      <div class="grid max-w-3xl grid-cols-2 gap-4 tablet:grid-cols-3">
+        ${optionCard("Soggiorno", true, true)}
+        ${optionCard("Cucina", false, true)}
+        ${optionCard("Ristrutturazione completa", true, false)}
+      </div>
+      <div class="mt-10 flex flex-wrap gap-3">
+        ${["Legno", "Pietra", "Mattone"]
+          .map(
+            (label, index) => `
+          <label class="${choicePillClasses.root}">
+            <input type="checkbox" class="${choicePillClasses.input}" ${index === 0 ? "checked" : ""} />
+            ${check(choicePillClasses.checkIcon)}
+            <span class="${choicePillClasses.label}">${label}</span>
+          </label>`
+          )
+          .join("")}
+      </div>
+      <div class="mt-10 grid max-w-sm grid-cols-2 gap-4">
+        <label class="${moodCardClasses.root}">
+          <input type="checkbox" class="sr-only" checked />
+          <span class="${moodCardClasses.media}"><img src="${warmSample}" alt="" class="${moodCardClasses.image}" /></span>
+          <span class="${moodCardClasses.label}">Calda e accogliente</span>
+        </label>
+      </div>`),
+};
+
+export const FormFields: StoryObj = {
+  render: () =>
+    page(`
+      ${pageHeader("04 / COMPONENTS", "Form fields.", 'Figma <em>Text field</em> (D-069): visible label, 52 px control, help under it, replaced by the error that starts with "Errore:". Focus = 2 px rose-deep border.')}
+      <div class="flex max-w-md flex-col gap-8">
+        <div class="${fieldClasses.root}">
+          <label for="story-name" class="${fieldClasses.label}">Nome</label>
+          <input id="story-name" class="${fieldClasses.control}" placeholder="Il tuo nome" />
+          <p class="${fieldClasses.help}">Campo obbligatorio.</p>
+        </div>
+        <div class="${fieldClasses.root}">
+          <label for="story-email" class="${fieldClasses.label}">Email</label>
+          <input id="story-email" class="${fieldClasses.control}" value="nome@" aria-invalid="true" />
+          <p class="${fieldClasses.error}">Errore: inserisci un indirizzo email valido.</p>
+        </div>
+        <div class="${fieldClasses.root}">
+          <label for="story-notes" class="${fieldClasses.label}">Note</label>
+          <textarea id="story-notes" class="${fieldClasses.textarea}" placeholder="Scrivi qui"></textarea>
+        </div>
       </div>`),
 };

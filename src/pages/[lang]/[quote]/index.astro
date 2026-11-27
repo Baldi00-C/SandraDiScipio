@@ -1,0 +1,146 @@
+---
+/**
+ * Quote builder (S-08, Figma `T-08.2 · Preventivatore`, D-095 → D-102).
+ * T-08.3: choice between the two paths, with what each includes (REQ-PREV-7).
+ * T-08.4 / T-08.5: the Chiavi in mano and Solo progetto questionnaires, opened
+ * by the `#turnkey` and `#design` anchors (links from the Services page).
+ * No price is shown (D-004). Sending is ready to be connected (T-05.3).
+ */
+import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+
+import designImage from "../../../assets/services/architecture-sample.jpg";
+import turnkeyImage from "../../../assets/services/renovation-sample.jpg";
+import { buttonClasses } from "../../../components/classes";
+import Curtain from "../../../components/Curtain.astro";
+import QuoteFlow from "../../../components/quote/QuoteFlow.astro";
+import { locales, routes, useTranslations, type Locale } from "../../../i18n";
+import { quoteText } from "../../../i18n/quote";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import { quotePaths } from "../../../lib/quote";
+
+export const getStaticPaths = (() =>
+  locales.map((lang) => ({ params: { lang, quote: routes.quote[lang] } }))) satisfies GetStaticPaths;
+
+const locale = Astro.params.lang as Locale;
+const t = useTranslations(locale);
+const text = quoteText(locale);
+const images = { turnkey: turnkeyImage, design: designImage };
+---
+
+<PageLayout
+  title={`${text.meta.title} — ${t("site.name")}`}
+  description={text.meta.description}
+  locale={locale}
+  route="quote"
+>
+  <script is:inline>
+    // Open the path of the anchor before the first paint (no flash of the choice screen).
+    if (/^#(turnkey|design)$/.test(location.hash)) document.documentElement.dataset.quotePath = location.hash.slice(1);
+  </script>
+  <div data-quote>
+    <div data-quote-choice>
+      <section class="container-site flex flex-col gap-4 pt-12 tablet:pt-24">
+        <p class="type-eyebrow text-text-label uppercase" data-reveal>
+          {text.choice.eyebrow}
+        </p>
+        <h1 class="type-display-large max-w-4xl" data-reveal style="--reveal-delay: 100ms">
+          {text.choice.heading}
+        </h1>
+        <p class="type-body-large max-w-[45rem] text-text-secondary" data-reveal style="--reveal-delay: 200ms">
+          {text.choice.lead}
+        </p>
+      </section>
+
+      <ul class="container-site grid gap-5 pt-10 pb-section tablet:grid-cols-2 tablet:gap-gutter tablet:pt-16">
+        {quotePaths.map((path, index) => {
+          const item = text.paths[path];
+          return (
+            <li
+              class="flex flex-col border border-border-default bg-surface-default"
+              data-reveal
+              style={`--reveal-delay: ${index * 100}ms`}
+            >
+              <div class="relative aspect-[578/340] overflow-hidden" data-curtain>
+                <Image
+                  src={images[path]}
+                  alt={item.imageAlt}
+                  widths={[400, 600, 900]}
+                  sizes="(min-width: 53.75rem) 40vw, 100vw"
+                  class="size-full object-cover"
+                  loading={index === 0 ? "eager" : "lazy"}
+                />
+                <Curtain color="var(--color-surface-default)" />
+              </div>
+              <div class="flex flex-1 flex-col gap-4 p-6 tablet:px-10 tablet:pt-8 tablet:pb-10">
+                <p class="type-eyebrow text-text-label uppercase">
+                  {`${text.choice.pathLabel} ${String(index + 1).padStart(2, "0")}`}
+                </p>
+                <h2 class="type-h2">{item.name}</h2>
+                <p class="type-body text-text-secondary">{item.description}</p>
+                <ul class="flex flex-col py-2">
+                  {item.includes.map((include) => (
+                    <li class="type-body-small flex gap-3 border-b border-border-default py-3">
+                      <span class="text-rose" aria-hidden="true">
+                        —
+                      </span>
+                      {include}
+                    </li>
+                  ))}
+                </ul>
+                <div class="mt-auto flex flex-col gap-4 pt-4 tablet:flex-row tablet:items-center tablet:justify-between">
+                  <p class="type-caption text-text-secondary">{item.duration}</p>
+                  <a
+                    href={`#${path}`}
+                    class={buttonClasses("primary", "default", true)}
+                    data-quote-start={path}
+                    aria-label={`${text.choice.start}: ${item.name}`}
+                  >
+                    {text.choice.start}
+                  </a>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <p class="container-site type-caption -mt-12 pb-12 text-text-secondary tablet:-mt-16">
+        {text.choice.sampleImage}
+      </p>
+
+      <section class="border-t border-border-default py-section" aria-labelledby="quote-how">
+        <div class="container-site flex flex-col gap-10">
+          <h2 id="quote-how" class="type-eyebrow text-text-label uppercase">
+            {text.choice.howTitle}
+          </h2>
+          <ol class="grid gap-8 tablet:grid-cols-3 tablet:gap-gutter">
+            {text.choice.how.map((step, index) => (
+              <li
+                class="flex flex-col gap-3 border-t border-border-strong pt-6"
+                data-reveal
+                style={`--reveal-delay: ${index * 100}ms`}
+              >
+                <span class="type-h3 text-rose-deep" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 class="type-h3">{step.title}</h3>
+                <p class="type-body-small text-text-secondary">{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+      <noscript>
+        <p class="container-site type-body pb-12">{text.choice.noscript}</p>
+      </noscript>
+    </div>
+
+    {quotePaths.map((path) => (
+      <QuoteFlow path={path} locale={locale} text={text} />
+    ))}
+  </div>
+</PageLayout>
+
+<script>
+  import "../../../scripts/quote";
+</script>

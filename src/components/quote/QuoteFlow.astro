@@ -1,0 +1,285 @@
+---
+/**
+ * One quote path (T-08.4 Chiavi in mano, T-08.5 Solo progetto) with the
+ * "Scheda progetto" experience (D-095, Figma `T-08.2 · Preventivatore`):
+ * chapters on top, one screen at a time, the project sheet beside the form
+ * (a bar and a full-screen sheet on mobile), an editable summary and the
+ * "Richiesta inviata" screen. Without JavaScript it stays a long, plain form.
+ * Behaviour: `src/scripts/quote.ts`.
+ */
+import { pathFor, type Locale } from "../../i18n";
+import type { QuoteDictionary } from "../../i18n/quote";
+import { fill, questionnaires, type QuotePath } from "../../lib/quote";
+import { buttonClasses, editorialLinkClasses, fieldClasses } from "../classes";
+import ContactFields from "./ContactFields.astro";
+import FileUpload from "./FileUpload.astro";
+import Moodboard from "./Moodboard.astro";
+import QuoteField from "./QuoteField.astro";
+import QuoteIcon from "./QuoteIcon.astro";
+
+interface Props {
+  path: QuotePath;
+  locale: Locale;
+  text: QuoteDictionary;
+}
+
+const { path, locale, text } = Astro.props;
+const { chapters, screens } = questionnaires[path];
+const ui = text.ui;
+const pathName = text.paths[path].name;
+const chapterNames = chapters.map((chapter) => text.chapters[chapter as keyof typeof text.chapters]);
+const total = screens.length;
+
+/** Texts the browser script needs, in the page language. */
+const scriptText = {
+  locale,
+  pathName,
+  chapters: chapterNames,
+  ui,
+  sent: text.sent,
+  files: text.files,
+  moodboard: text.moodboard,
+};
+---
+
+<section id={path} class="quote-flow scroll-mt-header" data-quote-flow={path} aria-labelledby={`${path}-flow-title`}>
+  <script type="application/json" data-quote-text set:html={JSON.stringify(scriptText)} />
+  <div class="container-site flex flex-col gap-5 pt-8 tablet:pt-10" data-flow-head>
+    <div class="flex items-center justify-between gap-4">
+      <h2 id={`${path}-flow-title`} class="type-eyebrow text-text-label uppercase">
+        {fill(ui.flowEyebrow, { path: pathName })}
+      </h2>
+      <a href="#" class="type-link link-underline uppercase" data-quote-exit hidden>
+        {ui.exit}
+      </a>
+    </div>
+    <ol class="grid grid-cols-4 gap-1.5 tablet:gap-4" aria-label={ui.chapters} data-chapters>
+      {chapterNames.map((name, index) => (
+        <li
+          class="border-t border-border-default pt-3 text-text-secondary transition-colors duration-base ease-editorial data-[state=current]:border-t-2 data-[state=current]:border-border-strong data-[state=current]:text-text-primary data-[state=done]:border-t-2 data-[state=done]:border-border-strong data-[state=done]:text-text-primary"
+          data-chapter-index={index}
+        >
+          <span class="type-caption sr-only tablet:not-sr-only">{`0${index + 1} · ${name}`}</span>
+        </li>
+      ))}
+    </ol>
+    <p class="type-caption tablet:hidden" data-chapter-current aria-hidden="true"></p>
+  </div>
+
+  <div class="container-site grid gap-12 pt-8 pb-28 tablet:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] tablet:gap-12 tablet:pt-16 tablet:pb-section desktop:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] desktop:gap-24">
+    <form
+      method="post"
+      enctype="multipart/form-data"
+      novalidate
+      class="flex min-w-0 flex-col gap-16"
+      data-quote-form={path}
+      aria-labelledby={`${path}-flow-title`}
+    >
+      <input type="hidden" name="path" value={path} />
+      <input type="hidden" name="locale" value={locale} />
+      {screens.map((screen, index) => {
+        const screenText = text.screens[screen.id as keyof typeof text.screens];
+        const sole = screen.fields.length === 1;
+        const autoAdvance = sole && screen.fields[0]?.kind === "single";
+        const last = index === total - 1;
+        return (
+          <fieldset
+            class="quote-step flex min-w-0 flex-col gap-8"
+            data-step={screen.id}
+            data-step-index={index}
+            data-chapter={screen.chapter}
+            data-title={screenText.title}
+            {...(autoAdvance ? { "data-auto-advance": "" } : {})}
+          >
+            <legend class="contents">
+              <span class="flex flex-col gap-3 tablet:gap-4">
+                <span class="type-caption text-text-secondary">
+                  {fill(ui.step, { n: index + 1, total })}
+                  <span aria-hidden="true">{` · ${fill(ui.chapter, { n: screen.chapter + 1 })}`}</span>
+                </span>
+                <span class="type-h1 outline-none" tabindex="-1" data-step-title>
+                  {screenText.title}
+                </span>
+                {screenText.help && <span class="type-body text-text-secondary">{screenText.help}</span>}
+              </span>
+            </legend>
+
+            <div class="flex flex-col gap-8">
+              {screen.fields.map((field) =>
+                field.kind === "moodboard" ? (
+                  <Moodboard text={text} idPrefix={path} />
+                ) : field.kind === "contact" ? (
+                  <ContactFields text={text} idPrefix={path} />
+                ) : field.kind === "files" ? (
+                  <FileUpload
+                    name={field.name}
+                    label={text.fields.attachments.label}
+                    summary={text.fields.attachments.summary}
+                    text={text}
+                    id={`${path}-${field.name}`}
+                    hideLabel={sole}
+                  />
+                ) : (
+                  <QuoteField field={field} text={text} idPrefix={path} sole={sole} />
+                )
+              )}
+            </div>
+
+            <div class="quote-nav flex items-center justify-between gap-4 pt-2" data-step-nav>
+              {index > 0 ? (
+                <button
+                  type="button"
+                  class="type-link inline-flex h-11 items-center gap-3 uppercase link-underline"
+                  data-step-back
+                >
+                  <span aria-hidden="true">←</span>
+                  {ui.back}
+                </button>
+              ) : (
+                <span />
+              )}
+              <span class="flex items-center gap-5">
+                <span class="type-caption hidden text-text-secondary desktop:inline" aria-hidden="true">
+                  {ui.enterHint}
+                </span>
+                <button type="button" class:list={[buttonClasses("primary"), "max-tablet:hidden"]} data-step-next>
+                  {last ? ui.toSummary : ui.next}
+                </button>
+              </span>
+            </div>
+          </fieldset>
+        );
+      })}
+
+      <section
+        class="quote-step flex min-w-0 flex-col gap-10"
+        data-step="summary"
+        data-step-index={total}
+        data-chapter={chapters.length - 1}
+        data-title={ui.summaryTitle}
+        aria-labelledby={`${path}-summary-title`}
+      >
+        <div class="flex flex-col gap-3 tablet:gap-4">
+          <p class="type-caption text-text-secondary">{ui.summaryEyebrow}</p>
+          <h3 id={`${path}-summary-title`} class="type-h1 outline-none" tabindex="-1" data-step-title>
+            {ui.summaryTitle}
+          </h3>
+          <p class="type-body text-text-secondary">{ui.summaryLead}</p>
+        </div>
+        <div class="grid items-start gap-10 tablet:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] tablet:gap-12 desktop:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] desktop:gap-24">
+          <div class="flex min-w-0 flex-col gap-10">
+            <div class="flex flex-col gap-10" data-summary-list></div>
+            <div class="quote-nav flex items-center justify-between gap-4" data-step-nav>
+              <button
+                type="button"
+                class="type-link inline-flex h-11 items-center gap-3 uppercase link-underline"
+                data-step-back
+              >
+                <span aria-hidden="true">←</span>
+                {ui.back}
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col gap-5 border border-border-default bg-surface-default p-6 tablet:sticky tablet:top-[calc(var(--spacing-header)+2rem)] tablet:p-8">
+            <p class="type-eyebrow text-text-label uppercase">{ui.sendEyebrow}</p>
+            <p class="type-body-small text-text-secondary" data-send-text data-template={ui.sendText}></p>
+            <div
+              class="flex flex-col gap-2"
+              data-field="privacy"
+              data-kind="consent"
+              data-required
+              data-error-message={ui.errorPrivacy}
+            >
+              <label class="group flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  value="accepted"
+                  required
+                  class="mt-0.5 size-5 shrink-0 cursor-pointer accent-ink"
+                  aria-describedby={`${path}-privacy-error`}
+                />
+                <span class="type-body-small">
+                  <Fragment
+                    set:html={fill(text.contact.privacy, {
+                      link: `<a href="${pathFor("privacy", locale)}" class="underline underline-offset-[0.2em] hover:text-action-hover" target="_blank" rel="noopener">${text.contact.privacyLink}</a>`,
+                    })}
+                  />
+                </span>
+              </label>
+              <p id={`${path}-privacy-error`} class={fieldClasses.error} data-error hidden></p>
+            </div>
+            <div class="border-l-2 border-feedback-error bg-background-subtle p-4" role="alert" data-send-error hidden>
+              <p class="type-control text-feedback-error">{ui.sendErrorTitle}</p>
+              <p class="type-body-small">{ui.sendErrorText}</p>
+            </div>
+            <button type="submit" class={buttonClasses("primary", "default", true)} data-send>
+              {ui.send}
+            </button>
+            <noscript>
+              <p class="type-body-small">{text.choice.noscript}</p>
+            </noscript>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <aside class="hidden tablet:block" aria-label={ui.sheetTitle} data-sheet-aside hidden>
+      <div
+        class="sticky top-[calc(var(--spacing-header)+2rem)] max-h-[calc(100dvh-var(--spacing-header)-4rem)] overflow-y-auto"
+        data-sheet
+      ></div>
+    </aside>
+  </div>
+
+  <div
+    class="quote-bar fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-4 border-t border-border-default bg-surface-default px-page py-3 shadow-floating tablet:hidden"
+    data-sheet-bar
+    hidden
+  >
+    <button type="button" class="flex flex-col items-start text-left" aria-haspopup="dialog" data-sheet-open>
+      <span class="type-caption flex items-center gap-1.5">
+        {ui.sheetBar}
+        <QuoteIcon name="chevronUp" class="size-3.5" />
+      </span>
+      <span class="type-caption text-text-secondary" data-sheet-count></span>
+    </button>
+    <button type="button" class={buttonClasses("primary", "small")} data-bar-next>
+      {ui.next}
+    </button>
+  </div>
+
+  <dialog class="quote-sheet-dialog" aria-label={ui.sheetTitle} data-sheet-dialog>
+    <div class="flex justify-end px-page pt-4">
+      <button type="button" class="type-link inline-flex h-11 items-center gap-2 uppercase" data-sheet-close>
+        {ui.sheetClose}
+        <QuoteIcon name="close" class="size-4" />
+      </button>
+    </div>
+    <div class="px-page pb-10" data-sheet></div>
+  </dialog>
+
+  <div class="container-site py-16 outline-none tablet:py-24" data-sent tabindex="-1" hidden>
+    <div class="grid items-center gap-12 tablet:grid-cols-[minmax(0,1fr)_minmax(0,28rem)] tablet:gap-16">
+      <div class="flex flex-col gap-6">
+        <p class="type-eyebrow text-feedback-success uppercase">{text.sent.eyebrow}</p>
+        <p class="type-display-large" data-sent-title></p>
+        <p class="type-body-large text-text-secondary" data-sent-text></p>
+        <div class="border-l-2 border-border-strong bg-background-subtle p-4" data-sent-draft hidden>
+          <p class="type-control">{text.sent.draftTitle}</p>
+          <p class="type-body-small">{text.sent.draftText}</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-8 pt-2">
+          <a href={pathFor("projects", locale)} class={buttonClasses("secondary")}>
+            {text.sent.projects}
+          </a>
+          <a href={pathFor("home", locale)} class={editorialLinkClasses}>
+            {text.sent.home}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="hidden grid-cols-2 items-start gap-3 tablet:grid" data-sent-mood aria-hidden="true"></div>
+    </div>
+  </div>
+</section>

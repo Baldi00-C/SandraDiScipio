@@ -1,0 +1,217 @@
+---
+/**
+ * One question of the quote builder (D-095): choice cards or pills, text,
+ * number, free text with prompts, counter. When the field is the only one of
+ * its screen, the screen title is its question and its label is visually hidden.
+ * The browser script reads the `data-*` attributes to validate and to fill the
+ * project sheet.
+ */
+import type { QuoteDictionary } from "../../i18n/quote";
+import { fill, type QuoteField } from "../../lib/quote";
+import { choicePillClasses, fieldClasses, optionCardClasses } from "../classes";
+import QuoteIcon from "./QuoteIcon.astro";
+
+interface Props {
+  field: QuoteField;
+  text: QuoteDictionary;
+  /** Prefix that keeps ids unique: the two forms share field names. */
+  idPrefix: string;
+  /** Only field of the screen. */
+  sole: boolean;
+}
+
+const { field, text, idPrefix, sole } = Astro.props;
+const { name, kind, required = false } = field;
+const fieldText = text.fields[name as keyof typeof text.fields];
+const options = (text.options as Record<string, Record<string, string>>)[name] ?? {};
+const id = `${idPrefix}-${name}`;
+const helpId = `${id}-help`;
+const errorId = `${id}-error`;
+
+const errorMessage =
+  kind === "single"
+    ? text.ui.errorChoose
+    : kind === "multi"
+      ? text.ui.errorChooseMany
+      : kind === "number"
+        ? text.ui.errorNumber
+        : text.ui.errorText;
+
+const dataAttributes = {
+  "data-field": name,
+  "data-kind": kind,
+  "data-summary": fieldText.summary,
+  "data-error-message": errorMessage,
+  ...(required ? { "data-required": "" } : {}),
+  ...(field.exclusive ? { "data-exclusive": field.exclusive.join(" ") } : {}),
+};
+
+const inputType = kind === "single" ? "radio" : "checkbox";
+const asCards = sole && (kind === "single" || kind === "multi");
+const help = !sole && required ? text.ui.required : "";
+---
+
+{(kind === "single" || kind === "multi") &&
+  (asCards ? (
+    <div {...dataAttributes} class="flex flex-col gap-4">
+      <div
+        class:list={[
+          "grid gap-3 tablet:gap-4",
+          field.icons ? "grid-cols-2 tablet:grid-cols-3" : "grid-cols-1 mobile:grid-cols-2 tablet:grid-cols-3",
+        ]}
+      >
+        {field.options?.map((option) => (
+          <label
+            class:list={[optionCardClasses.root, field.icons ? optionCardClasses.stacked : optionCardClasses.inline]}
+          >
+            <input
+              type={inputType}
+              name={name}
+              value={option}
+              class={optionCardClasses.input}
+              aria-describedby={errorId}
+            />
+            {field.icons ? (
+              <span class={optionCardClasses.top}>
+                <QuoteIcon name={option} class={optionCardClasses.icon} />
+                <span class={optionCardClasses.check}>
+                  <QuoteIcon name="check" class={optionCardClasses.checkIcon} />
+                </span>
+              </span>
+            ) : (
+              <span class={optionCardClasses.check}>
+                <QuoteIcon name="check" class={optionCardClasses.checkIcon} />
+              </span>
+            )}
+            <span class={optionCardClasses.label} data-option-label>
+              {options[option]}
+            </span>
+          </label>
+        ))}
+      </div>
+      <p id={errorId} class={fieldClasses.error} data-error hidden />
+    </div>
+  ) : (
+    <fieldset {...dataAttributes} class="flex flex-col gap-3">
+      <legend class="type-control mb-3 text-text-primary">{fieldText.label}</legend>
+      <div class="flex flex-wrap gap-2 tablet:gap-3">
+        {field.options?.map((option) => (
+          <label class={choicePillClasses.root}>
+            <input
+              type={inputType}
+              name={name}
+              value={option}
+              class={choicePillClasses.input}
+              aria-describedby={errorId}
+            />
+            <QuoteIcon name="check" class={choicePillClasses.checkIcon} />
+            <span class={choicePillClasses.label} data-option-label>
+              {options[option]}
+            </span>
+          </label>
+        ))}
+      </div>
+      <p id={errorId} class={fieldClasses.error} data-error hidden />
+    </fieldset>
+  ))}
+
+{(kind === "text" || kind === "number") && (
+  <div {...dataAttributes} class={fieldClasses.root}>
+    <label for={id} class:list={[sole ? "sr-only" : fieldClasses.label]}>
+      {fieldText.label}
+    </label>
+    <input
+      id={id}
+      name={name}
+      type={kind === "number" ? "number" : "text"}
+      inputmode={kind === "number" ? "numeric" : undefined}
+      min={field.min}
+      max={field.max}
+      step={kind === "number" ? 1 : undefined}
+      autocomplete={field.autocomplete ?? "off"}
+      placeholder={fieldText.placeholder || undefined}
+      required={required}
+      aria-describedby={help ? helpId : undefined}
+      class:list={[fieldClasses.control, sole && "tablet:max-w-md"]}
+    />
+    {help && (
+      <p id={helpId} class={fieldClasses.help} data-help>
+        {help}
+      </p>
+    )}
+    <p id={errorId} class={fieldClasses.error} data-error hidden />
+  </div>
+)}
+
+{kind === "textarea" && (
+  <div {...dataAttributes} class={fieldClasses.root}>
+    <label for={id} class:list={[sole ? "sr-only" : fieldClasses.label]}>
+      {fieldText.label}
+    </label>
+    {field.prompts && (
+      <ul class="flex flex-wrap gap-2 pb-2">
+        {field.prompts.map((prompt) => (
+          <li>
+            <button
+              type="button"
+              class="type-caption inline-flex h-11 items-center gap-2 rounded-pill border border-border-default bg-surface-default px-4 transition-colors duration-fast ease-editorial hover:border-border-strong hover:text-action-hover"
+              data-prompt={text.prompts[prompt as keyof typeof text.prompts]}
+              aria-controls={id}
+            >
+              <QuoteIcon name="plus" class="size-3.5" />
+              {text.prompts[prompt as keyof typeof text.prompts]}
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
+    <textarea
+      id={id}
+      name={name}
+      rows={6}
+      maxlength={4000}
+      placeholder={fieldText.placeholder || undefined}
+      class={fieldClasses.textarea}
+    />
+    <p id={errorId} class={fieldClasses.error} data-error hidden />
+  </div>
+)}
+
+{kind === "counter" && (
+  <div {...dataAttributes} class="flex items-center justify-between gap-4 border-b border-border-default py-3">
+    <span id={`${id}-label`} class={fieldClasses.label}>
+      {fieldText.label}
+    </span>
+    <div class="flex items-center gap-2" role="group" aria-labelledby={`${id}-label`}>
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-pill border border-border-strong transition-colors duration-fast ease-editorial hover:border-action-hover hover:text-action-hover"
+        data-counter-step="-1"
+        aria-controls={id}
+        aria-label={fill(text.ui.decrease, { label: fieldText.label })}
+      >
+        <QuoteIcon name="minus" class="size-4" />
+      </button>
+      <input
+        id={id}
+        name={name}
+        type="number"
+        inputmode="numeric"
+        value="0"
+        min={field.min}
+        max={field.max}
+        aria-labelledby={`${id}-label`}
+        class="type-control h-11 w-14 border-0 bg-transparent text-center [appearance:textfield] focus-visible:outline-2 [&::-webkit-inner-spin-button]:appearance-none"
+      />
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-pill border border-border-strong transition-colors duration-fast ease-editorial hover:border-action-hover hover:text-action-hover"
+        data-counter-step="1"
+        aria-controls={id}
+        aria-label={fill(text.ui.increase, { label: fieldText.label })}
+      >
+        <QuoteIcon name="plus" class="size-4" />
+      </button>
+    </div>
+  </div>
+)}

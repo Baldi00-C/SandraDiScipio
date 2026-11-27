@@ -1,0 +1,125 @@
+---
+/**
+ * Contact details of the quote builder (D-097): name, email, phone and the
+ * preferred channel. The phone becomes required for phone and WhatsApp.
+ */
+import type { QuoteDictionary } from "../../i18n/quote";
+import { contactPreferences } from "../../lib/quote";
+import { choicePillClasses, fieldClasses } from "../classes";
+import QuoteIcon from "./QuoteIcon.astro";
+
+interface Props {
+  text: QuoteDictionary;
+  idPrefix: string;
+}
+
+const { text, idPrefix } = Astro.props;
+const id = `${idPrefix}-contact`;
+const inputs: {
+  name: string;
+  type: "text" | "email" | "tel";
+  label: string;
+  placeholder: string;
+  autocomplete: "name" | "email" | "tel";
+  help: string;
+  error: string;
+  summary: string;
+}[] = [
+  {
+    name: "name",
+    type: "text",
+    label: text.contact.name,
+    placeholder: text.contact.namePlaceholder,
+    autocomplete: "name",
+    help: text.ui.required,
+    error: text.ui.errorName,
+    summary: text.contact.summaryName,
+  },
+  {
+    name: "email",
+    type: "email",
+    label: text.contact.email,
+    placeholder: text.contact.emailPlaceholder,
+    autocomplete: "email",
+    help: text.contact.emailHelp,
+    error: text.ui.errorEmail,
+    summary: text.contact.summaryEmail,
+  },
+  {
+    name: "phone",
+    type: "tel",
+    label: text.contact.phoneOptional,
+    placeholder: text.contact.phonePlaceholder,
+    autocomplete: "tel",
+    help: text.contact.phoneHelp,
+    error: text.ui.errorPhone,
+    summary: text.contact.summaryPhone,
+  },
+];
+---
+
+<div class="flex flex-col gap-6" data-contact>
+  {inputs.map((input) => (
+    <div
+      class={fieldClasses.root}
+      data-field={input.name}
+      data-kind={input.name === "email" ? "email" : input.name === "phone" ? "phone" : "text"}
+      data-summary={input.summary}
+      data-error-message={input.error}
+      {...(input.name !== "phone" ? { "data-required": "" } : {})}
+    >
+      <label
+        for={`${id}-${input.name}`}
+        class={fieldClasses.label}
+        data-label-optional={input.name === "phone" ? text.contact.phoneOptional : undefined}
+        data-label-required={input.name === "phone" ? text.contact.phone : undefined}
+      >
+        {input.label}
+      </label>
+      <input
+        id={`${id}-${input.name}`}
+        name={input.name}
+        type={input.type}
+        autocomplete={input.autocomplete}
+        placeholder={input.placeholder}
+        maxlength={200}
+        required={input.name !== "phone"}
+        aria-describedby={`${id}-${input.name}-help`}
+        class:list={[fieldClasses.control, "tablet:max-w-md"]}
+      />
+      <p id={`${id}-${input.name}-help`} class={fieldClasses.help} data-help>
+        {input.help}
+      </p>
+      <p class={fieldClasses.error} data-error hidden />
+    </div>
+  ))}
+  <fieldset
+    class="flex flex-col gap-3"
+    data-field="preferredContact"
+    data-kind="single"
+    data-default-answer
+    data-required
+    data-summary={text.contact.summaryPreferred}
+    data-error-message={text.ui.errorChoose}
+  >
+    <legend class="type-control mb-3">{text.contact.preferred}</legend>
+    <div class="flex flex-wrap gap-2 tablet:gap-3">
+      {contactPreferences.map((preference) => (
+        <label class={choicePillClasses.root}>
+          <input
+            type="radio"
+            name="preferredContact"
+            value={preference}
+            class={choicePillClasses.input}
+            checked={preference === "email"}
+          />
+          <QuoteIcon name="check" class={choicePillClasses.checkIcon} />
+          <span class={choicePillClasses.label} data-option-label>
+            {text.options.preferredContact[preference]}
+          </span>
+        </label>
+      ))}
+    </div>
+    <p class={fieldClasses.error} data-error hidden></p>
+  </fieldset>
+</div>

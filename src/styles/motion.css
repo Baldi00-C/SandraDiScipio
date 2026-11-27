@@ -208,3 +208,23 @@
     transform: scale(1.45);
   }
 }
+
+/* Quote builder (D-095): each new screen fades in while rising 24 px.
+   With reduced motion it simply appears. */
+@media (prefers-reduced-motion: no-preference) {
+  .quote-step.is-entering {
+    animation: quote-step-in var(--duration-base) var(--ease-editorial) both;
+  }
+}
+
+@keyframes quote-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

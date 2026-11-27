@@ -107,12 +107,58 @@
   .image-viewer::backdrop {
     background-color: transparent;
   }
+  /* Project sheet of the quote builder on mobile (D-095), a modal <dialog> */
+  .quote-sheet-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    background-color: var(--color-surface-default);
+    color: var(--color-text-primary);
+  }
+
+  .quote-sheet-dialog::backdrop {
+    background-color: rgb(29 29 27 / 0.4);
+  }
 }
 
 @layer base {
   /* No page scroll behind the open mobile menu */
   html:has(.site-menu[open]),
-  html:has(.image-viewer[open]) {
+  html:has(.image-viewer[open]),
+  html:has(.quote-sheet-dialog[open]) {
     overflow: hidden;
+  }
+}
+
+/* Quote builder (D-095): with JavaScript one path and one screen at a time;
+   without it, the choice and both forms stay visible as plain forms.
+   Unlayered so these states win over the utility classes. */
+html.js .quote-flow:not(.is-active),
+html.js .quote-step:not(.is-current),
+html.js[data-quote-path] [data-quote-choice] {
+  display: none;
+}
+
+/* The summary takes the whole width, with the send box in place of the sheet */
+.quote-flow.is-summary [data-sheet-aside] {
+  display: none;
+}
+
+.quote-flow.is-summary form {
+  grid-column: 1 / -1;
+}
+
+html:not(.js) .quote-nav {
+  display: none;
+}
+
+/* Lift the WhatsApp button above the sheet bar on mobile */
+@media (width < 53.75rem) {
+  html[data-quote-path]:has(.quote-bar:not([hidden])) .whatsapp-float {
+    bottom: 5.5rem;
   }
 }
